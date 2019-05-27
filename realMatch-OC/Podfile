@@ -1,0 +1,7 @@
+platform :ios, '8.0'
+
+target 'realMatch-OC' do
+
+pod 'AccountKit'
+
+end
