@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */; };
 		D661306622956697008DA4D8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D661306522956697008DA4D8 /* Podfile */; };
+		D6697147229BB0D3008E3968 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6697146229BB0D3008E3968 /* StoreKit.framework */; };
+		D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D669714A229BBFF3008E3968 /* PurchaseManager.m */; };
 		D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D687DA572294EDCE00A11488 /* AppDelegate.m */; };
 		D687DA5B2294EDCE00A11488 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D687DA5A2294EDCE00A11488 /* ViewController.m */; };
 		D687DA5E2294EDCE00A11488 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D687DA5C2294EDCE00A11488 /* Main.storyboard */; };
@@ -40,11 +42,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D669717F229BEA78008E3968 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-realMatch-OC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FA9F1266B2D253DA24B413 /* Pods-realMatch-OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.release.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.release.xcconfig"; sourceTree = "<group>"; };
 		D0116FF275BEF202714594EA /* Pods-realMatch-OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.debug.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.debug.xcconfig"; sourceTree = "<group>"; };
+		D64BA375229B99BE00373BFB /* realMatch-OC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "realMatch-OC.entitlements"; sourceTree = "<group>"; };
 		D661306522956697008DA4D8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D6697146229BB0D3008E3968 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D6697149229BBFF3008E3968 /* PurchaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseManager.h; sourceTree = "<group>"; };
+		D669714A229BBFF3008E3968 /* PurchaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseManager.m; sourceTree = "<group>"; };
+		D6697177229BE0D5008E3968 /* realMatch-OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "realMatch-OC-Bridging-Header.h"; sourceTree = "<group>"; };
 		D687DA532294EDCE00A11488 /* realMatch-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "realMatch-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D687DA562294EDCE00A11488 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D687DA572294EDCE00A11488 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -76,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */,
+				D6697147229BB0D3008E3968 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,9 +120,19 @@
 		650A6413188F2E6C713DA5A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D6697146229BB0D3008E3968 /* StoreKit.framework */,
 				0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D6697148229BBFCF008E3968 /* InAppPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				D6697149229BBFF3008E3968 /* PurchaseManager.h */,
+				D669714A229BBFF3008E3968 /* PurchaseManager.m */,
+			);
+			path = InAppPurchase;
 			sourceTree = "<group>";
 		};
 		D687DA4A2294EDCE00A11488 = {
@@ -114,6 +145,7 @@
 				D687DA542294EDCE00A11488 /* Products */,
 				E66AEA9D5AEAE528485D16E3 /* Pods */,
 				650A6413188F2E6C713DA5A7 /* Frameworks */,
+				D6697177229BE0D5008E3968 /* realMatch-OC-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +162,8 @@
 		D687DA552294EDCE00A11488 /* realMatch-OC */ = {
 			isa = PBXGroup;
 			children = (
+				D6697148229BBFCF008E3968 /* InAppPurchase */,
+				D64BA375229B99BE00373BFB /* realMatch-OC.entitlements */,
 				D687DA562294EDCE00A11488 /* AppDelegate.h */,
 				D687DA572294EDCE00A11488 /* AppDelegate.m */,
 				D687DA592294EDCE00A11488 /* ViewController.h */,
@@ -205,6 +239,7 @@
 				D687DA502294EDCE00A11488 /* Frameworks */,
 				D687DA512294EDCE00A11488 /* Resources */,
 				1CA7DF259AEED1356BEFD520 /* [CP] Copy Pods Resources */,
+				D669717F229BEA78008E3968 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -262,6 +297,18 @@
 				TargetAttributes = {
 					D687DA522294EDCE00A11488 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					D687DA6A2294EDD200A11488 = {
 						CreatedOnToolsVersion = 10.2;
@@ -333,12 +380,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC-resources.sh",
 				"${PODS_ROOT}/AccountKit/AccountKitStrings.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccountKitStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -378,6 +427,7 @@
 				D687DA662294EDD200A11488 /* main.m in Sources */,
 				D6BF467522969DEB00C82D98 /* LoginAndRegisterViewController.m in Sources */,
 				D6BF467F2296CDE500C82D98 /* Router+AccountKit.m in Sources */,
+				D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */,
 				D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */,
 				D6BF467B2296A6DE00C82D98 /* Router.m in Sources */,
 			);
@@ -550,17 +600,31 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0116FF275BEF202714594EA /* Pods-realMatch-OC.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "realMatch-OC/realMatch-OC.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ER8D46T4W6;
+				DEVELOPMENT_TEAM = 38KCJNXX83;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"$(SOURCE_ROOT)/PromiseKit\"/**",
+				);
 				INFOPLIST_FILE = "realMatch-OC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qingting.realMatch-OC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.arceushs.realMatch-OC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OBJC_BRIDGING_HEADER = "realMatch-OC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.3;
+				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wno-nullability-completeness";
 			};
 			name = Debug;
@@ -569,17 +633,30 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 91FA9F1266B2D253DA24B413 /* Pods-realMatch-OC.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "realMatch-OC/realMatch-OC.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ER8D46T4W6;
+				DEVELOPMENT_TEAM = 38KCJNXX83;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"$(SOURCE_ROOT)/PromiseKit\"/**",
+				);
 				INFOPLIST_FILE = "realMatch-OC/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qingting.realMatch-OC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.arceushs.realMatch-OC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OBJC_BRIDGING_HEADER = "realMatch-OC-Bridging-Header.h";
+				SWIFT_VERSION = 4.3;
+				TARGETED_DEVICE_FAMILY = 1;
 				WARNING_CFLAGS = "-Wno-nullability-completeness";
 			};
 			name = Release;

@@ -9,7 +9,7 @@
 #import "ViewController.h"
 //#import <AccountKit/AccountKit.h>
 #import "Router/Router.h"
-
+#import "PurchaseManager.h"
 @interface ViewController ()
 
 @end
@@ -22,8 +22,10 @@
 
     [Router setNavigationVC:self.navigationController];
     
-    [[Router shared] routerTo:@"LoginAndRegisterViewController" parameter:nil];
+    [[PurchaseManager shareManager] startPurchaseWithID:@"1_month_premium"];
     
+//    [[Router shared] routerTo:@"LoginAndRegisterViewController" parameter:nil];
+//
     // Do any additional setup after loading the view.
 }
 
@@ -32,8 +34,5 @@
     [super viewWillAppear:animated];
     
 }
-
-
-
 
 @end
