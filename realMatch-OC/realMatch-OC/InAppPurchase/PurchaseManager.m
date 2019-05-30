@@ -55,14 +55,36 @@
     }
     
     SKProduct *p = nil;
-//    
-//    for(SKProduct *pro in product){
-//        if(pro.productIdentifier isEqualToString:@")
-//    }
+    
+    for(SKProduct *pro in product){
+        if([pro.productIdentifier isEqualToString:self.purchaseId]){
+            p = pro;
+            break;
+        }
+    }
+    
+    SKPayment* payment = [SKPayment paymentWithProduct:p];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+}
+
+-(void)completeTransaction:(SKPaymentTransaction*)transaction{
+    NSString* productIdentifier = transaction.payment.productIdentifier;
+    NSString* receipt = [transaction.transactionReceipt base64Encoding];
+
 }
 
 - (void)paymentQueue:(nonnull SKPaymentQueue *)queue updatedTransactions:(nonnull NSArray<SKPaymentTransaction *> *)transactions {
-    
+    for(SKPaymentTransaction * tran in transactions){
+        switch (tran.transactionState) {
+            case SKPaymentTransactionStatePurchased:
+                [self completeTransaction:transactions.firstObject];
+                break;
+            case SKPaymentTransactionStatePurchasing:
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 @end
