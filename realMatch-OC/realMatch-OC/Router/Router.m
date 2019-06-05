@@ -34,6 +34,7 @@
 
 -(void)createRouteTable:(NSMutableArray<NSString*> *)routeTable{
     [routeTable addObject:@"LoginAndRegisterViewController"];
+    [routeTable addObject:@"RMCaptureViewController"];
 }
 
 -(void)routerTo:(NSString*)vcName parameter:(NSDictionary*)params{

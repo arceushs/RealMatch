@@ -22,9 +22,9 @@
 
     [Router setNavigationVC:self.navigationController];
     
-    [[PurchaseManager shareManager] startPurchaseWithID:@"1_month_premium"];
+//    [[PurchaseManager shareManager] startPurchaseWithID:@"1_month_premium"];
     
-//    [[Router shared] routerTo:@"LoginAndRegisterViewController" parameter:nil];
+    [[Router shared] routerTo:@"RMCaptureViewController" parameter:nil];
 //
     // Do any additional setup after loading the view.
 }

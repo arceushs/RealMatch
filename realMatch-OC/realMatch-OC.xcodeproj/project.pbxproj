@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */; };
+		D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D607117622A6715400412F72 /* UIView+RealMatch.m */; };
 		D661306622956697008DA4D8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D661306522956697008DA4D8 /* Podfile */; };
+		D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */; };
 		D6697147229BB0D3008E3968 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6697146229BB0D3008E3968 /* StoreKit.framework */; };
 		D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D669714A229BBFF3008E3968 /* PurchaseManager.m */; };
+		D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D67665D322A50FD8009C9C6A /* RMCaptureViewController.m */; };
 		D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D687DA572294EDCE00A11488 /* AppDelegate.m */; };
 		D687DA5B2294EDCE00A11488 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D687DA5A2294EDCE00A11488 /* ViewController.m */; };
 		D687DA5E2294EDCE00A11488 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D687DA5C2294EDCE00A11488 /* Main.storyboard */; };
@@ -59,12 +62,18 @@
 		0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-realMatch-OC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FA9F1266B2D253DA24B413 /* Pods-realMatch-OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.release.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.release.xcconfig"; sourceTree = "<group>"; };
 		D0116FF275BEF202714594EA /* Pods-realMatch-OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.debug.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.debug.xcconfig"; sourceTree = "<group>"; };
+		D607117522A6715400412F72 /* UIView+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+RealMatch.h"; sourceTree = "<group>"; };
+		D607117622A6715400412F72 /* UIView+RealMatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+RealMatch.m"; sourceTree = "<group>"; };
 		D64BA375229B99BE00373BFB /* realMatch-OC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "realMatch-OC.entitlements"; sourceTree = "<group>"; };
 		D661306522956697008DA4D8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D665EC5B22A79D36003FB7B8 /* UIDevice+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+RealMatch.h"; sourceTree = "<group>"; };
+		D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+RealMatch.m"; sourceTree = "<group>"; };
 		D6697146229BB0D3008E3968 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D6697149229BBFF3008E3968 /* PurchaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseManager.h; sourceTree = "<group>"; };
 		D669714A229BBFF3008E3968 /* PurchaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseManager.m; sourceTree = "<group>"; };
 		D6697177229BE0D5008E3968 /* realMatch-OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "realMatch-OC-Bridging-Header.h"; sourceTree = "<group>"; };
+		D67665D222A50FD8009C9C6A /* RMCaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCaptureViewController.h; sourceTree = "<group>"; };
+		D67665D322A50FD8009C9C6A /* RMCaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCaptureViewController.m; sourceTree = "<group>"; };
 		D687DA532294EDCE00A11488 /* realMatch-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "realMatch-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D687DA562294EDCE00A11488 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D687DA572294EDCE00A11488 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -126,6 +135,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D607117422A6711F00412F72 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D607117522A6715400412F72 /* UIView+RealMatch.h */,
+				D607117622A6715400412F72 /* UIView+RealMatch.m */,
+				D665EC5B22A79D36003FB7B8 /* UIDevice+RealMatch.h */,
+				D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D65E0A2822A508FD00E749BF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D65E0A2922A50B1800E749BF /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				D67665D222A50FD8009C9C6A /* RMCaptureViewController.h */,
+				D67665D322A50FD8009C9C6A /* RMCaptureViewController.m */,
+			);
+			name = ImagePicker;
+			path = LoginAndRegister/ImagePicker;
+			sourceTree = "<group>";
+		};
 		D6697148229BBFCF008E3968 /* InAppPurchase */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,7 +206,10 @@
 				D687DA592294EDCE00A11488 /* ViewController.h */,
 				D687DA5A2294EDCE00A11488 /* ViewController.m */,
 				D6BF46782296A6B300C82D98 /* Router */,
+				D65E0A2922A50B1800E749BF /* ImagePicker */,
+				D65E0A2822A508FD00E749BF /* Home */,
 				D6BF467122969DB200C82D98 /* LoginAndRegister */,
+				D607117422A6711F00412F72 /* Utils */,
 				D687DA5C2294EDCE00A11488 /* Main.storyboard */,
 				D687DA5F2294EDD200A11488 /* Assets.xcassets */,
 				D687DA612294EDD200A11488 /* LaunchScreen.storyboard */,
@@ -425,10 +465,13 @@
 			files = (
 				D687DA5B2294EDCE00A11488 /* ViewController.m in Sources */,
 				D687DA662294EDD200A11488 /* main.m in Sources */,
+				D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */,
+				D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */,
 				D6BF467522969DEB00C82D98 /* LoginAndRegisterViewController.m in Sources */,
 				D6BF467F2296CDE500C82D98 /* Router+AccountKit.m in Sources */,
 				D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */,
 				D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */,
+				D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */,
 				D6BF467B2296A6DE00C82D98 /* Router.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
