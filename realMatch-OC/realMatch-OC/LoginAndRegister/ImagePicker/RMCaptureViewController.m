@@ -10,14 +10,21 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIView+RealMatch.h"
 #import "UIDevice+RealMatch.h"
+#import <GPUImage/GPUImage.h>
+#import "GPUImageBeautyFilter.h"
 
 @interface RMCaptureViewController ()<RouterController,AVCaptureFileOutputRecordingDelegate>
 
-@property (nonatomic,strong) AVCaptureSession* captureSession;
-@property (nonatomic,strong) AVCaptureDeviceInput * captureDeviceInput;
-@property (nonatomic,strong) AVCaptureMovieFileOutput * caputureMovieFileOutput;
-@property (nonatomic,strong) AVCaptureVideoPreviewLayer * captureVideoPreviewLayer;
-@property (nonatomic,strong) UIView* captureView;
+//@property (nonatomic,strong) AVCaptureSession* captureSession;
+//@property (nonatomic,strong) AVCaptureDeviceInput * captureDeviceInput;
+//@property (nonatomic,strong) AVCaptureMovieFileOutput * caputureMovieFileOutput;
+//@property (nonatomic,strong) AVCaptureVideoPreviewLayer * captureVideoPreviewLayer;
+//@property (nonatomic,strong) UIView* captureView;
+
+@property (nonatomic,strong) GPUImageVideoCamera* videoCamera;
+@property (nonatomic,strong) GPUImageView* filterView;
+@property (nonatomic,strong) GPUImageBeautyFilter* filter;
+@property (nonatomic,strong) GPUImageMovieWriter* movieWriter;
 
 @end
 
@@ -37,64 +44,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.captureView = [[UIView alloc]initWithFrame:self.view.bounds];
-    [self.view addSubview:self.captureView];
-    // Do any additional setup after loading the view.
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    _captureSession = [[AVCaptureSession alloc]init];
-    if([_captureSession canSetSessionPreset:AVCaptureSessionPresetHigh]){
-        [_captureSession setSessionPreset:AVCaptureSessionPresetHigh];
-    }
-    
-    AVCaptureDevice * captureDevice = [self getCameraDeviceWithPosition:AVCaptureDevicePositionFront];
-    if(!captureDevice){
-        return;
-    }
-    
-    AVCaptureDevice * audioCaputureDevice = [[AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio] firstObject];
-    
-    NSError * error = nil;
-    
-    _captureDeviceInput = [[AVCaptureDeviceInput alloc]initWithDevice:captureDevice error:&error];
-    if(error){
-        return;
-    }
-    
-    AVCaptureDeviceInput* audioCaptureDeviceInput = [[AVCaptureDeviceInput alloc]initWithDevice:audioCaputureDevice error:&error];
-    if(error){
-        return;
-    }
-    
-    _caputureMovieFileOutput = [[AVCaptureMovieFileOutput alloc]init];
-    
-    AVCaptureConnection* captureConnection = [_caputureMovieFileOutput connectionWithMediaType:AVMediaTypeVideo];
-    if([captureConnection isVideoStabilizationSupported]){
-        captureConnection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
-    }
-    
-    captureConnection.videoOrientation = AVCaptureVideoOrientationPortrait;
-    captureConnection.videoScaleAndCropFactor = 1.0;
-    
-    if([_captureSession canAddInput:_captureDeviceInput]){
-        [_captureSession addInput:_captureDeviceInput];
-        [_captureSession addInput:audioCaptureDeviceInput];
-    }
-    
-    if([_captureSession canAddOutput:_caputureMovieFileOutput]){
-        [_captureSession addOutput:_caputureMovieFileOutput];
-    }
-    
-    _captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:self.captureSession];
-    CALayer * layer = self.captureView.layer;
-    layer.masksToBounds = YES;
-    _captureVideoPreviewLayer.frame = layer.bounds;
-    _captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    
-    [layer addSublayer:_captureVideoPreviewLayer];
+    self.videoCamera = [[GPUImageVideoCamera alloc]initWithSessionPreset:AVCaptureSessionPresetHigh cameraPosition:AVCaptureDevicePositionFront];
+    self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    self.videoCamera.horizontallyMirrorFrontFacingCamera = YES;
+    _filter = [[GPUImageBeautyFilter alloc]init];
+    [_filter setBeautyLevel:1];
+    [_filter setBrightLevel:0.5];
+    [_filter setToneLevel:1];
+    self.filterView = [[GPUImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [self.view addSubview:self.filterView];
+//    self.filterView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
+    [_filter addTarget:self.filterView];
+    [_videoCamera addTarget:_filter];
+    [self.videoCamera startCameraCapture];
     
     UIButton* backButton = [[UIButton alloc]initWithFrame:CGRectMake(16, 16+[UIDevice safeTopHeight], 24,24)];
     [backButton setImage:[UIImage imageNamed:@"captureBack"] forState:UIControlStateNormal];
@@ -112,6 +74,68 @@
     [recordButton addTarget:self action:@selector(recordButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     recordButton.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:recordButton];
+    // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    
+    
+    
+    
+//    _captureSession = [[AVCaptureSession alloc]init];
+//    if([_captureSession canSetSessionPreset:AVCaptureSessionPresetHigh]){
+//        [_captureSession setSessionPreset:AVCaptureSessionPresetHigh];
+//    }
+//
+//    AVCaptureDevice * captureDevice = [self getCameraDeviceWithPosition:AVCaptureDevicePositionFront];
+//    if(!captureDevice){
+//        return;
+//    }
+//
+//    AVCaptureDevice * audioCaputureDevice = [[AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio] firstObject];
+//
+//    NSError * error = nil;
+//
+//    _captureDeviceInput = [[AVCaptureDeviceInput alloc]initWithDevice:captureDevice error:&error];
+//    if(error){
+//        return;
+//    }
+//
+//    AVCaptureDeviceInput* audioCaptureDeviceInput = [[AVCaptureDeviceInput alloc]initWithDevice:audioCaputureDevice error:&error];
+//    if(error){
+//        return;
+//    }
+//
+//    _caputureMovieFileOutput = [[AVCaptureMovieFileOutput alloc]init];
+//
+//    AVCaptureConnection* captureConnection = [_caputureMovieFileOutput connectionWithMediaType:AVMediaTypeVideo];
+//    if([captureConnection isVideoStabilizationSupported]){
+//        captureConnection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
+//    }
+//
+//    captureConnection.videoOrientation = AVCaptureVideoOrientationPortrait;
+//    captureConnection.videoScaleAndCropFactor = 1.0;
+//
+//    if([_captureSession canAddInput:_captureDeviceInput]){
+//        [_captureSession addInput:_captureDeviceInput];
+//        [_captureSession addInput:audioCaptureDeviceInput];
+//    }
+//
+//    if([_captureSession canAddOutput:_caputureMovieFileOutput]){
+//        [_captureSession addOutput:_caputureMovieFileOutput];
+//    }
+//
+//    _captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:self.captureSession];
+//    CALayer * layer = self.captureView.layer;
+//    layer.masksToBounds = YES;
+//    _captureVideoPreviewLayer.frame = layer.bounds;
+//    _captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//
+//    [layer addSublayer:_captureVideoPreviewLayer];
+    
+    
 }
 
 -(void)recordButtonClick:(UIButton*)sender{
@@ -125,25 +149,7 @@
 }
 
 -(void)cameraChange:(UIButton*)sender{
-    NSError * error = nil;
-    AVCaptureDeviceInput * newInput = nil;
-    if(sender.tag == 2000){
-        sender.tag = 1000;
-        newInput = [[AVCaptureDeviceInput alloc]initWithDevice:[self getCameraDeviceWithPosition:AVCaptureDevicePositionBack] error:&error];
-    }else if(sender.tag == 1000){
-        sender.tag =2000;
-        newInput  = [[AVCaptureDeviceInput alloc]initWithDevice:[self getCameraDeviceWithPosition:AVCaptureDevicePositionFront] error:&error];
-    }
-    
-    if(error){
-        return;
-    }
-    
-    [self.captureSession beginConfiguration];
-    [self.captureSession removeInput:_captureDeviceInput];
-    [self.captureSession addInput:newInput];
-    [self.captureSession commitConfiguration];
-    _captureDeviceInput = newInput;
+    [self.videoCamera rotateCamera];
 }
 
 -(void)back{
@@ -164,26 +170,28 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.captureSession startRunning];
+    [self.videoCamera startCameraCapture];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    [self.captureSession stopRunning];
+    [self.videoCamera stopCameraCapture];
 }
 
 -(void)startVideoRecords{
-   
     NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"Movie.mov"];
-    if(![self.caputureMovieFileOutput isRecording]){
-        [self.caputureMovieFileOutput startRecordingToOutputFileURL:[NSURL fileURLWithPath:filePath] recordingDelegate:self];
-    }
+    unlink([filePath UTF8String]);
+    self.movieWriter = [[GPUImageMovieWriter alloc]initWithMovieURL:[NSURL fileURLWithPath:filePath] size:CGSizeMake(self.filterView.width, self.filterView.height)];
+    self.movieWriter.encodingLiveVideo = YES;
+    [_filter addTarget:_movieWriter];
+    _videoCamera.audioEncodingTarget = _movieWriter;
+    [_movieWriter startRecording];
 }
 
 -(void)stopVideoRecords{
-    if([self.caputureMovieFileOutput isRecording]){
-        [self.caputureMovieFileOutput stopRecording];
-    }
+    [_filter removeTarget:_movieWriter];
+    _videoCamera.audioEncodingTarget = nil;
+    [_movieWriter finishRecording];
 }
 
 -(void)captureOutput:(AVCaptureFileOutput *)output didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray<AVCaptureConnection *> *)connections{

@@ -11,6 +11,7 @@
 		D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D607117622A6715400412F72 /* UIView+RealMatch.m */; };
 		D661306622956697008DA4D8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D661306522956697008DA4D8 /* Podfile */; };
 		D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */; };
+		D665EC6022A7EF92003FB7B8 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC5F22A7EF92003FB7B8 /* GPUImageBeautifyFilter.m */; };
 		D6697147229BB0D3008E3968 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6697146229BB0D3008E3968 /* StoreKit.framework */; };
 		D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D669714A229BBFF3008E3968 /* PurchaseManager.m */; };
 		D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D67665D322A50FD8009C9C6A /* RMCaptureViewController.m */; };
@@ -68,6 +69,8 @@
 		D661306522956697008DA4D8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D665EC5B22A79D36003FB7B8 /* UIDevice+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+RealMatch.h"; sourceTree = "<group>"; };
 		D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+RealMatch.m"; sourceTree = "<group>"; };
+		D665EC5E22A7EF92003FB7B8 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
+		D665EC5F22A7EF92003FB7B8 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
 		D6697146229BB0D3008E3968 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D6697149229BBFF3008E3968 /* PurchaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseManager.h; sourceTree = "<group>"; };
 		D669714A229BBFF3008E3968 /* PurchaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseManager.m; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 			children = (
 				D67665D222A50FD8009C9C6A /* RMCaptureViewController.h */,
 				D67665D322A50FD8009C9C6A /* RMCaptureViewController.m */,
+				D665EC5E22A7EF92003FB7B8 /* GPUImageBeautifyFilter.h */,
+				D665EC5F22A7EF92003FB7B8 /* GPUImageBeautifyFilter.m */,
 			);
 			name = ImagePicker;
 			path = LoginAndRegister/ImagePicker;
@@ -420,6 +425,11 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC-resources.sh",
 				"${PODS_ROOT}/AccountKit/AccountKitStrings.bundle",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -427,6 +437,11 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccountKitStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D665EC6022A7EF92003FB7B8 /* GPUImageBeautifyFilter.m in Sources */,
 				D687DA5B2294EDCE00A11488 /* ViewController.m in Sources */,
 				D687DA662294EDD200A11488 /* main.m in Sources */,
 				D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */,

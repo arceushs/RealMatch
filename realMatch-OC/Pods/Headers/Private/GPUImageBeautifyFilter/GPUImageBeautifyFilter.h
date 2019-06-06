@@ -1,0 +1,1 @@
+../../../GPUImageBeautifyFilter/GPUImageBeautifyFilter/Classes/GPUImageBeautifyFilter.h

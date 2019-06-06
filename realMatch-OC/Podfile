@@ -5,5 +5,7 @@ target 'realMatch-OC' do
 pod 'AccountKit'
 pod 'SVProgressHUD'
 pod 'AFNetworking', '~> 3.0'
+pod 'GPUImage'
+pod 'GPUImageBeautifyFilter'
 
 end
