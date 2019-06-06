@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - AHTimer (0.0.3)
   - GPUImage (0.1.7)
   - GPUImageBeautifyFilter (1.0.0):
     - GPUImage
@@ -23,11 +24,14 @@ PODS:
 DEPENDENCIES:
   - AccountKit
   - AFNetworking (~> 3.0)
+  - AHTimer (~> 0.0.3)
   - GPUImage
   - GPUImageBeautifyFilter
   - SVProgressHUD
 
 SPEC REPOS:
+  https://github.com/arceushs/AHPodSpecs:
+    - AHTimer
   https://github.com/cocoapods/specs.git:
     - AccountKit
     - AFNetworking
@@ -38,10 +42,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AccountKit: 870ccaf5d33facda9408783e28fbe68c5211e069
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AHTimer: df455262e80cc80ab266b46b082e5ff88f3c60ad
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GPUImageBeautifyFilter: 6eb451b50c395109172ae1f9e69c4241d0126c09
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 72902908763aae87db8b4478e60deadd4c75d929
+PODFILE CHECKSUM: 81dd3739f30a5ade37069ca3f8fd87adcddcf5a2
 
 COCOAPODS: 1.6.2

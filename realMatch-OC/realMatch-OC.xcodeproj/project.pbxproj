@@ -12,6 +12,7 @@
 		D661306622956697008DA4D8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D661306522956697008DA4D8 /* Podfile */; };
 		D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */; };
 		D665EC6022A7EF92003FB7B8 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC5F22A7EF92003FB7B8 /* GPUImageBeautifyFilter.m */; };
+		D665EC6322A8BD7C003FB7B8 /* UIColor+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC6222A8BD7C003FB7B8 /* UIColor+RealMatch.m */; };
 		D6697147229BB0D3008E3968 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6697146229BB0D3008E3968 /* StoreKit.framework */; };
 		D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D669714A229BBFF3008E3968 /* PurchaseManager.m */; };
 		D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D67665D322A50FD8009C9C6A /* RMCaptureViewController.m */; };
@@ -27,6 +28,9 @@
 		D6BF467622969DEB00C82D98 /* LoginAndRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6BF467422969DEB00C82D98 /* LoginAndRegisterViewController.xib */; };
 		D6BF467B2296A6DE00C82D98 /* Router.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BF467A2296A6DE00C82D98 /* Router.m */; };
 		D6BF467F2296CDE500C82D98 /* Router+AccountKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BF467E2296CDE500C82D98 /* Router+AccountKit.m */; };
+		D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BF5CDC22A8F5B80036EA75 /* RMFileManager.m */; };
+		D6BF5CE122A910220036EA75 /* RMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BF5CDF22A910220036EA75 /* RMHomePageViewController.m */; };
+		D6BF5CE222A910220036EA75 /* RMHomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6BF5CE022A910220036EA75 /* RMHomePageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,8 @@
 		D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+RealMatch.m"; sourceTree = "<group>"; };
 		D665EC5E22A7EF92003FB7B8 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
 		D665EC5F22A7EF92003FB7B8 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
+		D665EC6122A8BD7C003FB7B8 /* UIColor+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RealMatch.h"; sourceTree = "<group>"; };
+		D665EC6222A8BD7C003FB7B8 /* UIColor+RealMatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RealMatch.m"; sourceTree = "<group>"; };
 		D6697146229BB0D3008E3968 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D6697149229BBFF3008E3968 /* PurchaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseManager.h; sourceTree = "<group>"; };
 		D669714A229BBFF3008E3968 /* PurchaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseManager.m; sourceTree = "<group>"; };
@@ -100,6 +106,12 @@
 		D6BF467A2296A6DE00C82D98 /* Router.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Router.m; sourceTree = "<group>"; };
 		D6BF467D2296CDE500C82D98 /* Router+AccountKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Router+AccountKit.h"; sourceTree = "<group>"; };
 		D6BF467E2296CDE500C82D98 /* Router+AccountKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Router+AccountKit.m"; sourceTree = "<group>"; };
+		D6BF5CDB22A8F5B80036EA75 /* RMFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMFileManager.h; sourceTree = "<group>"; };
+		D6BF5CDC22A8F5B80036EA75 /* RMFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMFileManager.m; sourceTree = "<group>"; };
+		D6BF5CDE22A910220036EA75 /* RMHomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMHomePageViewController.h; sourceTree = "<group>"; };
+		D6BF5CDF22A910220036EA75 /* RMHomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMHomePageViewController.m; sourceTree = "<group>"; };
+		D6BF5CE022A910220036EA75 /* RMHomePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomePageViewController.xib; sourceTree = "<group>"; };
+		D6BF5CE322A943630036EA75 /* aiqinggongyu.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = aiqinggongyu.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +157,10 @@
 				D607117622A6715400412F72 /* UIView+RealMatch.m */,
 				D665EC5B22A79D36003FB7B8 /* UIDevice+RealMatch.h */,
 				D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */,
+				D665EC6122A8BD7C003FB7B8 /* UIColor+RealMatch.h */,
+				D665EC6222A8BD7C003FB7B8 /* UIColor+RealMatch.m */,
+				D6BF5CDB22A8F5B80036EA75 /* RMFileManager.h */,
+				D6BF5CDC22A8F5B80036EA75 /* RMFileManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -152,6 +168,9 @@
 		D65E0A2822A508FD00E749BF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D6BF5CDE22A910220036EA75 /* RMHomePageViewController.h */,
+				D6BF5CDF22A910220036EA75 /* RMHomePageViewController.m */,
+				D6BF5CE022A910220036EA75 /* RMHomePageViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -217,6 +236,7 @@
 				D607117422A6711F00412F72 /* Utils */,
 				D687DA5C2294EDCE00A11488 /* Main.storyboard */,
 				D687DA5F2294EDD200A11488 /* Assets.xcassets */,
+				D6BF5CE322A943630036EA75 /* aiqinggongyu.mp4 */,
 				D687DA612294EDD200A11488 /* LaunchScreen.storyboard */,
 				D687DA642294EDD200A11488 /* Info.plist */,
 				D687DA652294EDD200A11488 /* main.m */,
@@ -393,6 +413,7 @@
 				D687DA632294EDD200A11488 /* LaunchScreen.storyboard in Resources */,
 				D687DA602294EDD200A11488 /* Assets.xcassets in Resources */,
 				D661306622956697008DA4D8 /* Podfile in Resources */,
+				D6BF5CE222A910220036EA75 /* RMHomePageViewController.xib in Resources */,
 				D6BF467622969DEB00C82D98 /* LoginAndRegisterViewController.xib in Resources */,
 				D687DA5E2294EDCE00A11488 /* Main.storyboard in Resources */,
 			);
@@ -479,8 +500,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D665EC6022A7EF92003FB7B8 /* GPUImageBeautifyFilter.m in Sources */,
+				D6BF5CE122A910220036EA75 /* RMHomePageViewController.m in Sources */,
 				D687DA5B2294EDCE00A11488 /* ViewController.m in Sources */,
 				D687DA662294EDD200A11488 /* main.m in Sources */,
+				D665EC6322A8BD7C003FB7B8 /* UIColor+RealMatch.m in Sources */,
+				D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */,
 				D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */,
 				D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */,
 				D6BF467522969DEB00C82D98 /* LoginAndRegisterViewController.m in Sources */,

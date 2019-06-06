@@ -10,8 +10,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIView+RealMatch.h"
 #import "UIDevice+RealMatch.h"
+#import "UIColor+RealMatch.h"
 #import <GPUImage/GPUImage.h>
 #import "GPUImageBeautyFilter.h"
+#import "AHTimer.h"
+#import "RMFileManager.h"
 
 @interface RMCaptureViewController ()<RouterController,AVCaptureFileOutputRecordingDelegate>
 
@@ -25,6 +28,11 @@
 @property (nonatomic,strong) GPUImageView* filterView;
 @property (nonatomic,strong) GPUImageBeautyFilter* filter;
 @property (nonatomic,strong) GPUImageMovieWriter* movieWriter;
+
+@property (nonatomic,strong) UILabel* timeLabel;
+@property (nonatomic,strong) AHTimer* timer;
+@property (nonatomic,assign) int seconds;
+@property (nonatomic,strong) UIButton* recordButton;
 
 @end
 
@@ -53,7 +61,7 @@
     [_filter setToneLevel:1];
     self.filterView = [[GPUImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [self.view addSubview:self.filterView];
-//    self.filterView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
+    self.filterView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     [_filter addTarget:self.filterView];
     [_videoCamera addTarget:_filter];
     [self.videoCamera startCameraCapture];
@@ -69,12 +77,38 @@
     [self.view addSubview:cameraButton];
     [cameraButton addTarget:self action:@selector(cameraChange:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton* recordButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.width/2.0-50, self.view.height - 100 - [UIDevice safeBottomHeight], 100, 100)];
+    CGFloat recordButtonW = 70;
+    UIButton* recordButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.width/2.0-recordButtonW/2.0, self.view.height - 32 - recordButtonW - [UIDevice safeBottomHeight], recordButtonW, recordButtonW)];
+    recordButton.layer.cornerRadius = recordButtonW/2.0;
+    recordButton.layer.masksToBounds = YES;
     recordButton.tag = 1000;
+    self.recordButton = recordButton;
     [recordButton addTarget:self action:@selector(recordButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    recordButton.backgroundColor = [UIColor whiteColor];
+    recordButton.backgroundColor = [UIColor colorWithString:@"FA008E" alpha:0.6];
     [self.view addSubview:recordButton];
+    
+    CGFloat timeLabelW = 60;
+    self.timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, timeLabelW, timeLabelW)];
+    [recordButton addSubview:self.timeLabel];
+    self.timeLabel.center = CGPointMake(recordButton.width/2,recordButton.height/2);
+    self.timeLabel.layer.cornerRadius = timeLabelW/2.0;
+    self.timeLabel.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.timeLabel.layer.borderWidth = 3;
+    self.timeLabel.backgroundColor = [UIColor colorWithString:@"FA008E" alpha:1];
+    self.timeLabel.font = [UIFont systemFontOfSize:24];
+    self.timeLabel.textColor = [UIColor whiteColor];
+    self.timeLabel.textAlignment = NSTextAlignmentCenter;
+   
     // Do any additional setup after loading the view.
+}
+
+-(void)refreshTimerLabel{
+    self.timeLabel.text = [NSString stringWithFormat:@"%i",self.seconds];
+    if(self.seconds == 0){
+        self.recordButton.tag = 2000;
+        [self recordButtonClick:self.recordButton];
+    }
+    self.seconds --;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -142,9 +176,13 @@
     if(sender.tag ==1000){
         [self startVideoRecords];
         sender.tag = 2000;
+        self.seconds = 10;
+        self.timer = [AHTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshTimerLabel) userInfo:@{} repeats:YES];
     }else if(sender.tag == 2000){
         [self stopVideoRecords];
         sender.tag =1000;
+        [self.timer invalidate];
+        self.timeLabel.text = @"";
     }
 }
 
@@ -179,7 +217,7 @@
 }
 
 -(void)startVideoRecords{
-    NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"Movie.mov"];
+    NSString *filePath = [[RMFileManager pathForSaveRecord] stringByAppendingString:@"movie.mp4"];
     unlink([filePath UTF8String]);
     self.movieWriter = [[GPUImageMovieWriter alloc]initWithMovieURL:[NSURL fileURLWithPath:filePath] size:CGSizeMake(self.filterView.width, self.filterView.height)];
     self.movieWriter.encodingLiveVideo = YES;
