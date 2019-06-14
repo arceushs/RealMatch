@@ -11,14 +11,19 @@
 #import "UIColor+RealMatch.h"
 #import <AVFoundation/AVFoundation.h>
 #import "UIView+RealMatch.h"
+#import "RMHomeCardView.h"
 
-@interface RMHomePageViewController ()<RouterController>
+@interface RMHomePageViewController ()<RouterController,CAAnimationDelegate>
 
 @property (nonatomic,strong) CAGradientLayer* layer;
-@property (nonatomic,strong) AVPlayer* avplayer;
-@property (nonatomic,strong) AVPlayerLayer * playerLayer;
 
-@property (nonatomic,strong) UIScrollView* scrollView;
+@property (nonatomic,strong) RMHomeCardView* upperCardView;
+@property (nonatomic,strong) RMHomeCardView* bottomCardView;
+
+@property (nonatomic,strong) AVPlayer* upperVideoPlayer;
+@property (nonatomic,strong) AVPlayer* bottomVideoPlayer;
+
+@property (nonatomic,assign) BOOL result;
 
 @end
 
@@ -37,33 +42,90 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.layer = [CAGradientLayer layer];
-    _layer.startPoint = CGPointMake(0, 0);
-    _layer.endPoint = CGPointMake(0, 1);
     
-    _layer.colors = @[(__bridge id)[UIColor colorWithString:@"000000" alpha:0].CGColor,(__bridge id)[UIColor colorWithString:@"000000" alpha:0.6].CGColor];
-    [self.backgroundView.layer insertSublayer:_layer atIndex:0];
-
-    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"aiqinggongyu" ofType:@"mp4"];
-    
-    self.avplayer = [AVPlayer playerWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"aiqinggongyu.mp4" ofType:@""]]];
-    self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.avplayer];
-    
-    
-    self.scrollView = [[UIScrollView alloc]initWithFrame:self.bottomView.bounds];
-    [self.bottomView insertSubview:self.scrollView atIndex:0];
-    
-    [self.scrollView.layer addSublayer:self.playerLayer];
-    
-    [self.avplayer play];
+    self.upperCardView = [self produceCardViewPathinUpperVideoPlayer:@"aiqinggongyu.mp4" ];
+    self.bottomCardView = [self produceCardViewPathinBottomVideoPlayer:@"aiqinggongyu2.mp4" ];
+    [self.upperVideoPlayer play];
+    [self.bottomVideoPlayer play];
+    UISwipeGestureRecognizer *swipeGest = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pageCurl:)];
+    swipeGest.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.cardContainerView addGestureRecognizer:swipeGest];
     // Do any additional setup after loading the view from its nib.
 }
 
--(void)viewDidLayoutSubviews{
-    _layer.frame = self.backgroundView.bounds;
-    _scrollView.frame = self.bottomView.bounds;
-    self.playerLayer.frame = CGRectMake(8, 8, _scrollView.width-16, _scrollView.height - 16);
+- (void)transitionWithType:(NSString *) type WithSubtype:(NSString *) subtype ForView : (UIView *) view {
+    CATransition *animation = [CATransition animation];
+    animation.duration = 1.f;
+    animation.type = type;
+    if (subtype != nil) {
+        animation.subtype = subtype;
+    }
+    animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseInEaseOut];
+//    animation.fillMode = kCAFillModeForwards;
+    animation.delegate = self;
+    [view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+    [view.layer addAnimation:animation forKey:@""];
+    
+    
+}
+
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    if(_result==NO){
+        if(self.bottomVideoPlayer){
+            NSURL *streamURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"aiqinggongyu2.mp4" ofType:@""]];
+            AVPlayerItem *currentItem = [[AVPlayerItem alloc] initWithURL:streamURL];
+            [self.bottomVideoPlayer replaceCurrentItemWithPlayerItem:currentItem];
+            [self.bottomVideoPlayer play];
+        }
+        _result = YES;
+    }else{
+        if(self.upperVideoPlayer){
+            [self.upperVideoPlayer replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"aiqinggongyu.mp4" ofType:@""]]]];
+            [self.upperVideoPlayer play];
+        }
+        
+        _result = NO;
+    }
+}
+
+-(void)pageCurl:(UISwipeGestureRecognizer*)sender{
+    [self transitionWithType:@"pageCurl" WithSubtype:kCATransitionFromRight ForView:self.cardContainerView];
+    
+}
+
+- (IBAction)likeButton:(UIButton*)sender {
+    [self transitionWithType:@"pageCurl" WithSubtype:kCATransitionFromRight ForView:self.cardContainerView];
+}
+
+-(RMHomeCardView*)produceCardViewPathinBottomVideoPlayer:(NSString*)filePath {
+    RMHomeCardView* homeCardView = [[RMHomeCardView alloc]initWithFrame:CGRectZero];
+    
+    filePath = [[NSBundle mainBundle] pathForResource:filePath ofType:@""];
+    self.bottomVideoPlayer = [AVPlayer playerWithURL:[NSURL fileURLWithPath:filePath]];
+    [homeCardView setVideoLayerWithPlayer:self.bottomVideoPlayer];
+    
+    return homeCardView;
+}
+
+-(RMHomeCardView*)produceCardViewPathinUpperVideoPlayer:(NSString*)filePath {
+    RMHomeCardView* homeCardView = [[RMHomeCardView alloc]initWithFrame:CGRectZero];
+    filePath = [[NSBundle mainBundle] pathForResource:filePath ofType:@""];
+    self.upperVideoPlayer = [[AVPlayer alloc]init];
+    [self.upperVideoPlayer replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath:filePath]]];
+    [homeCardView setVideoLayerWithPlayer:self.upperVideoPlayer];
+    
+    homeCardView.layer.cornerRadius = 4;
+    homeCardView.layer.masksToBounds = YES;
+    
+    return homeCardView;
+}
+
+-(void)viewWillLayoutSubviews{
+    self.upperCardView.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+    self.bottomCardView.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+    
+    [self.cardContainerView insertSubview:self.upperCardView atIndex:1];
+    [self.cardContainerView insertSubview:self.bottomCardView atIndex:0];
 }
 
 /*

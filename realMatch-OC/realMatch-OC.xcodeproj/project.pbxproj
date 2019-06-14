@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */; };
 		D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D607117622A6715400412F72 /* UIView+RealMatch.m */; };
+		D6576C7E22B3B9C000E89A04 /* RMFetchDetailAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D6576C7D22B3B9C000E89A04 /* RMFetchDetailAPI.m */; };
 		D661306622956697008DA4D8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D661306522956697008DA4D8 /* Podfile */; };
 		D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */; };
 		D665EC6022A7EF92003FB7B8 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC5F22A7EF92003FB7B8 /* GPUImageBeautifyFilter.m */; };
@@ -31,6 +32,14 @@
 		D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BF5CDC22A8F5B80036EA75 /* RMFileManager.m */; };
 		D6BF5CE122A910220036EA75 /* RMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BF5CDF22A910220036EA75 /* RMHomePageViewController.m */; };
 		D6BF5CE222A910220036EA75 /* RMHomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6BF5CE022A910220036EA75 /* RMHomePageViewController.xib */; };
+		D6BF5CE422ADF6600036EA75 /* aiqinggongyu.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D6BF5CE322A943630036EA75 /* aiqinggongyu.mp4 */; };
+		D6CC153E22B387D500D80A02 /* RMHomePageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CC153C22B387D500D80A02 /* RMHomePageDetailViewController.m */; };
+		D6CC153F22B387D500D80A02 /* RMHomePageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6CC153D22B387D500D80A02 /* RMHomePageDetailViewController.xib */; };
+		D6CC154322B39BA000D80A02 /* RMNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CC154222B39BA000D80A02 /* RMNetworkManager.m */; };
+		D6E0771322AE31B900CC44BA /* RMHomeCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E0771222AE31B900CC44BA /* RMHomeCardView.m */; };
+		D6E0771522AE31CC00CC44BA /* RMHomeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6E0771422AE31CC00CC44BA /* RMHomeCardView.xib */; };
+		D6E0771822AF932400CC44BA /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = D6E0771722AF932300CC44BA /* test1.png */; };
+		D6E0771A22AF9F0F00CC44BA /* aiqinggongyu2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D6E0771922AF9EF600CC44BA /* aiqinggongyu2.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +79,8 @@
 		D607117522A6715400412F72 /* UIView+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+RealMatch.h"; sourceTree = "<group>"; };
 		D607117622A6715400412F72 /* UIView+RealMatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+RealMatch.m"; sourceTree = "<group>"; };
 		D64BA375229B99BE00373BFB /* realMatch-OC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "realMatch-OC.entitlements"; sourceTree = "<group>"; };
+		D6576C7C22B3B9C000E89A04 /* RMFetchDetailAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMFetchDetailAPI.h; sourceTree = "<group>"; };
+		D6576C7D22B3B9C000E89A04 /* RMFetchDetailAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMFetchDetailAPI.m; sourceTree = "<group>"; };
 		D661306522956697008DA4D8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D665EC5B22A79D36003FB7B8 /* UIDevice+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+RealMatch.h"; sourceTree = "<group>"; };
 		D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+RealMatch.m"; sourceTree = "<group>"; };
@@ -112,6 +123,16 @@
 		D6BF5CDF22A910220036EA75 /* RMHomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMHomePageViewController.m; sourceTree = "<group>"; };
 		D6BF5CE022A910220036EA75 /* RMHomePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomePageViewController.xib; sourceTree = "<group>"; };
 		D6BF5CE322A943630036EA75 /* aiqinggongyu.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = aiqinggongyu.mp4; sourceTree = "<group>"; };
+		D6CC153B22B387D500D80A02 /* RMHomePageDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMHomePageDetailViewController.h; sourceTree = "<group>"; };
+		D6CC153C22B387D500D80A02 /* RMHomePageDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMHomePageDetailViewController.m; sourceTree = "<group>"; };
+		D6CC153D22B387D500D80A02 /* RMHomePageDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomePageDetailViewController.xib; sourceTree = "<group>"; };
+		D6CC154122B39BA000D80A02 /* RMNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMNetworkManager.h; sourceTree = "<group>"; };
+		D6CC154222B39BA000D80A02 /* RMNetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMNetworkManager.m; sourceTree = "<group>"; };
+		D6E0771122AE31B900CC44BA /* RMHomeCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMHomeCardView.h; sourceTree = "<group>"; };
+		D6E0771222AE31B900CC44BA /* RMHomeCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMHomeCardView.m; sourceTree = "<group>"; };
+		D6E0771422AE31CC00CC44BA /* RMHomeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomeCardView.xib; sourceTree = "<group>"; };
+		D6E0771722AF932300CC44BA /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
+		D6E0771922AF9EF600CC44BA /* aiqinggongyu2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = aiqinggongyu2.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +192,14 @@
 				D6BF5CDE22A910220036EA75 /* RMHomePageViewController.h */,
 				D6BF5CDF22A910220036EA75 /* RMHomePageViewController.m */,
 				D6BF5CE022A910220036EA75 /* RMHomePageViewController.xib */,
+				D6E0771122AE31B900CC44BA /* RMHomeCardView.h */,
+				D6E0771222AE31B900CC44BA /* RMHomeCardView.m */,
+				D6E0771422AE31CC00CC44BA /* RMHomeCardView.xib */,
+				D6CC153B22B387D500D80A02 /* RMHomePageDetailViewController.h */,
+				D6CC153C22B387D500D80A02 /* RMHomePageDetailViewController.m */,
+				D6CC153D22B387D500D80A02 /* RMHomePageDetailViewController.xib */,
+				D6576C7C22B3B9C000E89A04 /* RMFetchDetailAPI.h */,
+				D6576C7D22B3B9C000E89A04 /* RMFetchDetailAPI.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -233,9 +262,12 @@
 				D65E0A2922A50B1800E749BF /* ImagePicker */,
 				D65E0A2822A508FD00E749BF /* Home */,
 				D6BF467122969DB200C82D98 /* LoginAndRegister */,
+				D6CC154022B39B5F00D80A02 /* Network */,
 				D607117422A6711F00412F72 /* Utils */,
 				D687DA5C2294EDCE00A11488 /* Main.storyboard */,
+				D6E0771722AF932300CC44BA /* test1.png */,
 				D687DA5F2294EDD200A11488 /* Assets.xcassets */,
+				D6E0771922AF9EF600CC44BA /* aiqinggongyu2.mp4 */,
 				D6BF5CE322A943630036EA75 /* aiqinggongyu.mp4 */,
 				D687DA612294EDD200A11488 /* LaunchScreen.storyboard */,
 				D687DA642294EDD200A11488 /* Info.plist */,
@@ -281,6 +313,15 @@
 				D6BF467E2296CDE500C82D98 /* Router+AccountKit.m */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		D6CC154022B39B5F00D80A02 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D6CC154122B39BA000D80A02 /* RMNetworkManager.h */,
+				D6CC154222B39BA000D80A02 /* RMNetworkManager.m */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		E66AEA9D5AEAE528485D16E3 /* Pods */ = {
@@ -410,12 +451,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6E0771A22AF9F0F00CC44BA /* aiqinggongyu2.mp4 in Resources */,
+				D6E0771522AE31CC00CC44BA /* RMHomeCardView.xib in Resources */,
+				D6BF5CE422ADF6600036EA75 /* aiqinggongyu.mp4 in Resources */,
 				D687DA632294EDD200A11488 /* LaunchScreen.storyboard in Resources */,
 				D687DA602294EDD200A11488 /* Assets.xcassets in Resources */,
 				D661306622956697008DA4D8 /* Podfile in Resources */,
+				D6CC153F22B387D500D80A02 /* RMHomePageDetailViewController.xib in Resources */,
 				D6BF5CE222A910220036EA75 /* RMHomePageViewController.xib in Resources */,
 				D6BF467622969DEB00C82D98 /* LoginAndRegisterViewController.xib in Resources */,
 				D687DA5E2294EDCE00A11488 /* Main.storyboard in Resources */,
+				D6E0771822AF932400CC44BA /* test1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,14 +549,18 @@
 				D6BF5CE122A910220036EA75 /* RMHomePageViewController.m in Sources */,
 				D687DA5B2294EDCE00A11488 /* ViewController.m in Sources */,
 				D687DA662294EDD200A11488 /* main.m in Sources */,
+				D6CC153E22B387D500D80A02 /* RMHomePageDetailViewController.m in Sources */,
 				D665EC6322A8BD7C003FB7B8 /* UIColor+RealMatch.m in Sources */,
+				D6E0771322AE31B900CC44BA /* RMHomeCardView.m in Sources */,
 				D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */,
 				D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */,
 				D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */,
 				D6BF467522969DEB00C82D98 /* LoginAndRegisterViewController.m in Sources */,
 				D6BF467F2296CDE500C82D98 /* Router+AccountKit.m in Sources */,
 				D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */,
+				D6576C7E22B3B9C000E89A04 /* RMFetchDetailAPI.m in Sources */,
 				D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */,
+				D6CC154322B39BA000D80A02 /* RMNetworkManager.m in Sources */,
 				D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */,
 				D6BF467B2296A6DE00C82D98 /* Router.m in Sources */,
 			);

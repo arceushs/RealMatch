@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="R7z-61-Km0" customClass="RMHomeCardView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9z-9G-CLz">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" red="0.20392156862745098" green="0.20784313725490194" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUH-oD-07Y">
+                    <rect key="frame" x="0.0" y="686" width="414" height="176"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="176" id="nB0-s4-dce"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="O9z-9G-CLz" firstAttribute="top" secondItem="Rrm-8n-xTB" secondAttribute="top" id="FTJ-Mh-nt6"/>
+                <constraint firstItem="Rrm-8n-xTB" firstAttribute="bottom" secondItem="O9z-9G-CLz" secondAttribute="bottom" id="FwH-0L-B2q"/>
+                <constraint firstItem="O9z-9G-CLz" firstAttribute="leading" secondItem="Rrm-8n-xTB" secondAttribute="leading" id="MgP-2f-xUi"/>
+                <constraint firstItem="nUH-oD-07Y" firstAttribute="leading" secondItem="Rrm-8n-xTB" secondAttribute="leading" id="RxA-J5-tUF"/>
+                <constraint firstItem="Rrm-8n-xTB" firstAttribute="bottom" secondItem="nUH-oD-07Y" secondAttribute="bottom" id="WF0-Jv-HJU"/>
+                <constraint firstItem="Rrm-8n-xTB" firstAttribute="trailing" secondItem="nUH-oD-07Y" secondAttribute="trailing" id="Z3f-Rt-c3k"/>
+                <constraint firstItem="O9z-9G-CLz" firstAttribute="trailing" secondItem="Rrm-8n-xTB" secondAttribute="trailing" id="oo5-mL-2g0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Rrm-8n-xTB"/>
+            <connections>
+                <outlet property="blackView" destination="nUH-oD-07Y" id="SGv-Te-ANt"/>
+                <outlet property="bottomImageView" destination="O9z-9G-CLz" id="cEw-k8-yqX"/>
+            </connections>
+            <point key="canvasLocation" x="56.521739130434788" y="45.535714285714285"/>
+        </view>
+    </objects>
+</document>
