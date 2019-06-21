@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RMNetworkResponse.h"
 
 typedef NS_ENUM(NSInteger,RMHttpMethod){
     RMHttpMethodGet,
@@ -16,16 +17,20 @@ typedef NS_ENUM(NSInteger,RMHttpMethod){
 @protocol RMNetworkAPI <NSObject>
 @required
 -(NSDictionary*)parameters;
--(NSString*)requestUrl;
+-(NSString*)requestHost;
+-(NSString*)requestPath;
 -(RMHttpMethod)method;
+
+@optional
+-(RMNetworkResponse*)adoptResponse:(RMNetworkResponse*)response;
 
 @end
 
-typedef void(^ReponseBlock)(id  _Nullable responseObject,NSError* error);
+typedef void(^ReponseBlock)(RMNetworkResponse* responseObject,NSError* error);
 
 @interface RMNetworkManager : NSObject
 
--(instancetype)shareManager;
++(instancetype)shareManager;
 -(void)request:(id<RMNetworkAPI>)api completion:(ReponseBlock)completion;
 
 @end

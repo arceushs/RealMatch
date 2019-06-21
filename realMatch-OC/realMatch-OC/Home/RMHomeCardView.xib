@@ -39,15 +39,24 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailHint" translatesAutoresizingMaskIntoConstraints="NO" id="LlF-bN-rN1">
+                    <rect key="frame" x="366" y="60" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="9Z4-5a-x0Z"/>
+                        <constraint firstAttribute="width" constant="32" id="ehY-2i-0eD"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="O9z-9G-CLz" firstAttribute="top" secondItem="Rrm-8n-xTB" secondAttribute="top" id="FTJ-Mh-nt6"/>
+                <constraint firstItem="Rrm-8n-xTB" firstAttribute="trailing" secondItem="LlF-bN-rN1" secondAttribute="trailing" constant="16" id="FcA-qk-y1N"/>
                 <constraint firstItem="Rrm-8n-xTB" firstAttribute="bottom" secondItem="O9z-9G-CLz" secondAttribute="bottom" id="FwH-0L-B2q"/>
                 <constraint firstItem="O9z-9G-CLz" firstAttribute="leading" secondItem="Rrm-8n-xTB" secondAttribute="leading" id="MgP-2f-xUi"/>
                 <constraint firstItem="nUH-oD-07Y" firstAttribute="leading" secondItem="Rrm-8n-xTB" secondAttribute="leading" id="RxA-J5-tUF"/>
                 <constraint firstItem="Rrm-8n-xTB" firstAttribute="bottom" secondItem="nUH-oD-07Y" secondAttribute="bottom" id="WF0-Jv-HJU"/>
                 <constraint firstItem="Rrm-8n-xTB" firstAttribute="trailing" secondItem="nUH-oD-07Y" secondAttribute="trailing" id="Z3f-Rt-c3k"/>
+                <constraint firstItem="LlF-bN-rN1" firstAttribute="top" secondItem="Rrm-8n-xTB" secondAttribute="top" constant="16" id="fLX-qe-k9C"/>
                 <constraint firstItem="O9z-9G-CLz" firstAttribute="trailing" secondItem="Rrm-8n-xTB" secondAttribute="trailing" id="oo5-mL-2g0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -59,4 +68,7 @@
             <point key="canvasLocation" x="56.521739130434788" y="45.535714285714285"/>
         </view>
     </objects>
+    <resources>
+        <image name="detailHint" width="32" height="32"/>
+    </resources>
 </document>

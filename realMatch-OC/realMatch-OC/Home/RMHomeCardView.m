@@ -32,7 +32,6 @@
     self.blacklayer.masksToBounds = YES;
     _blacklayer.colors = @[(__bridge id)[UIColor colorWithString:@"000000" alpha:0].CGColor,(__bridge id)[UIColor colorWithString:@"000000" alpha:0.6].CGColor];
     [self.blackView.layer insertSublayer:_blacklayer atIndex:0];
-  
 }
 
 -(void)setVideoLayerWithPlayer:(AVPlayer*)player{

@@ -13,7 +13,7 @@
 {
     AFHTTPSessionManager * _afmanager;
 }
--(instancetype)shareManager{
++(instancetype)shareManager{
     static dispatch_once_t onceToken;
     static RMNetworkManager* manager = nil;
     dispatch_once(&onceToken, ^{
@@ -26,15 +26,21 @@
 
 -(void)request:(id<RMNetworkAPI>)api completion:(ReponseBlock)completion{
     NSDictionary* parameters = [api parameters];
-    NSString* url = [api requestUrl];
+    NSString* host = [api requestHost];
+    NSString* path = [api requestPath];
+    NSString* url = [NSString stringWithFormat:@"%@%@",host,path];
     RMHttpMethod method = [api method];
     
     _afmanager = [AFHTTPSessionManager manager];
     switch (method) {
         case RMHttpMethodPost:{
             [_afmanager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithResponseObject:responseObject];
+                if([api respondsToSelector:@selector(adoptResponse:)]){
+                    response = [api adoptResponse:response];
+                }
                 if(completion){
-                    completion(responseObject,nil);
+                    completion(response,nil);
                 }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if(completion){

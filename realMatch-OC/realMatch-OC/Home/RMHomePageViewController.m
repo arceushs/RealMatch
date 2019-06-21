@@ -50,6 +50,9 @@
     UISwipeGestureRecognizer *swipeGest = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pageCurl:)];
     swipeGest.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.cardContainerView addGestureRecognizer:swipeGest];
+    
+    UITapGestureRecognizer * tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(routerToDetail:)];
+    [self.cardContainerView addGestureRecognizer:tapGest];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -86,6 +89,10 @@
         
         _result = NO;
     }
+}
+
+-(void)routerToDetail:(id)sender{
+    [[Router shared]routerTo:@"RMHomePageDetailViewController" parameter:nil];
 }
 
 -(void)pageCurl:(UISwipeGestureRecognizer*)sender{

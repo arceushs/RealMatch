@@ -37,6 +37,7 @@
     [routeTable addObject:@"RMCaptureViewController"];
     [routeTable addObject:@"RMHomePageViewController"];
     [routeTable addObject:@"RMHomePageDetailViewController"];
+    [routeTable addObject:@"RMVideoPlayViewController"];
 }
 
 -(void)routerTo:(NSString*)vcName parameter:(NSDictionary*)params{

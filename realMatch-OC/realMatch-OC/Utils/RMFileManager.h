@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <AVFoundation/AVFoundation.h>
+#import <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RMFileManager : NSObject
 
 +(NSString*)pathForSaveRecord;
++(UIImage*)getVideoPreViewImage:(NSURL*)path;
 
 @end
 
