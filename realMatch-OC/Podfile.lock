@@ -22,6 +22,7 @@ PODS:
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
+  - SocketRocket (0.5.1)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - GPUImage
   - GPUImageBeautifyFilter
   - SDWebImage (~> 5.0)
+  - SocketRocket
   - SVProgressHUD
 
 SPEC REPOS:
@@ -42,6 +44,7 @@ SPEC REPOS:
     - GPUImage
     - GPUImageBeautifyFilter
     - SDWebImage
+    - SocketRocket
     - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -51,8 +54,9 @@ SPEC CHECKSUMS:
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GPUImageBeautifyFilter: 6eb451b50c395109172ae1f9e69c4241d0126c09
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 5a6203d6a9a347a41fe226ad4dab4d5dd9deef05
+PODFILE CHECKSUM: b93dd4b2c04766f8dff31ff06388c2ffbbea2b42
 
 COCOAPODS: 1.6.2

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import <StoreKit/StoreKit.h>
-
+#import "RMSocketManager.h"
 @interface AppDelegate ()
 
 @end
@@ -20,6 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self addRootVCToWindow];
+    
+    [RMSocketManager shared];
     return YES;
 }
 

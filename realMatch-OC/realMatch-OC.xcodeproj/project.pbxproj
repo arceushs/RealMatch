@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CFCE11722BF1B380025BC0B /* RMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE11522BF1B380025BC0B /* RMMessageViewController.m */; };
+		1CFCE11822BF1B380025BC0B /* RMMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CFCE11622BF1B380025BC0B /* RMMessageViewController.xib */; };
+		1CFCE11C22BF1B760025BC0B /* RMMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE11A22BF1B760025BC0B /* RMMessageTableViewCell.m */; };
+		1CFCE11D22BF1B760025BC0B /* RMMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CFCE11B22BF1B760025BC0B /* RMMessageTableViewCell.xib */; };
+		1CFCE12122BF32A20025BC0B /* RMSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE12022BF32A20025BC0B /* RMSocketManager.m */; };
+		1CFCE12422BF339A0025BC0B /* RMNetworkAPIHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */; };
 		1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */; };
 		D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D607117622A6715400412F72 /* UIView+RealMatch.m */; };
 		D652275F22BB806B00C273E1 /* RMPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D652275E22BB806B00C273E1 /* RMPlayer.swift */; };
@@ -85,6 +91,16 @@
 
 /* Begin PBXFileReference section */
 		0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-realMatch-OC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CFCE11422BF1B380025BC0B /* RMMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMessageViewController.h; sourceTree = "<group>"; };
+		1CFCE11522BF1B380025BC0B /* RMMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMMessageViewController.m; sourceTree = "<group>"; };
+		1CFCE11622BF1B380025BC0B /* RMMessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMMessageViewController.xib; sourceTree = "<group>"; };
+		1CFCE11922BF1B760025BC0B /* RMMessageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMessageTableViewCell.h; sourceTree = "<group>"; };
+		1CFCE11A22BF1B760025BC0B /* RMMessageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMMessageTableViewCell.m; sourceTree = "<group>"; };
+		1CFCE11B22BF1B760025BC0B /* RMMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMMessageTableViewCell.xib; sourceTree = "<group>"; };
+		1CFCE11F22BF32A20025BC0B /* RMSocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMSocketManager.h; sourceTree = "<group>"; };
+		1CFCE12022BF32A20025BC0B /* RMSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMSocketManager.m; sourceTree = "<group>"; };
+		1CFCE12222BF339A0025BC0B /* RMNetworkAPIHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMNetworkAPIHost.h; sourceTree = "<group>"; };
+		1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMNetworkAPIHost.m; sourceTree = "<group>"; };
 		91FA9F1266B2D253DA24B413 /* Pods-realMatch-OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.release.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.release.xcconfig"; sourceTree = "<group>"; };
 		D0116FF275BEF202714594EA /* Pods-realMatch-OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.debug.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.debug.xcconfig"; sourceTree = "<group>"; };
 		D607117522A6715400412F72 /* UIView+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+RealMatch.h"; sourceTree = "<group>"; };
@@ -191,6 +207,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C4A168422BF1A2800F9CB80 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				1CFCE11422BF1B380025BC0B /* RMMessageViewController.h */,
+				1CFCE11522BF1B380025BC0B /* RMMessageViewController.m */,
+				1CFCE11622BF1B380025BC0B /* RMMessageViewController.xib */,
+				1CFCE11922BF1B760025BC0B /* RMMessageTableViewCell.h */,
+				1CFCE11A22BF1B760025BC0B /* RMMessageTableViewCell.m */,
+				1CFCE11B22BF1B760025BC0B /* RMMessageTableViewCell.xib */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		1CFCE11E22BF32800025BC0B /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				1CFCE11F22BF32A20025BC0B /* RMSocketManager.h */,
+				1CFCE12022BF32A20025BC0B /* RMSocketManager.m */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
 		650A6413188F2E6C713DA5A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +249,8 @@
 				D665EC6222A8BD7C003FB7B8 /* UIColor+RealMatch.m */,
 				D6BF5CDB22A8F5B80036EA75 /* RMFileManager.h */,
 				D6BF5CDC22A8F5B80036EA75 /* RMFileManager.m */,
+				1CFCE12222BF339A0025BC0B /* RMNetworkAPIHost.h */,
+				1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -226,6 +266,7 @@
 		D65E0A2822A508FD00E749BF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1C4A168422BF1A2800F9CB80 /* Message */,
 				D6696FD822B9EBC100942DFB /* HomeDetail */,
 				D6BF5CDE22A910220036EA75 /* RMHomePageViewController.h */,
 				D6BF5CDF22A910220036EA75 /* RMHomePageViewController.m */,
@@ -331,6 +372,7 @@
 				D65E0A2822A508FD00E749BF /* Home */,
 				D6BF467122969DB200C82D98 /* LoginAndRegister */,
 				D6CC154022B39B5F00D80A02 /* Network */,
+				1CFCE11E22BF32800025BC0B /* Socket */,
 				D652275D22BB803A00C273E1 /* Player */,
 				D607117422A6711F00412F72 /* Utils */,
 				D687DA5C2294EDCE00A11488 /* Main.storyboard */,
@@ -524,10 +566,12 @@
 			files = (
 				D6E0771A22AF9F0F00CC44BA /* aiqinggongyu2.mp4 in Resources */,
 				D6E0771522AE31CC00CC44BA /* RMHomeCardView.xib in Resources */,
+				1CFCE11D22BF1B760025BC0B /* RMMessageTableViewCell.xib in Resources */,
 				D6BF5CE422ADF6600036EA75 /* aiqinggongyu.mp4 in Resources */,
 				D6696FE222B9F10600942DFB /* RMHomePageDetailHeaderView.xib in Resources */,
 				D6696FDD22B9EBF400942DFB /* RMHomePageDetailTableViewCell.xib in Resources */,
 				D652276422BB8AEE00C273E1 /* RMVideoPlayViewController.xib in Resources */,
+				1CFCE11822BF1B380025BC0B /* RMMessageViewController.xib in Resources */,
 				D687DA632294EDD200A11488 /* LaunchScreen.storyboard in Resources */,
 				D687DA602294EDD200A11488 /* Assets.xcassets in Resources */,
 				D661306622956697008DA4D8 /* Podfile in Resources */,
@@ -621,13 +665,16 @@
 			files = (
 				D665EC6022A7EF92003FB7B8 /* GPUImageBeautifyFilter.m in Sources */,
 				D6BF5CE122A910220036EA75 /* RMHomePageViewController.m in Sources */,
+				1CFCE11C22BF1B760025BC0B /* RMMessageTableViewCell.m in Sources */,
 				D659140622B781620098F458 /* RMNetworkResponse.m in Sources */,
 				D687DA5B2294EDCE00A11488 /* ViewController.m in Sources */,
 				D687DA662294EDD200A11488 /* main.m in Sources */,
 				D6CC153E22B387D500D80A02 /* RMHomePageDetailViewController.m in Sources */,
+				1CFCE12422BF339A0025BC0B /* RMNetworkAPIHost.m in Sources */,
 				D665EC6322A8BD7C003FB7B8 /* UIColor+RealMatch.m in Sources */,
 				D6E0771322AE31B900CC44BA /* RMHomeCardView.m in Sources */,
 				D659140C22B794810098F458 /* RMBaseModel.m in Sources */,
+				1CFCE12122BF32A20025BC0B /* RMSocketManager.m in Sources */,
 				D6696FE022B9EF8A00942DFB /* RMHomePageDetailHeaderView.m in Sources */,
 				D6696FDC22B9EBF400942DFB /* RMHomePageDetailTableViewCell.m in Sources */,
 				D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */,
@@ -635,6 +682,7 @@
 				D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */,
 				D6BF467522969DEB00C82D98 /* LoginAndRegisterViewController.m in Sources */,
 				D652276322BB8AEE00C273E1 /* RMVideoPlayViewController.m in Sources */,
+				1CFCE11722BF1B380025BC0B /* RMMessageViewController.m in Sources */,
 				D659140922B793E50098F458 /* RMFetchDetailModel.m in Sources */,
 				D6696FE622BA0F6E00942DFB /* RMTableViewModel.m in Sources */,
 				D6BF467F2296CDE500C82D98 /* Router+AccountKit.m in Sources */,
