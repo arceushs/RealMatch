@@ -38,23 +38,37 @@
     [routeTable addObject:@"RMHomePageViewController"];
     [routeTable addObject:@"RMHomePageDetailViewController"];
     [routeTable addObject:@"RMVideoPlayViewController"];
+    [routeTable addObject:@"RMEmailViewController"];
+    [routeTable addObject:@"RMNameViewController"];
+    [routeTable addObject:@"RMDatePickerViewController"];
+    [routeTable addObject:@"RMGenderViewController"];
 }
 
 -(void)routerTo:(NSString*)vcName parameter:(NSDictionary*)params{
     for (NSString* tableVCName in _routeTable) {
         if([vcName isEqualToString:tableVCName]){
             Class vcClass = NSClassFromString(tableVCName);
+            if(vcClass == nil){
+                vcClass = NSClassFromString([NSString stringWithFormat:@"realMatch_OC.%@",tableVCName]);
+            }
             UIViewController<RouterController>* targetVC = nil;
             if([vcClass instancesRespondToSelector:@selector(initWithRouterParams:)]){
                 targetVC = [[vcClass alloc]initWithRouterParams:params];
+                
                 DisplayStyle style = DisplayStylePush;
                 if([targetVC respondsToSelector:@selector(displayStyle)]){
                     style = [targetVC displayStyle];
                 }
+                
+                BOOL animation = YES;
+                if([targetVC respondsToSelector:@selector(animation)]){
+                    animation = [targetVC animation];
+                }
+                
                 if(style == DisplayStylePush){
-                    [self.navigationVC pushViewController:targetVC animated:YES];
+                    [self.navigationVC pushViewController:targetVC animated:animation];
                 }else{
-                    [[self topMostController] presentViewController:targetVC animated:YES completion:nil];
+                    [[self topMostController] presentViewController:targetVC animated:animation completion:nil];
                 }
             }
             break;

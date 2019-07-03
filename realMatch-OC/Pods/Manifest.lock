@@ -25,7 +25,10 @@ PODS:
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
+  - Socket.IO-Client-Swift (15.1.0):
+    - Starscream (~> 3.1)
   - SocketRocket (0.5.1)
+  - Starscream (3.1.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -36,6 +39,7 @@ DEPENDENCIES:
   - GPUImageBeautifyFilter
   - Realm
   - SDWebImage (~> 5.0)
+  - Socket.IO-Client-Swift (~> 15.1.0)
   - SocketRocket
   - SVProgressHUD
 
@@ -49,7 +53,9 @@ SPEC REPOS:
     - GPUImageBeautifyFilter
     - Realm
     - SDWebImage
+    - Socket.IO-Client-Swift
     - SocketRocket
+    - Starscream
     - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -60,9 +66,11 @@ SPEC CHECKSUMS:
   GPUImageBeautifyFilter: 6eb451b50c395109172ae1f9e69c4241d0126c09
   Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  Socket.IO-Client-Swift: 7cb44c0ffb86e158cee32d0642d30ec5fdcf8f61
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: cc8019459d23aba134043357b7fc929e265658ae
+PODFILE CHECKSUM: fbd24561c9a97c06a572406b03b5230656d0f327
 
 COCOAPODS: 1.6.2

@@ -9,7 +9,7 @@
 #import "LoginAndRegisterViewController.h"
 #import <AccountKit/AccountKit.h>
 #import "Router+AccountKit.h"
-
+#import "realMatch_OC-Swift.h"
 @interface LoginAndRegisterViewController ()<AKFViewControllerDelegate>
 
 @end
@@ -28,19 +28,23 @@
 }
 
 - (DisplayStyle)displayStyle {
-    return DisplayStylePresent;
+    return DisplayStylePush;
+}
+
+-(BOOL)animation{
+    return NO;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     if (_accountKit == nil) {
         _accountKit = [[AKFAccountKit alloc] initWithResponseType:AKFResponseTypeAccessToken];
     }
-
+    
     _pendingLoginViewController = [_accountKit viewControllerForPhoneLogin];
-//     _pendingLoginViewController = [_accountKit viewControllerForEmailLoginWithEmail:@"xkjmdy1@outlook.com" state:[NSUUID UUID].UUIDString];
+    //     _pendingLoginViewController = [_accountKit viewControllerForEmailLoginWithEmail:@"xkjmdy1@outlook.com" state:[NSUUID UUID].UUIDString];
     
     [self _prepareLoginViewController:_pendingLoginViewController];
     // Do any additional setup after loading the view from its nib.
@@ -56,7 +60,12 @@
 }
 
 -(void)viewController:(UIViewController<AKFViewController> *)viewController didCompleteLoginWithAccessToken:(id<AKFAccessToken>)accessToken state:(NSString *)state{
-    
+    [_accountKit requestAccount:^(id<AKFAccount>  _Nullable account, NSError * _Nullable error) {
+        [RMUserCenter shared].accountKitID = account.accountID;
+        [RMUserCenter shared].accountKitEmailAddress = account.emailAddress;
+        [RMUserCenter shared].accountKitPhoneNumber = account.phoneNumber.phoneNumber;
+        [RMUserCenter shared].accountKitCountryCode = account.phoneNumber.countryCode;
+    }];
 }
 
 -(void)viewController:(UIViewController<AKFViewController> *)viewController didCompleteLoginWithAuthorizationCode:(NSString *)code state:(NSString *)state{
@@ -70,6 +79,10 @@
 
 -(void)viewControllerDidCancel:(UIViewController<AKFViewController> *)viewController{
     
+}
+
+- (IBAction)createCount:(id)sender {
+    [[Router shared] routerTo:@"RMEmailViewController" parameter:nil];
 }
 /*
  #pragma mark - Navigation

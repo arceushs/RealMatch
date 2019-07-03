@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger,DisplayStyle){
 @required
 -(instancetype)initWithRouterParams:(NSDictionary*)params;
 -(DisplayStyle)displayStyle;
+-(BOOL)animation;
 
 @end
 

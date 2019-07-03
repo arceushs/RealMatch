@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RMGenderViewController" customModule="realMatch_OC" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Ztx-Rs-CdX" id="TXX-WG-EFc"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Ztx-Rs-CdX">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lN-oN-MrM">
+                    <rect key="frame" x="40" y="138" width="295" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xg-xA-bcU">
+                    <rect key="frame" x="16" y="54" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="6xO-T6-iQB"/>
+                        <constraint firstAttribute="height" constant="24" id="Ixz-NU-VNP"/>
+                    </constraints>
+                    <state key="normal" image="normalBack"/>
+                    <connections>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="Jer-zb-88J"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcd-wX-5y2">
+                    <rect key="frame" x="40" y="443" width="295" height="48"/>
+                    <color key="backgroundColor" red="0.98039215690000003" green="0.0" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="4El-Zn-LPM"/>
+                        <constraint firstAttribute="height" constant="48" id="CgE-Ms-7fq"/>
+                    </constraints>
+                    <state key="normal" title="Continue">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="24"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="continueClicke:" destination="-1" eventType="touchUpInside" id="6al-XW-7Y0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwD-eK-da6">
+                    <rect key="frame" x="40" y="251" width="295" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="IBh-15-3M6"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="yPz-ji-4TE"/>
+                    </constraints>
+                    <state key="normal" title="Women">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRaidus">
+                            <integer key="value" value="24"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iby-dv-oTE">
+                    <rect key="frame" x="40" y="315" width="295" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="5KM-VE-D6T"/>
+                        <constraint firstAttribute="height" constant="48" id="lRW-mu-D2J"/>
+                    </constraints>
+                    <state key="normal" title="Man">
+                        <color key="titleColor" red="0.98039215686274506" green="0.0" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRaidus">
+                            <integer key="value" value="24"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="7tp-V3-utO" firstAttribute="trailing" secondItem="Iby-dv-oTE" secondAttribute="trailing" constant="40" id="0Da-sd-MHC"/>
+                <constraint firstItem="2xg-xA-bcU" firstAttribute="top" secondItem="7tp-V3-utO" secondAttribute="top" constant="10" id="2Ih-Mj-nTj"/>
+                <constraint firstItem="2lN-oN-MrM" firstAttribute="top" secondItem="7tp-V3-utO" secondAttribute="top" constant="94" id="FfQ-LO-cEV"/>
+                <constraint firstItem="2xg-xA-bcU" firstAttribute="leading" secondItem="Ztx-Rs-CdX" secondAttribute="leading" constant="16" id="IIy-yX-4eP"/>
+                <constraint firstItem="7tp-V3-utO" firstAttribute="trailing" secondItem="2lN-oN-MrM" secondAttribute="trailing" constant="40" id="IZ8-eK-sLR"/>
+                <constraint firstItem="Iby-dv-oTE" firstAttribute="top" secondItem="rwD-eK-da6" secondAttribute="bottom" constant="16" id="JC3-gJ-Jtv"/>
+                <constraint firstItem="rwD-eK-da6" firstAttribute="top" secondItem="7tp-V3-utO" secondAttribute="top" constant="207" id="JJJ-3o-ldF"/>
+                <constraint firstItem="Gcd-wX-5y2" firstAttribute="leading" secondItem="7tp-V3-utO" secondAttribute="leading" constant="40" id="NA6-OZ-XOJ"/>
+                <constraint firstItem="Iby-dv-oTE" firstAttribute="leading" secondItem="7tp-V3-utO" secondAttribute="leading" constant="40" id="bPT-Kb-Dk9"/>
+                <constraint firstItem="2lN-oN-MrM" firstAttribute="leading" secondItem="7tp-V3-utO" secondAttribute="leading" constant="40" id="bRt-u6-TRO"/>
+                <constraint firstItem="rwD-eK-da6" firstAttribute="leading" secondItem="7tp-V3-utO" secondAttribute="leading" constant="40" id="ekR-vf-pYd"/>
+                <constraint firstItem="7tp-V3-utO" firstAttribute="trailing" secondItem="Gcd-wX-5y2" secondAttribute="trailing" constant="40" id="elN-Bj-aau"/>
+                <constraint firstItem="Gcd-wX-5y2" firstAttribute="top" secondItem="Iby-dv-oTE" secondAttribute="bottom" constant="80" id="nJw-yI-uMn"/>
+                <constraint firstItem="7tp-V3-utO" firstAttribute="trailing" secondItem="rwD-eK-da6" secondAttribute="trailing" constant="40" id="nZm-lF-4p2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="7tp-V3-utO"/>
+            <point key="canvasLocation" x="-146" y="227"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="normalBack" width="24" height="24"/>
+    </resources>
+</document>
