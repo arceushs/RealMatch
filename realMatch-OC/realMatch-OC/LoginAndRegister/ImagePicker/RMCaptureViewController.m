@@ -34,13 +34,15 @@
 @property (nonatomic,assign) int seconds;
 @property (nonatomic,strong) UIButton* recordButton;
 
+@property (nonatomic,strong) NSString* fileName;
+
 @end
 
 @implementation RMCaptureViewController
 
 -(instancetype)initWithRouterParams:(NSDictionary *)params{
     if(self = [super init]){
-        
+        _fileName = params[@"filename"];
     }
     return self;
 }
@@ -48,6 +50,11 @@
 -(DisplayStyle)displayStyle{
     return DisplayStylePush;
 }
+
+- (BOOL)animation {
+    return true;
+}
+
 
 
 - (void)viewDidLoad {
@@ -98,7 +105,7 @@
     self.timeLabel.font = [UIFont systemFontOfSize:24];
     self.timeLabel.textColor = [UIColor whiteColor];
     self.timeLabel.textAlignment = NSTextAlignmentCenter;
-   
+    
     // Do any additional setup after loading the view.
 }
 
@@ -118,56 +125,56 @@
     
     
     
-//    _captureSession = [[AVCaptureSession alloc]init];
-//    if([_captureSession canSetSessionPreset:AVCaptureSessionPresetHigh]){
-//        [_captureSession setSessionPreset:AVCaptureSessionPresetHigh];
-//    }
-//
-//    AVCaptureDevice * captureDevice = [self getCameraDeviceWithPosition:AVCaptureDevicePositionFront];
-//    if(!captureDevice){
-//        return;
-//    }
-//
-//    AVCaptureDevice * audioCaputureDevice = [[AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio] firstObject];
-//
-//    NSError * error = nil;
-//
-//    _captureDeviceInput = [[AVCaptureDeviceInput alloc]initWithDevice:captureDevice error:&error];
-//    if(error){
-//        return;
-//    }
-//
-//    AVCaptureDeviceInput* audioCaptureDeviceInput = [[AVCaptureDeviceInput alloc]initWithDevice:audioCaputureDevice error:&error];
-//    if(error){
-//        return;
-//    }
-//
-//    _caputureMovieFileOutput = [[AVCaptureMovieFileOutput alloc]init];
-//
-//    AVCaptureConnection* captureConnection = [_caputureMovieFileOutput connectionWithMediaType:AVMediaTypeVideo];
-//    if([captureConnection isVideoStabilizationSupported]){
-//        captureConnection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
-//    }
-//
-//    captureConnection.videoOrientation = AVCaptureVideoOrientationPortrait;
-//    captureConnection.videoScaleAndCropFactor = 1.0;
-//
-//    if([_captureSession canAddInput:_captureDeviceInput]){
-//        [_captureSession addInput:_captureDeviceInput];
-//        [_captureSession addInput:audioCaptureDeviceInput];
-//    }
-//
-//    if([_captureSession canAddOutput:_caputureMovieFileOutput]){
-//        [_captureSession addOutput:_caputureMovieFileOutput];
-//    }
-//
-//    _captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:self.captureSession];
-//    CALayer * layer = self.captureView.layer;
-//    layer.masksToBounds = YES;
-//    _captureVideoPreviewLayer.frame = layer.bounds;
-//    _captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-//
-//    [layer addSublayer:_captureVideoPreviewLayer];
+    //    _captureSession = [[AVCaptureSession alloc]init];
+    //    if([_captureSession canSetSessionPreset:AVCaptureSessionPresetHigh]){
+    //        [_captureSession setSessionPreset:AVCaptureSessionPresetHigh];
+    //    }
+    //
+    //    AVCaptureDevice * captureDevice = [self getCameraDeviceWithPosition:AVCaptureDevicePositionFront];
+    //    if(!captureDevice){
+    //        return;
+    //    }
+    //
+    //    AVCaptureDevice * audioCaputureDevice = [[AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio] firstObject];
+    //
+    //    NSError * error = nil;
+    //
+    //    _captureDeviceInput = [[AVCaptureDeviceInput alloc]initWithDevice:captureDevice error:&error];
+    //    if(error){
+    //        return;
+    //    }
+    //
+    //    AVCaptureDeviceInput* audioCaptureDeviceInput = [[AVCaptureDeviceInput alloc]initWithDevice:audioCaputureDevice error:&error];
+    //    if(error){
+    //        return;
+    //    }
+    //
+    //    _caputureMovieFileOutput = [[AVCaptureMovieFileOutput alloc]init];
+    //
+    //    AVCaptureConnection* captureConnection = [_caputureMovieFileOutput connectionWithMediaType:AVMediaTypeVideo];
+    //    if([captureConnection isVideoStabilizationSupported]){
+    //        captureConnection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
+    //    }
+    //
+    //    captureConnection.videoOrientation = AVCaptureVideoOrientationPortrait;
+    //    captureConnection.videoScaleAndCropFactor = 1.0;
+    //
+    //    if([_captureSession canAddInput:_captureDeviceInput]){
+    //        [_captureSession addInput:_captureDeviceInput];
+    //        [_captureSession addInput:audioCaptureDeviceInput];
+    //    }
+    //
+    //    if([_captureSession canAddOutput:_caputureMovieFileOutput]){
+    //        [_captureSession addOutput:_caputureMovieFileOutput];
+    //    }
+    //
+    //    _captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:self.captureSession];
+    //    CALayer * layer = self.captureView.layer;
+    //    layer.masksToBounds = YES;
+    //    _captureVideoPreviewLayer.frame = layer.bounds;
+    //    _captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    //
+    //    [layer addSublayer:_captureVideoPreviewLayer];
     
     
 }
@@ -217,7 +224,7 @@
 }
 
 -(void)startVideoRecords{
-    NSString *filePath = [[RMFileManager pathForSaveRecord] stringByAppendingString:@"movie.mp4"];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@.mp4",[RMFileManager pathForSaveRecord],_fileName];
     unlink([filePath UTF8String]);
     self.movieWriter = [[GPUImageMovieWriter alloc]initWithMovieURL:[NSURL fileURLWithPath:filePath] size:CGSizeMake(self.filterView.width, self.filterView.height)];
     self.movieWriter.encodingLiveVideo = YES;
@@ -250,5 +257,7 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+
 
 @end

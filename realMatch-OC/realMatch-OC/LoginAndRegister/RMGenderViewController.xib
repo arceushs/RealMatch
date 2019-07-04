@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RMGenderViewController" customModule="realMatch_OC" customModuleProvider="target">
             <connections>
+                <outlet property="manButton" destination="Iby-dv-oTE" id="zwS-5B-Tg4"/>
                 <outlet property="view" destination="Ztx-Rs-CdX" id="TXX-WG-EFc"/>
+                <outlet property="womenButton" destination="rwD-eK-da6" id="t33-iQ-eL3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -37,7 +39,7 @@
                     </constraints>
                     <state key="normal" image="normalBack"/>
                     <connections>
-                        <action selector="back:" destination="-1" eventType="touchUpInside" id="Jer-zb-88J"/>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="AEp-UB-Spw"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcd-wX-5y2">
@@ -76,6 +78,9 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="womenButtonClicked:" destination="-1" eventType="touchUpInside" id="sWQ-Mh-RRq"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iby-dv-oTE">
                     <rect key="frame" x="40" y="315" width="295" height="48"/>
@@ -93,6 +98,9 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="manButtonClicked:" destination="-1" eventType="touchUpInside" id="Zt2-Gv-eZC"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

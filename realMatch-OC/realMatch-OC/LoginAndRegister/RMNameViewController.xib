@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RMNameViewController" customModule="realMatch_OC" customModuleProvider="target">
             <connections>
+                <outlet property="hintView" destination="VNc-P9-vYS" id="82C-aG-wUL"/>
+                <outlet property="lineView" destination="8eO-7Y-MXd" id="7vn-xW-IoS"/>
+                <outlet property="nameTextField" destination="u4j-bq-K1e" id="um5-Nl-XrB"/>
                 <outlet property="view" destination="Teu-iB-mrc" id="YOY-az-hTT"/>
             </connections>
         </placeholder>
@@ -40,15 +43,15 @@
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="zp1-Sv-DAu"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="name@email.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4j-bq-K1e">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4j-bq-K1e">
                     <rect key="frame" x="40" y="221" width="183" height="20"/>
-                    <color key="textColor" red="0.78823529410000004" green="0.80000000000000004" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.1960784314" green="0.21176470589999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8eO-7Y-MXd">
                     <rect key="frame" x="40" y="242" width="183" height="1"/>
-                    <color key="backgroundColor" red="0.57647058819999997" green="0.59607843140000005" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.1960784314" green="0.21176470589999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="oCz-2R-QyR"/>
                     </constraints>
@@ -72,9 +75,17 @@
                         <action selector="continueClicked:" destination="-1" eventType="touchUpInside" id="zpT-eH-xPB"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name can't be empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNc-P9-vYS">
+                    <rect key="frame" x="40" y="251" width="183" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="VNc-P9-vYS" firstAttribute="trailing" secondItem="8eO-7Y-MXd" secondAttribute="trailing" id="12M-Uu-NRK"/>
+                <constraint firstItem="VNc-P9-vYS" firstAttribute="leading" secondItem="8eO-7Y-MXd" secondAttribute="leading" id="498-qs-HdU"/>
                 <constraint firstItem="8eO-7Y-MXd" firstAttribute="leading" secondItem="u4j-bq-K1e" secondAttribute="leading" id="BBC-wk-M6I"/>
                 <constraint firstItem="mzj-Ow-1S7" firstAttribute="leading" secondItem="Teu-iB-mrc" secondAttribute="leading" constant="16" id="Fc6-Kl-Wwf"/>
                 <constraint firstItem="u4j-bq-K1e" firstAttribute="leading" secondItem="xBK-z5-5v2" secondAttribute="leading" constant="40" id="Gkn-yK-aPn"/>
@@ -89,6 +100,7 @@
                 <constraint firstItem="Nvq-gW-iNv" firstAttribute="top" secondItem="8eO-7Y-MXd" secondAttribute="bottom" constant="200" id="fgE-Mb-p1u"/>
                 <constraint firstItem="Nvq-gW-iNv" firstAttribute="trailing" secondItem="u4j-bq-K1e" secondAttribute="trailing" id="g0m-bF-rJH"/>
                 <constraint firstItem="Nvq-gW-iNv" firstAttribute="leading" secondItem="u4j-bq-K1e" secondAttribute="leading" id="iHe-M7-1DG"/>
+                <constraint firstItem="VNc-P9-vYS" firstAttribute="top" secondItem="8eO-7Y-MXd" secondAttribute="bottom" constant="8" id="oaW-2H-Fi1"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="xBK-z5-5v2"/>

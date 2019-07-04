@@ -42,6 +42,8 @@
     [routeTable addObject:@"RMNameViewController"];
     [routeTable addObject:@"RMDatePickerViewController"];
     [routeTable addObject:@"RMGenderViewController"];
+    [routeTable addObject:@"RMRealVideoViewController"];
+    [routeTable addObject:@"RMCaptureViewController"];
 }
 
 -(void)routerTo:(NSString*)vcName parameter:(NSDictionary*)params{

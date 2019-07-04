@@ -13,6 +13,10 @@ class RMDatePickerViewController: UIViewController,RouterController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    @IBOutlet weak var birthdayTextField: UITextField!
+    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var hintView: UILabel!
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,13 +35,26 @@ class RMDatePickerViewController: UIViewController,RouterController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hintView.isHidden = true
+        self.birthdayTextField.isUserInteractionEnabled = false
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func datePicked(_ sender: Any) {
+        self.birthdayTextField.text = dateUtils.dateConvertString(self.datePicker.date, dateFormat: "yyyy-MM-dd")
+    }
+    
     @IBAction func continueClick(_ sender: Any) {
-        Router.shared()?.router(to: "RMGenderViewController", parameter: nil)
+        if self.birthdayTextField.text?.count ?? 0 > 0{
+            Router.shared()?.router(to: "RMGenderViewController", parameter: nil)
+            self.hintView.isHidden = true
+            self.lineView.backgroundColor = UIColor(string: "323640")
+        }else{
+            self.hintView.isHidden = false
+            self.lineView.backgroundColor = self.hintView.textColor
+        }
+        
+        
     }
     /*
     // MARK: - Navigation

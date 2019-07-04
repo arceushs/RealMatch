@@ -34,10 +34,15 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hintLabel.isHidden = true
+        let tapGest = UITapGestureRecognizer(target: self, action: #selector(resign))
+        self.view.addGestureRecognizer(tapGest)
         // Do any additional setup after loading the view.
     }
 
-
+    @objc func resign(){
+        self.emailLabel.resignFirstResponder()
+    }
+    
     @IBAction func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -45,10 +50,11 @@ import UIKit
     @IBAction func cotinueClicked(_ sender: Any) {
         if self.emailLabel.text?.contains("@") ?? false{
             self.hintLabel.isHidden = true
+            self.lineView.backgroundColor = UIColor(string: "323640", alpha: 1)
             Router.shared()?.router(to: "RMNameViewController", parameter: nil)
         }else{
             self.hintLabel.isHidden = false
-            self.lineView.backgroundColor = UIColor(red: 1.0, green: 0.56, blue: 0, alpha: 1)
+            self.lineView.backgroundColor = self.hintLabel.textColor
         }
         
     }

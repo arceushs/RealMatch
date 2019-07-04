@@ -8,6 +8,7 @@
 
 #import "RMNetworkManager.h"
 #import "AFNetworking.h"
+#import "RMFileManager.h"
 
 @implementation RMNetworkManager
 {
@@ -50,7 +51,30 @@
         }
             break;
             
-        default:
+        default:{
+            [_afmanager POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                NSString *filePath = [[NSBundle mainBundle] pathForResource:@"aiqinggongyu" ofType:@"mp4"];
+                /* 本地图片上传 */
+                NSURL *imageUrl = [NSURL fileURLWithPath:filePath];
+                NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
+                
+                // 直接将图片对象转成 data 也可以
+                // UIImage *image = [UIImage imageNamed:@"test"];
+                // NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+                
+                /* 上传数据拼接 */
+                [formData appendPartWithFileData:imageData name:@"video1" fileName:@"video1.mp4" mimeType:@"video/mp4"];
+//                [formData appendPartWithFileData:imageData name:@"file" fileName:@"test" mimeType:@"video/mp
+                
+            } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                
+                NSLog(@"上传成功：%@", responseObject);
+                
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                
+                NSLog(@"上传失败：%@", error);
+            }];
+        }
             break;
     }
 }

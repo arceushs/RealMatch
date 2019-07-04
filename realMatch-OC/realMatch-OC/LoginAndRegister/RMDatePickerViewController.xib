@@ -12,6 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RMDatePickerViewController" customModule="realMatch_OC" customModuleProvider="target">
             <connections>
+                <outlet property="birthdayTextField" destination="TWl-eV-kIv" id="NYC-U7-5D6"/>
+                <outlet property="datePicker" destination="acW-46-h4H" id="Up5-MI-Psk"/>
+                <outlet property="hintView" destination="3ab-Va-TFK" id="2B2-UO-RKu"/>
+                <outlet property="lineView" destination="gbn-ih-QDk" id="mba-Wu-t85"/>
                 <outlet property="view" destination="JVG-fS-FNk" id="J8d-lj-Z7k"/>
             </connections>
         </placeholder>
@@ -40,15 +44,15 @@
                         <action selector="back:" destination="-1" eventType="touchUpInside" id="5SQ-kn-W8P"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="name@email.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-eV-kIv">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-eV-kIv">
                     <rect key="frame" x="40" y="221" width="295" height="20"/>
-                    <color key="textColor" red="0.78823529410000004" green="0.80000000000000004" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.1960784314" green="0.21176470589999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbn-ih-QDk">
                     <rect key="frame" x="40" y="242" width="295" height="1"/>
-                    <color key="backgroundColor" red="0.57647058819999997" green="0.59607843140000005" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.1960784314" green="0.21176470589999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="0WZ-Ti-Wal"/>
                     </constraints>
@@ -80,7 +84,16 @@
                     <date key="date" timeIntervalSinceReferenceDate="583850242.23917103">
                         <!--2019-07-03 12:37:22 +0000-->
                     </date>
+                    <connections>
+                        <action selector="datePicked:" destination="-1" eventType="valueChanged" id="WSr-Sm-DKH"/>
+                    </connections>
                 </datePicker>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pick a birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ab-Va-TFK">
+                    <rect key="frame" x="40" y="251" width="295" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -92,14 +105,17 @@
                 <constraint firstItem="TWl-eV-kIv" firstAttribute="top" secondItem="Lg5-uB-lCz" secondAttribute="top" constant="177" id="DEG-iU-tdA"/>
                 <constraint firstItem="gbn-ih-QDk" firstAttribute="trailing" secondItem="TWl-eV-kIv" secondAttribute="trailing" id="EXB-b4-IhY"/>
                 <constraint firstItem="Lg5-uB-lCz" firstAttribute="trailing" secondItem="J5V-CZ-a1Y" secondAttribute="trailing" constant="40" id="M4E-aj-6LM"/>
+                <constraint firstItem="3ab-Va-TFK" firstAttribute="trailing" secondItem="TWl-eV-kIv" secondAttribute="trailing" id="NMk-hM-BHb"/>
                 <constraint firstItem="gbn-ih-QDk" firstAttribute="top" secondItem="TWl-eV-kIv" secondAttribute="bottom" constant="1" id="bt7-Wa-VSl"/>
                 <constraint firstItem="J5V-CZ-a1Y" firstAttribute="leading" secondItem="Lg5-uB-lCz" secondAttribute="leading" constant="40" id="dTq-zc-a2n"/>
                 <constraint firstItem="aXw-Jb-Sfy" firstAttribute="top" secondItem="gbn-ih-QDk" secondAttribute="bottom" constant="200" id="fou-N6-l42"/>
+                <constraint firstItem="3ab-Va-TFK" firstAttribute="top" secondItem="gbn-ih-QDk" secondAttribute="bottom" constant="8" id="hcc-tc-oA6"/>
                 <constraint firstItem="TWl-eV-kIv" firstAttribute="leading" secondItem="Lg5-uB-lCz" secondAttribute="leading" constant="40" id="iug-3P-VHH"/>
                 <constraint firstItem="ezm-SU-Dkn" firstAttribute="leading" secondItem="JVG-fS-FNk" secondAttribute="leading" constant="16" id="k44-7b-zat"/>
                 <constraint firstItem="Lg5-uB-lCz" firstAttribute="trailing" secondItem="TWl-eV-kIv" secondAttribute="trailing" constant="40" id="nL5-iB-Vic"/>
                 <constraint firstItem="aXw-Jb-Sfy" firstAttribute="leading" secondItem="TWl-eV-kIv" secondAttribute="leading" id="nZR-MV-8ap"/>
                 <constraint firstItem="acW-46-h4H" firstAttribute="top" secondItem="gbn-ih-QDk" secondAttribute="bottom" constant="4" id="q59-mK-60c"/>
+                <constraint firstItem="3ab-Va-TFK" firstAttribute="leading" secondItem="TWl-eV-kIv" secondAttribute="leading" id="vaN-HX-0KQ"/>
                 <constraint firstItem="Lg5-uB-lCz" firstAttribute="trailing" secondItem="acW-46-h4H" secondAttribute="trailing" constant="40" id="xLI-NU-UHN"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

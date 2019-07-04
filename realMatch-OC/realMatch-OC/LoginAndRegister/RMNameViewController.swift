@@ -13,6 +13,9 @@ import UIKit
         super.init(nibName: nil, bundle: nil)
     }
     
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var hintView: UILabel!
+    @IBOutlet weak var lineView: UIView!
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -26,7 +29,15 @@ import UIKit
     }
     
     @IBAction func continueClicked(_ sender: Any) {
-        Router.shared()?.router(to: "RMDatePickerViewController", parameter: nil)
+        if self.nameTextField.text?.count ?? 0 > 0 {
+            self.hintView.isHidden = true
+            self.lineView.backgroundColor = UIColor(string: "323640", alpha: 1)
+            Router.shared()?.router(to: "RMDatePickerViewController", parameter: nil)
+        }else{
+            self.hintView.isHidden = false
+            self.lineView.backgroundColor = self.hintView.textColor
+        }
+       
     }
     
     @IBAction func back(_ sender: Any) {
@@ -34,8 +45,15 @@ import UIKit
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hintView.isHidden = true
+        
+        let tapGest = UITapGestureRecognizer(target: self, action: #selector(resign))
+        self.view.addGestureRecognizer(tapGest)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func resign(){
+        self.nameTextField.resignFirstResponder()
     }
 
 
