@@ -19,6 +19,9 @@ PODS:
   - GPUImage (0.1.7)
   - GPUImageBeautifyFilter (1.0.0):
     - GPUImage
+  - Realm (3.16.2):
+    - Realm/Headers (= 3.16.2)
+  - Realm/Headers (3.16.2)
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
@@ -31,6 +34,7 @@ DEPENDENCIES:
   - AHTimer (~> 0.0.3)
   - GPUImage
   - GPUImageBeautifyFilter
+  - Realm
   - SDWebImage (~> 5.0)
   - SocketRocket
   - SVProgressHUD
@@ -43,6 +47,7 @@ SPEC REPOS:
     - AFNetworking
     - GPUImage
     - GPUImageBeautifyFilter
+    - Realm
     - SDWebImage
     - SocketRocket
     - SVProgressHUD
@@ -53,10 +58,11 @@ SPEC CHECKSUMS:
   AHTimer: df455262e80cc80ab266b46b082e5ff88f3c60ad
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GPUImageBeautifyFilter: 6eb451b50c395109172ae1f9e69c4241d0126c09
+  Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: b93dd4b2c04766f8dff31ff06388c2ffbbea2b42
+PODFILE CHECKSUM: cc8019459d23aba134043357b7fc929e265658ae
 
 COCOAPODS: 1.6.2
