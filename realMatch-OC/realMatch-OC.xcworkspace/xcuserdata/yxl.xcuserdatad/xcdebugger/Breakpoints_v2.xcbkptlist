@@ -57,13 +57,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "realMatch-OC/Network/RMNetworkManager.m"
+            timestampString = "583988916.8534009"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-request:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "realMatch-OC/Network/RMNetworkManager.m"
+            timestampString = "583988916.8679219"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-request:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "realMatch-OC/Network/RMNetworkManager.m"
+            timestampString = "583988916.868181"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-request:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "realMatch-OC/LoginAndRegister/ImagePicker/RMCaptureViewController.m"
-            timestampString = "583939535.983608"
+            timestampString = "583989758.795516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "-startVideoRecords"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "-recordButtonClick:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/Network/RMNetworkManager.m"
-            timestampString = "583939535.983722"
+            filePath = "realMatch-OC/LoginAndRegister/ImagePicker/RMCaptureViewController.m"
+            timestampString = "583989818.5819089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-request:completion:"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "-stopVideoRecords"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +137,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/Network/RMNetworkManager.m"
-            timestampString = "583939535.9841"
+            filePath = "realMatch-OC/LoginAndRegister/ImagePicker/RMCaptureViewController.m"
+            timestampString = "583989934.475284"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-request:completion:"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "-viewDidDisappear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/Network/RMNetworkManager.m"
-            timestampString = "583939535.984339"
+            filePath = "realMatch-OC/Home/Message/MessageDetail/RMMessageDetailViewController.m"
+            timestampString = "584009800.559637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-request:completion:"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-keyboardDidHide:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

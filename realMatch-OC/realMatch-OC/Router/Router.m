@@ -44,6 +44,8 @@
     [routeTable addObject:@"RMGenderViewController"];
     [routeTable addObject:@"RMRealVideoViewController"];
     [routeTable addObject:@"RMCaptureViewController"];
+    [routeTable addObject:@"RMMessageViewController"];
+    [routeTable addObject:@"RMMessageDetailViewController"];
 }
 
 -(void)routerTo:(NSString*)vcName parameter:(NSDictionary*)params{

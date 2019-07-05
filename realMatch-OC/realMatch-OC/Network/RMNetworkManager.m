@@ -33,6 +33,9 @@
     RMHttpMethod method = [api method];
     
     _afmanager = [AFHTTPSessionManager manager];
+    _afmanager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    _afmanager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",@"text/plain", nil];
+    
     switch (method) {
         case RMHttpMethodPost:{
             [_afmanager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -53,7 +56,7 @@
             
         default:{
             [_afmanager POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-                NSString *filePath = [[NSBundle mainBundle] pathForResource:@"aiqinggongyu" ofType:@"mp4"];
+                NSString *filePath = [[NSBundle mainBundle] pathForResource:@"test1.png" ofType:@""];
                 /* 本地图片上传 */
                 NSURL *imageUrl = [NSURL fileURLWithPath:filePath];
                 NSData *imageData = [NSData dataWithContentsOfURL:imageUrl];
@@ -63,7 +66,7 @@
                 // NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
                 
                 /* 上传数据拼接 */
-                [formData appendPartWithFileData:imageData name:@"video1" fileName:@"video1.mp4" mimeType:@"video/mp4"];
+                [formData appendPartWithFileData:imageData name:@"test1" fileName:@"test1.png" mimeType:@"image/png"];
 //                [formData appendPartWithFileData:imageData name:@"file" fileName:@"test" mimeType:@"video/mp
                 
             } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

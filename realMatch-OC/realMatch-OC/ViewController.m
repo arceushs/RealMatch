@@ -28,7 +28,7 @@
     
     
     [Router setNavigationVC:self.navigationController];
-    [[Router shared] routerTo:@"LoginAndRegisterViewController" parameter:nil];
+    [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
 //    [[PurchaseManager shareManager] startPurchaseWithID:@"1_month_premium"];
   
 //    NSData * data = [NSData dataWithContentsOfFile:[[RMFileManager pathForSaveRecord] stringByAppendingString:@"movie.mp4"]];
