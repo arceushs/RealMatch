@@ -12,6 +12,7 @@
 #import "PurchaseManager.h"
 #import "RMFileManager.h"
 #import "AVFoundation/AVFoundation.h"
+#import "realMatch-OC-Bridging-Header.h"
 @interface ViewController ()
 
 @end
@@ -24,8 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
+    
     [Router setNavigationVC:self.navigationController];
-    [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
+    [[Router shared] routerTo:@"LoginAndRegisterViewController" parameter:nil];
 //    [[PurchaseManager shareManager] startPurchaseWithID:@"1_month_premium"];
   
 //    NSData * data = [NSData dataWithContentsOfFile:[[RMFileManager pathForSaveRecord] stringByAppendingString:@"movie.mp4"]];
@@ -50,7 +53,9 @@
 //    [[Router shared] routerTo:@"RMCaptureViewController" parameter:nil];
 //
     // Do any additional setup after loading the view.
+    
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {

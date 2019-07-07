@@ -23,11 +23,11 @@ class RMPlayer: NSObject {
         self.internalPlayer = AVPlayer(playerItem: playerItem)
     }
     
-    func play() -> Void{
+    @objc func play() -> Void{
         internalPlayer.play()
     }
     
-    func pause(){
+    @objc func pause(){
         internalPlayer.pause()
     }
     

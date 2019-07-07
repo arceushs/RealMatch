@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "RMNetworkResponse.h"
 
+typedef NS_ENUM(NSInteger,RMTaskType){
+    RMTaskTypeData,
+    RMTaskTypeUpload,
+    RMTaskTypeDownload,
+};
+
 typedef NS_ENUM(NSInteger,RMHttpMethod){
     RMHttpMethodGet,
     RMHttpMethodPost,
@@ -20,6 +26,7 @@ typedef NS_ENUM(NSInteger,RMHttpMethod){
 -(NSString*)requestHost;
 -(NSString*)requestPath;
 -(RMHttpMethod)method;
+-(RMTaskType)taskType;
 
 @optional
 -(RMNetworkResponse*)adoptResponse:(RMNetworkResponse*)response;

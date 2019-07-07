@@ -8,6 +8,7 @@
 
 #import "RMNetworkManager.h"
 #import "AFNetworking.h"
+#import "RMFileManager.h"
 
 @implementation RMNetworkManager
 {
@@ -30,27 +31,69 @@
     NSString* path = [api requestPath];
     NSString* url = [NSString stringWithFormat:@"%@%@",host,path];
     RMHttpMethod method = [api method];
+    RMTaskType taskType = [api taskType];
     
     _afmanager = [AFHTTPSessionManager manager];
+    _afmanager.responseSerializer = [AFJSONResponseSerializer serializer];
+    _afmanager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", nil];
     switch (method) {
+        
         case RMHttpMethodPost:{
-            [_afmanager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithResponseObject:responseObject];
-                if([api respondsToSelector:@selector(adoptResponse:)]){
-                    response = [api adoptResponse:response];
-                }
-                if(completion){
-                    completion(response,nil);
-                }
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                if(completion){
-                    completion(nil,error);
-                }
-            }];
+            if(taskType == RMTaskTypeUpload){
+                [_afmanager POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+                    NSString *filePath = [parameters objectForKey:@"filepath"];
+                    NSString *filename = [parameters objectForKey:@"filename"];
+                    NSString* mimetype = [parameters objectForKey:@"mimetype"];
+                    /* 本地文件上传 */
+                    NSString* fileString = filePath;
+                    NSData *fileData = [NSData dataWithContentsOfFile:fileString];
+                    
+                    /* 上传数据拼接 */
+                    if([filename length]>0 && [filePath length]>0 && [mimetype length]>0){
+                        [formData appendPartWithFileData:fileData name:@"file" fileName:filename mimeType:mimetype];
+                    }
+                } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithResponseObject:responseObject];
+                    if([api respondsToSelector:@selector(adoptResponse:)]){
+                        response = [api adoptResponse:response];
+                    }
+                    if(completion){
+                        completion(response,nil);
+                    }
+
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    if(completion){
+                        completion(nil,error);
+                    }
+                    NSLog(@"%@",error);
+                }];
+
+            }else if(taskType == RMTaskTypeData){
+                NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:parameters];
+                [params removeObjectForKey:@"filepath"];
+                [params removeObjectForKey:@"filename"];
+                [params removeObjectForKey:@"mimetype"];
+                [_afmanager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithResponseObject:responseObject];
+                    if([api respondsToSelector:@selector(adoptResponse:)]){
+                        response = [api adoptResponse:response];
+                    }
+                    if(completion){
+                        completion(response,nil);
+                    }
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    if(completion){
+                        completion(nil,error);
+                    }
+                }];
+
+            }
         }
             break;
             
-        default:
+        default:{
+            
+        }
             break;
     }
 }

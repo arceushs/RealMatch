@@ -7,16 +7,59 @@
 //
 
 #import "RMMessageViewController.h"
+#import "RMMessageTableViewCell.h"
+#import "Router.h"
+#import "realMatch_OC-Swift.h"
+#import "UIView+RealMatch.h"
 
-@interface RMMessageViewController ()
-
+@interface RMMessageViewController ()<UITableViewDelegate,UITableViewDataSource,RouterController>
+@property (weak, nonatomic) IBOutlet UITableView *messageTableView;
 @end
 
 @implementation RMMessageViewController
 
+- (BOOL)animation {
+    return true;
+}
+
+- (DisplayStyle)displayStyle {
+    return DisplayStylePush;
+}
+
+- (instancetype)initWithRouterParams:(NSDictionary *)params {
+    if(self = [super init]){
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.messageTableView.delegate = self;
+    self.messageTableView.dataSource = self;
+    self.messageTableView.rowHeight = 97;
+    
+    [self.messageTableView registerNib:[UINib nibWithNibName:@"RMMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"RMMessageTableViewCell"];
+    RMMessageHeader* header = [[RMMessageHeader alloc]initWithFrame:CGRectMake(0, 0, self.messageTableView.width, 160)];
+    self.messageTableView.tableHeaderView = header;
     // Do any additional setup after loading the view from its nib.
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 5;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    RMMessageTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMMessageTableViewCell"];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [[Router shared]routerTo:@"RMMessageDetailViewController" parameter:nil];
 }
 
 /*
@@ -28,5 +71,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
 
 @end

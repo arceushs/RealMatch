@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@interface RouterAdopter : NSObject
+
+@property (nonatomic,strong) NSString* vcName;
+@property (nonatomic,strong) NSDictionary* params;
+@property (nonatomic,strong) void (^routerAdopterCallback)(NSDictionary* dict);
+
+@end
+
+
 typedef NS_ENUM(NSInteger,DisplayStyle){
     DisplayStylePush,
     DisplayStylePresent,
@@ -17,8 +26,13 @@ typedef NS_ENUM(NSInteger,DisplayStyle){
 @protocol RouterController <NSObject>
 
 @required
+
 -(instancetype)initWithRouterParams:(NSDictionary*)params;
 -(DisplayStyle)displayStyle;
+-(BOOL)animation;
+
+@optional
+-(instancetype)initWithCommand:(RouterAdopter*)adopter;
 
 @end
 
@@ -28,6 +42,7 @@ typedef NS_ENUM(NSInteger,DisplayStyle){
 +(void)setNavigationVC:(UINavigationController*)vc;
 +(instancetype)shared;
 
+-(void)routerTo:(RouterAdopter*)routerAdopter;
 -(void)routerTo:(NSString*)vcName parameter:(NSDictionary*)params;
 -(UIViewController *) topMostController ;
 @end

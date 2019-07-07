@@ -135,6 +135,10 @@
     [self.cardContainerView insertSubview:self.bottomCardView atIndex:0];
 }
 
+- (IBAction)routeToMessage:(id)sender {
+    [[Router shared] routerTo:@"RMMessageViewController" parameter:nil];
+}
+
 /*
 #pragma mark - Navigation
 
