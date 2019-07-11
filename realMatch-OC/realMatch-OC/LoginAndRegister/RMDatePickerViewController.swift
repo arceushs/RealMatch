@@ -9,6 +9,10 @@
 import UIKit
 
 class RMDatePickerViewController: UIViewController,RouterController {
+    required init!(command adopter: RouterAdopter!) {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     required init!(routerParams params: [AnyHashable : Any]!) {
         super.init(nibName: nil, bundle: nil)
     }
@@ -48,6 +52,7 @@ class RMDatePickerViewController: UIViewController,RouterController {
         if self.birthdayTextField.text?.count ?? 0 > 0{
             Router.shared()?.router(to: "RMGenderViewController", parameter: nil)
             self.hintView.isHidden = true
+            RMUserCenter.shared.registerBirth = self.birthdayTextField.text
             self.lineView.backgroundColor = UIColor(string: "323640")
         }else{
             self.hintView.isHidden = false

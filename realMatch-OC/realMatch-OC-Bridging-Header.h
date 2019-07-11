@@ -6,3 +6,5 @@
 #import "RMNetworkManager.h"
 #import "RMPostFileAPI.h"
 #import "RMFileManager.h"
+#import "RMRegisterAPI.h"
+#import "RMLoginAPI.h"

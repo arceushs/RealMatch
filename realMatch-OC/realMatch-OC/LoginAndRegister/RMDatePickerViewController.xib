@@ -76,7 +76,7 @@
                         <action selector="continueClick:" destination="-1" eventType="touchUpInside" id="47G-FX-u0P"/>
                     </connections>
                 </button>
-                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="acW-46-h4H">
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="acW-46-h4H">
                     <rect key="frame" x="40" y="247" width="295" height="174"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="174" id="82S-m9-u75"/>

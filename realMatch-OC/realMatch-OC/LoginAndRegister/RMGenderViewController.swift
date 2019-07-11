@@ -9,6 +9,10 @@
 import UIKit
 
 class RMGenderViewController: UIViewController,RouterController {
+    required init!(command adopter: RouterAdopter!) {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     required init!(routerParams params: [AnyHashable : Any]!) {
         super.init(nibName: nil, bundle: nil)
     }
@@ -42,6 +46,7 @@ class RMGenderViewController: UIViewController,RouterController {
   
     @IBOutlet weak var manButton: UIButton!
     @IBOutlet weak var womenButton: UIButton!
+    var buttonSelected:Int32 = 1
     
     
     
@@ -57,14 +62,18 @@ class RMGenderViewController: UIViewController,RouterController {
         self.womenButton.layer.borderColor = UIColor(string: "FA008E").cgColor
         self.manButton.layer.borderColor = UIColor(string: "C9CCD6").cgColor
         self.womenButton.setTitleColor(UIColor(string: "FA008E"), for: .normal)
-        self.manButton.setTitleColor(UIColor(string: "C9CCD6"), for: .normal)
+        self.manButton.setTitleColor(UIColor(string: "323640"), for: .normal)
+        self.buttonSelected = 2
+        RMUserCenter.shared.registerSex = self.buttonSelected
     }
     
     @IBAction func manButtonClicked(_ sender: Any) {
         self.womenButton.layer.borderColor = UIColor(string: "C9CCD6").cgColor
         self.manButton.layer.borderColor = UIColor(string: "FA008E").cgColor
         self.manButton.setTitleColor(UIColor(string: "FA008E"), for: .normal)
-        self.womenButton.setTitleColor(UIColor(string: "C9CCD6"), for: .normal)
+        self.womenButton.setTitleColor(UIColor(string: "323640"), for: .normal)
+        self.buttonSelected = 1
+        RMUserCenter.shared.registerSex = self.buttonSelected
     }
     /*
     // MARK: - Navigation

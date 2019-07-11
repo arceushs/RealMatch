@@ -40,6 +40,10 @@
 	return RMHttpMethodGet;
 }
 
+- (RMTaskType)taskType {
+    return RMTaskTypeData;
+}
+
 -(RMNetworkResponse *)adoptResponse:(RMNetworkResponse *)response{
     RMFetchDetailAPIData* data = [[RMFetchDetailAPIData alloc]init];
     
@@ -63,5 +67,8 @@
     
     return [[RMNetworkResponse alloc]initWithResponseObject:data];
 }
+
+
+
 
 @end

@@ -9,6 +9,10 @@
 import UIKit
 
 @objc class RMNameViewController: UIViewController,RouterController {
+    required init!(command adopter: RouterAdopter!) {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     required init!(routerParams params: [AnyHashable : Any]!) {
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,6 +36,7 @@ import UIKit
         if self.nameTextField.text?.count ?? 0 > 0 {
             self.hintView.isHidden = true
             self.lineView.backgroundColor = UIColor(string: "323640", alpha: 1)
+            RMUserCenter.shared.registerName = self.nameTextField.text
             Router.shared()?.router(to: "RMDatePickerViewController", parameter: nil)
         }else{
             self.hintView.isHidden = false

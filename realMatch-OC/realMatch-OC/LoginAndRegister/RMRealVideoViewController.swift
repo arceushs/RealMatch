@@ -9,6 +9,10 @@
 import UIKit
 
 class RMRealVideoViewController: UIViewController,RouterController{
+    required init!(command adopter: RouterAdopter!) {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     required init!(routerParams params: [AnyHashable : Any]!) {
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,11 +38,11 @@ class RMRealVideoViewController: UIViewController,RouterController{
         self.shootView.layer.shadowRadius = 4
         self.shootView.layer.shadowOpacity = 1
         
-        
         let tapGest = UITapGestureRecognizer(target: self, action:#selector(shoot))
         self.shootView.addGestureRecognizer(tapGest)
         self.shootImageView.isHidden = true
-        self.doneButton.isUserInteractionEnabled = false
+        self.doneButton.isEnabled = false
+
         
         // Do any additional setup after loading the view.
     }
@@ -51,7 +55,9 @@ class RMRealVideoViewController: UIViewController,RouterController{
             dict in
             let image = dict?["previewImage"]
             self.shootImageView.isHidden = false
-            self.shootImageView.image = image ?? nil
+            self.shootImageView.image = image as? UIImage
+            self.doneButton.isEnabled = true
+
         }
         Router.shared()?.router(to: adopter)
     }
@@ -60,15 +66,33 @@ class RMRealVideoViewController: UIViewController,RouterController{
     @IBOutlet weak var shootView: UIView!
     let fileName = "myfirstVideo"
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var hintLabel: UILabel!
     
     @IBAction func continueClicked(_ sender: Any) {
-//         let filePath = "\(RMFileManager.pathForSaveRecord())/\(fileName).mp4"
-//         let postFileAPI = RMPostFileAPI(filePath: filePath, filename: fileName, userId: "dddd", mimeType: "video/mp4")
-//        RMNetworkManager.share()?.request(postFileAPI, completion: { (response, error) in
-//            let data = response?.responseObject;
-//
-//            if(data)
-//        })
+        if self.doneButton.currentTitle == "Done"{
+            let registerAPI = RMRegisterAPI(name: RMUserCenter.shared.registerName ?? "", birth: RMUserCenter.shared.registerBirth ?? "", sex: RMUserCenter.shared.registerSex ?? 1,userId: RMUserCenter.shared.accountKitID ?? "")
+            RMNetworkManager.share()?.request(registerAPI, completion: { (response, error) in
+                Router.shared()?.router(to: "RMHomePageViewController", parameter: nil)
+            })
+            return
+        }
+        
+        self.doneButton.isEnabled = false
+ 
+        let filePath = "\(RMFileManager.pathForSaveRecord())/\(fileName).mp4"
+        let postFileAPI = RMPostFileAPI(filePath: filePath, filename: fileName, userId: "dddd", mimeType: "video/mp4")
+        RMNetworkManager.share()?.request(postFileAPI, completion: { (response, error) in
+            self.doneButton.isEnabled = true
+ 
+            let data = response?.responseObject as? RMPostFileAPIData
+            if(data?.result ?? false){
+                self.hintLabel.text = "Upload Success"
+                self.doneButton.setTitle("Done", for: .normal)
+            }else{
+                self.hintLabel.text = "Upload failure,try again!"
+            }
+
+        })
     }
     /*
     // MARK: - Navigation
@@ -79,5 +103,8 @@ class RMRealVideoViewController: UIViewController,RouterController{
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }

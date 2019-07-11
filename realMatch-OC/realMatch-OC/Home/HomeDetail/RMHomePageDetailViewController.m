@@ -32,6 +32,11 @@
     return self;
 }
 
+- (BOOL)animation {
+    return YES;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -51,7 +56,7 @@
 #pragma mark - UITableViewDelegate and datasource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
-//    return [self.videoArr count];
+    //    return [self.videoArr count];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -61,28 +66,26 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return ([UIScreen mainScreen].bounds.size.width - 2*8)*466.0/359.0;
 }
-    
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RMHomePageDetailTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMHomePageDetailTableViewCell" forIndexPath:indexPath];
     NSString* path = [[NSBundle mainBundle]pathForResource:@"aiqinggongyu.mp4" ofType:@""];
     cell.videoImageView.image = [RMFileManager getVideoPreViewImage:[NSURL fileURLWithPath:path]];
     return cell;
 }
-    
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [[Router shared] routerTo:@"RMVideoPlayViewController" parameter:nil];
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 @end

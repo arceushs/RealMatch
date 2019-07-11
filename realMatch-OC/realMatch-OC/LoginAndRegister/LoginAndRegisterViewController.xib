@@ -35,31 +35,23 @@
                         <constraint firstAttribute="height" constant="29" id="MvT-Mj-T4q"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaV-2A-NSW">
-                    <rect key="frame" x="40" y="462" width="295" height="48"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="295" id="21Q-cr-1GL"/>
-                        <constraint firstAttribute="height" constant="48" id="oqy-XH-asS"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                    <state key="normal" title="CREATE A NEW ACCOUNT">
-                        <color key="titleColor" red="0.98039215686274506" green="0.0" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="createCount:" destination="-1" eventType="touchUpInside" id="T5b-D4-fVz"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqV-ZF-l4o">
                     <rect key="frame" x="40" y="526" width="295" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="295" id="m5c-PC-LZK"/>
                         <constraint firstAttribute="height" constant="48" id="uxA-wN-VRn"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                    <state key="normal" title="Login">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="LOGIN">
+                        <color key="titleColor" red="0.98039215686274506" green="0.0" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="24"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="routeToAccountKitLoginVC:" destination="-1" eventType="touchUpInside" id="XsX-oR-LBi"/>
                     </connections>
@@ -82,14 +74,12 @@
                 <constraint firstItem="aqV-ZF-l4o" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Obl-FG-kE6"/>
                 <constraint firstItem="9m0-2D-hNG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Oyc-nO-xic"/>
                 <constraint firstItem="hP4-aX-t44" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="209" id="Tr6-1f-6Nc"/>
-                <constraint firstItem="xaV-2A-NSW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VcZ-Do-tDc"/>
                 <constraint firstAttribute="trailing" secondItem="peO-Kh-B2p" secondAttribute="trailing" id="WCw-RI-j23"/>
                 <constraint firstItem="9m0-2D-hNG" firstAttribute="top" secondItem="aqV-ZF-l4o" secondAttribute="bottom" constant="32" id="XZv-ed-WhS"/>
                 <constraint firstItem="hP4-aX-t44" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bmW-za-cDN"/>
                 <constraint firstItem="peO-Kh-B2p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eWk-Cf-WIe"/>
                 <constraint firstItem="M4Y-br-mPs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mf0-8m-CyV"/>
                 <constraint firstAttribute="bottomMargin" secondItem="9m0-2D-hNG" secondAttribute="bottom" constant="32" id="p6z-az-vWK"/>
-                <constraint firstItem="aqV-ZF-l4o" firstAttribute="top" secondItem="xaV-2A-NSW" secondAttribute="bottom" constant="16" id="xbi-CV-zcq"/>
             </constraints>
         </view>
     </objects>

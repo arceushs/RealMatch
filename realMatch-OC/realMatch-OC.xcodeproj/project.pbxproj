@@ -18,6 +18,8 @@
 		1CFCE12422BF339A0025BC0B /* RMNetworkAPIHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */; };
 		1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */; };
 		D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D607117622A6715400412F72 /* UIView+RealMatch.m */; };
+		D628A95422D2F7B1001D89C3 /* RMRegisterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D628A95322D2F7B1001D89C3 /* RMRegisterAPI.m */; };
+		D628A95722D313EB001D89C3 /* RMLoginAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D628A95622D313EB001D89C3 /* RMLoginAPI.m */; };
 		D6369D9522CF1A1F00A1B473 /* RMMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6369D9322CF1A1F00A1B473 /* RMMessageDetailViewController.m */; };
 		D6369D9622CF1A1F00A1B473 /* RMMessageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6369D9422CF1A1F00A1B473 /* RMMessageDetailViewController.xib */; };
 		D6369D9A22CF1A3E00A1B473 /* RMMessageFromMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6369D9822CF1A3E00A1B473 /* RMMessageFromMeTableViewCell.m */; };
@@ -133,6 +135,10 @@
 		D0116FF275BEF202714594EA /* Pods-realMatch-OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.debug.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.debug.xcconfig"; sourceTree = "<group>"; };
 		D607117522A6715400412F72 /* UIView+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+RealMatch.h"; sourceTree = "<group>"; };
 		D607117622A6715400412F72 /* UIView+RealMatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+RealMatch.m"; sourceTree = "<group>"; };
+		D628A95222D2F7B1001D89C3 /* RMRegisterAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMRegisterAPI.h; sourceTree = "<group>"; };
+		D628A95322D2F7B1001D89C3 /* RMRegisterAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMRegisterAPI.m; sourceTree = "<group>"; };
+		D628A95522D313EB001D89C3 /* RMLoginAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMLoginAPI.h; sourceTree = "<group>"; };
+		D628A95622D313EB001D89C3 /* RMLoginAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMLoginAPI.m; sourceTree = "<group>"; };
 		D6369D9222CF1A1F00A1B473 /* RMMessageDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMessageDetailViewController.h; sourceTree = "<group>"; };
 		D6369D9322CF1A1F00A1B473 /* RMMessageDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMMessageDetailViewController.m; sourceTree = "<group>"; };
 		D6369D9422CF1A1F00A1B473 /* RMMessageDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMMessageDetailViewController.xib; sourceTree = "<group>"; };
@@ -514,6 +520,10 @@
 				D680C87F22CCDECE00D9ED96 /* RMRealVideoViewController.xib */,
 				D680C88722CE295A00D9ED96 /* RMPostFileAPI.h */,
 				D680C88822CE295A00D9ED96 /* RMPostFileAPI.m */,
+				D628A95222D2F7B1001D89C3 /* RMRegisterAPI.h */,
+				D628A95322D2F7B1001D89C3 /* RMRegisterAPI.m */,
+				D628A95522D313EB001D89C3 /* RMLoginAPI.h */,
+				D628A95622D313EB001D89C3 /* RMLoginAPI.m */,
 			);
 			path = LoginAndRegister;
 			sourceTree = "<group>";
@@ -800,6 +810,7 @@
 				D6696FDC22B9EBF400942DFB /* RMHomePageDetailTableViewCell.m in Sources */,
 				D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */,
 				D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */,
+				D628A95422D2F7B1001D89C3 /* RMRegisterAPI.m in Sources */,
 				D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */,
 				D6BF467522969DEB00C82D98 /* LoginAndRegisterViewController.m in Sources */,
 				D652276322BB8AEE00C273E1 /* RMVideoPlayViewController.m in Sources */,
@@ -810,6 +821,7 @@
 				D6BF467F2296CDE500C82D98 /* Router+AccountKit.m in Sources */,
 				D680C87822CCD8A600D9ED96 /* RMDatePickerViewController.swift in Sources */,
 				D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */,
+				D628A95722D313EB001D89C3 /* RMLoginAPI.m in Sources */,
 				D659140322B76D6C0098F458 /* RMFetchDetailAPI.m in Sources */,
 				D680C86D22CB796800D9ED96 /* RMEmailViewController.swift in Sources */,
 				D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */,

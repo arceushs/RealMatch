@@ -65,6 +65,11 @@
         [RMUserCenter shared].accountKitEmailAddress = account.emailAddress;
         [RMUserCenter shared].accountKitPhoneNumber = account.phoneNumber.phoneNumber;
         [RMUserCenter shared].accountKitCountryCode = account.phoneNumber.countryCode;
+        
+        RMLoginAPI* loginAPI = [[RMLoginAPI alloc]initWithPhone:account.phoneNumber.phoneNumber phoneCountryCode:account.phoneNumber.countryCode email:account.emailAddress accountKeyId:account.accountID];
+        [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *responseObject, NSError *error) {
+            [[Router shared] routerTo:@"RMEmailViewController" parameter:nil];
+        }];
     }];
 }
 
@@ -81,9 +86,6 @@
     
 }
 
-- (IBAction)createCount:(id)sender {
-    [[Router shared] routerTo:@"RMEmailViewController" parameter:nil];
-}
 /*
  #pragma mark - Navigation
  

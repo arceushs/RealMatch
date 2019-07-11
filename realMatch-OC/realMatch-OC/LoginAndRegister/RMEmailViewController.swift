@@ -9,6 +9,10 @@
 import UIKit
 
 @objc class RMEmailViewController: UIViewController,RouterController {
+    required init!(command adopter: RouterAdopter!) {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
     func animation() -> Bool {
         return true
     }
@@ -51,6 +55,7 @@ import UIKit
         if self.emailLabel.text?.contains("@") ?? false{
             self.hintLabel.isHidden = true
             self.lineView.backgroundColor = UIColor(string: "323640", alpha: 1)
+            RMUserCenter.shared.registerEmail = self.emailLabel.text;
             Router.shared()?.router(to: "RMNameViewController", parameter: nil)
         }else{
             self.hintLabel.isHidden = false
