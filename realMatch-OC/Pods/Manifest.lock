@@ -16,6 +16,9 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - AHTimer (0.0.3)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - GPUImage (0.1.7)
   - GPUImageBeautifyFilter (1.0.0):
     - GPUImage
@@ -35,6 +38,7 @@ DEPENDENCIES:
   - AccountKit
   - AFNetworking (~> 3.0)
   - AHTimer (~> 0.0.3)
+  - FMDB
   - GPUImage
   - GPUImageBeautifyFilter
   - Realm
@@ -49,6 +53,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AccountKit
     - AFNetworking
+    - FMDB
     - GPUImage
     - GPUImageBeautifyFilter
     - Realm
@@ -62,6 +67,7 @@ SPEC CHECKSUMS:
   AccountKit: 870ccaf5d33facda9408783e28fbe68c5211e069
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AHTimer: df455262e80cc80ab266b46b082e5ff88f3c60ad
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GPUImageBeautifyFilter: 6eb451b50c395109172ae1f9e69c4241d0126c09
   Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
@@ -71,6 +77,6 @@ SPEC CHECKSUMS:
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: fbd24561c9a97c06a572406b03b5230656d0f327
+PODFILE CHECKSUM: 28de1828a63ae1f5241adc55e7f9f0798088c7be
 
 COCOAPODS: 1.6.2

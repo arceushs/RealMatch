@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong,readonly) NSError* error;
 
 -(instancetype)initWithResponseObject:(id)object;
+-(instancetype)initWithError:(NSError*)error;
 
 @end
 

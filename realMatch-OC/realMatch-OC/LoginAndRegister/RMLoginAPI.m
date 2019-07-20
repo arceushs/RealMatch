@@ -64,6 +64,11 @@
     
     NSDictionary * responseObject = response.responseObject;
    
+    NSDictionary* dataDict = responseObject[@"data"];
+    if([dataDict isKindOfClass:[NSDictionary class]]){
+        data.newUser = [dataDict[@"newUser"] boolValue];
+        data.userId = [NSString stringWithFormat:@"%li",[dataDict[@"userId"] longValue]];
+    }
    	//parse response here
 
     return [[RMNetworkResponse alloc]initWithResponseObject:data];

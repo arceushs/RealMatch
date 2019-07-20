@@ -61,6 +61,10 @@
     
     NSDictionary * responseObject = response.responseObject;
    
+    int code = [[responseObject objectForKey:@"code"] intValue];
+    if(code == 200){
+        data.result = YES;
+    }
    	//parse response here
 
     return [[RMNetworkResponse alloc]initWithResponseObject:data];

@@ -62,9 +62,7 @@
     
     NSDictionary * responseObject = response.responseObject;
    
-    NSDictionary* videoUrlDict = responseObject[@"videoUrl"];
-    NSDictionary* urlDict = videoUrlDict[@"s3Url"];
-    int code = [[urlDict objectForKey:@"code"] intValue];
+    int code = [[responseObject objectForKey:@"code"] intValue];
     if(code == 200){
         data.result = YES;
     }

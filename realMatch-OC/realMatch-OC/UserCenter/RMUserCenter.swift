@@ -20,6 +20,8 @@ class RMUserCenter: NSObject {
     var registerEmail:String?
     var registerBirth:String?
     var registerSex:Int32?
+    
+    var userId:String?
 
     
     @objc static let shared:RMUserCenter = RMUserCenter()

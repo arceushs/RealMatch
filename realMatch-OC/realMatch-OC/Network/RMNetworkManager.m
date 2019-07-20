@@ -58,12 +58,13 @@
                         response = [api adoptResponse:response];
                     }
                     if(completion){
-                        completion(response,nil);
+                        completion(response);
                     }
 
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithError:error];
                     if(completion){
-                        completion(nil,error);
+                        completion(response);
                     }
                     NSLog(@"%@",error);
                 }];
@@ -74,17 +75,20 @@
                 [params removeObjectForKey:@"filename"];
                 [params removeObjectForKey:@"mimetype"];
                 [_afmanager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    
                     RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithResponseObject:responseObject];
                     if([api respondsToSelector:@selector(adoptResponse:)]){
                         response = [api adoptResponse:response];
                     }
                     if(completion){
-                        completion(response,nil);
+                        completion(response);
                     }
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithError:error];
                     if(completion){
-                        completion(nil,error);
+                        completion(response);
                     }
+                    
                 }];
 
             }

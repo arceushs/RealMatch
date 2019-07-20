@@ -12,7 +12,7 @@
 #import "PurchaseManager.h"
 #import "RMFileManager.h"
 #import "AVFoundation/AVFoundation.h"
-#import "realMatch-OC-Bridging-Header.h"
+#import "realMatch_OC-Swift.h"
 @interface ViewController ()
 
 @end
@@ -25,6 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    FMDatabase* db = [[RMDatabaseManager shareManager] db];
+  
+    if([db open]){
+        [[RMDatabaseManager shareManager] createTable];
+    }
+   
     
     
     [Router setNavigationVC:self.navigationController];

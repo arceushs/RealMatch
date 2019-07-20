@@ -70,9 +70,12 @@ class RMRealVideoViewController: UIViewController,RouterController{
     
     @IBAction func continueClicked(_ sender: Any) {
         if self.doneButton.currentTitle == "Done"{
-            let registerAPI = RMRegisterAPI(name: RMUserCenter.shared.registerName ?? "", birth: RMUserCenter.shared.registerBirth ?? "", sex: RMUserCenter.shared.registerSex ?? 1,userId: RMUserCenter.shared.accountKitID ?? "")
-            RMNetworkManager.share()?.request(registerAPI, completion: { (response, error) in
-                Router.shared()?.router(to: "RMHomePageViewController", parameter: nil)
+            let registerAPI = RMRegisterAPI(name: RMUserCenter.shared.registerName ?? "", birth: RMUserCenter.shared.registerBirth ?? "", sex: RMUserCenter.shared.registerSex ?? 1,userId: RMUserCenter.shared.userId ?? "")
+            RMNetworkManager.share()?.request(registerAPI, completion: { (response) in
+                let data:RMRegisterAPIData? = response?.responseObject as? RMRegisterAPIData
+                if data?.result ?? false{
+                    Router.shared()?.router(to: "RMHomePageViewController", parameter: nil)
+                }
             })
             return
         }
@@ -80,10 +83,9 @@ class RMRealVideoViewController: UIViewController,RouterController{
         self.doneButton.isEnabled = false
  
         let filePath = "\(RMFileManager.pathForSaveRecord())/\(fileName).mp4"
-        let postFileAPI = RMPostFileAPI(filePath: filePath, filename: fileName, userId: "dddd", mimeType: "video/mp4")
-        RMNetworkManager.share()?.request(postFileAPI, completion: { (response, error) in
+        let postFileAPI = RMPostFileAPI(filePath: filePath, filename: fileName, userId: RMUserCenter.shared.userId ?? "", mimeType: "video/mp4")
+        RMNetworkManager.share()?.request(postFileAPI, completion: { (response) in
             self.doneButton.isEnabled = true
- 
             let data = response?.responseObject as? RMPostFileAPIData
             if(data?.result ?? false){
                 self.hintLabel.text = "Upload Success"

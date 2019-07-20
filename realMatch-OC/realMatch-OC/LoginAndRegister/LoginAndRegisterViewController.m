@@ -67,8 +67,19 @@
         [RMUserCenter shared].accountKitCountryCode = account.phoneNumber.countryCode;
         
         RMLoginAPI* loginAPI = [[RMLoginAPI alloc]initWithPhone:account.phoneNumber.phoneNumber phoneCountryCode:account.phoneNumber.countryCode email:account.emailAddress accountKeyId:account.accountID];
-        [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *responseObject, NSError *error) {
-            [[Router shared] routerTo:@"RMEmailViewController" parameter:nil];
+        [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *response) {
+            
+            NSArray* array = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@"https://www.4match.top"]];
+            if(response.error){
+                return ;
+            }
+            RMLoginAPIData* data = response.responseObject;
+            [RMUserCenter shared].userId = data.userId;
+            if(!data.newUser){
+                [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
+            }else{
+                [[Router shared] routerTo:@"RMEmailViewController" parameter:nil];
+            }
         }];
     }];
 }

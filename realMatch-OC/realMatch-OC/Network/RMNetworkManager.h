@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger,RMHttpMethod){
 
 @end
 
-typedef void(^ReponseBlock)(RMNetworkResponse* responseObject,NSError* error);
+typedef void(^ReponseBlock)(RMNetworkResponse* response);
 
 @interface RMNetworkManager : NSObject
 

@@ -8,3 +8,4 @@
 #import "RMFileManager.h"
 #import "RMRegisterAPI.h"
 #import "RMLoginAPI.h"
+#import "FMDB.h"

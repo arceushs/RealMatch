@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @interface RMRegisterAPIData : NSObject
-
+@property (nonatomic,assign) BOOL result;
 @end
 
 @interface RMRegisterAPI : NSObject<RMNetworkAPI>

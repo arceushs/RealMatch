@@ -45,7 +45,7 @@
     [self.videoListTableView registerNib:[UINib nibWithNibName:@"RMHomePageDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"RMHomePageDetailTableViewCell"];
     
     RMFetchDetailAPI * api = [[RMFetchDetailAPI alloc]initWithUserId:@""];
-    [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse <RMFetchDetailAPIData* > *response, NSError *error) {
+    [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse <RMFetchDetailAPIData* > *response) {
         RMFetchDetailAPIData* result = response.responseObject;
         self.videoArr = result.videoArr;
         [self.videoListTableView reloadData];

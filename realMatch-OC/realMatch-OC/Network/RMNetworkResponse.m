@@ -11,6 +11,7 @@
 @interface RMNetworkResponse()
 
 @property (nonatomic,strong,readwrite) id responseObject;
+@property (nonatomic,strong,readwrite) NSError* error;
 
 @end
 
@@ -18,6 +19,13 @@
 -(instancetype)initWithResponseObject:(id)object{
     if(self = [super init]){
         self.responseObject = object;
+    }
+    return self;
+}
+
+-(instancetype)initWithError:(NSError *)error{
+    if(self = [super init]){
+        self.error = error;
     }
     return self;
 }
