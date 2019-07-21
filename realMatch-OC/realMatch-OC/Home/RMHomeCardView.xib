@@ -64,6 +64,7 @@
             <connections>
                 <outlet property="blackView" destination="nUH-oD-07Y" id="SGv-Te-ANt"/>
                 <outlet property="bottomImageView" destination="O9z-9G-CLz" id="cEw-k8-yqX"/>
+                <outlet property="detailImageView" destination="LlF-bN-rN1" id="8Ch-Cr-5OD"/>
             </connections>
             <point key="canvasLocation" x="56.521739130434788" y="45.535714285714285"/>
         </view>

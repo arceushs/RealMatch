@@ -10,6 +10,10 @@
 		1C0EAEA422D02F5E00036DD5 /* RMMessageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0EAEA322D02F5E00036DD5 /* RMMessageHeader.swift */; };
 		1C0EAEA722D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0EAEA522D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift */; };
 		1C0EAEA822D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0EAEA622D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.xib */; };
+		1C381DED22E2D3160060DE69 /* RMFetchHomeVideoAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C381DEC22E2D3160060DE69 /* RMFetchHomeVideoAPI.m */; };
+		1C381DF122E324B60060DE69 /* RMHomeCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C381DEF22E324B60060DE69 /* RMHomeCardViewController.m */; };
+		1C381DF222E324B60060DE69 /* RMHomeCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C381DF022E324B60060DE69 /* RMHomeCardViewController.xib */; };
+		1C381DF522E35A420060DE69 /* RMLikeFlagAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C381DF422E35A420060DE69 /* RMLikeFlagAPI.m */; };
 		1C49CAF022DABC48007333A6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C49CAEF22DABC48007333A6 /* libsqlite3.0.tbd */; };
 		1C49CAF322DABCE2007333A6 /* RMDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */; };
 		1CFCE11722BF1B380025BC0B /* RMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE11522BF1B380025BC0B /* RMMessageViewController.m */; };
@@ -123,6 +127,13 @@
 		1C0EAEA322D02F5E00036DD5 /* RMMessageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMessageHeader.swift; sourceTree = "<group>"; };
 		1C0EAEA522D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMessageHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		1C0EAEA622D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMMessageHeaderCollectionViewCell.xib; sourceTree = "<group>"; };
+		1C381DEB22E2D3160060DE69 /* RMFetchHomeVideoAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMFetchHomeVideoAPI.h; sourceTree = "<group>"; };
+		1C381DEC22E2D3160060DE69 /* RMFetchHomeVideoAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMFetchHomeVideoAPI.m; sourceTree = "<group>"; };
+		1C381DEE22E324B60060DE69 /* RMHomeCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMHomeCardViewController.h; sourceTree = "<group>"; };
+		1C381DEF22E324B60060DE69 /* RMHomeCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMHomeCardViewController.m; sourceTree = "<group>"; };
+		1C381DF022E324B60060DE69 /* RMHomeCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomeCardViewController.xib; sourceTree = "<group>"; };
+		1C381DF322E35A420060DE69 /* RMLikeFlagAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMLikeFlagAPI.h; sourceTree = "<group>"; };
+		1C381DF422E35A420060DE69 /* RMLikeFlagAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMLikeFlagAPI.m; sourceTree = "<group>"; };
 		1C49CAEF22DABC48007333A6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDatabaseManager.swift; sourceTree = "<group>"; };
 		1CFCE11422BF1B380025BC0B /* RMMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMessageViewController.h; sourceTree = "<group>"; };
@@ -370,9 +381,16 @@
 				D6BF5CDE22A910220036EA75 /* RMHomePageViewController.h */,
 				D6BF5CDF22A910220036EA75 /* RMHomePageViewController.m */,
 				D6BF5CE022A910220036EA75 /* RMHomePageViewController.xib */,
+				1C381DEE22E324B60060DE69 /* RMHomeCardViewController.h */,
+				1C381DEF22E324B60060DE69 /* RMHomeCardViewController.m */,
+				1C381DF022E324B60060DE69 /* RMHomeCardViewController.xib */,
 				D6E0771122AE31B900CC44BA /* RMHomeCardView.h */,
 				D6E0771222AE31B900CC44BA /* RMHomeCardView.m */,
 				D6E0771422AE31CC00CC44BA /* RMHomeCardView.xib */,
+				1C381DEB22E2D3160060DE69 /* RMFetchHomeVideoAPI.h */,
+				1C381DEC22E2D3160060DE69 /* RMFetchHomeVideoAPI.m */,
+				1C381DF322E35A420060DE69 /* RMLikeFlagAPI.h */,
+				1C381DF422E35A420060DE69 /* RMLikeFlagAPI.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -710,6 +728,7 @@
 				D687DA602294EDD200A11488 /* Assets.xcassets in Resources */,
 				D661306622956697008DA4D8 /* Podfile in Resources */,
 				D6CC153F22B387D500D80A02 /* RMHomePageDetailViewController.xib in Resources */,
+				1C381DF222E324B60060DE69 /* RMHomeCardViewController.xib in Resources */,
 				D6BF5CE222A910220036EA75 /* RMHomePageViewController.xib in Resources */,
 				D680C87922CCD8A600D9ED96 /* RMDatePickerViewController.xib in Resources */,
 				D6BF467622969DEB00C82D98 /* LoginAndRegisterViewController.xib in Resources */,
@@ -833,11 +852,14 @@
 				D659140922B793E50098F458 /* RMFetchDetailModel.m in Sources */,
 				D680C88922CE295A00D9ED96 /* RMPostFileAPI.m in Sources */,
 				D6696FE622BA0F6E00942DFB /* RMTableViewModel.m in Sources */,
+				1C381DF522E35A420060DE69 /* RMLikeFlagAPI.m in Sources */,
 				D6BF467F2296CDE500C82D98 /* Router+AccountKit.m in Sources */,
 				1C49CAF322DABCE2007333A6 /* RMDatabaseManager.swift in Sources */,
 				D680C87822CCD8A600D9ED96 /* RMDatePickerViewController.swift in Sources */,
 				D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */,
+				1C381DF122E324B60060DE69 /* RMHomeCardViewController.m in Sources */,
 				D628A95722D313EB001D89C3 /* RMLoginAPI.m in Sources */,
+				1C381DED22E2D3160060DE69 /* RMFetchHomeVideoAPI.m in Sources */,
 				D659140322B76D6C0098F458 /* RMFetchDetailAPI.m in Sources */,
 				D680C86D22CB796800D9ED96 /* RMEmailViewController.swift in Sources */,
 				D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */,

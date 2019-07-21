@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RMHomeCardView : UIView
 @property (weak, nonatomic) IBOutlet UIView *blackView;
 @property (weak, nonatomic) IBOutlet UIImageView *bottomImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *detailImageView;
+@property (strong, nonatomic) void(^routeToDetailBlock)(void);
 
 
 @property (nonatomic,strong) CAGradientLayer* blacklayer;

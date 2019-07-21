@@ -31,10 +31,13 @@
         [[RMDatabaseManager shareManager] createTable];
     }
    
-    
+    NSString* userId = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-userId"];
+    if(userId != nil){
+        [RMUserCenter shared].userId = userId;
+    }
     
     [Router setNavigationVC:self.navigationController];
-    [[Router shared] routerTo:@"LoginAndRegisterViewController" parameter:nil];
+    [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
 //    [[PurchaseManager shareManager] startPurchaseWithID:@"1_month_premium"];
   
 //    NSData * data = [NSData dataWithContentsOfFile:[[RMFileManager pathForSaveRecord] stringByAppendingString:@"movie.mp4"]];

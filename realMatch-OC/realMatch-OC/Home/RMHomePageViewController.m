@@ -12,23 +12,28 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIView+RealMatch.h"
 #import "RMHomeCardView.h"
+#import "RMFetchHomeVideoAPI.h"
+#import "realMatch_OC-Swift.h"
+#import "SDWebImage.h"
+#import "RMHomeCardViewController.h"
+#import "RMLikeFlagAPI.h"
 
 @interface RMHomePageViewController ()<RouterController,CAAnimationDelegate>
 
-@property (nonatomic,strong) CAGradientLayer* layer;
+@property (nonatomic,strong) RMHomeCardViewController* cardVC1;
+@property (nonatomic,strong) RMHomeCardViewController* cardVC2;
+@property (nonatomic,strong) RMHomeCardViewController* currentCardVC;
+@property (nonatomic,strong) RMHomeCardViewController* replaceCardVC;
+@property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
-@property (nonatomic,strong) RMHomeCardView* upperCardView;
-@property (nonatomic,strong) RMHomeCardView* bottomCardView;
-
-@property (nonatomic,strong) AVPlayer* upperVideoPlayer;
-@property (nonatomic,strong) AVPlayer* bottomVideoPlayer;
-
-@property (nonatomic,assign) BOOL result;
+@property (nonatomic,strong) NSString* currentMatchedUserId;
 
 @end
 
 @implementation RMHomePageViewController
-
+{
+}
 - (DisplayStyle)displayStyle {
     return DisplayStylePush;
 }
@@ -44,105 +49,188 @@
     return NO;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.upperCardView = [self produceCardViewPathinUpperVideoPlayer:@"aiqinggongyu.mp4" ];
-    self.bottomCardView = [self produceCardViewPathinBottomVideoPlayer:@"aiqinggongyu2.mp4" ];
-    [self.upperVideoPlayer play];
-    [self.bottomVideoPlayer play];
-    UISwipeGestureRecognizer *swipeGest = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pageCurl:)];
+    _cardVC1 = [[RMHomeCardViewController alloc]init];
+    _cardVC1.routeToDetailBlock = ^{
+        [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:nil];
+    };
+    [self addChildViewController:_cardVC1];
+    [self.cardContainerView insertSubview:_cardVC1.view atIndex:0];
+    self.currentCardVC = _cardVC1;
+
+    UISwipeGestureRecognizer *swipeGest = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pageGet:)];
     swipeGest.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.cardContainerView addGestureRecognizer:swipeGest];
-    
-    UITapGestureRecognizer * tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action: @selector(routerToDetail:)];
-    [self.cardContainerView addGestureRecognizer:tapGest];
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)transitionWithType:(NSString *) type WithSubtype:(NSString *) subtype ForView : (UIView *) view {
-    CATransition *animation = [CATransition animation];
-    animation.duration = 1.f;
-    animation.type = type;
-    if (subtype != nil) {
-        animation.subtype = subtype;
-    }
-    animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseInEaseOut];
-    //    animation.fillMode = kCAFillModeForwards;
-    animation.delegate = self;
-    [view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
-    [view.layer addAnimation:animation forKey:@""];
-    
-    
-}
-
--(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    if(_result==NO){
-        if(self.bottomVideoPlayer){
-            NSURL *streamURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"aiqinggongyu2.mp4" ofType:@""]];
-            AVPlayerItem *currentItem = [[AVPlayerItem alloc] initWithURL:streamURL];
-            [self.bottomVideoPlayer replaceCurrentItemWithPlayerItem:currentItem];
-            [self.bottomVideoPlayer play];
-        }
-        _result = YES;
-    }else{
-        if(self.upperVideoPlayer){
-            [self.upperVideoPlayer replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"aiqinggongyu.mp4" ofType:@""]]]];
-            [self.upperVideoPlayer play];
-        }
+-(void)pageGet:(UISwipeGestureRecognizer*)gest{
+    if(self.currentCardVC == _cardVC1){
+        _cardVC2 = [[RMHomeCardViewController alloc]init];
+        _cardVC2.routeToDetailBlock = ^{
+            [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:nil];
+        };
+        [self addChildViewController:_cardVC2];
+        [self.cardContainerView insertSubview:_cardVC2.view atIndex:0];
         
-        _result = NO;
+        _cardVC2.view.frame = CGRectMake(8 + self.view.width, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            weakSelf.cardVC2.view.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+            weakSelf.cardVC1.view.frame = CGRectMake(8 - self.view.width, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+        } completion:^(BOOL finished) {
+            [weakSelf.cardVC1.view removeFromSuperview];
+            [weakSelf.cardVC1 removeFromParentViewController];
+            weakSelf.currentCardVC = weakSelf.cardVC2;
+        }];
+
+    }else{
+        _cardVC1 = [[RMHomeCardViewController alloc]init];
+        _cardVC1.routeToDetailBlock = ^{
+            [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:nil];
+        };
+        [self addChildViewController:_cardVC1];
+        [self.cardContainerView addSubview:_cardVC1.view];
+        
+        _cardVC1.view.frame = CGRectMake(8 + self.view.width, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+        __weak typeof(self) weakSelf = self;
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            weakSelf.cardVC1.view.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+            weakSelf.cardVC2.view.frame = CGRectMake(8 - self.view.width, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+        } completion:^(BOOL finished) {
+            [weakSelf.cardVC2.view removeFromSuperview];
+            [weakSelf.cardVC2 removeFromParentViewController];
+            weakSelf.currentCardVC = weakSelf.cardVC1;
+        }];
+
     }
 }
 
--(void)routerToDetail:(id)sender{
-    [[Router shared]routerTo:@"RMHomePageDetailViewController" parameter:nil];
+- (IBAction)dislikeButtonClicked:(id)sender {
+    if([self.currentCardVC.matchedUserId length]<0)
+        return;
+    RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:NO];
+    [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
+        
+    }];
+}
+- (IBAction)likeButtonClicked:(id)sender {
+    if([self.currentCardVC.matchedUserId length]<0)
+        return;
+    RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:YES];
+    [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
+        
+    }];
 }
 
--(void)pageCurl:(UISwipeGestureRecognizer*)sender{
-    [self transitionWithType:@"pageCurl" WithSubtype:kCATransitionFromRight ForView:self.cardContainerView];
-    
-}
-
-- (IBAction)likeButton:(UIButton*)sender {
-    [self transitionWithType:@"pageCurl" WithSubtype:kCATransitionFromRight ForView:self.cardContainerView];
-}
-
--(RMHomeCardView*)produceCardViewPathinBottomVideoPlayer:(NSString*)filePath {
-    RMHomeCardView* homeCardView = [[RMHomeCardView alloc]initWithFrame:CGRectZero];
-    
-    filePath = [[NSBundle mainBundle] pathForResource:filePath ofType:@""];
-    self.bottomVideoPlayer = [AVPlayer playerWithURL:[NSURL fileURLWithPath:filePath]];
-    [homeCardView setVideoLayerWithPlayer:self.bottomVideoPlayer];
-    
-    return homeCardView;
-}
-
--(RMHomeCardView*)produceCardViewPathinUpperVideoPlayer:(NSString*)filePath {
-    RMHomeCardView* homeCardView = [[RMHomeCardView alloc]initWithFrame:CGRectZero];
-    filePath = [[NSBundle mainBundle] pathForResource:filePath ofType:@""];
-    self.upperVideoPlayer = [[AVPlayer alloc]init];
-    [self.upperVideoPlayer replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath:filePath]]];
-    [homeCardView setVideoLayerWithPlayer:self.upperVideoPlayer];
-    
-    homeCardView.layer.cornerRadius = 4;
-    homeCardView.layer.masksToBounds = YES;
-    
-    return homeCardView;
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 
 -(void)viewWillLayoutSubviews{
-    self.upperCardView.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
-    self.bottomCardView.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
-    
-    [self.cardContainerView insertSubview:self.upperCardView atIndex:1];
-    [self.cardContainerView insertSubview:self.bottomCardView atIndex:0];
+    [super viewWillLayoutSubviews];
+    _cardVC1.view.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
 }
 
-- (IBAction)routeToMessage:(id)sender {
-    [[Router shared] routerTo:@"RMMessageViewController" parameter:nil];
-}
+//- (void)transitionWithType:(NSString *) type WithSubtype:(NSString *) subtype ForView : (UIView *) view {
+//    CATransition *animation = [CATransition animation];
+//    animation.duration = 1.f;
+//    animation.type = type;
+//    if (subtype != nil) {
+//        animation.subtype = subtype;
+//    }
+//    animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseInEaseOut];
+//    //    animation.fillMode = kCAFillModeForwards;
+//    animation.delegate = self;
+//    [view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+//    [view.layer addAnimation:animation forKey:@""];
+//}
+//
+//-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+//    RMFetchHomeVideoAPI* fetchHomeVideoAPI = [[RMFetchHomeVideoAPI alloc]initWithUserId:[RMUserCenter shared].userId];
+//    __weak typeof(self) weakSelf = self;
+//
+//    if(_result==NO){
+//        self.upperUrl = @"";
+////        self.upperCardView.hidden = YES;
+//        [[RMNetworkManager shareManager] request:fetchHomeVideoAPI completion:^(RMNetworkResponse *response) {
+//            RMFetchHomeVideoAPIData* data = (RMFetchHomeVideoAPIData*)response.responseObject;
+//            weakSelf.upperUrl = data.video;
+//            self.upperCardView.hidden = NO;
+//        }];
+//        if(self.bottomVideoPlayer){
+//            NSURL *streamURL = [NSURL fileURLWithPath:self.bottomUrl];
+//            AVPlayerItem *currentItem = [[AVPlayerItem alloc] initWithURL:streamURL];
+//            [self.bottomVideoPlayer replaceCurrentItemWithPlayerItem:currentItem];
+//            [self.bottomVideoPlayer play];
+//        }
+//        _result = YES;
+//    }else{
+//        self.bottomUrl = @"";
+////        self.bottomCardView.hidden = YES;
+//        [[RMNetworkManager shareManager] request:fetchHomeVideoAPI completion:^(RMNetworkResponse *response) {
+//            RMFetchHomeVideoAPIData* data = (RMFetchHomeVideoAPIData*)response.responseObject;
+//            weakSelf.bottomUrl = data.video;
+////            self.bottomCardView.hidden = NO;
+//        }];
+//        if(self.upperVideoPlayer){
+//            [self.upperVideoPlayer replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath:self.upperUrl]]];
+//            [self.upperVideoPlayer play];
+//        }
+//
+//        _result = NO;
+//    }
+//}
+//
+//-(void)routerToDetail:(id)sender{
+//    [[Router shared]routerTo:@"RMHomePageDetailViewController" parameter:nil];
+//}
+//
+//-(void)pageCurl:(UISwipeGestureRecognizer*)sender{
+//    [self transitionWithType:@"pageCurl" WithSubtype:kCATransitionFromRight ForView:self.cardContainerView];
+//
+//}
+//
+//- (IBAction)likeButton:(UIButton*)sender {
+//    [self transitionWithType:@"pageCurl" WithSubtype:kCATransitionFromRight ForView:self.cardContainerView];
+//}
+//
+//-(RMHomeCardView*)produceCardViewPathinBottomVideoPlayer:(NSString*)filePath {
+//    RMHomeCardView* homeCardView = [[RMHomeCardView alloc]initWithFrame:CGRectZero];
+//
+//    NSString* finalfilePath = filePath;
+//    self.bottomVideoPlayer = [AVPlayer playerWithURL:[NSURL fileURLWithPath:finalfilePath]];
+//    [homeCardView setVideoLayerWithPlayer:self.bottomVideoPlayer];
+//
+//    return homeCardView;
+//}
+//
+//-(RMHomeCardView*)produceCardViewPathinUpperVideoPlayer:(NSString*)filePath {
+//    RMHomeCardView* homeCardView = [[RMHomeCardView alloc]initWithFrame:CGRectZero];
+//    NSString* finalfilePath = filePath;
+//    self.upperVideoPlayer = [[AVPlayer alloc]init];
+//    [self.upperVideoPlayer replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath:finalfilePath]]];
+//    [homeCardView setVideoLayerWithPlayer:self.upperVideoPlayer];
+//
+//    homeCardView.layer.cornerRadius = 4;
+//    homeCardView.layer.masksToBounds = YES;
+//
+//    return homeCardView;
+//}
+//
+//-(void)viewWillLayoutSubviews{
+//    self.upperCardView.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+//    self.bottomCardView.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+//
+//    [self.cardContainerView insertSubview:self.upperCardView atIndex:1];
+//    [self.cardContainerView insertSubview:self.bottomCardView atIndex:0];
+//}
+//
+//- (IBAction)routeToMessage:(id)sender {
+//    [[Router shared] routerTo:@"RMMessageViewController" parameter:nil];
+//}
 
 /*
  #pragma mark - Navigation

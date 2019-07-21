@@ -32,6 +32,16 @@
     self.blacklayer.masksToBounds = YES;
     _blacklayer.colors = @[(__bridge id)[UIColor colorWithString:@"000000" alpha:0].CGColor,(__bridge id)[UIColor colorWithString:@"000000" alpha:0.6].CGColor];
     [self.blackView.layer insertSublayer:_blacklayer atIndex:0];
+    
+    UITapGestureRecognizer * tapGest = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(routeToDetail:)];
+    self.detailImageView.userInteractionEnabled = YES;
+    [self.detailImageView addGestureRecognizer:tapGest];
+}
+
+-(void)routeToDetail:(UITapGestureRecognizer*)tap{
+    if(self.routeToDetailBlock){
+        self.routeToDetailBlock();
+    }
 }
 
 -(void)setVideoLayerWithPlayer:(AVPlayer*)player{

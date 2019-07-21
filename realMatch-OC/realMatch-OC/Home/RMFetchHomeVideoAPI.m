@@ -1,31 +1,25 @@
 //
-//  RMLoginAPI.m
+//  RMFetchHomeVideoAPI.m
 //  realMatch-OC
 //
-//  Created by yxlyxlyxl on 2019/7/8.
+//  Created by arceushs on 2019/7/20.
 //  Copyright © 2019 qingting. All rights reserved.
 //
 
-#import "RMLoginAPI.h"
+#import "RMFetchHomeVideoAPI.h"
 
-@implementation RMLoginAPIData
+@implementation RMFetchHomeVideoAPIData
 
 @end
 
-@implementation RMLoginAPI
+@implementation RMFetchHomeVideoAPI
 {
-    NSString* _phone;
-    NSString* _countryCode;
-    NSString* _email;
-    NSString* _accountId;
+    NSString* _userId;
 }
 
--(instancetype)initWithPhone:(NSString*)phone phoneCountryCode:(NSString*)countryCode email:(NSString*)email accountKeyId:(NSString*)userId{
+-(instancetype)initWithUserId:(NSString*)userId{
     if(self = [super init]){
-        _phone = (phone ? phone : @"");
-        _countryCode = countryCode ? countryCode : @"";
-        _email = email ? email : @"";
-        _accountId = userId ? userId: @"";
+        _userId = userId;
     }
     return self;
 }
@@ -35,20 +29,17 @@
 }
 
 -(NSString*)requestPath{
-	return @"/api/login";//以/开头;
+    return @"/api/home";//以/开头;
 }
 
 -(NSDictionary*)parameters{
     return @{
-             @"phone":_phone,
-             @"phoneCountryCode":_countryCode,
-             @"email":_email,
-             @"accountKeyId":_accountId,
+             @"userId":_userId,
              };
 }
 
 -(RMHttpMethod)method{
-	return RMHttpMethodPost;
+    return RMHttpMethodPost;
 }
 
 -(RMTaskType)taskType{
@@ -56,25 +47,30 @@
 }
 
 -(RMNetworkResponse *)adoptResponse:(RMNetworkResponse *)response{
-	RMLoginAPIData* data = [[RMLoginAPIData alloc]init];
+    RMFetchHomeVideoAPIData* data = [[RMFetchHomeVideoAPIData alloc]init];
     
     if(response.error){
         return [[RMNetworkResponse alloc]initWithResponseObject:data];
     }
     
     NSDictionary * responseObject = response.responseObject;
-   
+    
     NSDictionary* dataDict = responseObject[@"data"];
     if([dataDict isKindOfClass:[NSDictionary class]]){
-        data.newUser = [dataDict[@"newUser"] boolValue];
         data.userId = [NSString stringWithFormat:@"%li",[dataDict[@"userId"] longValue]];
+        data.name = dataDict[@"name"];
+        data.sex = [dataDict[@"sex"] integerValue];
+        data.age = [dataDict[@"age"] integerValue];
+        data.videoDefaultImg = dataDict[@"videoDefaultImg"];
+        data.video = dataDict[@"video"];
     }
-   	//parse response here
-
+    //parse response here
+    
     RMNetworkResponse* finalResponse = [[RMNetworkResponse alloc]initWithResponseObject:data];
     finalResponse.cookie = response.cookie;
     return finalResponse;
-
+    
 }
 
 @end
+

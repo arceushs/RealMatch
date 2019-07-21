@@ -69,12 +69,17 @@
         RMLoginAPI* loginAPI = [[RMLoginAPI alloc]initWithPhone:account.phoneNumber.phoneNumber phoneCountryCode:account.phoneNumber.countryCode email:account.emailAddress accountKeyId:account.accountID];
         [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *response) {
             
-            NSArray* array = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@"https://www.4match.top"]];
             if(response.error){
                 return ;
             }
+            
+            [[NSUserDefaults standardUserDefaults] setObject:response.cookie forKey:@"global-cookie"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
             RMLoginAPIData* data = response.responseObject;
             [RMUserCenter shared].userId = data.userId;
+            [[NSUserDefaults standardUserDefaults] setObject:data.userId forKey:@"global-userId"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             if(!data.newUser){
                 [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
             }else{

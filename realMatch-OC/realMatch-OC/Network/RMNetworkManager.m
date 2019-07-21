@@ -34,6 +34,15 @@
     RMTaskType taskType = [api taskType];
     
     _afmanager = [AFHTTPSessionManager manager];
+    
+    AFHTTPRequestSerializer *requestSerialization = [AFHTTPRequestSerializer serializer];
+    // 设置自动管理Cookies
+    requestSerialization.HTTPShouldHandleCookies = YES;
+    NSString *cookie = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-cookie"];
+    if (cookie != nil) {
+        [requestSerialization setValue:cookie forHTTPHeaderField:@"token"];
+    }
+    _afmanager.requestSerializer = requestSerialization;
     _afmanager.responseSerializer = [AFJSONResponseSerializer serializer];
     _afmanager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", nil];
     switch (method) {
@@ -75,8 +84,14 @@
                 [params removeObjectForKey:@"filename"];
                 [params removeObjectForKey:@"mimetype"];
                 [_afmanager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                    
+                    NSDictionary *allHeaderFieldsDic = ((NSHTTPURLResponse* )task.response).allHeaderFields;
+                    NSString *setCookie = allHeaderFieldsDic[@"Set-Cookie"];
                     RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithResponseObject:responseObject];
+                    if (setCookie != nil) {
+                        NSString *cookie = [[[[setCookie componentsSeparatedByString:@";"] objectAtIndex:0] componentsSeparatedByString:@"="] objectAtIndex:1];
+                        // 这里对cookie进行存储
+                        [response setCookie:cookie];
+                    }
                     if([api respondsToSelector:@selector(adoptResponse:)]){
                         response = [api adoptResponse:response];
                     }
@@ -91,6 +106,8 @@
                     
                 }];
 
+            }else if(taskType == RMTaskTypeDownload){
+                
             }
         }
             break;
