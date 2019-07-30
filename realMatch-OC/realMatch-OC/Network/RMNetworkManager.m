@@ -111,7 +111,36 @@
             }
         }
             break;
-            
+        
+        case RMHttpMethodGet:{
+            NSMutableDictionary* params = [NSMutableDictionary dictionaryWithDictionary:parameters];
+            [params removeObjectForKey:@"filepath"];
+            [params removeObjectForKey:@"filename"];
+            [params removeObjectForKey:@"mimetype"];
+            [_afmanager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                NSDictionary *allHeaderFieldsDic = ((NSHTTPURLResponse* )task.response).allHeaderFields;
+                NSString *setCookie = allHeaderFieldsDic[@"Set-Cookie"];
+                RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithResponseObject:responseObject];
+                if (setCookie != nil) {
+                    NSString *cookie = [[[[setCookie componentsSeparatedByString:@";"] objectAtIndex:0] componentsSeparatedByString:@"="] objectAtIndex:1];
+                    // 这里对cookie进行存储
+                    [response setCookie:cookie];
+                }
+                if([api respondsToSelector:@selector(adoptResponse:)]){
+                    response = [api adoptResponse:response];
+                }
+                if(completion){
+                    completion(response);
+                }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithError:error];
+                if(completion){
+                    completion(response);
+                }
+                
+            }];
+        }
+            break;
         default:{
             
         }

@@ -14,6 +14,7 @@
 
 @interface RMMessageViewController ()<UITableViewDelegate,UITableViewDataSource,RouterController>
 @property (weak, nonatomic) IBOutlet UITableView *messageTableView;
+@property (strong,nonatomic) NSString* matchedUserId;
 @end
 
 @implementation RMMessageViewController
@@ -28,6 +29,7 @@
 
 - (instancetype)initWithRouterParams:(NSDictionary *)params {
     if(self = [super init]){
+        _matchedUserId = params[@"userId"];
     }
     return self;
 }
@@ -40,8 +42,18 @@
     self.messageTableView.rowHeight = 97;
     
     [self.messageTableView registerNib:[UINib nibWithNibName:@"RMMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"RMMessageTableViewCell"];
-    RMMessageHeader* header = [[RMMessageHeader alloc]initWithFrame:CGRectMake(0, 0, self.messageTableView.width, 160)];
-    self.messageTableView.tableHeaderView = header;
+    
+    RMFetchLikesMeAPI* likesMeAPI = [[RMFetchLikesMeAPI alloc] initWithUserId:_matchedUserId];
+    [[RMNetworkManager shareManager] request:likesMeAPI completion:^(RMNetworkResponse *response) {
+        RMFetchLikesMeAPIData* data = [[RMFetchLikesMeAPIData alloc]init];
+        data = (RMFetchLikesMeAPIData*)response.responseObject;
+        if([data.likesMeArr count]>0){
+            RMMessageHeader* header = [[RMMessageHeader alloc]initWithFrame:CGRectMake(0, 0, self.messageTableView.width, 160) likesMeArr:data.likesMeArr];
+            self.messageTableView.tableHeaderView = header;
+        }
+    }];
+    
+
     // Do any additional setup after loading the view from its nib.
 }
 

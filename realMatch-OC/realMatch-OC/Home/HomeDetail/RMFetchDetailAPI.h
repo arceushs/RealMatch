@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RMFetchDetailAPIData : NSObject
 
 @property (nonatomic,strong) NSArray<RMFetchDetailModel*>* videoArr;
+@property (nonatomic,strong) NSString* videoDefaultImg;
 
 @end
 

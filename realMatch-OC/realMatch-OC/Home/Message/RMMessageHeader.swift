@@ -15,8 +15,9 @@ import UIKit
     var labelTitle:UILabel!
     var labelCount:UILabel!
     var visualEffectView:UIVisualEffectView!
+    var likesMeArr:[RMFetchLikesMeModel]?
     
-    override init(frame: CGRect) {
+    @objc init(frame: CGRect,likesMeArr :[RMFetchLikesMeModel]?) {
         super.init(frame: frame)
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal

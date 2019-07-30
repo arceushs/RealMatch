@@ -10,6 +10,14 @@
 
 @implementation RMHomePageDetailHeaderView
 
+-(instancetype)init{
+    if(self = [super init]){
+        self = [[[NSBundle mainBundle]loadNibNamed:@"RMHomePageDetailHeaderView" owner:nil options:nil] lastObject];
+        
+    }
+    return self;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

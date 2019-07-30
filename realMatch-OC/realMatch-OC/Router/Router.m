@@ -52,6 +52,7 @@
     [routeTable addObject:@"RMMessageViewController"];
     [routeTable addObject:@"RMMessageDetailViewController"];
     [routeTable addObject:@"RMPurchaseViewController"];
+    [routeTable addObject:@"RMMatchedViewController"];
 }
 
 -(void)routerTo:(RouterAdopter *)routerAdopter{

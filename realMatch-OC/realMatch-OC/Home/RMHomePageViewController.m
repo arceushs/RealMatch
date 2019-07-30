@@ -27,8 +27,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 
-@property (nonatomic,strong) NSString* currentMatchedUserId;
-
 @end
 
 @implementation RMHomePageViewController
@@ -53,58 +51,72 @@
     [super viewDidLoad];
     
     _cardVC1 = [[RMHomeCardViewController alloc]init];
+    __weak typeof(self) weakSelf = self;
     _cardVC1.routeToDetailBlock = ^{
-        [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:nil];
+        [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:@{@"userId":weakSelf.currentCardVC.matchedUserId}];
     };
     [self addChildViewController:_cardVC1];
     [self.cardContainerView insertSubview:_cardVC1.view atIndex:0];
     self.currentCardVC = _cardVC1;
 
-    UISwipeGestureRecognizer *swipeGest = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pageGet:)];
-    swipeGest.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.cardContainerView addGestureRecognizer:swipeGest];
+    UISwipeGestureRecognizer *swipeGestRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pageGet:)];
+    swipeGestRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.cardContainerView addGestureRecognizer:swipeGestRight];
+    UISwipeGestureRecognizer *swipeGestLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(pageGet:)];
+    swipeGestLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.cardContainerView addGestureRecognizer:swipeGestLeft];
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void)pageGet:(UISwipeGestureRecognizer*)gest{
+    __weak typeof(self) weakSelf = self;
+    
+    CGFloat length = self.view.width;
+    if(gest.direction == UISwipeGestureRecognizerDirectionLeft){
+        
+    }else if(gest.direction == UISwipeGestureRecognizerDirectionRight){
+        length = 0 - length;
+    }
+    
     if(self.currentCardVC == _cardVC1){
         _cardVC2 = [[RMHomeCardViewController alloc]init];
         _cardVC2.routeToDetailBlock = ^{
-            [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:nil];
+            if([weakSelf.currentCardVC.matchedUserId length]<0)
+                return;
+            [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:@{@"userId":weakSelf.currentCardVC.matchedUserId}];
         };
         [self addChildViewController:_cardVC2];
         [self.cardContainerView insertSubview:_cardVC2.view atIndex:0];
         
-        _cardVC2.view.frame = CGRectMake(8 + self.view.width, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
-        __weak typeof(self) weakSelf = self;
+        _cardVC2.view.frame = CGRectMake(8 + length, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+        
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             weakSelf.cardVC2.view.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
-            weakSelf.cardVC1.view.frame = CGRectMake(8 - self.view.width, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+            weakSelf.cardVC1.view.frame = CGRectMake(8 - length, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
         } completion:^(BOOL finished) {
             [weakSelf.cardVC1.view removeFromSuperview];
             [weakSelf.cardVC1 removeFromParentViewController];
             weakSelf.currentCardVC = weakSelf.cardVC2;
         }];
-
+        
     }else{
         _cardVC1 = [[RMHomeCardViewController alloc]init];
         _cardVC1.routeToDetailBlock = ^{
-            [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:nil];
+            [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:@{@"userId":weakSelf.currentCardVC.matchedUserId}];
         };
         [self addChildViewController:_cardVC1];
         [self.cardContainerView addSubview:_cardVC1.view];
         
-        _cardVC1.view.frame = CGRectMake(8 + self.view.width, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
-        __weak typeof(self) weakSelf = self;
+        _cardVC1.view.frame = CGRectMake(8 + length, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             weakSelf.cardVC1.view.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
-            weakSelf.cardVC2.view.frame = CGRectMake(8 - self.view.width, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+            weakSelf.cardVC2.view.frame = CGRectMake(8 - length, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
         } completion:^(BOOL finished) {
             [weakSelf.cardVC2.view removeFromSuperview];
             [weakSelf.cardVC2 removeFromParentViewController];
             weakSelf.currentCardVC = weakSelf.cardVC1;
         }];
-
+        
     }
 }
 
@@ -113,7 +125,7 @@
         return;
     RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:NO];
     [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
-        
+        [self pageGet:nil];
     }];
 }
 - (IBAction)likeButtonClicked:(id)sender {
@@ -132,6 +144,9 @@
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     _cardVC1.view.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+}
+- (IBAction)messageButtonClicked:(id)sender {
+    [[Router shared] routerTo:@"RMMessageViewController" parameter:@{@"userId":self.currentCardVC.matchedUserId}];
 }
 
 //- (void)transitionWithType:(NSString *) type WithSubtype:(NSString *) subtype ForView : (UIView *) view {

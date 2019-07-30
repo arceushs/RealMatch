@@ -10,6 +10,7 @@
 #import <AccountKit/AccountKit.h>
 #import "Router+AccountKit.h"
 #import "realMatch_OC-Swift.h"
+#import "SVProgressHUD.h"
 @interface LoginAndRegisterViewController ()<AKFViewControllerDelegate>
 
 @end
@@ -60,6 +61,7 @@
 }
 
 -(void)viewController:(UIViewController<AKFViewController> *)viewController didCompleteLoginWithAccessToken:(id<AKFAccessToken>)accessToken state:(NSString *)state{
+    [SVProgressHUD showWithStatus:@"注册中..."];
     [_accountKit requestAccount:^(id<AKFAccount>  _Nullable account, NSError * _Nullable error) {
         [RMUserCenter shared].accountKitID = account.accountID;
         [RMUserCenter shared].accountKitEmailAddress = account.emailAddress;
@@ -68,7 +70,7 @@
         
         RMLoginAPI* loginAPI = [[RMLoginAPI alloc]initWithPhone:account.phoneNumber.phoneNumber phoneCountryCode:account.phoneNumber.countryCode email:account.emailAddress accountKeyId:account.accountID];
         [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *response) {
-            
+            [SVProgressHUD dismiss];
             if(response.error){
                 return ;
             }

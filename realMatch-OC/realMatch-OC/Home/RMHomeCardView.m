@@ -56,6 +56,10 @@
 //    self.playerLayer.
 }
 
+-(void)dealloc{
+    [self.playerLayer removeFromSuperlayer];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

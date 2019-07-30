@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RMFetchDetailModel : RMBaseModel
 
 @property (nonatomic,strong) NSString* title;
+@property (nonatomic,strong) NSString* videoImg;
 @property (nonatomic,strong) NSString* name;
 @property (nonatomic,strong) NSString* extension;
 @property (nonatomic,strong) NSString* ossLocation;

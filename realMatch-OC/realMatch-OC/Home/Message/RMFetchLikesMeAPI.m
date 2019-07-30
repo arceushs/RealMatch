@@ -1,25 +1,26 @@
 //
-//  RMFetchDetailAPI.m
+//  RMFetchLikesMeAPI.m
 //  realMatch-OC
 //
-//  Created by yxlyxlyxl on 2019/6/17.
+//  Created by arceushs on 2019/7/27.
 //  Copyright © 2019 qingting. All rights reserved.
 //
 
-#import "RMFetchDetailAPI.h"
+#import "RMFetchLikesMeAPI.h"
 
-@implementation RMFetchDetailAPIData
-
-
+@implementation RMFetchLikesMeModel
 @end
 
-@implementation RMFetchDetailAPI
+@implementation RMFetchLikesMeAPIData
+@end
+
+@implementation RMFetchLikesMeAPI
 {
-    NSString* _userid;
+    NSString* _userId;
 }
 -(instancetype)initWithUserId:(NSString *)userId{
     if(self = [super init]){
-        _userid = userId;
+        _userId = userId;
     }
     return self;
 }
@@ -29,15 +30,15 @@
 }
 
 -(NSString*)requestPath{
-    return [NSString stringWithFormat:@"/api/%@/detail",_userid];//以/开头;
+    return [NSString stringWithFormat:@"/api/%@/likeMeUsers",_userId];//以/开头;
 }
 
 -(NSDictionary*)parameters{
-	return nil;
+    return nil;
 }
 
 -(RMHttpMethod)method{
-	return RMHttpMethodPost;
+    return RMHttpMethodGet;
 }
 
 - (RMTaskType)taskType {
@@ -45,7 +46,7 @@
 }
 
 -(RMNetworkResponse *)adoptResponse:(RMNetworkResponse *)response{
-    RMFetchDetailAPIData* data = [[RMFetchDetailAPIData alloc]init];
+    RMFetchLikesMeAPIData* data = [[RMFetchLikesMeAPIData alloc]init];
     
     if(response.error){
         return [[RMNetworkResponse alloc]initWithResponseObject:data];
@@ -55,23 +56,19 @@
     NSDictionary * dataDict = [responseObject objectForKey:@"data"];
     
     if([dataDict isKindOfClass:[NSDictionary class]]){
-        NSArray* uploads = [dataDict objectForKey:@"uploads"];
-        NSMutableArray<RMFetchDetailModel*>* modelsArr = [NSMutableArray array];
-        for(NSDictionary* dict in uploads){
-            RMFetchDetailModel* model = [[RMFetchDetailModel alloc]init];
-            [model parseFromDict:dict];
-            if([model.videoImg length]<=0){
-                model.videoImg = dataDict[@"videoDefaultImg"];
-            }
+        NSArray* lists = [dataDict objectForKey:@"list"];
+        NSMutableArray<RMFetchLikesMeModel*>* modelsArr = [NSMutableArray array];
+        for(NSDictionary* dict in lists){
+            RMFetchLikesMeModel* model = [[RMFetchLikesMeModel alloc]init];
+            model.userId = dict[@"userId"];
+            model.avatar = dict[@"avatar"];
             [modelsArr addObject:model];
         }
-        data.videoArr = [NSArray arrayWithArray:modelsArr];
+        data.likesMeArr = [NSArray arrayWithArray:modelsArr];
     }
     
     return [[RMNetworkResponse alloc]initWithResponseObject:data];
 }
-
-
 
 
 @end

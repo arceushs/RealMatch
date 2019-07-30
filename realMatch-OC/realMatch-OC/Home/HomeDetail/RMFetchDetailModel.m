@@ -15,6 +15,7 @@
     self.name = dict[@"name"];
     self.extension = dict[@"extension"];
     self.ossLocation = dict[@"ossLocation"];
+    self.videoImg = dict[@"videoImg"];
 }
 
 -(void)parseFromArr:(NSArray *)arr{

@@ -11,8 +11,9 @@
 #import <StoreKit/StoreKit.h>
 #import "RMSocketManager.h"
 #import "realMatch_OC-Swift.h"
+#import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
 
@@ -26,7 +27,56 @@
     [player play];
     [player pause];
     [RMSocketManager shared];
+    
+    [self registerRemoteNotification];
     return YES;
+}
+
+
+-(void)registerRemoteNotification{
+    if([[UIDevice currentDevice].systemVersion floatValue]>=10){
+        if(@available(iOS 10.0,*)){
+            UNUserNotificationCenter * center = [UNUserNotificationCenter currentNotificationCenter];
+            center.delegate = self;
+            [center requestAuthorizationWithOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionCarPlay completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                
+            }];
+            
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+        }
+    }else{
+        UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+}
+
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    
+}
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    
+}
+
+//非UNNotification框架
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler NS_AVAILABLE_IOS(7_0) {
+    // iOS7及以上系统
+    if (userInfo) {
+        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {// app位于前台通知
+            NSLog(@"app位于前台通知(didReceiveRemoteNotification:fetchCompletionHandler:):%@", userInfo);
+        } else {// 切到后台唤起
+            NSLog(@"app位于后台通知(didReceiveRemoteNotification:fetchCompletionHandler:):%@", userInfo);
+        }
+    }
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+
+
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    
 }
 
 -(void)addRootVCToWindow{

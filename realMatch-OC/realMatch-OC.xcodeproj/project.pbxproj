@@ -14,6 +14,10 @@
 		1C381DF122E324B60060DE69 /* RMHomeCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C381DEF22E324B60060DE69 /* RMHomeCardViewController.m */; };
 		1C381DF222E324B60060DE69 /* RMHomeCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C381DF022E324B60060DE69 /* RMHomeCardViewController.xib */; };
 		1C381DF522E35A420060DE69 /* RMLikeFlagAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C381DF422E35A420060DE69 /* RMLikeFlagAPI.m */; };
+		1C3BC8EB22EC6EBA00E9EE6C /* RMFetchLikesMeAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BC8EA22EC6EBA00E9EE6C /* RMFetchLikesMeAPI.m */; };
+		1C3BC8EE22ED37EF00E9EE6C /* RMFetchMessageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BC8ED22ED37EF00E9EE6C /* RMFetchMessageAPI.m */; };
+		1C3BC8F322ED90DB00E9EE6C /* RMMatchedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3BC8F122ED90DB00E9EE6C /* RMMatchedViewController.swift */; };
+		1C3BC8F422ED90DB00E9EE6C /* RMMatchedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C3BC8F222ED90DB00E9EE6C /* RMMatchedViewController.xib */; };
 		1C49CAF022DABC48007333A6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C49CAEF22DABC48007333A6 /* libsqlite3.0.tbd */; };
 		1C49CAF322DABCE2007333A6 /* RMDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */; };
 		1CFCE11722BF1B380025BC0B /* RMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE11522BF1B380025BC0B /* RMMessageViewController.m */; };
@@ -134,6 +138,12 @@
 		1C381DF022E324B60060DE69 /* RMHomeCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomeCardViewController.xib; sourceTree = "<group>"; };
 		1C381DF322E35A420060DE69 /* RMLikeFlagAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMLikeFlagAPI.h; sourceTree = "<group>"; };
 		1C381DF422E35A420060DE69 /* RMLikeFlagAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMLikeFlagAPI.m; sourceTree = "<group>"; };
+		1C3BC8E922EC6EBA00E9EE6C /* RMFetchLikesMeAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMFetchLikesMeAPI.h; sourceTree = "<group>"; };
+		1C3BC8EA22EC6EBA00E9EE6C /* RMFetchLikesMeAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMFetchLikesMeAPI.m; sourceTree = "<group>"; };
+		1C3BC8EC22ED37EF00E9EE6C /* RMFetchMessageAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMFetchMessageAPI.h; sourceTree = "<group>"; };
+		1C3BC8ED22ED37EF00E9EE6C /* RMFetchMessageAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMFetchMessageAPI.m; sourceTree = "<group>"; };
+		1C3BC8F122ED90DB00E9EE6C /* RMMatchedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMatchedViewController.swift; sourceTree = "<group>"; };
+		1C3BC8F222ED90DB00E9EE6C /* RMMatchedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMMatchedViewController.xib; sourceTree = "<group>"; };
 		1C49CAEF22DABC48007333A6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDatabaseManager.swift; sourceTree = "<group>"; };
 		1CFCE11422BF1B380025BC0B /* RMMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMessageViewController.h; sourceTree = "<group>"; };
@@ -300,6 +310,10 @@
 				1CFCE11422BF1B380025BC0B /* RMMessageViewController.h */,
 				1CFCE11522BF1B380025BC0B /* RMMessageViewController.m */,
 				1CFCE11622BF1B380025BC0B /* RMMessageViewController.xib */,
+				1C3BC8E922EC6EBA00E9EE6C /* RMFetchLikesMeAPI.h */,
+				1C3BC8EA22EC6EBA00E9EE6C /* RMFetchLikesMeAPI.m */,
+				1C3BC8EC22ED37EF00E9EE6C /* RMFetchMessageAPI.h */,
+				1C3BC8ED22ED37EF00E9EE6C /* RMFetchMessageAPI.m */,
 				1CFCE11922BF1B760025BC0B /* RMMessageTableViewCell.h */,
 				1CFCE11A22BF1B760025BC0B /* RMMessageTableViewCell.m */,
 				1CFCE11B22BF1B760025BC0B /* RMMessageTableViewCell.xib */,
@@ -391,6 +405,8 @@
 				1C381DEC22E2D3160060DE69 /* RMFetchHomeVideoAPI.m */,
 				1C381DF322E35A420060DE69 /* RMLikeFlagAPI.h */,
 				1C381DF422E35A420060DE69 /* RMLikeFlagAPI.m */,
+				1C3BC8F122ED90DB00E9EE6C /* RMMatchedViewController.swift */,
+				1C3BC8F222ED90DB00E9EE6C /* RMMatchedViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -722,6 +738,7 @@
 				D680C87522CCD6C500D9ED96 /* RMNameViewController.xib in Resources */,
 				D652276422BB8AEE00C273E1 /* RMVideoPlayViewController.xib in Resources */,
 				D680C88122CCDECE00D9ED96 /* RMRealVideoViewController.xib in Resources */,
+				1C3BC8F422ED90DB00E9EE6C /* RMMatchedViewController.xib in Resources */,
 				1CFCE11822BF1B380025BC0B /* RMMessageViewController.xib in Resources */,
 				D6369D9622CF1A1F00A1B473 /* RMMessageDetailViewController.xib in Resources */,
 				D687DA632294EDD200A11488 /* LaunchScreen.storyboard in Resources */,
@@ -839,8 +856,10 @@
 				1CFCE12122BF32A20025BC0B /* RMSocketManager.m in Sources */,
 				1C0EAEA422D02F5E00036DD5 /* RMMessageHeader.swift in Sources */,
 				D680C87122CB842700D9ED96 /* RMUserCenter.swift in Sources */,
+				1C3BC8EB22EC6EBA00E9EE6C /* RMFetchLikesMeAPI.m in Sources */,
 				D6696FE022B9EF8A00942DFB /* RMHomePageDetailHeaderView.m in Sources */,
 				1C0EAEA722D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift in Sources */,
+				1C3BC8F322ED90DB00E9EE6C /* RMMatchedViewController.swift in Sources */,
 				D6696FDC22B9EBF400942DFB /* RMHomePageDetailTableViewCell.m in Sources */,
 				D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */,
 				D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */,
@@ -868,6 +887,7 @@
 				D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */,
 				D652275F22BB806B00C273E1 /* RMPlayer.swift in Sources */,
 				D6BF467B2296A6DE00C82D98 /* Router.m in Sources */,
+				1C3BC8EE22ED37EF00E9EE6C /* RMFetchMessageAPI.m in Sources */,
 				D6369D9A22CF1A3E00A1B473 /* RMMessageFromMeTableViewCell.m in Sources */,
 				D680C87422CCD6C500D9ED96 /* RMNameViewController.swift in Sources */,
 				D680C88022CCDECE00D9ED96 /* RMRealVideoViewController.swift in Sources */,
@@ -1045,7 +1065,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "realMatch-OC/realMatch-OC.entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 38KCJNXX83;
 				HEADER_SEARCH_PATHS = (
@@ -1063,6 +1084,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = apnsPUSH;
 				SWIFT_OBJC_BRIDGING_HEADER = "realMatch-OC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.3;
@@ -1079,7 +1101,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "realMatch-OC/realMatch-OC.entitlements";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 38KCJNXX83;
 				HEADER_SEARCH_PATHS = (
@@ -1097,6 +1120,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = apnsPUSH;
 				SWIFT_OBJC_BRIDGING_HEADER = "realMatch-OC-Bridging-Header.h";
 				SWIFT_VERSION = 4.3;
 				TARGETED_DEVICE_FAMILY = 1;
