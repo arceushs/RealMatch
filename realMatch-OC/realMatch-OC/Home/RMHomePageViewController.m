@@ -96,6 +96,7 @@
         } completion:^(BOOL finished) {
             [weakSelf.cardVC1.view removeFromSuperview];
             [weakSelf.cardVC1 removeFromParentViewController];
+            weakSelf.cardVC1 = nil;
             weakSelf.currentCardVC = weakSelf.cardVC2;
         }];
         
@@ -114,6 +115,7 @@
         } completion:^(BOOL finished) {
             [weakSelf.cardVC2.view removeFromSuperview];
             [weakSelf.cardVC2 removeFromParentViewController];
+            weakSelf.cardVC2 = nil;
             weakSelf.currentCardVC = weakSelf.cardVC1;
         }];
         
@@ -125,7 +127,9 @@
         return;
     RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:NO];
     [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
-        [self pageGet:nil];
+        UISwipeGestureRecognizer* gest = [[UISwipeGestureRecognizer alloc]init];
+        gest.direction = UISwipeGestureRecognizerDirectionRight;
+        [self pageGet:gest];
     }];
 }
 - (IBAction)likeButtonClicked:(id)sender {
@@ -133,7 +137,9 @@
         return;
     RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:YES];
     [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
-        
+        UISwipeGestureRecognizer* gest = [[UISwipeGestureRecognizer alloc]init];
+        gest.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self pageGet:gest];
     }];
 }
 

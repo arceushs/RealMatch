@@ -11,6 +11,8 @@
 #import "Router+AccountKit.h"
 #import "realMatch_OC-Swift.h"
 #import "SVProgressHUD.h"
+#import "RMSocketManager.h"
+
 @interface LoginAndRegisterViewController ()<AKFViewControllerDelegate>
 
 @end
@@ -82,6 +84,9 @@
             [RMUserCenter shared].userId = data.userId;
             [[NSUserDefaults standardUserDefaults] setObject:data.userId forKey:@"global-userId"];
             [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [[RMSocketManager shared] connectWithUserId:data.userId];
+            
             if(!data.newUser){
                 [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
             }else{

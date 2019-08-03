@@ -23,11 +23,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self addRootVCToWindow];
-    RMPlayer* player = [[RMPlayer alloc]init];
-    [player play];
-    [player pause];
-    [RMSocketManager shared];
-    
     [self registerRemoteNotification];
     return YES;
 }

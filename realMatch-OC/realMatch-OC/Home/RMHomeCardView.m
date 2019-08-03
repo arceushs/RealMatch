@@ -58,6 +58,7 @@
 
 -(void)dealloc{
     [self.playerLayer removeFromSuperlayer];
+    self.playerLayer = nil;
 }
 
 /*

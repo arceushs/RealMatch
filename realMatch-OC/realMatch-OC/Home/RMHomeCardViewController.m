@@ -78,11 +78,13 @@
 }
 
 -(void)dealloc{
-//    [self.player pause];
-//    [_playerItem removeObserver:self forKeyPath:@"status" context:nil];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:_playerItem];
-//    _playerItem = nil;
-//    self.player = nil;
+    [self.player pause];
+    [_playerItem removeObserver:self forKeyPath:@"status" context:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:_playerItem];
+    _playerItem = nil;
+    [self.player replaceCurrentItemWithPlayerItem:nil];
+    self.player = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{

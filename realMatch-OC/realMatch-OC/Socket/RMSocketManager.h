@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RMSocketManager : NSObject<SRWebSocketDelegate>
 
 +(instancetype)shared;
+-(void)connectWithUserId:(NSString*)userId;
+-(void)messageSend:(NSString*)message;
 
 @end
 
