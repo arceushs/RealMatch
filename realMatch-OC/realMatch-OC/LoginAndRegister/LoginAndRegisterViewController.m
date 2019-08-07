@@ -85,8 +85,6 @@
             [[NSUserDefaults standardUserDefaults] setObject:data.userId forKey:@"global-userId"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
-            [[RMSocketManager shared] connectWithUserId:data.userId];
-            
             if(!data.newUser){
                 [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
             }else{

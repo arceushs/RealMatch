@@ -31,6 +31,9 @@
                                 <constraint firstAttribute="width" constant="24" id="ino-MM-7tR"/>
                             </constraints>
                             <state key="normal" image="normalBack"/>
+                            <connections>
+                                <action selector="backButtonClicked:" destination="-1" eventType="touchUpInside" id="2gp-6K-pKe"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdY-PN-aNd">
                             <rect key="frame" x="173.5" y="12" width="67" height="20"/>

@@ -7,10 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "RMNetworkManager.h"
 NS_ASSUME_NONNULL_BEGIN
+@interface RMFetchMessageModel : NSObject
 
-@interface RMFetchMessageAPI : NSObject
+@property (nonatomic,strong) NSString* userId;
+@property (nonatomic,strong) NSString* name;
+@property (nonatomic,strong) NSString* avatar;
+@property (nonatomic,strong) NSString* msg;
+@property (nonatomic,strong) NSString* msgType;
+
+@end
+
+@interface RMFetchMessageAPIData : NSObject
+
+@property (nonatomic,strong) NSArray<RMFetchMessageModel*>* list;
+
+@end
+
+@interface RMFetchMessageAPI : NSObject<RMNetworkAPI>
+
+-(instancetype)initWithUserId:(NSString *)userId;
 
 @end
 

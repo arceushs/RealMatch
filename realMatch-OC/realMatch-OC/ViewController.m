@@ -13,6 +13,7 @@
 #import "RMFileManager.h"
 #import "AVFoundation/AVFoundation.h"
 #import "realMatch_OC-Swift.h"
+#import "RMSocketManager.h"
 @interface ViewController ()
 
 @end
@@ -34,8 +35,7 @@
     NSString* userId = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-userId"];
     if(userId != nil){
         [RMUserCenter shared].userId = userId;
-    }
-    
+    }    
     [Router setNavigationVC:self.navigationController];
     [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
 //    [[PurchaseManager shareManager] startPurchaseWithID:@"1_month_premium"];

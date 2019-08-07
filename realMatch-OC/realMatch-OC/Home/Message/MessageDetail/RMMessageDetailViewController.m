@@ -12,8 +12,10 @@
 #import "RMMessageDetailModel.h"
 #import "Router.h"
 #import "UIDevice+RealMatch.h"
+#import "RMSocketManager.h"
+#import "realMatch_OC-Swift.h"
 
-@interface RMMessageDetailViewController ()<UITableViewDataSource,UITableViewDelegate,RouterController,UITextViewDelegate>
+@interface RMMessageDetailViewController ()<UITableViewDataSource,UITableViewDelegate,RouterController,UITextViewDelegate,RMSocketManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *messageDetailTableView;
 @property (strong,nonatomic) NSMutableArray<RMMessageDetailModel*>* modelArrs;
 @property (weak, nonatomic) IBOutlet UIView *inputView;
@@ -21,13 +23,17 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
+@property (strong,nonatomic) NSString* fromUserId;
+@property (strong,nonatomic) NSString* toUserId;
+
 @end
 
 @implementation RMMessageDetailViewController
 
 -(instancetype)initWithRouterParams:(NSDictionary *)params{
     if(self = [super init]){
-    
+        self.fromUserId = params[@"fromUser"];
+        self.toUserId = params[@"toUser"];
     }
     return self;
 }
@@ -42,26 +48,68 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     self.modelArrs = [NSMutableArray array];
     self.messageDetailTableView.dataSource = self;
     self.messageDetailTableView.delegate = self;
     [self.messageDetailTableView registerNib:[UINib nibWithNibName:@"RMMessageFromMeTableViewCell" bundle:nil] forCellReuseIdentifier:@"RMMessageFromMeTableViewCell"];
     [self.messageDetailTableView registerNib:[UINib nibWithNibName:@"RMMessageToMeTableViewCell" bundle:nil] forCellReuseIdentifier:@"RMMessageToMeTableViewCell"];
     self.messageDetailTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    RMMessageDetailModel* model1 = [[RMMessageDetailModel alloc]init];
-    model1.text = @"Nice to meet you!";
     
-    RMMessageDetailModel* model2 = [[RMMessageDetailModel alloc]init];
-    model2.text = @"But before you unpack, just check to make sure whether the Island has been affected. We have had many tropical storm warnings over the years, but unlike Florida we’ve been extremely fortunate.";
-    [self.modelArrs addObject:model1];
-    [self.modelArrs addObject:model2];
+    NSArray<RMMessageDetail*>* messageDetailArr = [[RMDatabaseManager shareManager] getDataWithCurrentTimestamp:[NSDate timeIntervalSinceReferenceDate] direction:@"front" count:10 fromUser:@"4029" toUser:@"4031"];
     
+    
+    
+    for (RMMessageDetail* messageDetail in messageDetailArr) {
+        RMMessageDetailModel* model = [[RMMessageDetailModel alloc]init];
+        model.text = messageDetail.msg;
+        if([messageDetail.toUser isEqualToString:self.fromUserId]){
+            model.messageFrom = MessageFromOther;
+        }else{
+            model.messageFrom = MessageFromMe;
+        }
+        [self.modelArrs addObject:model];
+    }
     self.textView.delegate = self;
+    
+    [self scrollToBottom:self.messageDetailTableView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardWillHideNotification object:nil];
     // Do any additional setup after loading the view from its nib.
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[RMSocketManager shared] addDelegate:self];
+}
+
+-(void)viewDidDisapper:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [[RMSocketManager shared] removeDelegate:self];
+}
+
+-(void)didReceiveMessage{
+    NSArray<RMMessageDetail*>* messageDetailArr = [[RMDatabaseManager shareManager] getDataWithCurrentTimestamp:[NSDate timeIntervalSinceReferenceDate] direction:@"front" count:1 fromUser:self.fromUserId toUser:self.toUserId];
+    
+    
+    
+    for (RMMessageDetail* messageDetail in messageDetailArr) {
+        RMMessageDetailModel* model = [[RMMessageDetailModel alloc]init];
+        model.text = messageDetail.msg;
+        if([messageDetail.toUser isEqualToString:self.fromUserId]){
+            model.messageFrom = MessageFromOther;
+        }else{
+            model.messageFrom = MessageFromMe;
+        }
+        [self.modelArrs addObject:model];
+    }
+    [self.messageDetailTableView reloadData];
+    [self scrollToBottom:self.messageDetailTableView];
+}
+
+
 
 /*
 #pragma mark - Navigation
@@ -133,6 +181,26 @@
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+-(void)scrollToBottom:(UIScrollView*)scrollView{
+    CGFloat contentOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+    [scrollView setContentOffset:CGPointMake(0, contentOffset)];
+}
+
+- (IBAction)sendMessageButtonClicked:(id)sender {
+    NSDictionary* dict = @{@"fromUser":self.fromUserId,
+                           @"toUser":self.toUserId,
+                           @"msg":self.textView.text,
+                           @"msg_type":@"text",
+                           @"uploadId":@(-1)
+                           };
+    RMMessageDetail* messageDetail = [[RMMessageDetail alloc]init:dict];
+    if([[RMDatabaseManager shareManager] insertData:messageDetail]){
+        self.textView.text = @"";
+        [self didReceiveMessage];
+    }
+    
 }
 
 

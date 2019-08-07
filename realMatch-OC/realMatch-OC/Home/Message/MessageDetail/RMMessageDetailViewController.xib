@@ -66,7 +66,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xJR-3v-xUP">
-                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="709"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2AY-OK-14d">
@@ -87,6 +87,9 @@
                                 <constraint firstAttribute="width" secondItem="sOi-WF-etr" secondAttribute="height" id="hrK-0O-Iuf"/>
                             </constraints>
                             <state key="normal" image="send"/>
+                            <connections>
+                                <action selector="sendMessageButtonClicked:" destination="-1" eventType="touchUpInside" id="gGd-Tw-rsS"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkd-RC-dPJ">
                             <rect key="frame" x="60" y="12" width="294" height="41"/>
@@ -133,10 +136,10 @@
                 <constraint firstItem="xJR-3v-xUP" firstAttribute="top" secondItem="McQ-Nz-bPB" secondAttribute="bottom" id="OF0-Zk-BpL"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="McQ-Nz-bPB" secondAttribute="trailing" id="QDx-tK-PrP"/>
                 <constraint firstItem="xJR-3v-xUP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="RQo-K8-dT1"/>
+                <constraint firstItem="2AY-OK-14d" firstAttribute="top" secondItem="xJR-3v-xUP" secondAttribute="bottom" id="UZq-V4-zAC"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="2AY-OK-14d" secondAttribute="trailing" id="XsE-bq-8Wv"/>
                 <constraint firstItem="2AY-OK-14d" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="btp-vr-tle"/>
                 <constraint firstItem="McQ-Nz-bPB" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="cHi-uz-lBx"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="xJR-3v-xUP" secondAttribute="bottom" id="jRE-8M-X0v"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="xJR-3v-xUP" secondAttribute="trailing" id="vSn-II-mgQ"/>
                 <constraint firstItem="2AY-OK-14d" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="vvC-c2-DHX"/>
                 <constraint firstItem="McQ-Nz-bPB" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="wn4-G0-xTn"/>

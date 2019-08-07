@@ -9,6 +9,7 @@
 #import "RMSocketManager.h"
 #import "SocketRocket.h"
 #import "SVProgressHUD.h"
+#import "realMatch_OC-Swift.h"
 @import SocketIO;
 
 @implementation RMSocketManager
@@ -27,7 +28,7 @@
 
 -(instancetype)init{
     if(self = [super init]){
-    
+        self.delegates = [NSMutableArray array];
     }
     return self;
 }
@@ -41,9 +42,11 @@
     
     [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         NSLog(@"socket connected");
-        //            [socket emit:@"login" with:@[@{@"userId":@(111)}]];
+        [socket emit:@"login" with:@[@{@"userId":userId}]];
        
-        
+        if([userId isEqualToString:@"4029"]){
+            [self messageSend:@"wwwwww"];
+        }
     }];
     
     
@@ -51,6 +54,19 @@
         NSLog(@"response is %@",data);
         [SVProgressHUD showWithStatus:data[0][@"msg"]];
         [SVProgressHUD dismissWithDelay:1];
+        
+        if([data[0] isKindOfClass:[NSDictionary class]]){
+            RMMessageDetail* messageDetail = [[RMMessageDetail alloc]init:data[0]];
+            if([[RMDatabaseManager shareManager] insertData:messageDetail]){
+                NSArray<id<RMSocketManagerDelegate>>* copyDelegates = [self.delegates copy];
+                for (id<RMSocketManagerDelegate> delegate in copyDelegates) {
+                    if([delegate respondsToSelector:@selector(didReceiveMessage)]){
+                        [delegate didReceiveMessage];
+                    }
+                }
+            }
+            
+        }
     }];
     
     [socket connect];
@@ -67,6 +83,16 @@
         [self messageSend:message];
     });
    
+}
+
+-(void)addDelegate:(id<RMSocketManagerDelegate>)delegate{
+    if([self.delegates containsObject:delegate])
+        return;
+    [self.delegates addObject:delegate];
+}
+
+-(void)removeDelegate:(id<RMSocketManagerDelegate>)delegate{
+    [self.delegates removeObject:delegate];
 }
 
 //- (void)webSocketDidOpen:(SRWebSocket *)webSocket {

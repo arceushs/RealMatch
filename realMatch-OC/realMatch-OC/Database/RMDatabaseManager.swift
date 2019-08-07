@@ -8,6 +8,7 @@
 
 import UIKit
 @objcMembers
+
 @objc class RMDatabaseManager: NSObject {
     private static let manager = RMDatabaseManager()
     
@@ -15,7 +16,7 @@ import UIKit
         return manager
     }
     
-    private let dbName = "test.db"
+    private let dbName = "test2.db"
     
     lazy var dbURL:URL = { () -> URL in
         let fileURL = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(self.dbName)
@@ -35,10 +36,12 @@ import UIKit
     
     @objc func createTable(){
         let sql = "create table messageTable(\n" +
-            "fromUser INTEGER, \n" +
-            "toUser INTEGER, \n" +
+            "fromUser TEXT, \n" +
+            "toUser TEXT, \n" +
             "msg TEXT, \n" +
-            "msgType INTEGER \n" +
+            "msgType TEXT, \n" +
+            "uploadId INTEGER, \n" +
+            "timestamp REAL \n" +
         "); \n"
         
         let db = RMDatabaseManager.shareManager().db
@@ -48,5 +51,77 @@ import UIKit
                 
             }
         }
+    }
+    
+    @objc func insertData(_ messageDetail:RMMessageDetail) -> Bool {
+        if(self.db.open()){
+            do{
+                try self.db.executeUpdate("insert into messageTable (fromUser, toUser, msg, msgType, uploadId,timestamp) values (?,?,?,?,?,?)", values: [messageDetail.fromUser,messageDetail.toUser,messageDetail.msg,messageDetail.msgType,messageDetail.uploadId,NSDate.timeIntervalSinceReferenceDate])
+            }catch{
+                return false
+            }
+            return true
+        }
+        return false
+    }
+    
+    @objc func getData(currentTimestamp:TimeInterval,direction:String = "front",count:Int,fromUser:String,toUser:String)->Array<RMMessageDetail>?{
+        if(self.db.open()){
+            do{
+                if direction == "front"{
+                    let sets = try self.db .executeQuery("select * from messageTable where (fromUser = (?) and toUser = (?)) or ((fromUser = (?) and toUser = (?))) and timestamp < (?) order by timestamp limit 0,(?)", values: [fromUser,toUser,toUser,fromUser,currentTimestamp,count])
+                    var messagesArr = [RMMessageDetail]()
+                    while sets.next(){
+                        var dict = [String:Any]()
+                        let fromUser = sets.string(forColumn: "fromUser")
+                        dict["fromUser"] = fromUser ?? ""
+                        let toUser = sets.string(forColumn: "toUser")
+                        dict["toUser"] = toUser ?? ""
+                        let msg = sets.string(forColumn: "msg")
+                        dict["msg"] = msg ?? ""
+                        let msg_type = sets.string(forColumn: "msgType")
+                        dict["msg_type"] = msg_type
+                        let uploadId = sets.int(forColumn: "uploadId")
+                        dict["upload_id"] = uploadId
+                        let message = RMMessageDetail(dict)
+                        let timestamp = sets.double(forColumn: "timestamp")
+                        message.timestamp = timestamp
+                        messagesArr.append(message)
+                    }
+                    return messagesArr
+                }else if direction == "back"{
+                    let sets = try self.db .executeQuery("select * from messageTable where fromUser = (?) and toUser = (?) and timestamp > (?) order by timestamp limit 0,(?)", values: [fromUser,toUser,currentTimestamp,count])
+                    var messagesArr = [RMMessageDetail]()
+                    while sets.next(){
+                        var dict = [String:Any]()
+                        let fromUser = sets.string(forColumn: "fromUser")
+                        dict["fromUser"] = fromUser ?? ""
+                        let toUser = sets.string(forColumn: "toUser")
+                        dict["toUser"] = toUser ?? ""
+                        let msg = sets.string(forColumn: "msg")
+                        dict["msg"] = msg ?? ""
+                        let msg_type = sets.string(forColumn: "msgType")
+                        dict["msg_type"] = msg_type
+                        let uploadId = sets.int(forColumn: "uploadId")
+                        dict["upload_id"] = uploadId
+                        let message = RMMessageDetail(dict)
+                        let timestamp = sets.double(forColumn: "timestamp")
+                        message.timestamp = timestamp
+                        messagesArr.append(message)
+                    }
+                    return messagesArr
+
+                }else{
+                    return nil
+                }
+                
+            }catch{
+                
+            }
+            
+        }
+        
+        return nil
+        
     }
 }

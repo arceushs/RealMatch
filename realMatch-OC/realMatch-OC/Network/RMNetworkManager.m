@@ -72,6 +72,9 @@
 
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                     RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithError:error];
+                    if([api respondsToSelector:@selector(adoptResponse:)]){
+                        response = [api adoptResponse:response];
+                    }
                     if(completion){
                         completion(response);
                     }
@@ -100,6 +103,9 @@
                     }
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                     RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithError:error];
+                    if([api respondsToSelector:@selector(adoptResponse:)]){
+                        response = [api adoptResponse:response];
+                    }
                     if(completion){
                         completion(response);
                     }
@@ -134,6 +140,9 @@
                 }
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithError:error];
+                if([api respondsToSelector:@selector(adoptResponse:)]){
+                    response = [api adoptResponse:response];
+                }
                 if(completion){
                     completion(response);
                 }

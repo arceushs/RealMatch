@@ -20,6 +20,9 @@
 		1C3BC8F422ED90DB00E9EE6C /* RMMatchedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C3BC8F222ED90DB00E9EE6C /* RMMatchedViewController.xib */; };
 		1C49CAF022DABC48007333A6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C49CAEF22DABC48007333A6 /* libsqlite3.0.tbd */; };
 		1C49CAF322DABCE2007333A6 /* RMDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */; };
+		1CD90AE822F57CAA00119E27 /* RMMessageFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD90AE722F57CAA00119E27 /* RMMessageFooter.swift */; };
+		1CD90AEA22F57CC400119E27 /* RMMessageFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CD90AE922F57CC400119E27 /* RMMessageFooter.xib */; };
+		1CD90AEC22F592BF00119E27 /* RMMessageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD90AEB22F592BF00119E27 /* RMMessageDetail.swift */; };
 		1CFCE11722BF1B380025BC0B /* RMMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE11522BF1B380025BC0B /* RMMessageViewController.m */; };
 		1CFCE11822BF1B380025BC0B /* RMMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CFCE11622BF1B380025BC0B /* RMMessageViewController.xib */; };
 		1CFCE11C22BF1B760025BC0B /* RMMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE11A22BF1B760025BC0B /* RMMessageTableViewCell.m */; };
@@ -146,6 +149,9 @@
 		1C3BC8F222ED90DB00E9EE6C /* RMMatchedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMMatchedViewController.xib; sourceTree = "<group>"; };
 		1C49CAEF22DABC48007333A6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDatabaseManager.swift; sourceTree = "<group>"; };
+		1CD90AE722F57CAA00119E27 /* RMMessageFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMessageFooter.swift; sourceTree = "<group>"; };
+		1CD90AE922F57CC400119E27 /* RMMessageFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMMessageFooter.xib; sourceTree = "<group>"; };
+		1CD90AEB22F592BF00119E27 /* RMMessageDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMessageDetail.swift; sourceTree = "<group>"; };
 		1CFCE11422BF1B380025BC0B /* RMMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMessageViewController.h; sourceTree = "<group>"; };
 		1CFCE11522BF1B380025BC0B /* RMMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMMessageViewController.m; sourceTree = "<group>"; };
 		1CFCE11622BF1B380025BC0B /* RMMessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMMessageViewController.xib; sourceTree = "<group>"; };
@@ -299,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */,
+				1CD90AEB22F592BF00119E27 /* RMMessageDetail.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -320,6 +327,8 @@
 				1C0EAEA322D02F5E00036DD5 /* RMMessageHeader.swift */,
 				1C0EAEA522D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift */,
 				1C0EAEA622D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.xib */,
+				1CD90AE722F57CAA00119E27 /* RMMessageFooter.swift */,
+				1CD90AE922F57CC400119E27 /* RMMessageFooter.xib */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -740,6 +749,7 @@
 				D680C88122CCDECE00D9ED96 /* RMRealVideoViewController.xib in Resources */,
 				1C3BC8F422ED90DB00E9EE6C /* RMMatchedViewController.xib in Resources */,
 				1CFCE11822BF1B380025BC0B /* RMMessageViewController.xib in Resources */,
+				1CD90AEA22F57CC400119E27 /* RMMessageFooter.xib in Resources */,
 				D6369D9622CF1A1F00A1B473 /* RMMessageDetailViewController.xib in Resources */,
 				D687DA632294EDD200A11488 /* LaunchScreen.storyboard in Resources */,
 				D687DA602294EDD200A11488 /* Assets.xcassets in Resources */,
@@ -858,6 +868,7 @@
 				D680C87122CB842700D9ED96 /* RMUserCenter.swift in Sources */,
 				1C3BC8EB22EC6EBA00E9EE6C /* RMFetchLikesMeAPI.m in Sources */,
 				D6696FE022B9EF8A00942DFB /* RMHomePageDetailHeaderView.m in Sources */,
+				1CD90AEC22F592BF00119E27 /* RMMessageDetail.swift in Sources */,
 				1C0EAEA722D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift in Sources */,
 				1C3BC8F322ED90DB00E9EE6C /* RMMatchedViewController.swift in Sources */,
 				D6696FDC22B9EBF400942DFB /* RMHomePageDetailTableViewCell.m in Sources */,
@@ -869,6 +880,7 @@
 				D652276322BB8AEE00C273E1 /* RMVideoPlayViewController.m in Sources */,
 				1CFCE11722BF1B380025BC0B /* RMMessageViewController.m in Sources */,
 				D659140922B793E50098F458 /* RMFetchDetailModel.m in Sources */,
+				1CD90AE822F57CAA00119E27 /* RMMessageFooter.swift in Sources */,
 				D680C88922CE295A00D9ED96 /* RMPostFileAPI.m in Sources */,
 				D6696FE622BA0F6E00942DFB /* RMTableViewModel.m in Sources */,
 				1C381DF522E35A420060DE69 /* RMLikeFlagAPI.m in Sources */,

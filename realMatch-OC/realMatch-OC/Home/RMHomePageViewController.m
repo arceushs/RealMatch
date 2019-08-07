@@ -17,6 +17,7 @@
 #import "SDWebImage.h"
 #import "RMHomeCardViewController.h"
 #import "RMLikeFlagAPI.h"
+#import "RMSocketManager.h"
 
 @interface RMHomePageViewController ()<RouterController,CAAnimationDelegate>
 
@@ -49,6 +50,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[RMSocketManager shared] connectWithUserId:[RMUserCenter shared].userId];
     
     _cardVC1 = [[RMHomeCardViewController alloc]init];
     __weak typeof(self) weakSelf = self;
@@ -152,7 +155,7 @@
     _cardVC1.view.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
 }
 - (IBAction)messageButtonClicked:(id)sender {
-    [[Router shared] routerTo:@"RMMessageViewController" parameter:@{@"userId":self.currentCardVC.matchedUserId}];
+    [[Router shared] routerTo:@"RMMessageViewController" parameter:@{@"userId":[RMUserCenter shared].userId}];
 }
 
 //- (void)transitionWithType:(NSString *) type WithSubtype:(NSString *) subtype ForView : (UIView *) view {

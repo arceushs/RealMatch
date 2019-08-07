@@ -65,11 +65,18 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
     [super viewWillAppear:animated];
+    if(self.player){
+        [self.player play];
+    }
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+    if(self.player){
+        [self.player pause];
+    }
 }
 
 -(void)viewWillLayoutSubviews{

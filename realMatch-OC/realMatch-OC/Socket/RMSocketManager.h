@@ -10,11 +10,22 @@
 #import "SocketRocket.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RMSocketManager : NSObject<SRWebSocketDelegate>
+@protocol RMSocketManagerDelegate <NSObject>
+
+-(void)didReceiveMessage;
+
+@end
+
+@interface RMSocketManager : NSObject
+
+@property (nonatomic,strong) NSMutableArray<id<RMSocketManagerDelegate>>* delegates;
 
 +(instancetype)shared;
 -(void)connectWithUserId:(NSString*)userId;
 -(void)messageSend:(NSString*)message;
+
+-(void)addDelegate:(id<RMSocketManagerDelegate>)delegate;
+-(void)removeDelegate:(id<RMSocketManagerDelegate>)delegate;
 
 @end
 
