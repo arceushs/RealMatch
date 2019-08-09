@@ -35,6 +35,9 @@
                                 <constraint firstAttribute="height" constant="24" id="opX-Jh-2xP"/>
                             </constraints>
                             <state key="normal" image="normalBack"/>
+                            <connections>
+                                <action selector="backButtonClicked:" destination="-1" eventType="touchUpInside" id="2eT-UN-aZk"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Vd-vN-z6K">
                             <rect key="frame" x="187" y="12" width="40" height="20"/>
@@ -94,8 +97,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkd-RC-dPJ">
                             <rect key="frame" x="60" y="12" width="294" height="41"/>
                             <subviews>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MEf-dN-gx9">
-                                    <rect key="frame" x="14" y="0.0" width="266" height="31"/>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="kjlkjlkjkjklj;lkj;lkjdadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfadfasdfasdfasdfasdfasdfasd" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MEf-dN-gx9">
+                                    <rect key="frame" x="14" y="5" width="266" height="26"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="textColor" red="0.1960784314" green="0.21176470589999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -107,7 +110,7 @@
                                 <constraint firstAttribute="trailing" secondItem="MEf-dN-gx9" secondAttribute="trailing" constant="14" id="48K-IF-pIp"/>
                                 <constraint firstAttribute="bottom" secondItem="MEf-dN-gx9" secondAttribute="bottom" constant="10" id="8NV-T1-gIj"/>
                                 <constraint firstItem="MEf-dN-gx9" firstAttribute="leading" secondItem="Dkd-RC-dPJ" secondAttribute="leading" constant="14" id="DuG-Kb-Ir5"/>
-                                <constraint firstItem="MEf-dN-gx9" firstAttribute="top" secondItem="Dkd-RC-dPJ" secondAttribute="top" id="YCi-QM-dpe"/>
+                                <constraint firstItem="MEf-dN-gx9" firstAttribute="top" secondItem="Dkd-RC-dPJ" secondAttribute="top" constant="5" id="YCi-QM-dpe"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -136,11 +139,11 @@
                 <constraint firstItem="xJR-3v-xUP" firstAttribute="top" secondItem="McQ-Nz-bPB" secondAttribute="bottom" id="OF0-Zk-BpL"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="McQ-Nz-bPB" secondAttribute="trailing" id="QDx-tK-PrP"/>
                 <constraint firstItem="xJR-3v-xUP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="RQo-K8-dT1"/>
-                <constraint firstItem="2AY-OK-14d" firstAttribute="top" secondItem="xJR-3v-xUP" secondAttribute="bottom" id="UZq-V4-zAC"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="2AY-OK-14d" secondAttribute="trailing" id="XsE-bq-8Wv"/>
                 <constraint firstItem="2AY-OK-14d" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="btp-vr-tle"/>
                 <constraint firstItem="McQ-Nz-bPB" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="cHi-uz-lBx"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="xJR-3v-xUP" secondAttribute="trailing" id="vSn-II-mgQ"/>
+                <constraint firstItem="2AY-OK-14d" firstAttribute="top" secondItem="xJR-3v-xUP" secondAttribute="bottom" id="vd7-kJ-26S"/>
                 <constraint firstItem="2AY-OK-14d" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="vvC-c2-DHX"/>
                 <constraint firstItem="McQ-Nz-bPB" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="wn4-G0-xTn"/>
             </constraints>

@@ -57,6 +57,7 @@ import UIKit
         if(self.db.open()){
             do{
                 try self.db.executeUpdate("insert into messageTable (fromUser, toUser, msg, msgType, uploadId,timestamp) values (?,?,?,?,?,?)", values: [messageDetail.fromUser,messageDetail.toUser,messageDetail.msg,messageDetail.msgType,messageDetail.uploadId,NSDate.timeIntervalSinceReferenceDate])
+                print(NSDate.timeIntervalSinceReferenceDate,"insert")
             }catch{
                 return false
             }
@@ -65,11 +66,11 @@ import UIKit
         return false
     }
     
-    @objc func getData(currentTimestamp:TimeInterval,direction:String = "front",count:Int,fromUser:String,toUser:String)->Array<RMMessageDetail>?{
+    @objc func getData(_ messageParam:RMMessageParams)->Array<RMMessageDetail>?{
         if(self.db.open()){
             do{
-                if direction == "front"{
-                    let sets = try self.db .executeQuery("select * from messageTable where (fromUser = (?) and toUser = (?)) or ((fromUser = (?) and toUser = (?))) and timestamp < (?) order by timestamp limit 0,(?)", values: [fromUser,toUser,toUser,fromUser,currentTimestamp,count])
+                if messageParam.direction == "front"{
+                    let sets = try self.db .executeQuery("select * from messageTable where (fromUser = (?) and toUser = (?)) or ((fromUser = (?) and toUser = (?))) and timestamp < (?) order by timestamp Desc limit 0,(?)", values: [messageParam.fromUser,messageParam.toUser,messageParam.toUser,messageParam.fromUser,messageParam.timestamp,messageParam.count])
                     var messagesArr = [RMMessageDetail]()
                     while sets.next(){
                         var dict = [String:Any]()
@@ -88,9 +89,9 @@ import UIKit
                         message.timestamp = timestamp
                         messagesArr.append(message)
                     }
-                    return messagesArr
-                }else if direction == "back"{
-                    let sets = try self.db .executeQuery("select * from messageTable where fromUser = (?) and toUser = (?) and timestamp > (?) order by timestamp limit 0,(?)", values: [fromUser,toUser,currentTimestamp,count])
+                    return messagesArr.reversed()
+                }else if messageParam.direction == "back"{
+                    let sets = try self.db .executeQuery("select * from messageTable where fromUser = (?) and toUser = (?) and timestamp > (?) order by timestamp limit 0,(?)", values: [messageParam.fromUser,messageParam.toUser,messageParam.timestamp,messageParam.count])
                     var messagesArr = [RMMessageDetail]()
                     while sets.next(){
                         var dict = [String:Any]()

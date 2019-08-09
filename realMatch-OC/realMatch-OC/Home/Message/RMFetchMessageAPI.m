@@ -60,7 +60,7 @@
         NSMutableArray<RMFetchMessageModel*>* modelsArr = [NSMutableArray array];
         for(NSDictionary* dict in lists){
             RMFetchMessageModel* model = [[RMFetchMessageModel alloc]init];
-            model.userId = dict[@"userId"];
+            model.userId =[NSString stringWithFormat:@"%d",[((NSNumber*)dict[@"userId"]) intValue]];
             model.avatar = dict[@"avatar"];
             model.name = dict[@"name"];
             model.msg = dict[@"msg"];

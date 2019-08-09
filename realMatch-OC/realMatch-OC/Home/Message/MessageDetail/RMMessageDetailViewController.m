@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
+
 @property (strong,nonatomic) NSString* fromUserId;
 @property (strong,nonatomic) NSString* toUserId;
 
@@ -57,8 +58,13 @@
     [self.messageDetailTableView registerNib:[UINib nibWithNibName:@"RMMessageToMeTableViewCell" bundle:nil] forCellReuseIdentifier:@"RMMessageToMeTableViewCell"];
     self.messageDetailTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    NSArray<RMMessageDetail*>* messageDetailArr = [[RMDatabaseManager shareManager] getDataWithCurrentTimestamp:[NSDate timeIntervalSinceReferenceDate] direction:@"front" count:10 fromUser:@"4029" toUser:@"4031"];
-    
+    NSDictionary* dict = @{@"fromUser":self.fromUserId,
+                           @"toUser":self.toUserId,
+                           @"timestamp":@([[NSDate date] timeIntervalSinceReferenceDate]),
+                           @"count":@(10),
+                           @"direction":@"front"
+                           };
+    NSArray<RMMessageDetail*>* messageDetailArr = [[RMDatabaseManager shareManager] getData:[[RMMessageParams alloc] init:dict]];
     
     
     for (RMMessageDetail* messageDetail in messageDetailArr) {
@@ -73,10 +79,12 @@
     }
     self.textView.delegate = self;
     
-    [self scrollToBottom:self.messageDetailTableView];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self scrollToBottom:self.messageDetailTableView];
+    });
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -91,8 +99,16 @@
 }
 
 -(void)didReceiveMessage{
-    NSArray<RMMessageDetail*>* messageDetailArr = [[RMDatabaseManager shareManager] getDataWithCurrentTimestamp:[NSDate timeIntervalSinceReferenceDate] direction:@"front" count:1 fromUser:self.fromUserId toUser:self.toUserId];
+
     
+    NSDictionary* dict = @{@"fromUser":self.fromUserId,
+                           @"toUser":self.toUserId,
+                           @"timestamp":@([[NSDate date] timeIntervalSinceReferenceDate]),
+                           @"count":@(1),
+                           @"direction":@"front"
+                           };
+    NSLog(@"%lf",[((NSNumber*)dict[@"timestamp"]) doubleValue]);
+    NSArray<RMMessageDetail*>* messageDetailArr = [[RMDatabaseManager shareManager] getData:[[RMMessageParams alloc] init:dict]];
     
     
     for (RMMessageDetail* messageDetail in messageDetailArr) {
@@ -106,7 +122,10 @@
         [self.modelArrs addObject:model];
     }
     [self.messageDetailTableView reloadData];
-    [self scrollToBottom:self.messageDetailTableView];
+   
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self scrollToBottom:self.messageDetailTableView];
+    });
 }
 
 
@@ -147,13 +166,19 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self.textView resignFirstResponder];
+//    [self.textView resignFirstResponder];
 }
 
 
 -(void)textViewDidChange:(UITextView *)textView{
-    CGSize size = [textView.text boundingRectWithSize:CGSizeMake(148, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size;
-    self.inputViewHeightContraint.constant = size.height + 34;
+    CGSize size = [textView.text boundingRectWithSize:CGSizeMake(textView.frame.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size;
+    self.inputViewHeightContraint.constant = size.height + 50;
+    [self.inputView setNeedsLayout];
+    [self.inputView layoutIfNeeded];
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView{
+    
 }
 
 #pragma mark --键盘弹出
@@ -168,6 +193,7 @@
     CGFloat transformY = keyboardFrame.size.height;
     //执行动画
     [UIView animateWithDuration:duration animations:^{
+       
         self.bottomConstraint.constant =0 - transformY + [UIDevice safeBottomHeight];
     }];
 }
@@ -185,7 +211,7 @@
 
 -(void)scrollToBottom:(UIScrollView*)scrollView{
     CGFloat contentOffset = scrollView.contentSize.height - scrollView.frame.size.height;
-    [scrollView setContentOffset:CGPointMake(0, contentOffset)];
+    [scrollView setContentOffset:CGPointMake(0, contentOffset) animated:YES];
 }
 
 - (IBAction)sendMessageButtonClicked:(id)sender {
@@ -195,6 +221,7 @@
                            @"msg_type":@"text",
                            @"uploadId":@(-1)
                            };
+//    [RMSocketManager shared] messageSend:<#(nonnull NSString *)#>
     RMMessageDetail* messageDetail = [[RMMessageDetail alloc]init:dict];
     if([[RMDatabaseManager shareManager] insertData:messageDetail]){
         self.textView.text = @"";
@@ -203,5 +230,8 @@
     
 }
 
+- (IBAction)backButtonClicked:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

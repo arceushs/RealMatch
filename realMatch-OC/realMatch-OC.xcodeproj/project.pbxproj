@@ -79,6 +79,7 @@
 		D687DA662294EDD200A11488 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D687DA652294EDD200A11488 /* main.m */; };
 		D687DA702294EDD200A11488 /* realMatch_OCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D687DA6F2294EDD200A11488 /* realMatch_OCTests.m */; };
 		D687DA7B2294EDD200A11488 /* realMatch_OCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D687DA7A2294EDD200A11488 /* realMatch_OCUITests.m */; };
+		D6B73D3722FB03E700CC12CA /* RMMessageParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B73D3622FB03E700CC12CA /* RMMessageParams.swift */; };
 		D6BF467522969DEB00C82D98 /* LoginAndRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BF467322969DEB00C82D98 /* LoginAndRegisterViewController.m */; };
 		D6BF467622969DEB00C82D98 /* LoginAndRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6BF467422969DEB00C82D98 /* LoginAndRegisterViewController.xib */; };
 		D6BF467B2296A6DE00C82D98 /* Router.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BF467A2296A6DE00C82D98 /* Router.m */; };
@@ -243,6 +244,7 @@
 		D687DA762294EDD200A11488 /* realMatch-OCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "realMatch-OCUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D687DA7A2294EDD200A11488 /* realMatch_OCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = realMatch_OCUITests.m; sourceTree = "<group>"; };
 		D687DA7C2294EDD200A11488 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6B73D3622FB03E700CC12CA /* RMMessageParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMessageParams.swift; sourceTree = "<group>"; };
 		D6BF467222969DEB00C82D98 /* LoginAndRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginAndRegisterViewController.h; sourceTree = "<group>"; };
 		D6BF467322969DEB00C82D98 /* LoginAndRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginAndRegisterViewController.m; sourceTree = "<group>"; };
 		D6BF467422969DEB00C82D98 /* LoginAndRegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginAndRegisterViewController.xib; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */,
 				1CD90AEB22F592BF00119E27 /* RMMessageDetail.swift */,
+				D6B73D3622FB03E700CC12CA /* RMMessageParams.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 				D680C88322CDAD2E00D9ED96 /* dateUtils.swift in Sources */,
 				D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */,
 				D652275F22BB806B00C273E1 /* RMPlayer.swift in Sources */,
+				D6B73D3722FB03E700CC12CA /* RMMessageParams.swift in Sources */,
 				D6BF467B2296A6DE00C82D98 /* Router.m in Sources */,
 				1C3BC8EE22ED37EF00E9EE6C /* RMFetchMessageAPI.m in Sources */,
 				D6369D9A22CF1A3E00A1B473 /* RMMessageFromMeTableViewCell.m in Sources */,
