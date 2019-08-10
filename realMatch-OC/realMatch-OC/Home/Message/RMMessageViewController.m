@@ -12,6 +12,7 @@
 #import "realMatch_OC-Swift.h"
 #import "UIView+RealMatch.h"
 #import "RMFetchMessageAPI.h"
+#import "SDWebImage.h"
 
 @interface RMMessageViewController ()<UITableViewDelegate,UITableViewDataSource,RouterController>
 @property (weak, nonatomic) IBOutlet UITableView *messageTableView;
@@ -88,12 +89,17 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RMMessageTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMMessageTableViewCell"];
+    RMFetchMessageModel* model = self.messageArr[indexPath.row];
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+    cell.titleLabel.text = model.name;
+    cell.subtitleLabel.text = model.msg;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     RMFetchMessageModel* model = self.messageArr[indexPath.row];
-    [[Router shared]routerTo:@"RMMessageDetailViewController" parameter:@{@"fromUser":self.userId,@"toUser":model.userId}];
+    [[Router shared]routerTo:@"RMMessageDetailViewController" parameter:@{@"fromUser":self.userId,@"toUser":model.userId,@"fromUserName":model.name}];
 }
 
 - (IBAction)backButtonClicked:(id)sender {

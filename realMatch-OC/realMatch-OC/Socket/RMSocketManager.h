@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SocketRocket.h"
+#import "realMatch_OC-Swift.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol RMSocketManagerDelegate <NSObject>
@@ -22,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)shared;
 -(void)connectWithUserId:(NSString*)userId;
--(void)messageSend:(NSString*)message;
+-(void)messageSend:(RMMessageDetail*)message;
 
 -(void)addDelegate:(id<RMSocketManagerDelegate>)delegate;
 -(void)removeDelegate:(id<RMSocketManagerDelegate>)delegate;

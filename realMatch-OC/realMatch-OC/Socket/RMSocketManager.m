@@ -9,12 +9,17 @@
 #import "RMSocketManager.h"
 #import "SocketRocket.h"
 #import "SVProgressHUD.h"
-#import "realMatch_OC-Swift.h"
+
 @import SocketIO;
+
+@interface RMSocketManager()
+@property (nonatomic,strong) SocketManager* manager;
+
+@end
 
 @implementation RMSocketManager
 {
-    SocketManager* _manager;
+    
     SRWebSocket* _webSocket;
 }
 +(instancetype)shared{
@@ -43,18 +48,10 @@
     [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         NSLog(@"socket connected");
         [socket emit:@"login" with:@[@{@"userId":userId}]];
-       
-        if([userId isEqualToString:@"4029"]){
-            [self messageSend:@"wwwwww"];
-        }
     }];
     
     
     [socket on:@"message" callback:^(NSArray* data, SocketAckEmitter* ack) {
-        NSLog(@"response is %@",data);
-        [SVProgressHUD showWithStatus:data[0][@"msg"]];
-        [SVProgressHUD dismissWithDelay:1];
-        
         if([data[0] isKindOfClass:[NSDictionary class]]){
             RMMessageDetail* messageDetail = [[RMMessageDetail alloc]init:data[0]];
             if([[RMDatabaseManager shareManager] insertData:messageDetail]){
@@ -72,16 +69,17 @@
     [socket connect];
 }
 
--(void)messageSend:(NSString*)message{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSDictionary* dict = @{@"fromUser":@(4029),
-                               @"toUser":@(4031),
-                               @"msg":message,
-                               @"msg_type":@"text",
-                               };
-         [_manager.defaultSocket emit:@"message" with:@[dict]];
-        [self messageSend:message];
-    });
+
+
+-(void)messageSend:(RMMessageDetail*)message{
+    __weak typeof(self) weakSelf = self;
+
+    NSDictionary* dict = @{@"fromUser":message.fromUser,
+                           @"toUser":message.toUser,
+                           @"msg":message.msg,
+                           @"msg_type":message.msgType,
+                           };
+    [weakSelf.manager.defaultSocket emit:@"message" with:@[dict]];
    
 }
 

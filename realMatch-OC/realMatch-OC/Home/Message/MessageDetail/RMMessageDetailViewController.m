@@ -77,13 +77,16 @@
         }
         [self.modelArrs addObject:model];
     }
+    
     self.textView.delegate = self;
+    self.textView.textContainerInset = UIEdgeInsetsZero;
+    self.textView.textContainer.lineFragmentPadding = 0;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardWillHideNotification object:nil];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self scrollToBottom:self.messageDetailTableView];
+        [self scrollToBottom:self.messageDetailTableView WithAnimation:NO];
     });
     // Do any additional setup after loading the view from its nib.
 }
@@ -123,8 +126,8 @@
     }
     [self.messageDetailTableView reloadData];
    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self scrollToBottom:self.messageDetailTableView];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self scrollToBottom:self.messageDetailTableView WithAnimation:YES];
     });
 }
 
@@ -153,6 +156,7 @@
         _cell.LabelContent.text = self.modelArrs[indexPath.row].text;
         _cell.contentHeightConstraint.constant = self.modelArrs[indexPath.row].rowHeight - 16;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -172,13 +176,19 @@
 
 -(void)textViewDidChange:(UITextView *)textView{
     CGSize size = [textView.text boundingRectWithSize:CGSizeMake(textView.frame.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size;
-    self.inputViewHeightContraint.constant = size.height + 50;
+    self.inputViewHeightContraint.constant = size.height + 51;
     [self.inputView setNeedsLayout];
     [self.inputView layoutIfNeeded];
 }
 
+
+
 -(void)textViewDidEndEditing:(UITextView *)textView{
     
+}
+
+- (IBAction)backButtonClicked:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark --键盘弹出
@@ -209,9 +219,9 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
--(void)scrollToBottom:(UIScrollView*)scrollView{
+-(void)scrollToBottom:(UIScrollView*)scrollView WithAnimation:(BOOL)animate{
     CGFloat contentOffset = scrollView.contentSize.height - scrollView.frame.size.height;
-    [scrollView setContentOffset:CGPointMake(0, contentOffset) animated:YES];
+    [scrollView setContentOffset:CGPointMake(0, contentOffset) animated:animate];
 }
 
 - (IBAction)sendMessageButtonClicked:(id)sender {
@@ -221,17 +231,18 @@
                            @"msg_type":@"text",
                            @"uploadId":@(-1)
                            };
-//    [RMSocketManager shared] messageSend:<#(nonnull NSString *)#>
+    
     RMMessageDetail* messageDetail = [[RMMessageDetail alloc]init:dict];
+    [[RMSocketManager shared] messageSend:messageDetail];
     if([[RMDatabaseManager shareManager] insertData:messageDetail]){
         self.textView.text = @"";
+        self.inputViewHeightContraint.constant = 65;
+        [self.inputView setNeedsLayout];
+        [self.inputView layoutIfNeeded];
         [self didReceiveMessage];
     }
     
 }
 
-- (IBAction)backButtonClicked:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 @end

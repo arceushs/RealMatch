@@ -19,8 +19,8 @@ import UIKit
     var timestamp:Double
     
     init(_ dict:[String:Any]) {
-        self.fromUser = "\((dict["fromUser"] as? Int) ?? 4029)"
-        self.toUser = "\((dict["toUser"] as? Int) ?? 4031)"
+        self.fromUser = (dict["fromUser"] as? String) ?? ""
+        self.toUser = (dict["toUser"] as? String) ?? ""
         self.msg = (dict["msg"] as? String) ?? ""
         self.msgType = (dict["msg_type"] as? String) ?? ""
         self.uploadId = (dict["upload_id"] as? Int) ?? -1
