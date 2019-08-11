@@ -44,6 +44,7 @@
     self.messageTableView.delegate = self;
     self.messageTableView.dataSource = self;
     self.messageTableView.rowHeight = 97;
+    self.messageTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.likesArr = [NSMutableArray array];
     self.messageArr = [NSMutableArray array];
@@ -85,6 +86,28 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.messageArr.count;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if([self.messageArr count]>0){
+        UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 60)];
+        UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(16, 40, 300, 26)];
+        label.text = [NSString stringWithFormat:@"Message(%li)",[self.messageArr count]];
+        [view addSubview:label];
+        return view;
+    }else{
+        return [[UIView alloc]init];
+    }
+    
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if([self.messageArr count]>0){
+        return 60;
+    }else{
+        return 0.01;
+    }
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

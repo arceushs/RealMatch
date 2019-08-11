@@ -30,7 +30,7 @@ import UIKit
         self.likesMeCollectionView.register(UINib(nibName: "RMMessageHeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RMMessageHeaderCollectionViewCell")
         self.addSubview(self.likesMeCollectionView)
         self.labelTitle = UILabel(frame: CGRect(x: 16, y: 40, width: 300, height: 16))
-        self.labelTitle.text = "Likes me"
+        self.labelTitle.text = "Likes me(\(likesMeArr!.count))"
         self.addSubview(self.labelTitle)
         
         visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
@@ -52,7 +52,7 @@ import UIKit
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return self.likesMeArr?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

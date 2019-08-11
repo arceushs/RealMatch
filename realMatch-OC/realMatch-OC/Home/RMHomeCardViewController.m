@@ -37,18 +37,20 @@
     [[RMNetworkManager shareManager] request:fetchHomeVideoAPI completion:^(RMNetworkResponse *response) {
         RMFetchHomeVideoAPIData* data = (RMFetchHomeVideoAPIData*)response.responseObject;
         NSString* finalfilePath = data.video;
-        weakSelf.player = [AVPlayer playerWithPlayerItem:nil];
-        [weakSelf.cardView setVideoLayerWithPlayer:weakSelf.player];
-        NSURL *streamURL = [NSURL fileURLWithPath:finalfilePath];
-        AVPlayerItem *currentItem = [[AVPlayerItem alloc] initWithURL:streamURL];
-        weakSelf.playerItem = currentItem;
-        [weakSelf.player replaceCurrentItemWithPlayerItem:currentItem];
-        [weakSelf.player play];
-        
-        weakSelf.matchedUserId = data.userId;
-        
-        [weakSelf.cardView setNeedsLayout];
-        [weakSelf.cardView layoutIfNeeded];
+        if([finalfilePath length]>0){
+            weakSelf.player = [AVPlayer playerWithPlayerItem:nil];
+            [weakSelf.cardView setVideoLayerWithPlayer:weakSelf.player];
+            NSURL *streamURL = [NSURL fileURLWithPath:finalfilePath];
+            AVPlayerItem *currentItem = [[AVPlayerItem alloc] initWithURL:streamURL];
+            weakSelf.playerItem = currentItem;
+            [weakSelf.player replaceCurrentItemWithPlayerItem:currentItem];
+            [weakSelf.player play];
+            
+            weakSelf.matchedUserId = data.userId;
+            
+            [weakSelf.cardView setNeedsLayout];
+            [weakSelf.cardView layoutIfNeeded];
+        }
     }];
     // Do any additional setup after loading the view from its nib.
 }

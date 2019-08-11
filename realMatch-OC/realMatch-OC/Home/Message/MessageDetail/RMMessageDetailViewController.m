@@ -9,7 +9,6 @@
 #import "RMMessageDetailViewController.h"
 #import "RMMessageToMeTableViewCell.h"
 #import "RMMessageFromMeTableViewCell.h"
-#import "RMMessageDetailModel.h"
 #import "Router.h"
 #import "UIDevice+RealMatch.h"
 #import "RMSocketManager.h"
@@ -17,15 +16,17 @@
 
 @interface RMMessageDetailViewController ()<UITableViewDataSource,UITableViewDelegate,RouterController,UITextViewDelegate,RMSocketManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *messageDetailTableView;
-@property (strong,nonatomic) NSMutableArray<RMMessageDetailModel*>* modelArrs;
+@property (strong,nonatomic) NSMutableArray<RMMessageDetail*>* modelArrs;
 @property (weak, nonatomic) IBOutlet UIView *inputView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewHeightContraint;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *messageTitleLabel;
 
 
 @property (strong,nonatomic) NSString* fromUserId;
 @property (strong,nonatomic) NSString* toUserId;
+@property (strong,nonatomic) NSString* messageTitle;
 
 @end
 
@@ -35,6 +36,7 @@
     if(self = [super init]){
         self.fromUserId = params[@"fromUser"];
         self.toUserId = params[@"toUser"];
+        self.messageTitle = params[@"fromUserName"];
     }
     return self;
 }
@@ -68,14 +70,12 @@
     
     
     for (RMMessageDetail* messageDetail in messageDetailArr) {
-        RMMessageDetailModel* model = [[RMMessageDetailModel alloc]init];
-        model.text = messageDetail.msg;
         if([messageDetail.toUser isEqualToString:self.fromUserId]){
-            model.messageFrom = MessageFromOther;
+            messageDetail.messageFrom = MessageFromMessageFromOther;
         }else{
-            model.messageFrom = MessageFromMe;
+            messageDetail.messageFrom = MessageFromMessageFromMe;
         }
-        [self.modelArrs addObject:model];
+        [self.modelArrs addObject:messageDetail];
     }
     
     self.textView.delegate = self;
@@ -88,7 +88,16 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self scrollToBottom:self.messageDetailTableView WithAnimation:NO];
     });
+    
+    UITapGestureRecognizer* tapGest = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGest)];
+    [self.messageDetailTableView addGestureRecognizer:tapGest];
+    
+    self.messageTitleLabel.text = self.messageTitle;
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)tapGest{
+    [self.textView resignFirstResponder];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -115,14 +124,12 @@
     
     
     for (RMMessageDetail* messageDetail in messageDetailArr) {
-        RMMessageDetailModel* model = [[RMMessageDetailModel alloc]init];
-        model.text = messageDetail.msg;
         if([messageDetail.toUser isEqualToString:self.fromUserId]){
-            model.messageFrom = MessageFromOther;
+            messageDetail.messageFrom = MessageFromMessageFromOther;
         }else{
-            model.messageFrom = MessageFromMe;
+            messageDetail.messageFrom = MessageFromMessageFromMe;
         }
-        [self.modelArrs addObject:model];
+        [self.modelArrs addObject:messageDetail];
     }
     [self.messageDetailTableView reloadData];
    
@@ -145,15 +152,15 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell* cell = nil;
-    if(self.modelArrs[indexPath.row].messageFrom == MessageFromMe){
+    if(self.modelArrs[indexPath.row].messageFrom == MessageFromMessageFromMe){
         cell = [tableView dequeueReusableCellWithIdentifier:@"RMMessageFromMeTableViewCell" forIndexPath:indexPath];
         RMMessageFromMeTableViewCell* _cell =(RMMessageFromMeTableViewCell*) cell;
-        _cell.LabelContent.text = self.modelArrs[indexPath.row].text;
+        _cell.LabelContent.text = self.modelArrs[indexPath.row].msg;
         _cell.contentHeightStraint.constant = self.modelArrs[indexPath.row].rowHeight - 16;
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:@"RMMessageToMeTableViewCell" forIndexPath:indexPath];
         RMMessageToMeTableViewCell* _cell =(RMMessageToMeTableViewCell*) cell;
-        _cell.LabelContent.text = self.modelArrs[indexPath.row].text;
+        _cell.LabelContent.text = self.modelArrs[indexPath.row].msg;
         _cell.contentHeightConstraint.constant = self.modelArrs[indexPath.row].rowHeight - 16;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -171,6 +178,17 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 //    [self.textView resignFirstResponder];
+//    if(scrollView.contentOffset.y < -100){
+//        self.modelArrs
+//        NSDictionary* dict = @{@"fromUser":self.fromUserId,
+//                               @"toUser":self.toUserId,
+//                               @"direction":@"front",
+//                               @"timestamp":
+//
+//                               }
+//        RMMessageParams* params = [RMMessageParams alloc]init:<#(NSDictionary<NSString *,id> * _Nonnull)#>
+//        [RMDatabaseManager shareManager]getData:<#(RMMessageParams * _Nonnull)#>
+//    }
 }
 
 

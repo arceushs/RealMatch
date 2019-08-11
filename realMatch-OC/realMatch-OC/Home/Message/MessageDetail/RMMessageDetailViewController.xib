@@ -16,6 +16,7 @@
                 <outlet property="inputView" destination="2AY-OK-14d" id="xUf-4f-p2U"/>
                 <outlet property="inputViewHeightContraint" destination="COy-5E-zaZ" id="EwK-RG-hEI"/>
                 <outlet property="messageDetailTableView" destination="xJR-3v-xUP" id="ycf-Wv-amx"/>
+                <outlet property="messageTitleLabel" destination="2Vd-vN-z6K" id="r2X-aZ-ecM"/>
                 <outlet property="textView" destination="MEf-dN-gx9" id="GOT-TF-wSm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
