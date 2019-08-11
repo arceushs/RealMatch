@@ -95,7 +95,6 @@
 		D6E0771522AE31CC00CC44BA /* RMHomeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6E0771422AE31CC00CC44BA /* RMHomeCardView.xib */; };
 		D6E0771822AF932400CC44BA /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = D6E0771722AF932300CC44BA /* test1.png */; };
 		D6E0771A22AF9F0F00CC44BA /* aiqinggongyu2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D6E0771922AF9EF600CC44BA /* aiqinggongyu2.mp4 */; };
-		D6EB059722CF25320084DE46 /* RMMessageDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EB059622CF25320084DE46 /* RMMessageDetailModel.m */; };
 		D6EB059B22CF4C700084DE46 /* RMPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EB059922CF4C700084DE46 /* RMPurchaseViewController.m */; };
 		D6EB059C22CF4C700084DE46 /* RMPurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6EB059A22CF4C700084DE46 /* RMPurchaseViewController.xib */; };
 /* End PBXBuildFile section */
@@ -268,8 +267,6 @@
 		D6E0771422AE31CC00CC44BA /* RMHomeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomeCardView.xib; sourceTree = "<group>"; };
 		D6E0771722AF932300CC44BA /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
 		D6E0771922AF9EF600CC44BA /* aiqinggongyu2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = aiqinggongyu2.mp4; sourceTree = "<group>"; };
-		D6EB059522CF25320084DE46 /* RMMessageDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMMessageDetailModel.h; sourceTree = "<group>"; };
-		D6EB059622CF25320084DE46 /* RMMessageDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMMessageDetailModel.m; sourceTree = "<group>"; };
 		D6EB059822CF4C700084DE46 /* RMPurchaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMPurchaseViewController.h; sourceTree = "<group>"; };
 		D6EB059922CF4C700084DE46 /* RMPurchaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMPurchaseViewController.m; sourceTree = "<group>"; };
 		D6EB059A22CF4C700084DE46 /* RMPurchaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMPurchaseViewController.xib; sourceTree = "<group>"; };
@@ -385,8 +382,6 @@
 				D6369D9C22CF1A4E00A1B473 /* RMMessageToMeTableViewCell.h */,
 				D6369D9D22CF1A4F00A1B473 /* RMMessageToMeTableViewCell.m */,
 				D6369D9E22CF1A4F00A1B473 /* RMMessageToMeTableViewCell.xib */,
-				D6EB059522CF25320084DE46 /* RMMessageDetailModel.h */,
-				D6EB059622CF25320084DE46 /* RMMessageDetailModel.m */,
 			);
 			path = MessageDetail;
 			sourceTree = "<group>";
@@ -851,7 +846,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D665EC6022A7EF92003FB7B8 /* GPUImageBeautifyFilter.m in Sources */,
-				D6EB059722CF25320084DE46 /* RMMessageDetailModel.m in Sources */,
 				D6BF5CE122A910220036EA75 /* RMHomePageViewController.m in Sources */,
 				D6EB059B22CF4C700084DE46 /* RMPurchaseViewController.m in Sources */,
 				1CFCE11C22BF1B760025BC0B /* RMMessageTableViewCell.m in Sources */,

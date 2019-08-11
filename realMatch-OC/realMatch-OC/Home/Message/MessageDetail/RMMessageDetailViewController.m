@@ -177,18 +177,30 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    [self.textView resignFirstResponder];
-//    if(scrollView.contentOffset.y < -100){
-//        self.modelArrs
-//        NSDictionary* dict = @{@"fromUser":self.fromUserId,
-//                               @"toUser":self.toUserId,
-//                               @"direction":@"front",
-//                               @"timestamp":
-//
-//                               }
-//        RMMessageParams* params = [RMMessageParams alloc]init:<#(NSDictionary<NSString *,id> * _Nonnull)#>
-//        [RMDatabaseManager shareManager]getData:<#(RMMessageParams * _Nonnull)#>
-//    }
+    if(scrollView.contentOffset.y < -100){
+        if([self.modelArrs count]>0){
+            RMMessageDetail* messageDetailIndex0 = self.modelArrs[0];
+            NSDictionary* dict = @{@"fromUser":self.fromUserId,
+                                   @"toUser":self.toUserId,
+                                   @"direction":@"front",
+                                   @"timestamp":@(messageDetailIndex0.timestamp),
+                                   @"count":@(10)
+                                   };
+            NSArray<RMMessageDetail*>* messageDetailArr = [[RMDatabaseManager shareManager] getData:[[RMMessageParams alloc] init:dict]];
+            
+            
+            for (RMMessageDetail* messageDetail in [messageDetailArr reverseObjectEnumerator]) {
+                if([messageDetail.toUser isEqualToString:self.fromUserId]){
+                    messageDetail.messageFrom = MessageFromMessageFromOther;
+                }else{
+                    messageDetail.messageFrom = MessageFromMessageFromMe;
+                }
+                [self.modelArrs insertObject:messageDetail atIndex:0];
+            }
+            [self.messageDetailTableView reloadData];
+        }
+        
+    }
 }
 
 

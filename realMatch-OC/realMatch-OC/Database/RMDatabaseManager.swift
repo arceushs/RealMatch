@@ -70,7 +70,7 @@ import UIKit
         if(self.db.open()){
             do{
                 if messageParam.direction == "front"{
-                    let sets = try self.db .executeQuery("select * from messageTable where (fromUser = (?) and toUser = (?)) or ((fromUser = (?) and toUser = (?))) and timestamp < (?) order by timestamp Desc limit 0,(?)", values: [messageParam.fromUser,messageParam.toUser,messageParam.toUser,messageParam.fromUser,messageParam.timestamp,messageParam.count])
+                    let sets = try self.db .executeQuery("select * from messageTable where ((fromUser = (?) and toUser = (?)) or (fromUser = (?) and toUser = (?))) and timestamp < (?) order by timestamp Desc limit 0,(?)", values: [messageParam.fromUser,messageParam.toUser,messageParam.toUser,messageParam.fromUser,messageParam.timestamp,messageParam.count])
                     var messagesArr = [RMMessageDetail]()
                     while sets.next(){
                         var dict = [String:Any]()
