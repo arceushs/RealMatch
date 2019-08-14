@@ -89,12 +89,14 @@
             [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:@{@"userId":weakSelf.currentCardVC.matchedUserId}];
         };
         [self addChildViewController:_cardVC2];
-        [self.cardContainerView insertSubview:_cardVC2.view atIndex:0];
+        [self.cardContainerView insertSubview:_cardVC2.view belowSubview:_cardVC1.view];
+//        [self.cardContainerView insertSubview:_cardVC2.view atIndex:0];
         
-        _cardVC2.view.frame = CGRectMake(8 + length, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+        _cardVC2.view.frame = CGRectMake(8 , 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+        _cardVC2.view.transform = CGAffineTransformMakeScale(0.8, 0.8);
         
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            weakSelf.cardVC2.view.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+            weakSelf.cardVC2.view.transform = CGAffineTransformMakeScale(1, 1);
             weakSelf.cardVC1.view.frame = CGRectMake(8 - length, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
         } completion:^(BOOL finished) {
             [weakSelf.cardVC1.view removeFromSuperview];
@@ -109,11 +111,12 @@
             [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:@{@"userId":weakSelf.currentCardVC.matchedUserId}];
         };
         [self addChildViewController:_cardVC1];
-        [self.cardContainerView addSubview:_cardVC1.view];
+        [self.cardContainerView insertSubview:_cardVC1.view belowSubview:_cardVC2.view];
         
-        _cardVC1.view.frame = CGRectMake(8 + length, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+        _cardVC1.view.frame = CGRectMake(8 , 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+        _cardVC1.view.transform = CGAffineTransformMakeScale(0.8, 0.8);
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            weakSelf.cardVC1.view.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
+            weakSelf.cardVC1.view.transform = CGAffineTransformMakeScale(1, 1);
             weakSelf.cardVC2.view.frame = CGRectMake(8 - length, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
         } completion:^(BOOL finished) {
             [weakSelf.cardVC2.view removeFromSuperview];
