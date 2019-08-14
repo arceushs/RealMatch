@@ -32,12 +32,17 @@
         [[RMDatabaseManager shareManager] createTable];
     }
    
-    NSString* userId = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-userId"];
-    if(userId != nil){
-        [RMUserCenter shared].userId = userId;
-    }    
+    
     [Router setNavigationVC:self.navigationController];
-    [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
+    NSString* userId = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-userId"];
+    NSString* cookie = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-cookie"];
+    if(userId != nil&&cookie!=nil){
+        [RMUserCenter shared].userId = userId;
+        [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
+    }else{
+        [[Router shared] routerTo:@"LoginAndRegisterViewController" parameter:nil];
+    }
+   
 //    [[PurchaseManager shareManager] startPurchaseWithID:@"1_month_premium"];
   
 //    NSData * data = [NSData dataWithContentsOfFile:[[RMFileManager pathForSaveRecord] stringByAppendingString:@"movie.mp4"]];
