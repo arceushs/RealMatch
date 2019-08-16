@@ -161,6 +161,9 @@
     [[Router shared] routerTo:@"RMMessageViewController" parameter:@{@"userId":[RMUserCenter shared].userId}];
 }
 
+- (IBAction)profileButtonClicked:(id)sender {
+}
+
 //- (void)transitionWithType:(NSString *) type WithSubtype:(NSString *) subtype ForView : (UIView *) view {
 //    CATransition *animation = [CATransition animation];
 //    animation.duration = 1.f;

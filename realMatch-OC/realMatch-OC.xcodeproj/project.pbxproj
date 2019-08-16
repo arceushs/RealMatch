@@ -57,6 +57,8 @@
 		D6696FE622BA0F6E00942DFB /* RMTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6696FE522BA0F6E00942DFB /* RMTableViewModel.m */; };
 		D6697147229BB0D3008E3968 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6697146229BB0D3008E3968 /* StoreKit.framework */; };
 		D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D669714A229BBFF3008E3968 /* PurchaseManager.m */; };
+		D67086202306EBEA006D9D7F /* QTProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D670861E2306EBEA006D9D7F /* QTProfileViewController.swift */; };
+		D67086212306EBEA006D9D7F /* QTProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D670861F2306EBEA006D9D7F /* QTProfileViewController.xib */; };
 		D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D67665D322A50FD8009C9C6A /* RMCaptureViewController.m */; };
 		D680C86D22CB796800D9ED96 /* RMEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D680C86B22CB796800D9ED96 /* RMEmailViewController.swift */; };
 		D680C86E22CB796800D9ED96 /* RMEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D680C86C22CB796800D9ED96 /* RMEmailViewController.xib */; };
@@ -211,6 +213,8 @@
 		D6697149229BBFF3008E3968 /* PurchaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseManager.h; sourceTree = "<group>"; };
 		D669714A229BBFF3008E3968 /* PurchaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseManager.m; sourceTree = "<group>"; };
 		D6697177229BE0D5008E3968 /* realMatch-OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "realMatch-OC-Bridging-Header.h"; sourceTree = "<group>"; };
+		D670861E2306EBEA006D9D7F /* QTProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTProfileViewController.swift; sourceTree = "<group>"; };
+		D670861F2306EBEA006D9D7F /* QTProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QTProfileViewController.xib; sourceTree = "<group>"; };
 		D67665D222A50FD8009C9C6A /* RMCaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCaptureViewController.h; sourceTree = "<group>"; };
 		D67665D322A50FD8009C9C6A /* RMCaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCaptureViewController.m; sourceTree = "<group>"; };
 		D680C86B22CB796800D9ED96 /* RMEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEmailViewController.swift; sourceTree = "<group>"; };
@@ -397,6 +401,7 @@
 		D65E0A2822A508FD00E749BF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D670861D2306EB65006D9D7F /* Profile */,
 				1C4A168422BF1A2800F9CB80 /* Message */,
 				D6696FD822B9EBC100942DFB /* HomeDetail */,
 				D6BF5CDE22A910220036EA75 /* RMHomePageViewController.h */,
@@ -472,6 +477,15 @@
 				D6EB059A22CF4C700084DE46 /* RMPurchaseViewController.xib */,
 			);
 			path = InAppPurchase;
+			sourceTree = "<group>";
+		};
+		D670861D2306EB65006D9D7F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D670861E2306EBEA006D9D7F /* QTProfileViewController.swift */,
+				D670861F2306EBEA006D9D7F /* QTProfileViewController.xib */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		D680C86F22CB83F400D9ED96 /* UserCenter */ = {
@@ -746,6 +760,7 @@
 				D652276422BB8AEE00C273E1 /* RMVideoPlayViewController.xib in Resources */,
 				D680C88122CCDECE00D9ED96 /* RMRealVideoViewController.xib in Resources */,
 				1C3BC8F422ED90DB00E9EE6C /* RMMatchedViewController.xib in Resources */,
+				D67086212306EBEA006D9D7F /* QTProfileViewController.xib in Resources */,
 				1CFCE11822BF1B380025BC0B /* RMMessageViewController.xib in Resources */,
 				1CD90AEA22F57CC400119E27 /* RMMessageFooter.xib in Resources */,
 				D6369D9622CF1A1F00A1B473 /* RMMessageDetailViewController.xib in Resources */,
@@ -893,6 +908,7 @@
 				D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */,
 				D6CC154322B39BA000D80A02 /* RMNetworkManager.m in Sources */,
 				D680C88322CDAD2E00D9ED96 /* dateUtils.swift in Sources */,
+				D67086202306EBEA006D9D7F /* QTProfileViewController.swift in Sources */,
 				D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */,
 				D652275F22BB806B00C273E1 /* RMPlayer.swift in Sources */,
 				D6B73D3722FB03E700CC12CA /* RMMessageParams.swift in Sources */,

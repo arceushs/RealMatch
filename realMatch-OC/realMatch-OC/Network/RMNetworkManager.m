@@ -57,9 +57,12 @@
                     NSString* fileString = filePath;
                     NSData *fileData = [NSData dataWithContentsOfFile:fileString];
                     
+                    UIImage* image = [RMFileManager getVideoPreViewImage:[NSURL URLWithString:fileString]];
+                    NSData* imageData = UIImagePNGRepresentation(image);
                     /* 上传数据拼接 */
                     if([filename length]>0 && [filePath length]>0 && [mimetype length]>0){
-                        [formData appendPartWithFileData:fileData name:@"file" fileName:filename mimeType:mimetype];
+                        [formData appendPartWithFileData:fileData name:@"video" fileName:filename mimeType:mimetype];
+                        [formData appendPartWithFileData:imageData name:@"videoImg" fileName:filename mimeType:@"image/png"];
                     }
                 } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithResponseObject:responseObject];
