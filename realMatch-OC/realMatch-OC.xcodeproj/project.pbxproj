@@ -31,6 +31,19 @@
 		1CFCE12422BF339A0025BC0B /* RMNetworkAPIHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */; };
 		1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */; };
 		D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D607117622A6715400412F72 /* UIView+RealMatch.m */; };
+		D610B6B9230BEA4000A7BB47 /* RMSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610B6B7230BEA4000A7BB47 /* RMSettingTableViewCell.swift */; };
+		D610B6BA230BEA4000A7BB47 /* RMSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D610B6B8230BEA4000A7BB47 /* RMSettingTableViewCell.xib */; };
+		D61458D8230A8E6E00D8C700 /* RMEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61458D6230A8E6E00D8C700 /* RMEditProfileViewController.swift */; };
+		D61458D9230A8E6E00D8C700 /* RMEditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61458D7230A8E6E00D8C700 /* RMEditProfileViewController.xib */; };
+		D61458DC230A915D00D8C700 /* RMEditProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61458DA230A915D00D8C700 /* RMEditProfileTableViewCell.swift */; };
+		D61458DD230A915D00D8C700 /* RMEditProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61458DB230A915D00D8C700 /* RMEditProfileTableViewCell.xib */; };
+		D618DC36230AA6E600F34819 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D618DC35230AA6E600F34819 /* ViewController.m */; };
+		D618DC3B230AAB5100F34819 /* RMSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618DC39230AAB5100F34819 /* RMSettingViewController.swift */; };
+		D618DC3C230AAB5100F34819 /* RMSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D618DC3A230AAB5100F34819 /* RMSettingViewController.xib */; };
+		D618DC3E230AADA300F34819 /* RMSettingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618DC3D230AADA300F34819 /* RMSettingHeader.swift */; };
+		D618DC40230AADB300F34819 /* RMSettingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618DC3F230AADB300F34819 /* RMSettingFooter.swift */; };
+		D618DC42230AAE1C00F34819 /* RMSettingFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D618DC41230AAE1C00F34819 /* RMSettingFooter.xib */; };
+		D618DC44230AAE2A00F34819 /* RMSettingHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D618DC43230AAE2A00F34819 /* RMSettingHeader.xib */; };
 		D628A95422D2F7B1001D89C3 /* RMRegisterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D628A95322D2F7B1001D89C3 /* RMRegisterAPI.m */; };
 		D628A95722D313EB001D89C3 /* RMLoginAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D628A95622D313EB001D89C3 /* RMLoginAPI.m */; };
 		D6369D9522CF1A1F00A1B473 /* RMMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6369D9322CF1A1F00A1B473 /* RMMessageDetailViewController.m */; };
@@ -57,8 +70,8 @@
 		D6696FE622BA0F6E00942DFB /* RMTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6696FE522BA0F6E00942DFB /* RMTableViewModel.m */; };
 		D6697147229BB0D3008E3968 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6697146229BB0D3008E3968 /* StoreKit.framework */; };
 		D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D669714A229BBFF3008E3968 /* PurchaseManager.m */; };
-		D67086202306EBEA006D9D7F /* QTProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D670861E2306EBEA006D9D7F /* QTProfileViewController.swift */; };
-		D67086212306EBEA006D9D7F /* QTProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D670861F2306EBEA006D9D7F /* QTProfileViewController.xib */; };
+		D67086202306EBEA006D9D7F /* RMProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D670861E2306EBEA006D9D7F /* RMProfileViewController.swift */; };
+		D67086212306EBEA006D9D7F /* RMProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D670861F2306EBEA006D9D7F /* RMProfileViewController.xib */; };
 		D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D67665D322A50FD8009C9C6A /* RMCaptureViewController.m */; };
 		D680C86D22CB796800D9ED96 /* RMEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D680C86B22CB796800D9ED96 /* RMEmailViewController.swift */; };
 		D680C86E22CB796800D9ED96 /* RMEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D680C86C22CB796800D9ED96 /* RMEmailViewController.xib */; };
@@ -74,7 +87,6 @@
 		D680C88322CDAD2E00D9ED96 /* dateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D680C88222CDAD2E00D9ED96 /* dateUtils.swift */; };
 		D680C88922CE295A00D9ED96 /* RMPostFileAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D680C88822CE295A00D9ED96 /* RMPostFileAPI.m */; };
 		D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D687DA572294EDCE00A11488 /* AppDelegate.m */; };
-		D687DA5B2294EDCE00A11488 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D687DA5A2294EDCE00A11488 /* ViewController.m */; };
 		D687DA5E2294EDCE00A11488 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D687DA5C2294EDCE00A11488 /* Main.storyboard */; };
 		D687DA602294EDD200A11488 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D687DA5F2294EDD200A11488 /* Assets.xcassets */; };
 		D687DA632294EDD200A11488 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D687DA612294EDD200A11488 /* LaunchScreen.storyboard */; };
@@ -89,14 +101,12 @@
 		D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BF5CDC22A8F5B80036EA75 /* RMFileManager.m */; };
 		D6BF5CE122A910220036EA75 /* RMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6BF5CDF22A910220036EA75 /* RMHomePageViewController.m */; };
 		D6BF5CE222A910220036EA75 /* RMHomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6BF5CE022A910220036EA75 /* RMHomePageViewController.xib */; };
-		D6BF5CE422ADF6600036EA75 /* aiqinggongyu.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D6BF5CE322A943630036EA75 /* aiqinggongyu.mp4 */; };
 		D6CC153E22B387D500D80A02 /* RMHomePageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CC153C22B387D500D80A02 /* RMHomePageDetailViewController.m */; };
 		D6CC153F22B387D500D80A02 /* RMHomePageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6CC153D22B387D500D80A02 /* RMHomePageDetailViewController.xib */; };
 		D6CC154322B39BA000D80A02 /* RMNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CC154222B39BA000D80A02 /* RMNetworkManager.m */; };
 		D6E0771322AE31B900CC44BA /* RMHomeCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E0771222AE31B900CC44BA /* RMHomeCardView.m */; };
 		D6E0771522AE31CC00CC44BA /* RMHomeCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6E0771422AE31CC00CC44BA /* RMHomeCardView.xib */; };
 		D6E0771822AF932400CC44BA /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = D6E0771722AF932300CC44BA /* test1.png */; };
-		D6E0771A22AF9F0F00CC44BA /* aiqinggongyu2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = D6E0771922AF9EF600CC44BA /* aiqinggongyu2.mp4 */; };
 		D6EB059B22CF4C700084DE46 /* RMPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EB059922CF4C700084DE46 /* RMPurchaseViewController.m */; };
 		D6EB059C22CF4C700084DE46 /* RMPurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6EB059A22CF4C700084DE46 /* RMPurchaseViewController.xib */; };
 /* End PBXBuildFile section */
@@ -168,6 +178,19 @@
 		D0116FF275BEF202714594EA /* Pods-realMatch-OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.debug.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.debug.xcconfig"; sourceTree = "<group>"; };
 		D607117522A6715400412F72 /* UIView+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+RealMatch.h"; sourceTree = "<group>"; };
 		D607117622A6715400412F72 /* UIView+RealMatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+RealMatch.m"; sourceTree = "<group>"; };
+		D610B6B7230BEA4000A7BB47 /* RMSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSettingTableViewCell.swift; sourceTree = "<group>"; };
+		D610B6B8230BEA4000A7BB47 /* RMSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMSettingTableViewCell.xib; sourceTree = "<group>"; };
+		D61458D6230A8E6E00D8C700 /* RMEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEditProfileViewController.swift; sourceTree = "<group>"; };
+		D61458D7230A8E6E00D8C700 /* RMEditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMEditProfileViewController.xib; sourceTree = "<group>"; };
+		D61458DA230A915D00D8C700 /* RMEditProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEditProfileTableViewCell.swift; sourceTree = "<group>"; };
+		D61458DB230A915D00D8C700 /* RMEditProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMEditProfileTableViewCell.xib; sourceTree = "<group>"; };
+		D618DC35230AA6E600F34819 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D618DC39230AAB5100F34819 /* RMSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSettingViewController.swift; sourceTree = "<group>"; };
+		D618DC3A230AAB5100F34819 /* RMSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMSettingViewController.xib; sourceTree = "<group>"; };
+		D618DC3D230AADA300F34819 /* RMSettingHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSettingHeader.swift; sourceTree = "<group>"; };
+		D618DC3F230AADB300F34819 /* RMSettingFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSettingFooter.swift; sourceTree = "<group>"; };
+		D618DC41230AAE1C00F34819 /* RMSettingFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMSettingFooter.xib; sourceTree = "<group>"; };
+		D618DC43230AAE2A00F34819 /* RMSettingHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMSettingHeader.xib; sourceTree = "<group>"; };
 		D628A95222D2F7B1001D89C3 /* RMRegisterAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMRegisterAPI.h; sourceTree = "<group>"; };
 		D628A95322D2F7B1001D89C3 /* RMRegisterAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMRegisterAPI.m; sourceTree = "<group>"; };
 		D628A95522D313EB001D89C3 /* RMLoginAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMLoginAPI.h; sourceTree = "<group>"; };
@@ -213,8 +236,8 @@
 		D6697149229BBFF3008E3968 /* PurchaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseManager.h; sourceTree = "<group>"; };
 		D669714A229BBFF3008E3968 /* PurchaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseManager.m; sourceTree = "<group>"; };
 		D6697177229BE0D5008E3968 /* realMatch-OC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "realMatch-OC-Bridging-Header.h"; sourceTree = "<group>"; };
-		D670861E2306EBEA006D9D7F /* QTProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTProfileViewController.swift; sourceTree = "<group>"; };
-		D670861F2306EBEA006D9D7F /* QTProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QTProfileViewController.xib; sourceTree = "<group>"; };
+		D670861E2306EBEA006D9D7F /* RMProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMProfileViewController.swift; sourceTree = "<group>"; };
+		D670861F2306EBEA006D9D7F /* RMProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMProfileViewController.xib; sourceTree = "<group>"; };
 		D67665D222A50FD8009C9C6A /* RMCaptureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMCaptureViewController.h; sourceTree = "<group>"; };
 		D67665D322A50FD8009C9C6A /* RMCaptureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMCaptureViewController.m; sourceTree = "<group>"; };
 		D680C86B22CB796800D9ED96 /* RMEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEmailViewController.swift; sourceTree = "<group>"; };
@@ -235,7 +258,6 @@
 		D687DA562294EDCE00A11488 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D687DA572294EDCE00A11488 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D687DA592294EDCE00A11488 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D687DA5A2294EDCE00A11488 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D687DA5D2294EDCE00A11488 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D687DA5F2294EDD200A11488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D687DA622294EDD200A11488 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -260,7 +282,6 @@
 		D6BF5CDE22A910220036EA75 /* RMHomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMHomePageViewController.h; sourceTree = "<group>"; };
 		D6BF5CDF22A910220036EA75 /* RMHomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMHomePageViewController.m; sourceTree = "<group>"; };
 		D6BF5CE022A910220036EA75 /* RMHomePageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomePageViewController.xib; sourceTree = "<group>"; };
-		D6BF5CE322A943630036EA75 /* aiqinggongyu.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = aiqinggongyu.mp4; sourceTree = "<group>"; };
 		D6CC153B22B387D500D80A02 /* RMHomePageDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMHomePageDetailViewController.h; sourceTree = "<group>"; };
 		D6CC153C22B387D500D80A02 /* RMHomePageDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMHomePageDetailViewController.m; sourceTree = "<group>"; };
 		D6CC153D22B387D500D80A02 /* RMHomePageDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomePageDetailViewController.xib; sourceTree = "<group>"; };
@@ -270,7 +291,6 @@
 		D6E0771222AE31B900CC44BA /* RMHomeCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMHomeCardView.m; sourceTree = "<group>"; };
 		D6E0771422AE31CC00CC44BA /* RMHomeCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomeCardView.xib; sourceTree = "<group>"; };
 		D6E0771722AF932300CC44BA /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
-		D6E0771922AF9EF600CC44BA /* aiqinggongyu2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = aiqinggongyu2.mp4; sourceTree = "<group>"; };
 		D6EB059822CF4C700084DE46 /* RMPurchaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMPurchaseViewController.h; sourceTree = "<group>"; };
 		D6EB059922CF4C700084DE46 /* RMPurchaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMPurchaseViewController.m; sourceTree = "<group>"; };
 		D6EB059A22CF4C700084DE46 /* RMPurchaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMPurchaseViewController.xib; sourceTree = "<group>"; };
@@ -374,6 +394,30 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		D618DC37230AA86600F34819 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D6BF467122969DB200C82D98 /* LoginAndRegister */,
+				D65E0A2822A508FD00E749BF /* Home */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D618DC38230AA96100F34819 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D6CC154022B39B5F00D80A02 /* Network */,
+				1CFCE11E22BF32800025BC0B /* Socket */,
+				D607117422A6711F00412F72 /* Utils */,
+				1C49CAF122DABCBC007333A6 /* Database */,
+				D680C86F22CB83F400D9ED96 /* UserCenter */,
+				D65E0A2922A50B1800E749BF /* ImagePicker */,
+				D6BF46782296A6B300C82D98 /* Router */,
+				D6697148229BBFCF008E3968 /* InAppPurchase */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		D6369D9122CF19EF00A1B473 /* MessageDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,8 +475,7 @@
 				D665EC5E22A7EF92003FB7B8 /* GPUImageBeautifyFilter.h */,
 				D665EC5F22A7EF92003FB7B8 /* GPUImageBeautifyFilter.m */,
 			);
-			name = ImagePicker;
-			path = LoginAndRegister/ImagePicker;
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 		D6696FD822B9EBC100942DFB /* HomeDetail */ = {
@@ -482,8 +525,20 @@
 		D670861D2306EB65006D9D7F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				D670861E2306EBEA006D9D7F /* QTProfileViewController.swift */,
-				D670861F2306EBEA006D9D7F /* QTProfileViewController.xib */,
+				D670861E2306EBEA006D9D7F /* RMProfileViewController.swift */,
+				D670861F2306EBEA006D9D7F /* RMProfileViewController.xib */,
+				D61458D6230A8E6E00D8C700 /* RMEditProfileViewController.swift */,
+				D61458D7230A8E6E00D8C700 /* RMEditProfileViewController.xib */,
+				D61458DA230A915D00D8C700 /* RMEditProfileTableViewCell.swift */,
+				D61458DB230A915D00D8C700 /* RMEditProfileTableViewCell.xib */,
+				D618DC39230AAB5100F34819 /* RMSettingViewController.swift */,
+				D618DC3A230AAB5100F34819 /* RMSettingViewController.xib */,
+				D610B6B7230BEA4000A7BB47 /* RMSettingTableViewCell.swift */,
+				D610B6B8230BEA4000A7BB47 /* RMSettingTableViewCell.xib */,
+				D618DC3D230AADA300F34819 /* RMSettingHeader.swift */,
+				D618DC43230AAE2A00F34819 /* RMSettingHeader.xib */,
+				D618DC41230AAE1C00F34819 /* RMSettingFooter.xib */,
+				D618DC3F230AADB300F34819 /* RMSettingFooter.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -523,30 +578,20 @@
 		D687DA552294EDCE00A11488 /* realMatch-OC */ = {
 			isa = PBXGroup;
 			children = (
-				D6697148229BBFCF008E3968 /* InAppPurchase */,
+				D618DC37230AA86600F34819 /* App */,
+				D618DC38230AA96100F34819 /* Service */,
 				D64BA375229B99BE00373BFB /* realMatch-OC.entitlements */,
 				D687DA562294EDCE00A11488 /* AppDelegate.h */,
 				D687DA572294EDCE00A11488 /* AppDelegate.m */,
 				D687DA592294EDCE00A11488 /* ViewController.h */,
-				D687DA5A2294EDCE00A11488 /* ViewController.m */,
+				D618DC35230AA6E600F34819 /* ViewController.m */,
 				D659140A22B794810098F458 /* RMBaseModel.h */,
 				D659140B22B794810098F458 /* RMBaseModel.m */,
-				D6BF46782296A6B300C82D98 /* Router */,
-				D65E0A2922A50B1800E749BF /* ImagePicker */,
 				D6696FE322BA0EC200942DFB /* RMTable */,
-				D65E0A2822A508FD00E749BF /* Home */,
-				D680C86F22CB83F400D9ED96 /* UserCenter */,
-				D6BF467122969DB200C82D98 /* LoginAndRegister */,
-				1C49CAF122DABCBC007333A6 /* Database */,
-				D6CC154022B39B5F00D80A02 /* Network */,
-				1CFCE11E22BF32800025BC0B /* Socket */,
 				D652275D22BB803A00C273E1 /* Player */,
-				D607117422A6711F00412F72 /* Utils */,
 				D687DA5C2294EDCE00A11488 /* Main.storyboard */,
 				D6E0771722AF932300CC44BA /* test1.png */,
 				D687DA5F2294EDD200A11488 /* Assets.xcassets */,
-				D6E0771922AF9EF600CC44BA /* aiqinggongyu2.mp4 */,
-				D6BF5CE322A943630036EA75 /* aiqinggongyu.mp4 */,
 				D687DA612294EDD200A11488 /* LaunchScreen.storyboard */,
 				D687DA642294EDD200A11488 /* Info.plist */,
 				D687DA652294EDD200A11488 /* main.m */,
@@ -747,24 +792,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6E0771A22AF9F0F00CC44BA /* aiqinggongyu2.mp4 in Resources */,
 				D6369D9B22CF1A3E00A1B473 /* RMMessageFromMeTableViewCell.xib in Resources */,
 				D6E0771522AE31CC00CC44BA /* RMHomeCardView.xib in Resources */,
 				D6369DA022CF1A4F00A1B473 /* RMMessageToMeTableViewCell.xib in Resources */,
 				1CFCE11D22BF1B760025BC0B /* RMMessageTableViewCell.xib in Resources */,
-				D6BF5CE422ADF6600036EA75 /* aiqinggongyu.mp4 in Resources */,
 				D6696FE222B9F10600942DFB /* RMHomePageDetailHeaderView.xib in Resources */,
 				D6696FDD22B9EBF400942DFB /* RMHomePageDetailTableViewCell.xib in Resources */,
+				D61458DD230A915D00D8C700 /* RMEditProfileTableViewCell.xib in Resources */,
+				D610B6BA230BEA4000A7BB47 /* RMSettingTableViewCell.xib in Resources */,
 				1C0EAEA822D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.xib in Resources */,
 				D680C87522CCD6C500D9ED96 /* RMNameViewController.xib in Resources */,
 				D652276422BB8AEE00C273E1 /* RMVideoPlayViewController.xib in Resources */,
+				D618DC42230AAE1C00F34819 /* RMSettingFooter.xib in Resources */,
 				D680C88122CCDECE00D9ED96 /* RMRealVideoViewController.xib in Resources */,
 				1C3BC8F422ED90DB00E9EE6C /* RMMatchedViewController.xib in Resources */,
-				D67086212306EBEA006D9D7F /* QTProfileViewController.xib in Resources */,
+				D618DC3C230AAB5100F34819 /* RMSettingViewController.xib in Resources */,
+				D67086212306EBEA006D9D7F /* RMProfileViewController.xib in Resources */,
 				1CFCE11822BF1B380025BC0B /* RMMessageViewController.xib in Resources */,
 				1CD90AEA22F57CC400119E27 /* RMMessageFooter.xib in Resources */,
+				D618DC44230AAE2A00F34819 /* RMSettingHeader.xib in Resources */,
 				D6369D9622CF1A1F00A1B473 /* RMMessageDetailViewController.xib in Resources */,
 				D687DA632294EDD200A11488 /* LaunchScreen.storyboard in Resources */,
+				D61458D9230A8E6E00D8C700 /* RMEditProfileViewController.xib in Resources */,
 				D687DA602294EDD200A11488 /* Assets.xcassets in Resources */,
 				D661306622956697008DA4D8 /* Podfile in Resources */,
 				D6CC153F22B387D500D80A02 /* RMHomePageDetailViewController.xib in Resources */,
@@ -866,12 +915,13 @@
 				1CFCE11C22BF1B760025BC0B /* RMMessageTableViewCell.m in Sources */,
 				D659140622B781620098F458 /* RMNetworkResponse.m in Sources */,
 				D680C87C22CCDA6800D9ED96 /* RMGenderViewController.swift in Sources */,
-				D687DA5B2294EDCE00A11488 /* ViewController.m in Sources */,
 				D687DA662294EDD200A11488 /* main.m in Sources */,
 				D6369D9F22CF1A4F00A1B473 /* RMMessageToMeTableViewCell.m in Sources */,
+				D618DC40230AADB300F34819 /* RMSettingFooter.swift in Sources */,
 				D6CC153E22B387D500D80A02 /* RMHomePageDetailViewController.m in Sources */,
 				1CFCE12422BF339A0025BC0B /* RMNetworkAPIHost.m in Sources */,
 				D665EC6322A8BD7C003FB7B8 /* UIColor+RealMatch.m in Sources */,
+				D61458D8230A8E6E00D8C700 /* RMEditProfileViewController.swift in Sources */,
 				D6369D9522CF1A1F00A1B473 /* RMMessageDetailViewController.m in Sources */,
 				D6E0771322AE31B900CC44BA /* RMHomeCardView.m in Sources */,
 				D659140C22B794810098F458 /* RMBaseModel.m in Sources */,
@@ -885,6 +935,7 @@
 				1C3BC8F322ED90DB00E9EE6C /* RMMatchedViewController.swift in Sources */,
 				D6696FDC22B9EBF400942DFB /* RMHomePageDetailTableViewCell.m in Sources */,
 				D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */,
+				D618DC3E230AADA300F34819 /* RMSettingHeader.swift in Sources */,
 				D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */,
 				D628A95422D2F7B1001D89C3 /* RMRegisterAPI.m in Sources */,
 				D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */,
@@ -896,19 +947,23 @@
 				D680C88922CE295A00D9ED96 /* RMPostFileAPI.m in Sources */,
 				D6696FE622BA0F6E00942DFB /* RMTableViewModel.m in Sources */,
 				1C381DF522E35A420060DE69 /* RMLikeFlagAPI.m in Sources */,
+				D61458DC230A915D00D8C700 /* RMEditProfileTableViewCell.swift in Sources */,
 				D6BF467F2296CDE500C82D98 /* Router+AccountKit.m in Sources */,
 				1C49CAF322DABCE2007333A6 /* RMDatabaseManager.swift in Sources */,
 				D680C87822CCD8A600D9ED96 /* RMDatePickerViewController.swift in Sources */,
 				D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */,
+				D610B6B9230BEA4000A7BB47 /* RMSettingTableViewCell.swift in Sources */,
 				1C381DF122E324B60060DE69 /* RMHomeCardViewController.m in Sources */,
 				D628A95722D313EB001D89C3 /* RMLoginAPI.m in Sources */,
 				1C381DED22E2D3160060DE69 /* RMFetchHomeVideoAPI.m in Sources */,
+				D618DC3B230AAB5100F34819 /* RMSettingViewController.swift in Sources */,
 				D659140322B76D6C0098F458 /* RMFetchDetailAPI.m in Sources */,
 				D680C86D22CB796800D9ED96 /* RMEmailViewController.swift in Sources */,
 				D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */,
+				D618DC36230AA6E600F34819 /* ViewController.m in Sources */,
 				D6CC154322B39BA000D80A02 /* RMNetworkManager.m in Sources */,
 				D680C88322CDAD2E00D9ED96 /* dateUtils.swift in Sources */,
-				D67086202306EBEA006D9D7F /* QTProfileViewController.swift in Sources */,
+				D67086202306EBEA006D9D7F /* RMProfileViewController.swift in Sources */,
 				D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */,
 				D652275F22BB806B00C273E1 /* RMPlayer.swift in Sources */,
 				D6B73D3722FB03E700CC12CA /* RMMessageParams.swift in Sources */,
@@ -1093,6 +1148,7 @@
 				CODE_SIGN_ENTITLEMENTS = "realMatch-OC/realMatch-OC.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 38KCJNXX83;
 				HEADER_SEARCH_PATHS = (

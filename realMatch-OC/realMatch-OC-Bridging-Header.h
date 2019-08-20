@@ -10,3 +10,5 @@
 #import "RMLoginAPI.h"
 #import "FMDB.h"
 #import "RMFetchLikesMeAPI.h"
+#import "RMFetchDetailAPI.h"
+#import "SDWebImage.h"
