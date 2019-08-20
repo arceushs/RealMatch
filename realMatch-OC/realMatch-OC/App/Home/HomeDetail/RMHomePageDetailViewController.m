@@ -99,6 +99,9 @@
 - (IBAction)messageButtonClicked:(id)sender {
     [[Router shared] routerTo:@"RMMessageViewController" parameter:@{@"userId":_matchedUserId}];
 }
+- (IBAction)backButtonClicked:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 /*
  #pragma mark - Navigation
  

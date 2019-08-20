@@ -28,13 +28,13 @@
                             <rect key="frame" x="4" y="4" width="335" height="112"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium Membership" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUV-zv-aQd">
-                                    <rect key="frame" x="79" y="30" width="177.5" height="21"/>
+                                    <rect key="frame" x="79" y="24" width="177.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="unlock every thing and get high-quality match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db8-Gq-Mm2">
-                                    <rect key="frame" x="16" y="59" width="303" height="17"/>
+                                    <rect key="frame" x="16" y="53" width="303" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -43,7 +43,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="db8-Gq-Mm2" secondAttribute="trailing" constant="16" id="3Dz-ni-RXt"/>
-                                <constraint firstItem="kUV-zv-aQd" firstAttribute="top" secondItem="H5K-B8-56H" secondAttribute="top" constant="30" id="43F-WF-SQE"/>
+                                <constraint firstItem="kUV-zv-aQd" firstAttribute="top" secondItem="H5K-B8-56H" secondAttribute="top" constant="24" id="43F-WF-SQE"/>
                                 <constraint firstItem="db8-Gq-Mm2" firstAttribute="top" secondItem="kUV-zv-aQd" secondAttribute="bottom" constant="8" id="b5y-8F-D0s"/>
                                 <constraint firstItem="db8-Gq-Mm2" firstAttribute="centerX" secondItem="H5K-B8-56H" secondAttribute="centerX" id="htp-h6-XIJ"/>
                                 <constraint firstItem="db8-Gq-Mm2" firstAttribute="leading" secondItem="H5K-B8-56H" secondAttribute="leading" constant="16" id="nHG-9K-OpN"/>

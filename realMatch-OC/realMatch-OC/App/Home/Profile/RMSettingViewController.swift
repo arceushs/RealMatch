@@ -40,29 +40,58 @@ class RMSettingViewController: UIViewController,RouterController,UITableViewDele
         }
         
         var passBlock:((_ cell:RMSettingTableViewCell)->Void) = {
-            
+            cell in
+            cell.nameLabel.text = "Password"
         }
         
+        var privacy:((_ cell:RMSettingTableViewCell)->Void) = {
+            cell in
+            cell.nameLabel.text = "Privacy policy"
+        }
+        
+        var terms:(_ cell:RMSettingTableViewCell)->Void = {
+            cell in
+            cell.nameLabel.text = "Terms of use"
+        }
+        
+        var feedback:(_ cell:RMSettingTableViewCell)->Void = {
+            cell in
+            cell.nameLabel.text = "Feedback"
+        }
+        
+        self.settingArr = [emailBlock,passBlock,privacy,terms,feedback]
+        self.settingTableView.separatorStyle = .none
         self.settingTableView.delegate = self;
         self.settingTableView.dataSource = self;
-        self.settingTableView.register(RMSettingTableViewCell.self, forCellReuseIdentifier: "RMSettingTableViewCell")
+        self.settingTableView.register(UINib(nibName: "RMSettingTableViewCell", bundle: nil), forCellReuseIdentifier: "RMSettingTableViewCell")
         self.settingTableView.tableHeaderView = RMSettingHeader(frame: CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width, height: UIScreen.main.bounds.width*152.0/375.0))
         // Do any additional setup after loading the view.
     }
 
     @IBOutlet weak var settingTableView: UITableView!
-    var settingArr:[String]?
+    var settingArr:[(_ cell:RMSettingTableViewCell)->Void]?
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "RMSettingTableViewCell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RMSettingTableViewCell", for: indexPath) as! RMSettingTableViewCell
+        guard let block = self.settingArr?[indexPath.row] else { return cell }
+        block(cell)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.settingArr?.count ?? 0
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64
+    }
+    
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

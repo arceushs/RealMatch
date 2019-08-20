@@ -22,14 +22,14 @@
                         <constraint firstAttribute="width" secondItem="ylM-kN-kR4" secondAttribute="height" multiplier="343:200" id="rCZ-GY-pKM"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swip Right" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Coj-4L-u4m">
-                    <rect key="frame" x="180.5" y="313.5" width="78" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swip Right" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Coj-4L-u4m">
+                    <rect key="frame" x="16" y="313.5" width="407" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.57647058823529407" green="0.59607843137254901" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search more people nearby and youcan get more matchs!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6c-gV-hpR">
-                    <rect key="frame" x="33" y="341.5" width="373.5" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search more people nearby and youcan get more matchs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6c-gV-hpR">
+                    <rect key="frame" x="16" y="341.5" width="407" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.78823529411764703" green="0.80000000000000004" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -39,10 +39,14 @@
             <constraints>
                 <constraint firstItem="i6c-gV-hpR" firstAttribute="top" secondItem="Coj-4L-u4m" secondAttribute="bottom" constant="8" id="8Kp-gc-GET"/>
                 <constraint firstItem="Coj-4L-u4m" firstAttribute="centerX" secondItem="Ygc-97-SeZ" secondAttribute="centerX" id="9Vs-M5-IPR"/>
+                <constraint firstItem="PCS-dz-dgU" firstAttribute="trailing" secondItem="i6c-gV-hpR" secondAttribute="trailing" constant="16" id="Ace-nr-PA6"/>
+                <constraint firstItem="PCS-dz-dgU" firstAttribute="trailing" secondItem="Coj-4L-u4m" secondAttribute="trailing" constant="16" id="BhS-eH-JrD"/>
+                <constraint firstItem="Coj-4L-u4m" firstAttribute="leading" secondItem="PCS-dz-dgU" secondAttribute="leading" constant="16" id="HNb-B1-kwA"/>
                 <constraint firstItem="Coj-4L-u4m" firstAttribute="top" secondItem="ylM-kN-kR4" secondAttribute="bottom" constant="16" id="LSo-fk-1ao"/>
                 <constraint firstItem="i6c-gV-hpR" firstAttribute="centerX" secondItem="Ygc-97-SeZ" secondAttribute="centerX" id="SKy-e6-b17"/>
                 <constraint firstItem="ylM-kN-kR4" firstAttribute="top" secondItem="PCS-dz-dgU" secondAttribute="top" constant="16" id="Uu8-Yg-fZb"/>
                 <constraint firstItem="ylM-kN-kR4" firstAttribute="leading" secondItem="PCS-dz-dgU" secondAttribute="leading" constant="16" id="XJP-sR-D9c"/>
+                <constraint firstItem="i6c-gV-hpR" firstAttribute="leading" secondItem="PCS-dz-dgU" secondAttribute="leading" constant="16" id="XZe-wM-jkb"/>
                 <constraint firstItem="PCS-dz-dgU" firstAttribute="trailing" secondItem="ylM-kN-kR4" secondAttribute="trailing" constant="16" id="v24-xO-p1Y"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

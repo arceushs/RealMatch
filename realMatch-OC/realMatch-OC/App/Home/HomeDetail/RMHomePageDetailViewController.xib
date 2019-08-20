@@ -32,7 +32,10 @@
                                 <constraint firstAttribute="height" constant="24" id="Mkw-6v-C6u"/>
                                 <constraint firstAttribute="width" constant="24" id="Y9v-yu-b79"/>
                             </constraints>
-                            <state key="normal" image="profile"/>
+                            <state key="normal" image="normalBack"/>
+                            <connections>
+                                <action selector="backButtonClicked:" destination="-1" eventType="touchUpInside" id="PyJ-SZ-HbX"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eg-5A-jS2">
                             <rect key="frame" x="374" y="10" width="24" height="24"/>
@@ -87,6 +90,6 @@
     </objects>
     <resources>
         <image name="message" width="24" height="24"/>
-        <image name="profile" width="24" height="24"/>
+        <image name="normalBack" width="24" height="24"/>
     </resources>
 </document>

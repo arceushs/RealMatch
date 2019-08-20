@@ -15,6 +15,10 @@ class RMSettingTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     
