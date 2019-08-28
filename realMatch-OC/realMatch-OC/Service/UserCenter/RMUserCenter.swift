@@ -23,6 +23,7 @@ class RMUserCenter: NSObject {
     
     var userId:String?
 
+    var avatar:String?
     
     @objc static let shared:RMUserCenter = RMUserCenter()
 

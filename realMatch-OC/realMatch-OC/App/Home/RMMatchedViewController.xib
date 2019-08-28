@@ -13,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RMMatchedViewController" customModule="realMatch_OC" customModuleProvider="target">
             <connections>
                 <outlet property="EffectView" destination="Rrw-1D-giR" id="X9F-oo-SV4"/>
+                <outlet property="matchedAvatarImageView" destination="FV0-S1-3b7" id="qXO-c3-8Mf"/>
+                <outlet property="myAvatarImageView" destination="cCA-uC-u0r" id="nsE-mi-a9W"/>
                 <outlet property="swipeButton" destination="faX-fr-wcw" id="JIz-oX-egi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -54,6 +56,44 @@
                     <rect key="frame" x="0.0" y="20" width="357" height="733"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cCA-uC-u0r">
+                    <rect key="frame" x="188.5" y="264.5" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="1Jl-XD-h6K"/>
+                        <constraint firstAttribute="width" constant="80" id="ova-fS-TlS"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FV0-S1-3b7">
+                    <rect key="frame" x="88.5" y="264.5" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="CZX-VZ-L3c"/>
+                        <constraint firstAttribute="height" constant="80" id="rk6-Oe-kzv"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You and Keise have liked each other." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z55-vJ-BQi">
                     <rect key="frame" x="47" y="145" width="263.5" height="19.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -67,6 +107,9 @@
                         <constraint firstAttribute="height" constant="24" id="sXq-J7-zLg"/>
                     </constraints>
                     <state key="normal" image="normalBack"/>
+                    <connections>
+                        <action selector="backButtonClicked:" destination="-1" eventType="touchUpInside" id="YB0-M5-8Ra"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fk-lm-RHn">
                     <rect key="frame" x="317" y="30" width="24" height="24"/>
@@ -134,6 +177,9 @@
                 <constraint firstItem="faX-fr-wcw" firstAttribute="trailing" secondItem="r9h-AT-fdw" secondAttribute="trailing" id="Or1-Ys-kca"/>
                 <constraint firstItem="Rrw-1D-giR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="P2Y-tH-vG3"/>
                 <constraint firstItem="cYr-9s-L5J" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="TFS-vf-Cth"/>
+                <constraint firstItem="cCA-uC-u0r" firstAttribute="centerX" secondItem="hDL-Lh-2Wv" secondAttribute="centerX" id="VUV-eU-ACi"/>
+                <constraint firstItem="FV0-S1-3b7" firstAttribute="centerX" secondItem="hRt-b7-JDL" secondAttribute="centerX" id="Zuf-1O-Is8"/>
+                <constraint firstItem="FV0-S1-3b7" firstAttribute="centerY" secondItem="hRt-b7-JDL" secondAttribute="centerY" id="fz4-4P-5Eu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="faX-fr-wcw" secondAttribute="bottom" constant="84" id="h9G-HK-4NP"/>
                 <constraint firstItem="faX-fr-wcw" firstAttribute="top" secondItem="r9h-AT-fdw" secondAttribute="bottom" constant="16" id="jPc-Yi-yPc"/>
                 <constraint firstItem="2Fk-lm-RHn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="jUJ-p2-pqV"/>
@@ -141,6 +187,7 @@
                 <constraint firstItem="hDL-Lh-2Wv" firstAttribute="top" secondItem="hRt-b7-JDL" secondAttribute="top" id="ubv-fC-5xC"/>
                 <constraint firstItem="Z55-vJ-BQi" firstAttribute="top" secondItem="AaE-7A-c8F" secondAttribute="bottom" constant="8" id="uz7-NJ-jYt"/>
                 <constraint firstItem="AaE-7A-c8F" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wZs-C8-sOG"/>
+                <constraint firstItem="cCA-uC-u0r" firstAttribute="centerY" secondItem="hDL-Lh-2Wv" secondAttribute="centerY" id="x5G-aJ-aAW"/>
                 <constraint firstItem="Rrw-1D-giR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zKE-cx-57T"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

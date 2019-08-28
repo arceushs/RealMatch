@@ -19,13 +19,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="468.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ss-2l-8PN">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ss-2l-8PN">
                         <rect key="frame" x="125" y="16" width="70.5" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.19607843137254902" green="0.21176470588235294" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="who are you, where are you from, yuor school, your job." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ict-AI-wND">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="who are you, where are you from, yuor school, your job." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ict-AI-wND">
                         <rect key="frame" x="8" y="43.5" width="304" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.57647058823529407" green="0.59607843137254901" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,6 +43,17 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHt-7y-LmE">
+                        <rect key="frame" x="280" y="428.5" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="c7X-Fz-Zqe"/>
+                            <constraint firstAttribute="width" constant="32" id="dyw-LN-d5V"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="editVideoButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Mjb-Zj-WUO"/>
+                        </connections>
+                    </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hmj-ei-yeT">
                         <rect key="frame" x="8" y="66" width="304" height="394.5"/>
                         <subviews>
@@ -92,9 +103,11 @@
                     <constraint firstItem="Hmj-ei-yeT" firstAttribute="trailing" secondItem="dJO-NU-gUr" secondAttribute="trailing" id="QE4-TF-OPa"/>
                     <constraint firstItem="dJO-NU-gUr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="S9J-cR-XIx"/>
                     <constraint firstItem="4ss-2l-8PN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Uzk-Hu-5CW"/>
+                    <constraint firstItem="eHt-7y-LmE" firstAttribute="bottom" secondItem="dJO-NU-gUr" secondAttribute="bottom" id="bfY-rY-umo"/>
                     <constraint firstItem="Hmj-ei-yeT" firstAttribute="top" secondItem="dJO-NU-gUr" secondAttribute="top" id="dCX-Fv-RwS"/>
                     <constraint firstItem="Hmj-ei-yeT" firstAttribute="bottom" secondItem="dJO-NU-gUr" secondAttribute="bottom" id="eNe-3f-tnK"/>
                     <constraint firstItem="Hmj-ei-yeT" firstAttribute="leading" secondItem="dJO-NU-gUr" secondAttribute="leading" id="eVz-LC-GHn"/>
+                    <constraint firstItem="eHt-7y-LmE" firstAttribute="trailing" secondItem="dJO-NU-gUr" secondAttribute="trailing" id="h7W-S9-7VK"/>
                     <constraint firstItem="Ict-AI-wND" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="neG-sE-eW5"/>
                     <constraint firstAttribute="trailing" secondItem="dJO-NU-gUr" secondAttribute="trailing" constant="8" id="shy-gA-qHo"/>
                     <constraint firstAttribute="trailing" secondItem="Ict-AI-wND" secondAttribute="trailing" constant="8" id="uv1-kz-Th5"/>
@@ -105,6 +118,7 @@
             <connections>
                 <outlet property="addVideoView" destination="Hmj-ei-yeT" id="d3l-PT-axk"/>
                 <outlet property="detailImageView" destination="dJO-NU-gUr" id="lyg-C4-ItY"/>
+                <outlet property="editVideoButton" destination="eHt-7y-LmE" id="eXc-si-P62"/>
                 <outlet property="subTitleLabel" destination="Ict-AI-wND" id="oKo-vW-Yxu"/>
                 <outlet property="titleLabel" destination="4ss-2l-8PN" id="daI-Hf-7HL"/>
             </connections>

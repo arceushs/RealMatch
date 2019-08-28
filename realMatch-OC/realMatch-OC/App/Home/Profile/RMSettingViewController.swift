@@ -33,33 +33,17 @@ class RMSettingViewController: UIViewController,RouterController,UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var emailBlock:((_ cell:RMSettingTableViewCell)->Void) = {
-            cell in
-            cell.nameLabel.text = "Email"
-            cell.descLabel.text = RMUserCenter.shared.registerEmail
-        }
-        
-        var passBlock:((_ cell:RMSettingTableViewCell)->Void) = {
-            cell in
-            cell.nameLabel.text = "Password"
-        }
-        
-        var privacy:((_ cell:RMSettingTableViewCell)->Void) = {
+        let privacy:((_ cell:RMSettingTableViewCell)->Void) = {
             cell in
             cell.nameLabel.text = "Privacy policy"
         }
         
-        var terms:(_ cell:RMSettingTableViewCell)->Void = {
+        let terms:(_ cell:RMSettingTableViewCell)->Void = {
             cell in
             cell.nameLabel.text = "Terms of use"
         }
-        
-        var feedback:(_ cell:RMSettingTableViewCell)->Void = {
-            cell in
-            cell.nameLabel.text = "Feedback"
-        }
-        
-        self.settingArr = [emailBlock,passBlock,privacy,terms,feedback]
+                
+        self.settingArr = [privacy,terms]
         self.settingTableView.separatorStyle = .none
         self.settingTableView.delegate = self;
         self.settingTableView.dataSource = self;
@@ -87,6 +71,15 @@ class RMSettingViewController: UIViewController,RouterController,UITableViewDele
         return 64
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath,animated:false)
+        if(indexPath.row == 0){
+            Router.shared()?.router(to: "RMWebViewController", parameter:["url":"https://www.4match.top/policy.html"] )
+        }else{
+            Router.shared()?.router(to: "RMWebViewController", parameter:["url":"https://www.4match.top/terms.html"] )
+        }
+        
+    }
     
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

@@ -129,7 +129,7 @@
 }
 
 - (IBAction)dislikeButtonClicked:(id)sender {
-    if([self.currentCardVC.matchedUserId length]<0)
+    if([self.currentCardVC.matchedUserId length]<=0)
         return;
     RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:NO];
     [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
@@ -139,7 +139,7 @@
     }];
 }
 - (IBAction)likeButtonClicked:(id)sender {
-    if([self.currentCardVC.matchedUserId length]<0)
+    if([self.currentCardVC.matchedUserId length]<=0)
         return;
     RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:YES];
     [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {

@@ -83,7 +83,7 @@ class RMRealVideoViewController: UIViewController,RouterController{
         self.doneButton.isEnabled = false
  
         let filePath = "\(RMFileManager.pathForSaveRecord())/\(fileName).mp4"
-        let postFileAPI = RMPostFileAPI(filePath: filePath, filename: fileName, userId: RMUserCenter.shared.userId ?? "", mimeType: "video/mp4")
+        let postFileAPI = RMPostFileAPI(filePath: filePath, filename: fileName, userId: RMUserCenter.shared.userId ?? "", mimeType: "video/mp4",fileType: 1)
         RMNetworkManager.share()?.request(postFileAPI, completion: { (response) in
             self.doneButton.isEnabled = true
             let data = response?.responseObject as? RMPostFileAPIData

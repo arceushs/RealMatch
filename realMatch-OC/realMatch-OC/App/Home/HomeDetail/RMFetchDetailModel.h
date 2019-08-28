@@ -8,15 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "RMBaseModel.h"
+#import <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RMFetchDetailModel : RMBaseModel
 
 @property (nonatomic,strong) NSString* title;
+@property (nonatomic,strong) NSString* subtitle;
 @property (nonatomic,strong) NSString* videoImg;
 @property (nonatomic,strong) NSString* name;
 @property (nonatomic,strong) NSString* extension;
 @property (nonatomic,strong) NSString* ossLocation;
+
+@property (nonatomic,assign) CGFloat rowHeight;
 
 
 

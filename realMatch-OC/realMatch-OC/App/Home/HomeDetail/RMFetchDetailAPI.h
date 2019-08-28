@@ -7,12 +7,22 @@
 //
 #import "RMNetworkManager.h"
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "RMFetchDetailModel.h"
 NS_ASSUME_NONNULL_BEGIN
 @interface RMFetchDetailAPIData : NSObject
 
 @property (nonatomic,strong) NSArray<RMFetchDetailModel*>* videoArr;
 @property (nonatomic,strong) NSString* videoDefaultImg;
+@property (nonatomic,strong) NSString* name;
+@property (nonatomic,strong) NSString* phone;
+@property (nonatomic,strong) NSString* email;
+@property (nonatomic,assign) int sex;
+@property (nonatomic,assign) int age;
+@property (nonatomic,strong) NSString* area;
+@property (nonatomic,strong) NSString* avatar;
+@property (nonatomic,assign) CGFloat height;
+@property (nonatomic,assign) CGFloat width;
 
 @end
 

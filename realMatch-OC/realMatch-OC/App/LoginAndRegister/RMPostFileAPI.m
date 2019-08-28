@@ -18,13 +18,15 @@
     NSString* _userId;
     NSString* _filePath;
     NSString* _mimeType;
+    int _fileType;
 }
--(instancetype)initWithFilePath:(NSString*)filePath Filename:(NSString*)filename userId:(NSString*)userId mimeType:(NSString*)mimeType{
+-(instancetype)initWithFilePath:(NSString*)filePath Filename:(NSString*)filename userId:(NSString*)userId mimeType:(NSString*)mimeType fileType:(int)fileType{
     if(self = [super init]){
         _filename = filename;
         _userId = userId;
         _filePath = filePath;
         _mimeType = mimeType;
+        _fileType = fileType;
     }
     return self;
 }
@@ -42,6 +44,7 @@
              @"filepath":_filePath,
              @"filename":_filename,
              @"mimetype":_mimeType,
+             @"type":@(_fileType),
              };
 }
 

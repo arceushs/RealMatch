@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RMPostFileAPI : NSObject<RMNetworkAPI>
 
--(instancetype)initWithFilePath:(NSString*)filePath Filename:(NSString*)filename userId:(NSString*)userId mimeType:(NSString*)mimeType;
+-(instancetype)initWithFilePath:(NSString*)filePath Filename:(NSString*)filename userId:(NSString*)userId mimeType:(NSString*)mimeType fileType:(int)fileType;
 @end
 
 NS_ASSUME_NONNULL_END

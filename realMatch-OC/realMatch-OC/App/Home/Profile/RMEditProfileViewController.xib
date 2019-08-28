@@ -37,6 +37,9 @@
                                 <constraint firstAttribute="width" constant="24" id="HBq-p3-a3V"/>
                             </constraints>
                             <state key="normal" image="normalBack"/>
+                            <connections>
+                                <action selector="backButtonClicked:" destination="-1" eventType="touchUpInside" id="Ixr-MN-iAB"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CsG-fE-gkK">
                             <rect key="frame" x="293" y="7.5" width="31" height="29"/>

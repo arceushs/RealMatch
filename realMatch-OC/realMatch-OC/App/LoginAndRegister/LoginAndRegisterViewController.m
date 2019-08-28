@@ -47,6 +47,7 @@
     }
     
     _pendingLoginViewController = [_accountKit viewControllerForPhoneLogin];
+    _pendingLoginViewController.uiManager = [[AKFSkinManager alloc]initWithSkinType:AKFSkinTypeClassic primaryColor:[UIColor colorWithString:@"FA008E"]];
     //     _pendingLoginViewController = [_accountKit viewControllerForEmailLoginWithEmail:@"xkjmdy1@outlook.com" state:[NSUUID UUID].UUIDString];
     
     [self _prepareLoginViewController:_pendingLoginViewController];
@@ -63,7 +64,7 @@
 }
 
 -(void)viewController:(UIViewController<AKFViewController> *)viewController didCompleteLoginWithAccessToken:(id<AKFAccessToken>)accessToken state:(NSString *)state{
-    [SVProgressHUD showWithStatus:@"注册中..."];
+    [SVProgressHUD show];
     [_accountKit requestAccount:^(id<AKFAccount>  _Nullable account, NSError * _Nullable error) {
         [RMUserCenter shared].accountKitID = account.accountID;
         [RMUserCenter shared].accountKitEmailAddress = account.emailAddress;

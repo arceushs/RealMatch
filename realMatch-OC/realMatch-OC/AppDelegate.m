@@ -48,7 +48,9 @@
 }
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"content---%@", token);
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
@@ -65,13 +67,21 @@
             NSLog(@"app位于后台通知(didReceiveRemoteNotification:fetchCompletionHandler:):%@", userInfo);
         }
     }
+    NSDictionary* apsDict = userInfo[@"aps"];
+    NSString* avatar = apsDict[@"avatar"]?:@"";
+    NSString* matchedUserId = apsDict[@"userId"]?:@"";
+    [[Router shared] routerTo:@"RMMatchedViewController" parameter:@{@"avatar":avatar,@"matchedUserId":matchedUserId}];
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
 
 
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
-    
+    NSDictionary* userInfo = notification.request.content.userInfo;
+    NSDictionary* apsDict = userInfo[@"aps"];
+    NSString* avatar = apsDict[@"avatar"]?:@"";
+    NSString* matchedUserId = apsDict[@"userId"]?:@"";
+    [[Router shared] routerTo:@"RMMatchedViewController" parameter:@{@"matchedAvatar":avatar,@"matchedUserId":matchedUserId}];
 }
 
 -(void)addRootVCToWindow{

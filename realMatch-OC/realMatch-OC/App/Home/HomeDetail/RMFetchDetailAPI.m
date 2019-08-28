@@ -56,6 +56,7 @@
     
     if([dataDict isKindOfClass:[NSDictionary class]]){
         NSArray* uploads = [dataDict objectForKey:@"uploads"];
+        
         NSMutableArray<RMFetchDetailModel*>* modelsArr = [NSMutableArray array];
         for(NSDictionary* dict in uploads){
             RMFetchDetailModel* model = [[RMFetchDetailModel alloc]init];
@@ -66,6 +67,13 @@
             [modelsArr addObject:model];
         }
         data.videoArr = [NSArray arrayWithArray:modelsArr];
+        data.name = [dataDict objectForKey:@"name"];
+        data.email = [dataDict objectForKey:@"email"];
+        data.phone = [dataDict objectForKey:@"phone"];
+        data.sex = [[dataDict objectForKey:@"sex"] intValue];
+        data.age = [[dataDict objectForKey:@"age"] intValue];
+        data.area = [dataDict objectForKey:@"area"];
+        data.avatar = [dataDict objectForKey:@"avatar"];
     }
     
     return [[RMNetworkResponse alloc]initWithResponseObject:data];

@@ -14,12 +14,19 @@ import UIKit
     @IBOutlet weak var EffectView: UIView!
     var visualEffectView:UIVisualEffectView?
     
+    @IBOutlet weak var matchedAvatarImageView: UIImageView!
+    @IBOutlet weak var myAvatarImageView: UIImageView!
+    var matchedUserId:String = ""
+    var matchedAvatar:String = ""
+    
     required init!(command adopter: RouterAdopter!) {
         super.init(nibName: nil, bundle: nil)
     }
     
     required init!(routerParams params: [AnyHashable : Any]!) {
         super.init(nibName: nil, bundle: nil)
+        self.matchedUserId = "\(params["matchedUserId"] as? Int ?? 0)";
+        self.matchedAvatar = params["matchedAvatar"] as? String ?? "";
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,11 +52,26 @@ import UIKit
         self.swipeButton.layer.borderWidth = 3
         self.swipeButton.layer.borderColor = UIColor(string: "FA008E").cgColor
         self.swipeButton.layer.cornerRadius = 24
+        
+        self.matchedAvatarImageView.sd_setImage(with: URL(string: matchedAvatar), placeholderImage: UIImage(named: "default.jpeg"), options: .refreshCached, context: nil)
+        
+        let detailAPI = RMFetchDetailAPI(userId: RMUserCenter.shared.userId ?? "")
+        RMNetworkManager.share()?.request(detailAPI, completion: { (response) in
+            if ((response?.error) != nil){
+                return
+            }
+            let data:RMFetchDetailAPIData = response?.responseObject as! RMFetchDetailAPIData
+            self.myAvatarImageView.sd_setImage(with: URL(string: data.avatar), placeholderImage: UIImage(named: "default.jpeg"), options: .refreshCached, context: nil)
+        
+        })
         // Do any additional setup after loading the view.
     }
 
     override func viewWillLayoutSubviews() {
         self.visualEffectView!.frame = self.EffectView.bounds
+    }
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     /*
     // MARK: - Navigation
