@@ -17,10 +17,12 @@
 {
     AVPlayer* _player;
     AVPlayerLayer* _playerLayer;
+    NSString* _videoUrl;
 }
 
 -(instancetype)initWithRouterParams:(NSDictionary *)params{
     if(self = [super init]){
+        _videoUrl = params[@"url"];
     }
     return self;
 }
@@ -42,7 +44,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    _player = [[AVPlayer alloc]initWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"aiqinggongyu" ofType:@"mp4"]]];
+    _player = [[AVPlayer alloc]initWithURL:[NSURL URLWithString:_videoUrl]];
     
     _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
     

@@ -33,6 +33,8 @@
 @property (nonatomic,strong) AHTimer* timer;
 @property (nonatomic,assign) int seconds;
 @property (nonatomic,strong) UIButton* recordButton;
+@property (nonatomic,strong) UIButton* retryButton;
+@property (nonatomic,strong) UIButton* confirmButton;
 
 @property (nonatomic,strong) NSString* fileName;
 
@@ -74,9 +76,9 @@
     self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.videoCamera.horizontallyMirrorFrontFacingCamera = YES;
     _filter = [[GPUImageBeautyFilter alloc]init];
-    [_filter setBeautyLevel:1];
-    [_filter setBrightLevel:0.5];
-    [_filter setToneLevel:1];
+    [_filter setBeautyLevel:0.8];
+    [_filter setBrightLevel:0.3];
+    [_filter setToneLevel:0.8];
     self.filterView = [[GPUImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [self.view addSubview:self.filterView];
     self.filterView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
@@ -118,8 +120,34 @@
     self.timeLabel.textColor = [UIColor whiteColor];
     self.timeLabel.textAlignment = NSTextAlignmentCenter;
     
+    self.retryButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMinX(recordButton.frame) - 40 - 40, CGRectGetMinY(recordButton.frame)+15, 40, 40)];
+    [_retryButton addTarget:self action:@selector(retryButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_retryButton setImage:[UIImage imageNamed:@"Restart"] forState:UIControlStateNormal];
+    [self.view addSubview:_retryButton];
+    _retryButton.hidden = YES;
     
+    self.confirmButton = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(recordButton.frame)+40, CGRectGetMinY(recordButton.frame)+15, 40, 40)];
+    [_confirmButton addTarget:self action:@selector(confirmButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_confirmButton setImage:[UIImage imageNamed:@"Affirm"] forState:UIControlStateNormal];
+    [self.view addSubview:_confirmButton];
+    _confirmButton.hidden = YES;
     // Do any additional setup after loading the view.
+}
+
+-(void)retryButtonClicked:(id)sender{
+    [self recordButtonClick:self.recordButton];
+}
+
+-(void)confirmButtonClicked:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+    if(_adopter.routerAdopterCallback){
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@.mp4",[RMFileManager pathForSaveRecord],_fileName];
+        UIImage* image = [RMFileManager getVideoPreViewImage:[NSURL fileURLWithPath:filePath]];
+        if(image){
+            _adopter.routerAdopterCallback(@{@"previewImage":image});
+            
+        }
+    }
 }
 
 -(void)refreshTimerLabel{
@@ -198,18 +226,15 @@
         sender.tag = 2000;
         self.seconds = 10;
         self.timer = [AHTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshTimerLabel) userInfo:@{} repeats:YES];
+        self.retryButton.hidden = YES;
+        self.confirmButton.hidden = YES;
     }else if(sender.tag == 2000){
+        self.retryButton.hidden = NO;
+        self.confirmButton.hidden = NO;
         [self stopVideoRecords];
         sender.tag =1000;
         [self.timer invalidate];
         self.timeLabel.text = @"";
-        
-        [self.navigationController popViewControllerAnimated:YES];
-        if(_adopter.routerAdopterCallback){
-            NSString *filePath = [NSString stringWithFormat:@"%@/%@.mp4",[RMFileManager pathForSaveRecord],_fileName];
-            UIImage* image = [RMFileManager getVideoPreViewImage:[NSURL fileURLWithPath:filePath]];
-            _adopter.routerAdopterCallback(@{@"previewImage":image});
-        }
     }
 }
 
@@ -246,7 +271,7 @@
 -(void)startVideoRecords{
     NSString *filePath = [NSString stringWithFormat:@"%@/%@.mp4",[RMFileManager pathForSaveRecord],_fileName];
     unlink([filePath UTF8String]);
-    self.movieWriter = [[GPUImageMovieWriter alloc]initWithMovieURL:[NSURL fileURLWithPath:filePath] size:CGSizeMake(self.filterView.width, self.filterView.height)];
+    self.movieWriter = [[GPUImageMovieWriter alloc]initWithMovieURL:[NSURL fileURLWithPath:filePath] size:CGSizeMake(floor(self.filterView.width/16)*16, floor(self.filterView.height/16)*16)];
     self.movieWriter.encodingLiveVideo = YES;
     [_filter addTarget:_movieWriter];
     _videoCamera.audioEncodingTarget = _movieWriter;

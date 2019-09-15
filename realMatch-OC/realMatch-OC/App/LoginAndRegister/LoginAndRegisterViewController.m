@@ -89,7 +89,7 @@
             if(!data.newUser){
                 [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
             }else{
-                [[Router shared] routerTo:@"RMEmailViewController" parameter:nil];
+                [[Router shared] routerTo:@"RMNameViewController" parameter:nil];
             }
         }];
     }];

@@ -56,6 +56,8 @@
     _cardVC1 = [[RMHomeCardViewController alloc]init];
     __weak typeof(self) weakSelf = self;
     _cardVC1.routeToDetailBlock = ^{
+        if([weakSelf.currentCardVC.matchedUserId length] <= 0)
+            return;
         [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:@{@"userId":weakSelf.currentCardVC.matchedUserId}];
     };
     [self addChildViewController:_cardVC1];
@@ -76,9 +78,16 @@
     
     CGFloat length = self.view.width;
     if(gest.direction == UISwipeGestureRecognizerDirectionLeft){
-        
+        RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:YES];
+        [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
+            
+        }];
     }else if(gest.direction == UISwipeGestureRecognizerDirectionRight){
         length = 0 - length;
+        RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:NO];
+        [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
+            
+        }];
     }
     
     if(self.currentCardVC == _cardVC1){
@@ -108,6 +117,8 @@
     }else{
         _cardVC1 = [[RMHomeCardViewController alloc]init];
         _cardVC1.routeToDetailBlock = ^{
+            if([weakSelf.currentCardVC.matchedUserId length]<0)
+                return;
             [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:@{@"userId":weakSelf.currentCardVC.matchedUserId}];
         };
         [self addChildViewController:_cardVC1];
@@ -133,20 +144,24 @@
         return;
     RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:NO];
     [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
-        UISwipeGestureRecognizer* gest = [[UISwipeGestureRecognizer alloc]init];
-        gest.direction = UISwipeGestureRecognizerDirectionRight;
-        [self pageGet:gest];
+        
     }];
+    
+    UISwipeGestureRecognizer* gest = [[UISwipeGestureRecognizer alloc]init];
+    gest.direction = UISwipeGestureRecognizerDirectionRight;
+    [self pageGet:gest];
 }
 - (IBAction)likeButtonClicked:(id)sender {
     if([self.currentCardVC.matchedUserId length]<=0)
         return;
     RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:YES];
     [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
-        UISwipeGestureRecognizer* gest = [[UISwipeGestureRecognizer alloc]init];
-        gest.direction = UISwipeGestureRecognizerDirectionLeft;
-        [self pageGet:gest];
+        
     }];
+    
+    UISwipeGestureRecognizer* gest = [[UISwipeGestureRecognizer alloc]init];
+    gest.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self pageGet:gest];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

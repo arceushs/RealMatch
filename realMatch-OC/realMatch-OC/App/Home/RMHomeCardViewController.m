@@ -32,6 +32,12 @@
     self.cardView.routeToDetailBlock = self.routeToDetailBlock;
     [self.view addSubview:self.cardView];
     
+    
+    // app从后台进入前台都会调用这个方法
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+    // 添加检测app进入后台的观察者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationEnterBackground) name: UIApplicationDidEnterBackgroundNotification object:nil];
+
     RMFetchHomeVideoAPI* fetchHomeVideoAPI = [[RMFetchHomeVideoAPI alloc] initWithUserId:[RMUserCenter shared].userId];
     __weak typeof(self) weakSelf = self;
     [[RMNetworkManager shareManager] request:fetchHomeVideoAPI completion:^(RMNetworkResponse *response) {
@@ -44,7 +50,9 @@
             AVPlayerItem *currentItem = [[AVPlayerItem alloc] initWithURL:streamURL];
             weakSelf.playerItem = currentItem;
             [weakSelf.player replaceCurrentItemWithPlayerItem:currentItem];
-            [weakSelf.player play];
+            if(self.isViewLoaded&&self.view.window){
+                [weakSelf.player play];
+            }
             
             weakSelf.matchedUserId = data.userId;
             
@@ -84,6 +92,18 @@
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
     self.cardView.frame = self.view.bounds;
+}
+
+-(void)applicationBecomeActive{
+    if(self.player){
+        [self.player play];
+    }
+}
+
+-(void)applicationEnterBackground{
+    if(self.player){
+        [self.player pause];
+    }
 }
 
 -(void)dealloc{

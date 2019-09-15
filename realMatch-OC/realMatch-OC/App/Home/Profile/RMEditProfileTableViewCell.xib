@@ -33,6 +33,7 @@
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dJO-NU-gUr">
                         <rect key="frame" x="8" y="66" width="304" height="394.5"/>
+                        <color key="backgroundColor" red="0.20392156859999999" green="0.20784313730000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="dJO-NU-gUr" secondAttribute="height" multiplier="359:466" id="X38-cG-RE3"/>
                         </constraints>
@@ -43,13 +44,13 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHt-7y-LmE">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHt-7y-LmE">
                         <rect key="frame" x="280" y="428.5" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="c7X-Fz-Zqe"/>
                             <constraint firstAttribute="width" constant="32" id="dyw-LN-d5V"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
+                        <state key="normal" image="Edit_Video"/>
                         <connections>
                             <action selector="editVideoButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Mjb-Zj-WUO"/>
                         </connections>
@@ -127,5 +128,6 @@
     </objects>
     <resources>
         <image name="AddVideo" width="24" height="24"/>
+        <image name="Edit_Video" width="32" height="32"/>
     </resources>
 </document>

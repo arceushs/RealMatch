@@ -20,6 +20,8 @@
 		1C3BC8F422ED90DB00E9EE6C /* RMMatchedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C3BC8F222ED90DB00E9EE6C /* RMMatchedViewController.xib */; };
 		1C49CAF022DABC48007333A6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C49CAEF22DABC48007333A6 /* libsqlite3.0.tbd */; };
 		1C49CAF322DABCE2007333A6 /* RMDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */; };
+		1C7F43432317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7F43412317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.swift */; };
+		1C7F43442317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C7F43422317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.xib */; };
 		1CAF03BE2310F415004FC148 /* RMWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAF03BC2310F415004FC148 /* RMWebViewController.swift */; };
 		1CC11A1D2314CA0B00FCD770 /* default.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1CC11A1C2314CA0B00FCD770 /* default.jpeg */; };
 		1CD90AE822F57CAA00119E27 /* RMMessageFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD90AE722F57CAA00119E27 /* RMMessageFooter.swift */; };
@@ -59,16 +61,12 @@
 		D652276422BB8AEE00C273E1 /* RMVideoPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D652276222BB8AEE00C273E1 /* RMVideoPlayViewController.xib */; };
 		D659140322B76D6C0098F458 /* RMFetchDetailAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D659140222B76D6C0098F458 /* RMFetchDetailAPI.m */; };
 		D659140622B781620098F458 /* RMNetworkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D659140522B781620098F458 /* RMNetworkResponse.m */; };
-		D659140922B793E50098F458 /* RMFetchDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D659140822B793E50098F458 /* RMFetchDetailModel.m */; };
+		D659140922B793E50098F458 /* RMFetchVideoDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D659140822B793E50098F458 /* RMFetchVideoDetailModel.m */; };
 		D659140C22B794810098F458 /* RMBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D659140B22B794810098F458 /* RMBaseModel.m */; };
 		D661306622956697008DA4D8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D661306522956697008DA4D8 /* Podfile */; };
 		D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC5C22A79D36003FB7B8 /* UIDevice+RealMatch.m */; };
 		D665EC6022A7EF92003FB7B8 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC5F22A7EF92003FB7B8 /* GPUImageBeautifyFilter.m */; };
 		D665EC6322A8BD7C003FB7B8 /* UIColor+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D665EC6222A8BD7C003FB7B8 /* UIColor+RealMatch.m */; };
-		D6696FDC22B9EBF400942DFB /* RMHomePageDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6696FDA22B9EBF400942DFB /* RMHomePageDetailTableViewCell.m */; };
-		D6696FDD22B9EBF400942DFB /* RMHomePageDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6696FDB22B9EBF400942DFB /* RMHomePageDetailTableViewCell.xib */; };
-		D6696FE022B9EF8A00942DFB /* RMHomePageDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6696FDF22B9EF8A00942DFB /* RMHomePageDetailHeaderView.m */; };
-		D6696FE222B9F10600942DFB /* RMHomePageDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6696FE122B9F10600942DFB /* RMHomePageDetailHeaderView.xib */; };
 		D6696FE622BA0F6E00942DFB /* RMTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6696FE522BA0F6E00942DFB /* RMTableViewModel.m */; };
 		D6697147229BB0D3008E3968 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6697146229BB0D3008E3968 /* StoreKit.framework */; };
 		D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D669714A229BBFF3008E3968 /* PurchaseManager.m */; };
@@ -163,6 +161,8 @@
 		1C3BC8F222ED90DB00E9EE6C /* RMMatchedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMMatchedViewController.xib; sourceTree = "<group>"; };
 		1C49CAEF22DABC48007333A6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDatabaseManager.swift; sourceTree = "<group>"; };
+		1C7F43412317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMPurchaseBannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		1C7F43422317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMPurchaseBannerCollectionViewCell.xib; sourceTree = "<group>"; };
 		1CAF03BC2310F415004FC148 /* RMWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMWebViewController.swift; sourceTree = "<group>"; };
 		1CC11A1C2314CA0B00FCD770 /* default.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpeg; sourceTree = "<group>"; };
 		1CD90AE722F57CAA00119E27 /* RMMessageFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMessageFooter.swift; sourceTree = "<group>"; };
@@ -217,8 +217,8 @@
 		D659140222B76D6C0098F458 /* RMFetchDetailAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMFetchDetailAPI.m; sourceTree = "<group>"; };
 		D659140422B781610098F458 /* RMNetworkResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMNetworkResponse.h; sourceTree = "<group>"; };
 		D659140522B781620098F458 /* RMNetworkResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMNetworkResponse.m; sourceTree = "<group>"; };
-		D659140722B793E50098F458 /* RMFetchDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMFetchDetailModel.h; sourceTree = "<group>"; };
-		D659140822B793E50098F458 /* RMFetchDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMFetchDetailModel.m; sourceTree = "<group>"; };
+		D659140722B793E50098F458 /* RMFetchVideoDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMFetchVideoDetailModel.h; sourceTree = "<group>"; };
+		D659140822B793E50098F458 /* RMFetchVideoDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMFetchVideoDetailModel.m; sourceTree = "<group>"; };
 		D659140A22B794810098F458 /* RMBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMBaseModel.h; sourceTree = "<group>"; };
 		D659140B22B794810098F458 /* RMBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMBaseModel.m; sourceTree = "<group>"; };
 		D661306522956697008DA4D8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -228,12 +228,6 @@
 		D665EC5F22A7EF92003FB7B8 /* GPUImageBeautifyFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUImageBeautifyFilter.m; sourceTree = "<group>"; };
 		D665EC6122A8BD7C003FB7B8 /* UIColor+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RealMatch.h"; sourceTree = "<group>"; };
 		D665EC6222A8BD7C003FB7B8 /* UIColor+RealMatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RealMatch.m"; sourceTree = "<group>"; };
-		D6696FD922B9EBF400942DFB /* RMHomePageDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMHomePageDetailTableViewCell.h; sourceTree = "<group>"; };
-		D6696FDA22B9EBF400942DFB /* RMHomePageDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMHomePageDetailTableViewCell.m; sourceTree = "<group>"; };
-		D6696FDB22B9EBF400942DFB /* RMHomePageDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomePageDetailTableViewCell.xib; sourceTree = "<group>"; };
-		D6696FDE22B9EF8A00942DFB /* RMHomePageDetailHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMHomePageDetailHeaderView.h; sourceTree = "<group>"; };
-		D6696FDF22B9EF8A00942DFB /* RMHomePageDetailHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMHomePageDetailHeaderView.m; sourceTree = "<group>"; };
-		D6696FE122B9F10600942DFB /* RMHomePageDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMHomePageDetailHeaderView.xib; sourceTree = "<group>"; };
 		D6696FE422BA0F6E00942DFB /* RMTableViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMTableViewModel.h; sourceTree = "<group>"; };
 		D6696FE522BA0F6E00942DFB /* RMTableViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMTableViewModel.m; sourceTree = "<group>"; };
 		D6697146229BB0D3008E3968 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -497,16 +491,10 @@
 				D6CC153B22B387D500D80A02 /* RMHomePageDetailViewController.h */,
 				D6CC153C22B387D500D80A02 /* RMHomePageDetailViewController.m */,
 				D6CC153D22B387D500D80A02 /* RMHomePageDetailViewController.xib */,
-				D6696FD922B9EBF400942DFB /* RMHomePageDetailTableViewCell.h */,
-				D6696FDA22B9EBF400942DFB /* RMHomePageDetailTableViewCell.m */,
-				D6696FDB22B9EBF400942DFB /* RMHomePageDetailTableViewCell.xib */,
-				D6696FDE22B9EF8A00942DFB /* RMHomePageDetailHeaderView.h */,
-				D6696FDF22B9EF8A00942DFB /* RMHomePageDetailHeaderView.m */,
-				D6696FE122B9F10600942DFB /* RMHomePageDetailHeaderView.xib */,
 				D659140122B76D6C0098F458 /* RMFetchDetailAPI.h */,
 				D659140222B76D6C0098F458 /* RMFetchDetailAPI.m */,
-				D659140722B793E50098F458 /* RMFetchDetailModel.h */,
-				D659140822B793E50098F458 /* RMFetchDetailModel.m */,
+				D659140722B793E50098F458 /* RMFetchVideoDetailModel.h */,
+				D659140822B793E50098F458 /* RMFetchVideoDetailModel.m */,
 				D652276022BB8AEE00C273E1 /* RMVideoPlayViewController.h */,
 				D652276122BB8AEE00C273E1 /* RMVideoPlayViewController.m */,
 				D652276222BB8AEE00C273E1 /* RMVideoPlayViewController.xib */,
@@ -531,6 +519,8 @@
 				D6EB059822CF4C700084DE46 /* RMPurchaseViewController.h */,
 				D6EB059922CF4C700084DE46 /* RMPurchaseViewController.m */,
 				D6EB059A22CF4C700084DE46 /* RMPurchaseViewController.xib */,
+				1C7F43412317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.swift */,
+				1C7F43422317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.xib */,
 			);
 			path = InAppPurchase;
 			sourceTree = "<group>";
@@ -813,8 +803,6 @@
 				D6E0771522AE31CC00CC44BA /* RMHomeCardView.xib in Resources */,
 				D6369DA022CF1A4F00A1B473 /* RMMessageToMeTableViewCell.xib in Resources */,
 				1CFCE11D22BF1B760025BC0B /* RMMessageTableViewCell.xib in Resources */,
-				D6696FE222B9F10600942DFB /* RMHomePageDetailHeaderView.xib in Resources */,
-				D6696FDD22B9EBF400942DFB /* RMHomePageDetailTableViewCell.xib in Resources */,
 				D61458DD230A915D00D8C700 /* RMEditProfileTableViewCell.xib in Resources */,
 				D610B6BA230BEA4000A7BB47 /* RMSettingTableViewCell.xib in Resources */,
 				1C0EAEA822D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.xib in Resources */,
@@ -833,6 +821,7 @@
 				D687DA632294EDD200A11488 /* LaunchScreen.storyboard in Resources */,
 				D61458D9230A8E6E00D8C700 /* RMEditProfileViewController.xib in Resources */,
 				D687DA602294EDD200A11488 /* Assets.xcassets in Resources */,
+				1C7F43442317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.xib in Resources */,
 				D661306622956697008DA4D8 /* Podfile in Resources */,
 				D6CC153F22B387D500D80A02 /* RMHomePageDetailViewController.xib in Resources */,
 				1C381DF222E324B60060DE69 /* RMHomeCardViewController.xib in Resources */,
@@ -947,11 +936,9 @@
 				1C0EAEA422D02F5E00036DD5 /* RMMessageHeader.swift in Sources */,
 				D680C87122CB842700D9ED96 /* RMUserCenter.swift in Sources */,
 				1C3BC8EB22EC6EBA00E9EE6C /* RMFetchLikesMeAPI.m in Sources */,
-				D6696FE022B9EF8A00942DFB /* RMHomePageDetailHeaderView.m in Sources */,
 				1CD90AEC22F592BF00119E27 /* RMMessageDetail.swift in Sources */,
 				1C0EAEA722D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift in Sources */,
 				1C3BC8F322ED90DB00E9EE6C /* RMMatchedViewController.swift in Sources */,
-				D6696FDC22B9EBF400942DFB /* RMHomePageDetailTableViewCell.m in Sources */,
 				D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */,
 				D618DC3E230AADA300F34819 /* RMSettingHeader.swift in Sources */,
 				D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */,
@@ -960,7 +947,7 @@
 				D6BF467522969DEB00C82D98 /* LoginAndRegisterViewController.m in Sources */,
 				D652276322BB8AEE00C273E1 /* RMVideoPlayViewController.m in Sources */,
 				1CFCE11722BF1B380025BC0B /* RMMessageViewController.m in Sources */,
-				D659140922B793E50098F458 /* RMFetchDetailModel.m in Sources */,
+				D659140922B793E50098F458 /* RMFetchVideoDetailModel.m in Sources */,
 				1CD90AE822F57CAA00119E27 /* RMMessageFooter.swift in Sources */,
 				D680C88922CE295A00D9ED96 /* RMPostFileAPI.m in Sources */,
 				D6696FE622BA0F6E00942DFB /* RMTableViewModel.m in Sources */,
@@ -968,6 +955,7 @@
 				D61458DC230A915D00D8C700 /* RMEditProfileTableViewCell.swift in Sources */,
 				D6BF467F2296CDE500C82D98 /* Router+AccountKit.m in Sources */,
 				1C49CAF322DABCE2007333A6 /* RMDatabaseManager.swift in Sources */,
+				1C7F43432317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.swift in Sources */,
 				D680C87822CCD8A600D9ED96 /* RMDatePickerViewController.swift in Sources */,
 				D669714B229BBFF3008E3968 /* PurchaseManager.m in Sources */,
 				D610B6B9230BEA4000A7BB47 /* RMSettingTableViewCell.swift in Sources */,
@@ -1170,6 +1158,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 38KCJNXX83;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -1206,6 +1195,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 38KCJNXX83;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -1221,7 +1211,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = qtDevice;
+				PROVISIONING_PROFILE_SPECIFIER = MeetYou;
 				SWIFT_OBJC_BRIDGING_HEADER = "realMatch-OC-Bridging-Header.h";
 				SWIFT_VERSION = 4.3;
 				TARGETED_DEVICE_FAMILY = 1;

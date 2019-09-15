@@ -25,6 +25,14 @@ class RMSettingHeader: UIView {
         self.borderView.layer.borderWidth = 1
         self.containerView.layer.insertSublayer(gradientLayer, at: 0)
         self.addSubview(contentView)
+        
+        let tapGest = UITapGestureRecognizer(target: self, action: #selector(RMSettingHeader.tapGest));
+        
+        self.containerView.addGestureRecognizer(tapGest)
+    }
+    
+    @objc func tapGest(){
+        Router.shared()?.router(to: "RMPurchaseViewController", parameter: nil)
     }
     
     override func awakeFromNib() {

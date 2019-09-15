@@ -13,7 +13,9 @@ enum EditCellType:NSInteger{
     case typeDelete
 };
 
-class RMEditProfileTableViewCell: UITableViewCell {
+@objcMembers
+
+@objc class RMEditProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var editVideoButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!

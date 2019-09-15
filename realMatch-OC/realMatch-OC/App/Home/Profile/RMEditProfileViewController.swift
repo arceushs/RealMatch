@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class RMEditProfileViewController: UIViewController,RouterController,UITableViewDelegate,UITableViewDataSource {
     required init!(routerParams params: [AnyHashable : Any]!) {
         super.init(nibName: nil, bundle: nil)
@@ -33,7 +32,7 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
     
     
     @IBOutlet weak var editProfileDetailTableView: UITableView!
-    var videoArr:[RMFetchDetailModel]?
+    var videoArr:[RMFetchVideoDetailModel]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +47,27 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                 if response?.error == nil{
                     let result =  response?.responseObject as! RMFetchDetailAPIData
                     self.videoArr = result.videoArr
+                    for _ in (self.videoArr?.count ?? 0)...2{
+                        let model = RMFetchVideoDetailModel()
+                        self.videoArr?.append(model)
+                    }
+                    
+                    if let videoArr = self.videoArr{
+                        for (i,model) in videoArr.enumerated(){
+                            if i == 0{
+                                model.title = "About me";
+                                model.subtitle = "who are you, where are you from, yuor school, your job.";
+                            }else if i == 1{
+                                model.title = "Interests";
+                                model.subtitle = "what make you differ";
+                            }else if i == 2{
+                                model.title = "My friends";
+                                model.subtitle = "Who do you like to be with";
+                            }
+                        }
+
+                    }
+                    
                     self.editProfileDetailTableView.reloadData()
                 }
             })
@@ -59,16 +79,26 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:RMEditProfileTableViewCell = tableView.dequeueReusableCell(withIdentifier: "editprofileCell") as! RMEditProfileTableViewCell
+        cell.selectionStyle = .none
         if let videoArr = self.videoArr{
             if videoArr.count > 0{
                 let model = videoArr[indexPath.row]
                 cell.titleLabel.text = model.title
                 cell.subTitleLabel.text = model.subtitle;
-                if model.videoImg.count > 0{
+                if model.videoImg.ossLocation.count > 0 || model.previewVideoImage.size.height>0.0{
                     cell.addVideoView.isHidden = true
-                    cell.cellType = .typeEdit
+                    if model.previewVideoImage.size.height>0.0{
+                        cell.detailImageView.image = model.previewVideoImage
+                    }else{
+                        cell.detailImageView.sd_setImage(with: URL(string: model.videoImg.ossLocation), completed: nil)
+                    }
                 }else{
                     cell.addVideoView.isHidden = false
+                }
+                
+                if indexPath.row == 0{
+                    cell.cellType = .typeEdit
+                }else{
                     cell.cellType = .typeDelete
                 }
                 cell.editButtonBlock = {
@@ -80,16 +110,31 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                         adopter.vcName = "RMCaptureViewController";
                         adopter.routerAdopterCallback = {
                             dict in
-                            let image = dict?["previewImage"]
-                            cell.detailImageView.image = image as? UIImage
-                            cell.detailImageView.isHidden = false
-                            cell.addVideoView.isHidden = true
+                            let fileName = model.title
+                            let filePath = "\(RMFileManager.pathForSaveRecord())/\(fileName).mp4"
+                            let postFileAPI = RMPostFileAPI(filePath: filePath, filename: fileName, userId: RMUserCenter.shared.userId ?? "", mimeType:"video/mp4", fileType: Int32(indexPath.row)+1)
+                            SVProgressHUD.show(withStatus: "uploading...")
+                            RMNetworkManager.share()?.request(postFileAPI, completion: { (response) in
+                                if response?.error != nil{
+                                    SVProgressHUD.showError(withStatus: "upload error,please try again")
+                                }else{
+                                    SVProgressHUD.showSuccess(withStatus: "upload success")
+                                    let image = dict?["previewImage"] as? UIImage
+                                    if let image = image{
+                                        model.previewVideoImage = image
+                                    }
+                                    self.editProfileDetailTableView.reloadData()
+                                }
+                            })
+
                         }
                         Router.shared()?.router(to: adopter)
                     default:
-                        self.videoArr?.remove(at: indexPath.row)
-                        self.editProfileDetailTableView.deleteRows(at: [indexPath], with: .left)
+                        let model = RMFetchVideoDetailModel()
+                        self.videoArr?[indexPath.row] = model;
+                        
                     }
+                    self.editProfileDetailTableView.reloadData()
                 }
             }
         }
@@ -112,6 +157,43 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if let videoArr = self.videoArr{
+            let cell = tableView.cellForRow(at: indexPath) as! RMEditProfileTableViewCell
+            let model = videoArr[indexPath.row]
+            if model.videoImg.ossLocation.count > 0{
+                cell.addVideoView.isHidden = true
+                cell.cellType = .typeEdit
+                cell.detailImageView.sd_setImage(with: URL(string: model.videoImg.ossLocation), completed: nil)
+            }else{
+                cell.addVideoView.isHidden = false
+                cell.cellType = .typeDelete
+            }
+            let adopter = RouterAdopter()
+            adopter.params = ["filename":model.title]
+            adopter.vcName = "RMCaptureViewController";
+            adopter.routerAdopterCallback = {
+                dict in
+                let fileName = model.title
+                let filePath = "\(RMFileManager.pathForSaveRecord())/\(fileName).mp4"
+                let postFileAPI = RMPostFileAPI(filePath: filePath, filename: fileName, userId: RMUserCenter.shared.userId ?? "", mimeType:"video/mp4", fileType: Int32(indexPath.row)+1)
+                SVProgressHUD.show(withStatus: "uploading...")
+                RMNetworkManager.share()?.request(postFileAPI, completion: { (response) in
+                    if response?.error != nil{
+                        SVProgressHUD.showError(withStatus: "upload error,please try again")
+                    }else{
+                        SVProgressHUD.showSuccess(withStatus: "upload success")
+                        let image = dict?["previewImage"] as? UIImage
+                        if let image = image{
+                            model.previewVideoImage = image
+                        }
+                        self.editProfileDetailTableView.reloadData()
+                    }
+                })
+            }
+            Router.shared()?.router(to: adopter)
+
+        }
+        
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {

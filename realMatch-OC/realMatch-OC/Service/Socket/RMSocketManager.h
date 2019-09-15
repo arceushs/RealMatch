@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(instancetype)shared;
 -(void)connectWithUserId:(NSString*)userId;
+-(void)disconnect:(NSString*)userId;
 -(void)messageSend:(RMMessageDetail*)message;
 
 -(void)addDelegate:(id<RMSocketManagerDelegate>)delegate;

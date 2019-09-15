@@ -28,9 +28,32 @@
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUH-oD-07Y">
                     <rect key="frame" x="0.0" y="686" width="414" height="176"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRC-Kz-md5">
+                            <rect key="frame" x="15" y="24" width="384" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="qyj-nz-gP7"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jh7-Q2-R4s">
+                            <rect key="frame" x="15" y="57" width="384" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="WRC-Kz-md5" firstAttribute="top" secondItem="nUH-oD-07Y" secondAttribute="top" constant="24" id="9Oq-hA-ujU"/>
+                        <constraint firstAttribute="trailing" secondItem="WRC-Kz-md5" secondAttribute="trailing" constant="15" id="WJY-zb-poN"/>
+                        <constraint firstItem="WRC-Kz-md5" firstAttribute="leading" secondItem="nUH-oD-07Y" secondAttribute="leading" constant="15" id="g2d-7c-uzZ"/>
+                        <constraint firstAttribute="trailing" secondItem="jh7-Q2-R4s" secondAttribute="trailing" constant="15" id="hPK-m2-fFW"/>
                         <constraint firstAttribute="height" constant="176" id="nB0-s4-dce"/>
+                        <constraint firstItem="jh7-Q2-R4s" firstAttribute="leading" secondItem="nUH-oD-07Y" secondAttribute="leading" constant="15" id="sEn-HQ-FvE"/>
+                        <constraint firstItem="jh7-Q2-R4s" firstAttribute="top" secondItem="WRC-Kz-md5" secondAttribute="bottom" constant="8" id="ysg-SX-iaI"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -65,6 +88,8 @@
                 <outlet property="blackView" destination="nUH-oD-07Y" id="SGv-Te-ANt"/>
                 <outlet property="bottomImageView" destination="O9z-9G-CLz" id="cEw-k8-yqX"/>
                 <outlet property="detailImageView" destination="LlF-bN-rN1" id="8Ch-Cr-5OD"/>
+                <outlet property="nameLabel" destination="WRC-Kz-md5" id="FE3-bk-df2"/>
+                <outlet property="regionLabel" destination="jh7-Q2-R4s" id="3s2-TC-ZlK"/>
             </connections>
             <point key="canvasLocation" x="56.521739130434788" y="45.535714285714285"/>
         </view>

@@ -40,7 +40,10 @@ class RMWebViewController: UIViewController,RouterController,WKUIDelegate,WKNavi
         self.webview = WKWebView(frame: self.view.bounds)
         self.view.addSubview(self.webview!)
         self.webview!.load(URLRequest(url:URL(string:url) ?? URL(string:"")!))
-        
+        var backButton = UIButton(frame: CGRect(x: 16, y: UIDevice.safeTopHeight() + 8, width: 24, height: 24))
+        backButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
+        backButton.setImage(UIImage(named: "normalBack"), for: .normal)
+        self.view.addSubview(backButton)
        
         self.webview!.navigationDelegate  = self
         self.webview!.uiDelegate = self
@@ -53,6 +56,9 @@ class RMWebViewController: UIViewController,RouterController,WKUIDelegate,WKNavi
     }
 
 
+    @objc func backButtonClicked(){
+        self.navigationController?.popViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 

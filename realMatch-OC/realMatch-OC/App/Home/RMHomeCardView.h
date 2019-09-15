@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *detailImageView;
 @property (strong, nonatomic) void(^routeToDetailBlock)(void);
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *regionLabel;
+
 
 @property (nonatomic,strong) CAGradientLayer* blacklayer;
 @property (nonatomic,strong) AVPlayerLayer * playerLayer;

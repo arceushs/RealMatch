@@ -28,7 +28,7 @@
                     <color key="textColor" red="0.57647058823529407" green="0.59607843137254901" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search more people nearby and youcan get more matchs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6c-gV-hpR">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search more people nearby and you can get more matchs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6c-gV-hpR">
                     <rect key="frame" x="16" y="341.5" width="407" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.78823529411764703" green="0.80000000000000004" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>

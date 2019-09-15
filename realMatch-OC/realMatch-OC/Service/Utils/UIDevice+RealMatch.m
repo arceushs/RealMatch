@@ -7,7 +7,6 @@
 //
 
 #import "UIDevice+RealMatch.h"
-
 @implementation UIDevice (RealMatch)
 +(BOOL)isIPhoneXSeries{
     if (@available(iOS 11.0, *)) {

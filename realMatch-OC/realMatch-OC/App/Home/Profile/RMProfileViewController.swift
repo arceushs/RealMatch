@@ -36,17 +36,19 @@ class RMProfileViewController: UIViewController,RouterController{
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    var gradientlayer = CAGradientLayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let gradientlayer = CAGradientLayer()
         gradientlayer.startPoint = CGPoint(x: 0, y: 0)
         gradientlayer.endPoint = CGPoint(x: 0, y: 1)
         gradientlayer.frame = self.premiumView.bounds
         gradientlayer.locations = [NSNumber(value: 0),NSNumber(value: 1)];
         gradientlayer.colors = [UIColor(string: "ff0052").cgColor,UIColor(string: "ffbb00").cgColor]
         self.premiumView.layer .insertSublayer(gradientlayer, at: 0)
+        let tapGest = UITapGestureRecognizer(target: self, action: #selector(premiumViewClicked))
+        self.premiumView.addGestureRecognizer(tapGest)
         
         if UIScreen.main.bounds.width <= 325.0{
             self.containerViewHeightConstraint.constant = 50
@@ -73,6 +75,16 @@ class RMProfileViewController: UIViewController,RouterController{
         
         // Do any additional setup after loading the view.
     }
+    
+    @objc func premiumViewClicked(){
+        Router.shared()?.router(to: "RMPurchaseViewController", parameter: nil)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        gradientlayer.frame = self.premiumView.bounds
+        
+    }
 
 
     @IBAction func routerToSetting(_ sender: Any) {
@@ -86,6 +98,8 @@ class RMProfileViewController: UIViewController,RouterController{
     @IBAction func routerToEditing(_ sender: Any) {
         Router.shared()?.router(to: "RMEditProfileViewController", parameter: nil)
     }
+    
+   
     /*
     // MARK: - Navigation
 

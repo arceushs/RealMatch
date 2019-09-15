@@ -10,6 +10,22 @@
 
 @implementation RMFetchDetailAPIData
 
+-(instancetype)init{
+    if(self = [super init]){
+        self.videoArr = [NSMutableArray array];
+        self.videoDefaultImg = @"";
+        self.name = @"";
+        self.phone = @"";
+        self.email = @"";
+        self.sex = 0;
+        self.age = 0;
+        self.area = @"";
+        self.avatar = @"";
+        self.height = 0;
+        self.width = 0;
+    }
+    return self;
+}
 
 @end
 
@@ -57,15 +73,13 @@
     if([dataDict isKindOfClass:[NSDictionary class]]){
         NSArray* uploads = [dataDict objectForKey:@"uploads"];
         
-        NSMutableArray<RMFetchDetailModel*>* modelsArr = [NSMutableArray array];
+        NSMutableArray<RMFetchVideoDetailModel*>* modelsArr = [NSMutableArray array];
         for(NSDictionary* dict in uploads){
-            RMFetchDetailModel* model = [[RMFetchDetailModel alloc]init];
+            RMFetchVideoDetailModel* model = [[RMFetchVideoDetailModel alloc]init];
             [model parseFromDict:dict];
-            if([model.videoImg length]<=0){
-                model.videoImg = dataDict[@"videoDefaultImg"];
-            }
             [modelsArr addObject:model];
         }
+        
         data.videoArr = [NSArray arrayWithArray:modelsArr];
         data.name = [dataDict objectForKey:@"name"];
         data.email = [dataDict objectForKey:@"email"];

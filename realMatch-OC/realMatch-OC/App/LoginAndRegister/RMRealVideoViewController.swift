@@ -64,7 +64,7 @@ class RMRealVideoViewController: UIViewController,RouterController{
 
     @IBOutlet weak var shootImageView: UIImageView!
     @IBOutlet weak var shootView: UIView!
-    let fileName = "myfirstVideo"
+    let fileName = "About me"
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var hintLabel: UILabel!
     

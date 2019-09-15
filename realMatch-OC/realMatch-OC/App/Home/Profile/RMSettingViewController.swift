@@ -49,6 +49,15 @@ class RMSettingViewController: UIViewController,RouterController,UITableViewDele
         self.settingTableView.dataSource = self;
         self.settingTableView.register(UINib(nibName: "RMSettingTableViewCell", bundle: nil), forCellReuseIdentifier: "RMSettingTableViewCell")
         self.settingTableView.tableHeaderView = RMSettingHeader(frame: CGRect(x: 0, y: 0, width:UIScreen.main.bounds.width, height: UIScreen.main.bounds.width*152.0/375.0))
+        
+        var footerView = RMSettingFooter(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 130))
+        footerView.buttonBlock = {
+            UserDefaults.standard.set(nil, forKey: "global-cookie")
+            UserDefaults.standard.set(nil, forKey: "global-userId")
+            UserDefaults.standard.synchronize()
+            Router.shared()?.router(to: "LoginAndRegisterViewController", parameter: nil)
+        }
+        self.settingTableView.tableFooterView = footerView
         // Do any additional setup after loading the view.
     }
 

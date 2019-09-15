@@ -47,7 +47,11 @@
     
     [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         NSLog(@"socket connected");
-        [socket emit:@"login" with:@[@{@"userId":userId}]];
+        NSString* pushToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-pushToken"];
+        if(userId && pushToken){
+            [socket emit:@"login" with:@[@{@"userId":userId,@"pushToken":pushToken}]];
+        }
+        
     }];
     
     
@@ -59,6 +63,30 @@
                 for (id<RMSocketManagerDelegate> delegate in copyDelegates) {
                     if([delegate respondsToSelector:@selector(didReceiveMessage)]){
                         [delegate didReceiveMessage];
+                    }
+                }
+            }
+            
+        }
+    }];
+    
+    [socket on:@"offlineMsgList" callback:^(NSArray *  data, SocketAckEmitter * ackl) {
+        if([data[0] isKindOfClass:[NSDictionary class]]){
+            NSDictionary* messagesDict =(NSDictionary*)data[0];
+            NSArray* messageKeys = [messagesDict allKeys];
+            for(NSString* key in messageKeys){
+                NSArray* keyMessageArr = messagesDict[key];
+                for(NSDictionary* messageDic in keyMessageArr){
+                    if([messageDic isKindOfClass:[NSDictionary class]]){
+                        NSDictionary* dict = @{@"fromUser":userId,
+                                               @"toUser":key,
+                                               @"msg":messageDic[@"content"]?:@"",
+                                               @"msg_type":messageDic[@"content"]?:@"text",
+                                               @"uploadId":@(-1)
+                                               };
+                        
+                        RMMessageDetail* messageDetail = [[RMMessageDetail alloc]init:dict];
+                        [[RMDatabaseManager shareManager] insertData:messageDetail];
                     }
                 }
             }
@@ -91,6 +119,11 @@
 
 -(void)removeDelegate:(id<RMSocketManagerDelegate>)delegate{
     [self.delegates removeObject:delegate];
+}
+
+-(void)disconnect:(NSString*)userId{
+    [self.manager.defaultSocket emit:@"disconnect" with:@[@{@"userId":userId}]];
+//    [self.manager.defaultSocket disconnect];
 }
 
 //- (void)webSocketDidOpen:(SRWebSocket *)webSocket {

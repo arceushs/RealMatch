@@ -37,13 +37,17 @@
     [Router shared].navigationVC = vc;
 }
 
++(void)backToRoot{
+    [[Router shared].navigationVC popToRootViewControllerAnimated:YES];
+}
+
 -(void)createRouteTable:(NSMutableArray<NSString*> *)routeTable{
     [routeTable addObject:@"LoginAndRegisterViewController"];
     [routeTable addObject:@"RMCaptureViewController"];
     [routeTable addObject:@"RMHomePageViewController"];
     [routeTable addObject:@"RMHomePageDetailViewController"];
     [routeTable addObject:@"RMVideoPlayViewController"];
-    [routeTable addObject:@"RMEmailViewController"];
+//    [routeTable addObject:@"RMEmailViewController"];
     [routeTable addObject:@"RMNameViewController"];
     [routeTable addObject:@"RMDatePickerViewController"];
     [routeTable addObject:@"RMGenderViewController"];
@@ -81,7 +85,11 @@
                 }
                 
                 if(style == DisplayStylePush){
-                    [self.navigationVC pushViewController:targetVC animated:animation];
+                    if([self.navigationVC.viewControllers containsObject:targetVC]){
+                        [self.navigationVC popToViewController:targetVC animated:YES];
+                    }else{
+                        [self.navigationVC pushViewController:targetVC animated:animation];
+                    }
                 }else{
                     [[self topMostController] presentViewController:targetVC animated:animation completion:nil];
                 }

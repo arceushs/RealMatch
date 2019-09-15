@@ -9,8 +9,6 @@
 #import "RMHomePageDetailViewController.h"
 #import "Router.h"
 #import "RMFetchDetailAPI.h"
-#import "RMHomePageDetailTableViewCell.h"
-#import "RMHomePageDetailHeaderView.h"
 #import "SDWebImage.h"
 #import "RMFileManager.h"
 #import "UIDevice+RealMatch.h"
@@ -18,7 +16,7 @@
 
 @interface RMHomePageDetailViewController ()<RouterController,UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *videoListTableView;
-@property (strong,nonatomic) NSArray<RMFetchDetailModel*> * videoArr;
+@property (strong,nonatomic) NSMutableArray<RMFetchVideoDetailModel*> * videoArr;
 @property (strong,nonatomic) NSString* matchedUserId;
 @end
 
@@ -46,57 +44,75 @@
     
     self.videoListTableView.delegate = self;
     self.videoListTableView.dataSource = self;
-    [self.videoListTableView registerNib:[UINib nibWithNibName:@"RMHomePageDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"RMHomePageDetailTableViewCell"];
+    self.videoListTableView.backgroundColor = [UIColor whiteColor];
+    [self.videoListTableView registerNib:[UINib nibWithNibName:@"RMEditProfileTableViewCell" bundle:nil] forCellReuseIdentifier:@"RMEditProfileTableViewCell"];
     self.videoListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     RMFetchDetailAPI * api = [[RMFetchDetailAPI alloc]initWithUserId:_matchedUserId];
     [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse <RMFetchDetailAPIData* > *response) {
         RMFetchDetailAPIData* result = response.responseObject;
-        self.videoArr = result.videoArr;
+        self.videoArr = [NSMutableArray arrayWithArray:result.videoArr];
+        
+        for(int i = 0;i<self.videoArr.count;i++){
+            RMFetchVideoDetailModel* model = self.videoArr[i];
+            if(i == 0){
+                model.title = @"About me";
+                model.subtitle = @"who are you, where are you from, yuor school, your job.";
+            }else if(i == 1){
+                model.title = @"Interests";
+                model.subtitle = @"what make you differ";
+            }else if(i == 2){
+                model.title = @"My friends";
+                model.subtitle = @"Who do you like to be with";
+            }
+        }
         [self.videoListTableView reloadData];
     }];
     // Do any additional setup after loading the view from its nib.
 }
 
 #pragma mark - UITableViewDelegate and datasource
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.videoArr count];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
-}
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return ([UIScreen mainScreen].bounds.size.width - 2*8)*466.0/359.0;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    RMHomePageDetailHeaderView* header = [[RMHomePageDetailHeaderView alloc]init];
-    RMFetchDetailModel* model = self.videoArr[section];
-    header.label.text = model.name;
-    return  header;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 60;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.01f;
+    RMFetchVideoDetailModel* model = self.videoArr[indexPath.row];
+    return model.rowHeight;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    RMHomePageDetailTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMHomePageDetailTableViewCell" forIndexPath:indexPath];
-    RMFetchDetailModel* model = self.videoArr[indexPath.section];
+    RMEditProfileTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMEditProfileTableViewCell" forIndexPath:indexPath];
+    RMFetchVideoDetailModel* model = self.videoArr[indexPath.row];
+    cell.titleLabel.text = model.title;
+    cell.subTitleLabel.text = model.subtitle;
+    cell.addVideoView.hidden = YES;
+    cell.editVideoButton.hidden = YES;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSString* url = model.videoImg.ossLocation;
+    if(url.length <= 0){
+        url = model.ossLocation;
+    }
     
-    [cell.videoImageView sd_setImageWithURL:[NSURL URLWithString:model.videoImg]];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        UIImage* image = [RMFileManager getVideoPreViewImage:[NSURL URLWithString:url]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.detailImageView.image = image;
+        });
+    });
+    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[Router shared] routerTo:@"RMVideoPlayViewController" parameter:nil];
+    RMFetchVideoDetailModel* model = self.videoArr[indexPath.row];
+    NSString* url = model.ossLocation;
+    [[Router shared] routerTo:@"RMVideoPlayViewController" parameter:@{@"url":url}];
 }
 - (IBAction)messageButtonClicked:(id)sender {
+    if([_matchedUserId length]<=0){
+        return;
+    }
     [[Router shared] routerTo:@"RMMessageViewController" parameter:@{@"userId":_matchedUserId}];
 }
 - (IBAction)backButtonClicked:(id)sender {

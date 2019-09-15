@@ -41,6 +41,7 @@ typedef NS_ENUM(NSInteger,DisplayStyle){
 
 +(void)setNavigationVC:(UINavigationController*)vc;
 +(instancetype)shared;
++(void)backToRoot;
 
 -(void)routerTo:(RouterAdopter*)routerAdopter;
 -(void)routerTo:(NSString*)vcName parameter:(NSDictionary*)params;
