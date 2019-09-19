@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RMFileManager : NSObject
 
 +(NSString*)pathForSaveRecord;
++(NSString*)pathForSavePreload;
 +(UIImage*)getVideoPreViewImage:(NSURL*)path;
 
 @end

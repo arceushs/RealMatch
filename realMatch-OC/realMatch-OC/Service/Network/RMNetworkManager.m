@@ -7,7 +7,6 @@
 //
 
 #import "RMNetworkManager.h"
-#import "AFNetworking.h"
 #import "RMFileManager.h"
 
 @implementation RMNetworkManager

@@ -42,11 +42,20 @@
     __weak typeof(self) weakSelf = self;
     [[RMNetworkManager shareManager] request:fetchHomeVideoAPI completion:^(RMNetworkResponse *response) {
         RMFetchHomeVideoAPIData* data = (RMFetchHomeVideoAPIData*)response.responseObject;
-        NSString* finalfilePath = data.video;
-        if([finalfilePath length]>0){
+        RMFetchHomeVideoAPIModel* currentModel = data.currentModel;
+        
+        if([currentModel.video length]>0){
             weakSelf.player = [AVPlayer playerWithPlayerItem:nil];
             [weakSelf.cardView setVideoLayerWithPlayer:weakSelf.player];
-            NSURL *streamURL = [NSURL fileURLWithPath:finalfilePath];
+            weakSelf.cardView.nameLabel.text = currentModel.name;
+            weakSelf.cardView.regionLabel.text = currentModel.country;
+            NSURL *streamURL = nil;
+            if([[RMDownloadManager shared].downloadedArr containsObject:currentModel.video]){
+                streamURL = [NSURL fileURLWithPath: [[RMDownloadManager shared] getFilePathFromUrl:currentModel.video]];
+            }else{
+                streamURL = [NSURL URLWithString:currentModel.video];
+            }
+            
             AVPlayerItem *currentItem = [[AVPlayerItem alloc] initWithURL:streamURL];
             weakSelf.playerItem = currentItem;
             [weakSelf.player replaceCurrentItemWithPlayerItem:currentItem];
@@ -54,10 +63,18 @@
                 [weakSelf.player play];
             }
             
-            weakSelf.matchedUserId = data.userId;
+            weakSelf.matchedUserId = currentModel.userId;
             
             [weakSelf.cardView setNeedsLayout];
             [weakSelf.cardView layoutIfNeeded];
+        }
+        
+        
+        for(int i = 0;i<data.listArr.count;i++){
+            RMFetchHomeVideoAPIModel* model = data.listArr[i];
+            if(!([[[RMDownloadManager shared] downloadingArr] containsObject:model.video] || [[[RMDownloadManager shared] downloadedArr] containsObject:model.video])){
+                [[RMDownloadManager shared] preloadUrl:model.video];
+            }
         }
     }];
     // Do any additional setup after loading the view from its nib.

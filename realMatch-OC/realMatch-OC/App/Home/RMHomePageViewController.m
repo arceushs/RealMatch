@@ -78,16 +78,21 @@
     
     CGFloat length = self.view.width;
     if(gest.direction == UISwipeGestureRecognizerDirectionLeft){
-        RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:YES];
-        [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
-            
-        }];
+        if([self.currentCardVC.matchedUserId length] > 0){
+            RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:YES];
+            [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
+                
+            }];
+        }
     }else if(gest.direction == UISwipeGestureRecognizerDirectionRight){
         length = 0 - length;
-        RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:NO];
-        [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
-            
-        }];
+        if([self.currentCardVC.matchedUserId length]>0){
+            RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:NO];
+            [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
+                
+            }];
+        }
+        
     }
     
     if(self.currentCardVC == _cardVC1){

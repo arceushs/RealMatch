@@ -8,18 +8,63 @@
 
 #import "RMFetchHomeVideoAPI.h"
 
+@implementation RMFetchHomeVideoAPIModel
+
+-(void)parseFromDict:(NSDictionary*)dataDict{
+    self.userId = [NSString stringWithFormat:@"%li",[dataDict[@"userId"] longValue]];
+    self.name = dataDict[@"name"];
+    self.sex = [dataDict[@"sex"] integerValue];
+    self.age = [dataDict[@"age"] integerValue];
+    self.videoDefaultImg = dataDict[@"videoDefaultImg"];
+    self.video = dataDict[@"video"];
+    self.country = dataDict[@"country"];
+    self.height = [dataDict[@"height"] doubleValue];
+    self.width = [dataDict[@"width"] doubleValue];
+}
+
+@end
+
 @implementation RMFetchHomeVideoAPIData
+
+-(instancetype)init{
+    if(self = [super init]){
+        _listArr = [NSMutableArray array];
+    }
+    return self;
+}
+
+-(RMFetchHomeVideoAPIModel *)currentModel{
+    if([self.listArr count]>0){
+        return  self.listArr[0];
+    }
+    return nil;
+}
+
+-(void)parseFromDict:(NSDictionary*)dataDict{
+    [self.listArr removeAllObjects];
+    for (NSDictionary* dict in dataDict[@"list"]) {
+        RMFetchHomeVideoAPIModel* model = [RMFetchHomeVideoAPIModel new];
+        [model parseFromDict:dict];
+        [self.listArr addObject:model];
+    }
+}
 
 @end
 
 @implementation RMFetchHomeVideoAPI
 {
     NSString* _userId;
+    NSInteger _count;
 }
 
 -(instancetype)initWithUserId:(NSString*)userId{
+    return [self initWithUserId:userId count:6];
+}
+
+-(instancetype)initWithUserId:(NSString*)userId count:(NSInteger)count{
     if(self = [super init]){
         _userId = userId;
+        _count = count;
     }
     return self;
 }
@@ -35,6 +80,7 @@
 -(NSDictionary*)parameters{
     return @{
              @"userId":_userId,
+             @"count":@(_count),
              };
 }
 
@@ -57,12 +103,7 @@
     
     NSDictionary* dataDict = responseObject[@"data"];
     if([dataDict isKindOfClass:[NSDictionary class]]){
-        data.userId = [NSString stringWithFormat:@"%li",[dataDict[@"userId"] longValue]];
-        data.name = dataDict[@"name"];
-        data.sex = [dataDict[@"sex"] integerValue];
-        data.age = [dataDict[@"age"] integerValue];
-        data.videoDefaultImg = dataDict[@"videoDefaultImg"];
-        data.video = dataDict[@"video"];
+        [data parseFromDict:dataDict];
     }
     //parse response here
     

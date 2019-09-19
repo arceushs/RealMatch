@@ -23,7 +23,20 @@
     
     return recordPath;
 }
+
++(NSString*)pathForSavePreload{
+    NSFileManager* fm = [NSFileManager defaultManager];
     
+    NSString* recordPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"Preload"];
+    BOOL isDir = NO;
+    BOOL existed = [fm fileExistsAtPath:recordPath isDirectory:&isDir];
+    if(!(isDir == YES && existed == YES)){
+        [fm createDirectoryAtPath:recordPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    return recordPath;
+}
+
 #pragma mark - 第一帧
 +(UIImage*)getVideoPreViewImage:(NSURL*)path{
     AVURLAsset * asset = [[AVURLAsset alloc]initWithURL:path options:nil];
