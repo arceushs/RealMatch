@@ -78,11 +78,11 @@
                 NSArray* keyMessageArr = messagesDict[key];
                 for(NSDictionary* messageDic in keyMessageArr){
                     if([messageDic isKindOfClass:[NSDictionary class]]){
-                        NSDictionary* dict = @{@"fromUser":userId,
-                                               @"toUser":key,
-                                               @"msg":messageDic[@"content"]?:@"",
-                                               @"msg_type":messageDic[@"content"]?:@"text",
-                                               @"uploadId":@(-1)
+                        NSDictionary* dict = @{@"fromUser":messageDic[@"fromUser"]?:@"",
+                                               @"toUser":messageDic[@"toUser"]?:@"",
+                                               @"msg":messageDic[@"msg"]?:@"",
+                                               @"msg_type":messageDic[@"msg_type"]?:@"text",
+                                               @"uploadId":messageDic[@"uploadId"]?:@(-1)
                                                };
                         
                         RMMessageDetail* messageDetail = [[RMMessageDetail alloc]init:dict];
