@@ -250,7 +250,7 @@
                   moduleName = "realMatch-OC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/arceushs/RealMatch/realMatch-OC/realMatch-OC/App/Home/Profile/RMEditProfileViewController.swift"
-                  timestampString = "590553349.722068"
+                  timestampString = "590569265.65196"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "117"
@@ -265,7 +265,7 @@
                   moduleName = "realMatch-OC"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/arceushs/RealMatch/realMatch-OC/realMatch-OC/App/Home/Profile/RMEditProfileViewController.swift"
-                  timestampString = "590553349.723928"
+                  timestampString = "590569265.653787"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "118"
@@ -346,12 +346,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "realMatch-OC/App/Home/RMHomeCardViewController.m"
-            timestampString = "590554578.231181"
+            timestampString = "590570057.41549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-applicationBecomeActive"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -362,12 +362,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "realMatch-OC/App/Home/RMHomeCardViewController.m"
-            timestampString = "590554578.231266"
+            timestampString = "590570057.415922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -44,6 +44,9 @@
         RMFetchHomeVideoAPIData* data = (RMFetchHomeVideoAPIData*)response.responseObject;
         RMFetchHomeVideoAPIModel* currentModel = data.currentModel;
         
+        [weakSelf.cardView.bottomImageView sd_setImageWithURL:[NSURL URLWithString:currentModel.videoDefaultImg]];
+        [SVProgressHUD show];
+        
         if([currentModel.video length]>0){
             weakSelf.player = [AVPlayer playerWithPlayerItem:nil];
             [weakSelf.cardView setVideoLayerWithPlayer:weakSelf.player];
@@ -113,7 +116,9 @@
 
 -(void)applicationBecomeActive{
     if(self.player){
-        [self.player play];
+        if(self.isViewLoaded&&self.view.window){
+            [self.player play];
+        }
     }
 }
 
@@ -134,7 +139,17 @@
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-
+    if([keyPath isEqualToString:@"status"]){
+        AVPlayerStatus status = [change[NSKeyValueChangeNewKey] integerValue];
+        if(status == AVPlayerStatusReadyToPlay){
+            [SVProgressHUD dismiss];
+            CMTime ctime =self.playerItem.currentTime;
+            CGFloat currentTimeSec = (CGFloat)ctime.value/ctime.timescale;
+            if(currentTimeSec>0.5){
+            
+            }
+        }
+    }
 }
 
 /*
