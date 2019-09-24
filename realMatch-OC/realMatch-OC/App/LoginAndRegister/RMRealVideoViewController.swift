@@ -37,6 +37,12 @@ class RMRealVideoViewController: UIViewController,RouterController{
         self.shootView.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.shootView.layer.shadowRadius = 4
         self.shootView.layer.shadowOpacity = 1
+        self.shootImageView.contentMode = .scaleAspectFill
+        self.shootImageView.layer.cornerRadius = 4
+        self.shootImageView.layer.shadowColor = UIColor(string: "000000", alpha: 0.1).cgColor
+        self.shootImageView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.shootImageView.layer.shadowRadius = 4
+        self.shootImageView.layer.shadowOpacity = 1
         
         let tapGest = UITapGestureRecognizer(target: self, action:#selector(shoot))
         self.shootView.addGestureRecognizer(tapGest)
@@ -45,6 +51,10 @@ class RMRealVideoViewController: UIViewController,RouterController{
 
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        SVProgressHUD.dismiss()
     }
     
     @objc func shoot(){
@@ -84,7 +94,9 @@ class RMRealVideoViewController: UIViewController,RouterController{
  
         let filePath = "\(RMFileManager.pathForSaveRecord())/\(fileName).mp4"
         let postFileAPI = RMPostFileAPI(filePath: filePath, filename: fileName, userId: RMUserCenter.shared.userId ?? "", mimeType: "video/mp4",fileType: 1)
+        SVProgressHUD.show()
         RMNetworkManager.share()?.request(postFileAPI, completion: { (response) in
+            SVProgressHUD.dismiss()
             self.doneButton.isEnabled = true
             let data = response?.responseObject as? RMPostFileAPIData
             if(data?.result ?? false){

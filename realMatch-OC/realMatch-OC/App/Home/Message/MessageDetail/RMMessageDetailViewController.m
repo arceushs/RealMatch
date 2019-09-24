@@ -251,10 +251,14 @@
 
 -(void)scrollToBottom:(UIScrollView*)scrollView WithAnimation:(BOOL)animate{
     CGFloat contentOffset = scrollView.contentSize.height - scrollView.frame.size.height;
-    [scrollView setContentOffset:CGPointMake(0, contentOffset) animated:animate];
+    if(contentOffset>0){
+        [scrollView setContentOffset:CGPointMake(0, contentOffset) animated:animate];
+    }
 }
 
 - (IBAction)sendMessageButtonClicked:(id)sender {
+    if([self.textView.text  length]<=0)
+        return;
     NSDictionary* dict = @{@"fromUser":self.fromUserId,
                            @"toUser":self.toUserId,
                            @"msg":self.textView.text,

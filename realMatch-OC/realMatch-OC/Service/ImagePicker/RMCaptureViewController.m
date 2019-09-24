@@ -76,9 +76,9 @@
     self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.videoCamera.horizontallyMirrorFrontFacingCamera = YES;
     _filter = [[GPUImageBeautyFilter alloc]init];
-    [_filter setBeautyLevel:0.8];
+    [_filter setBeautyLevel:0.6];
     [_filter setBrightLevel:0.3];
-    [_filter setToneLevel:0.8];
+    [_filter setToneLevel:0.6];
     self.filterView = [[GPUImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [self.view addSubview:self.filterView];
     self.filterView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;

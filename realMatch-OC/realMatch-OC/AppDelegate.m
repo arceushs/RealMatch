@@ -24,6 +24,10 @@
     // Override point for customization after application launch.
     [self addRootVCToWindow];
     [self registerRemoteNotification];
+    
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     return YES;
 }

@@ -196,6 +196,10 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        SVProgressHUD.dismiss()
+    }
+    
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

@@ -104,6 +104,7 @@
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
+    [SVProgressHUD dismiss];
     if(self.player){
         [self.player pause];
     }
@@ -143,11 +144,6 @@
         AVPlayerStatus status = [change[NSKeyValueChangeNewKey] integerValue];
         if(status == AVPlayerStatusReadyToPlay){
             [SVProgressHUD dismiss];
-            CMTime ctime =self.playerItem.currentTime;
-            CGFloat currentTimeSec = (CGFloat)ctime.value/ctime.timescale;
-            if(currentTimeSec>0.5){
-            
-            }
         }
     }
 }

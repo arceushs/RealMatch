@@ -76,14 +76,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2AY-OK-14d">
                     <rect key="frame" x="0.0" y="797" width="414" height="65"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYw-gA-82R">
-                            <rect key="frame" x="12" y="13" width="40" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="0bV-rt-63y"/>
-                                <constraint firstAttribute="width" secondItem="vYw-gA-82R" secondAttribute="height" id="EzE-ZA-x81"/>
-                            </constraints>
-                            <state key="normal" image="getPhoto"/>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOi-WF-etr">
                             <rect key="frame" x="362" y="13" width="40" height="40"/>
                             <constraints>
@@ -96,10 +88,10 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dkd-RC-dPJ">
-                            <rect key="frame" x="60" y="12" width="294" height="41"/>
+                            <rect key="frame" x="12" y="12" width="342" height="41"/>
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MEf-dN-gx9">
-                                    <rect key="frame" x="14" y="13" width="266" height="15"/>
+                                    <rect key="frame" x="14" y="13" width="314" height="15"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="textColor" red="0.1960784314" green="0.21176470589999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -123,10 +115,8 @@
                     </subviews>
                     <color key="backgroundColor" red="0.95686274509803915" green="0.96470588235294119" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="vYw-gA-82R" firstAttribute="leading" secondItem="2AY-OK-14d" secondAttribute="leading" constant="12" id="15C-gd-fdH"/>
                         <constraint firstAttribute="height" constant="65" id="COy-5E-zaZ"/>
-                        <constraint firstAttribute="bottom" secondItem="vYw-gA-82R" secondAttribute="bottom" constant="12" id="EXL-uH-Ds0"/>
-                        <constraint firstItem="Dkd-RC-dPJ" firstAttribute="leading" secondItem="vYw-gA-82R" secondAttribute="trailing" constant="8" id="VR6-hH-Nlj"/>
+                        <constraint firstItem="Dkd-RC-dPJ" firstAttribute="leading" secondItem="2AY-OK-14d" secondAttribute="leading" constant="12" id="KOQ-zK-Kew"/>
                         <constraint firstAttribute="trailing" secondItem="sOi-WF-etr" secondAttribute="trailing" constant="12" id="aHa-qz-OcI"/>
                         <constraint firstItem="Dkd-RC-dPJ" firstAttribute="top" secondItem="2AY-OK-14d" secondAttribute="top" constant="12" id="ehc-Ta-Cd8"/>
                         <constraint firstItem="sOi-WF-etr" firstAttribute="leading" secondItem="Dkd-RC-dPJ" secondAttribute="trailing" constant="8" id="w9T-6t-3iA"/>
@@ -153,7 +143,6 @@
         </view>
     </objects>
     <resources>
-        <image name="getPhoto" width="40" height="40"/>
         <image name="normalBack" width="24" height="24"/>
         <image name="send" width="40" height="40"/>
     </resources>
