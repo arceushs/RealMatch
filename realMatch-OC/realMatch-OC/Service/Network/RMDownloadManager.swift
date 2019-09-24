@@ -42,8 +42,9 @@ import UIKit
     }
     
     func preloadUrl(_ urlStr:String?)->Void{
-        if let urlStr = urlStr{
+        if var urlStr = urlStr{
             self.downloadingArr!.append(urlStr)
+            urlStr = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             let thisURL = URL(string: urlStr)!
             let request = URLRequest(url: thisURL)
             let task = manager.downloadTask(with: request, progress: nil, destination: { (url, response) -> URL in

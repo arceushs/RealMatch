@@ -52,6 +52,8 @@
             [socket emit:@"login" with:@[@{@"userId":userId,@"pushToken":pushToken}]];
         }
         
+        [socket emit:@"offLineMsg" with:@[@{@"userId":userId}]];
+        
     }];
     
     
@@ -70,7 +72,7 @@
         }
     }];
     
-    [socket on:@"offlineMsgList" callback:^(NSArray *  data, SocketAckEmitter * ackl) {
+    [socket on:@"offLineMsg" callback:^(NSArray *  data, SocketAckEmitter * ackl) {
         if([data[0] isKindOfClass:[NSDictionary class]]){
             NSDictionary* messagesDict =(NSDictionary*)data[0];
             NSArray* messageKeys = [messagesDict allKeys];

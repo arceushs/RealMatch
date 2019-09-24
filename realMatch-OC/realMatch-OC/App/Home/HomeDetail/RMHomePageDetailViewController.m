@@ -113,7 +113,7 @@
     if([_matchedUserId length]<=0){
         return;
     }
-    [[Router shared] routerTo:@"RMMessageViewController" parameter:@{@"userId":_matchedUserId}];
+    [[Router shared] routerTo:@"RMMessageViewController" parameter:@{@"userId":[RMUserCenter shared].userId}];
 }
 - (IBAction)backButtonClicked:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
