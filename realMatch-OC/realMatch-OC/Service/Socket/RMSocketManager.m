@@ -74,7 +74,8 @@
     
     [socket on:@"offLineMsg" callback:^(NSArray *  data, SocketAckEmitter * ackl) {
         if([data[0] isKindOfClass:[NSDictionary class]]){
-            NSDictionary* messagesDict =(NSDictionary*)data[0];
+            NSDictionary* offlineMsgDict =(NSDictionary*)data[0];
+            NSDictionary* messagesDict = offlineMsgDict[@"offlineMsgList"];
             NSArray* messageKeys = [messagesDict allKeys];
             for(NSString* key in messageKeys){
                 NSArray* keyMessageArr = messagesDict[key];
