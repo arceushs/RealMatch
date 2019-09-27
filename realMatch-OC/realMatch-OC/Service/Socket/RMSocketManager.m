@@ -48,7 +48,10 @@
     [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
         NSLog(@"socket connected");
         NSString* pushToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-pushToken"];
-        if(userId && pushToken){
+        if(userId){
+            if([pushToken length] <=0){
+                pushToken = @"";
+            }
             [socket emit:@"login" with:@[@{@"userId":userId,@"pushToken":pushToken}]];
         }
         
@@ -81,8 +84,11 @@
                 NSArray* keyMessageArr = messagesDict[key];
                 for(NSDictionary* messageDic in keyMessageArr){
                     if([messageDic isKindOfClass:[NSDictionary class]]){
-                        NSDictionary* dict = @{@"fromUser":messageDic[@"fromUser"]?:@"",
-                                               @"toUser":messageDic[@"toUser"]?:@"",
+                        NSString* fromUser =[NSString stringWithFormat:@"%ld", [messageDic[@"fromUser"] integerValue]];
+                        NSString* toUser = [NSString stringWithFormat:@"%ld", [messageDic[@"toUser"] integerValue]];
+
+                        NSDictionary* dict = @{@"fromUser":fromUser?:@"",
+                                               @"toUser":toUser?:@"",
                                                @"msg":messageDic[@"msg"]?:@"",
                                                @"msg_type":messageDic[@"msg_type"]?:@"text",
                                                @"uploadId":messageDic[@"uploadId"]?:@(-1)
@@ -93,7 +99,7 @@
                     }
                 }
             }
-            
+            [socket emit:@"ackOffLineMsg" with:@[@{@"userId":userId}]];
         }
     }];
     

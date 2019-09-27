@@ -40,6 +40,7 @@ import UIKit
         
         let gest = UITapGestureRecognizer(target: self, action: #selector(routeToPurchase))
         visualEffectView.addGestureRecognizer(gest)
+        self.likesMeArr = likesMeArr
         
     }
     
@@ -56,7 +57,13 @@ import UIKit
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RMMessageHeaderCollectionViewCell", for: indexPath) as? RMMessageHeaderCollectionViewCell ?? UICollectionViewCell()
+        let cell:RMMessageHeaderCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RMMessageHeaderCollectionViewCell", for: indexPath) as! RMMessageHeaderCollectionViewCell
+        if let likesMeArr = self.likesMeArr{
+            let model :RMFetchLikesMeModel = likesMeArr[indexPath.row]
+            model.avatar = model.avatar.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            cell.likeMeButton.imageView?.sd_setImage(with: URL(string: model.avatar), completed: nil)
+        }
+        
         return cell
     }
     /*

@@ -46,27 +46,27 @@
         _accountKit = [[AKFAccountKit alloc] initWithResponseType:AKFResponseTypeAccessToken];
     }
     
-    RMLoginAPI* loginAPI = [[RMLoginAPI alloc]initWithPhone:@"" phoneCountryCode:@"" email:@"" accountKeyId:@""];
-    [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *response) {
-        [SVProgressHUD dismiss];
-        if(response.error){
-            return ;
-        }
-        
-        [[NSUserDefaults standardUserDefaults] setObject:response.cookie forKey:@"global-cookie"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        RMLoginAPIData* data = response.responseObject;
-        [RMUserCenter shared].userId = data.userId;
-        [[NSUserDefaults standardUserDefaults] setObject:data.userId forKey:@"global-userId"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        if(!data.newUser){
-            [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
-        }else{
-            [[Router shared] routerTo:@"RMNameViewController" parameter:nil];
-        }
-    }];
+//    RMLoginAPI* loginAPI = [[RMLoginAPI alloc]initWithPhone:@"" phoneCountryCode:@"" email:@"" accountKeyId:@""];
+//    [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *response) {
+//        [SVProgressHUD dismiss];
+//        if(response.error){
+//            return ;
+//        }
+//        
+//        [[NSUserDefaults standardUserDefaults] setObject:response.cookie forKey:@"global-cookie"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//        
+//        RMLoginAPIData* data = response.responseObject;
+//        [RMUserCenter shared].userId = data.userId;
+//        [[NSUserDefaults standardUserDefaults] setObject:data.userId forKey:@"global-userId"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//        
+//        if(!data.newUser){
+//            [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
+//        }else{
+//            [[Router shared] routerTo:@"RMNameViewController" parameter:nil];
+//        }
+//    }];
     
     _pendingLoginViewController = [_accountKit viewControllerForPhoneLogin];
     _pendingLoginViewController.uiManager = [[AKFSkinManager alloc]initWithSkinType:AKFSkinTypeClassic primaryColor:[UIColor colorWithString:@"FA008E"]];

@@ -27,6 +27,7 @@
 @property (strong,nonatomic) NSString* fromUserId;
 @property (strong,nonatomic) NSString* toUserId;
 @property (strong,nonatomic) NSString* messageTitle;
+@property (strong,nonatomic) NSString* avatar;
 
 @end
 
@@ -37,6 +38,7 @@
         self.fromUserId = params[@"fromUser"];
         self.toUserId = params[@"toUser"];
         self.messageTitle = params[@"fromUserName"];
+        self.avatar = params[@"avatar"];
     }
     return self;
 }
@@ -157,11 +159,13 @@
         RMMessageFromMeTableViewCell* _cell =(RMMessageFromMeTableViewCell*) cell;
         _cell.LabelContent.text = self.modelArrs[indexPath.row].msg;
         _cell.contentHeightStraint.constant = self.modelArrs[indexPath.row].rowHeight - 16;
+        [_cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:[RMUserCenter shared].avatar] placeholderImage:[UIImage imageNamed:@"default.jpeg"]];
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:@"RMMessageToMeTableViewCell" forIndexPath:indexPath];
         RMMessageToMeTableViewCell* _cell =(RMMessageToMeTableViewCell*) cell;
         _cell.LabelContent.text = self.modelArrs[indexPath.row].msg;
         _cell.contentHeightConstraint.constant = self.modelArrs[indexPath.row].rowHeight - 16;
+        [_cell.avatarimageView sd_setImageWithURL:[NSURL URLWithString:self.avatar] placeholderImage:[UIImage imageNamed:@"default.jpeg"]];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

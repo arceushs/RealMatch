@@ -122,7 +122,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     RMFetchMessageModel* model = self.messageArr[indexPath.row];
-    [[Router shared]routerTo:@"RMMessageDetailViewController" parameter:@{@"fromUser":self.userId,@"toUser":model.userId,@"fromUserName":model.name}];
+    [[Router shared]routerTo:@"RMMessageDetailViewController" parameter:@{@"fromUser":self.userId,@"toUser":model.userId,@"fromUserName":model.name,@"avatar":model.avatar}];
 }
 
 - (IBAction)backButtonClicked:(id)sender {

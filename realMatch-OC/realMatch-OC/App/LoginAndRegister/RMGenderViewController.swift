@@ -40,7 +40,9 @@ class RMGenderViewController: UIViewController,RouterController {
         self.manButton.layer.cornerRadius = 24
         self.manButton.layer.masksToBounds = true
         self.manButton.layer.borderColor = UIColor(string: "FA008E").cgColor
-        self.manButton.layer.borderWidth = 2;
+        self.manButton.layer.borderWidth = 2
+        
+        RMUserCenter.shared.registerSex = 1
         // Do any additional setup after loading the view.
     }
   
@@ -66,6 +68,7 @@ class RMGenderViewController: UIViewController,RouterController {
         self.buttonSelected = 2
         RMUserCenter.shared.registerSex = self.buttonSelected
     }
+    
     
     @IBAction func manButtonClicked(_ sender: Any) {
         self.womenButton.layer.borderColor = UIColor(string: "C9CCD6").cgColor

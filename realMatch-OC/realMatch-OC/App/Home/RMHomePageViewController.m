@@ -18,6 +18,7 @@
 #import "RMHomeCardViewController.h"
 #import "RMLikeFlagAPI.h"
 #import "RMSocketManager.h"
+#import "PurchaseManager.h"
 
 @interface RMHomePageViewController ()<RouterController,CAAnimationDelegate>
 
@@ -52,6 +53,19 @@
     [super viewDidLoad];
     
     [[RMSocketManager shared] connectWithUserId:[RMUserCenter shared].userId];
+    [PurchaseManager shareManager];
+    
+    RMFetchDetailAPI* detailAPI = [[RMFetchDetailAPI alloc]initWithUserId:[RMUserCenter shared].userId];
+    [[RMNetworkManager shareManager] request:detailAPI completion:^(RMNetworkResponse *response) {
+        if(response.error){
+            return;
+        }
+        
+        RMFetchDetailAPIData* data =(RMFetchDetailAPIData*) response.responseObject;
+        [RMUserCenter shared].registerName = data.name;
+        [RMUserCenter shared].registerEmail = data.email;
+        [RMUserCenter shared].avatar = data.avatar;
+    }];
     
     _cardVC1 = [[RMHomeCardViewController alloc]init];
     __weak typeof(self) weakSelf = self;

@@ -25,6 +25,8 @@ class RMUserCenter: NSObject {
 
     var avatar:String?
     
+    var userIsVip:Bool = false;
+    
     @objc static let shared:RMUserCenter = RMUserCenter()
 
 }
