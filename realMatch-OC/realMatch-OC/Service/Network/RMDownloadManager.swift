@@ -59,14 +59,17 @@ import UIKit
                 if error == nil{
                     self.downloadedArr!.append(urlStr)
                     if self.downloadedArr?.count ?? 0 > 20{
+                        let removeurl = self.downloadedArr?[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
                         self.downloadedArr?.remove(at: 0)
+                        let removeURL = URL(string: removeurl ?? "")!
+                        RMFileManager.removePreloadMp4(removeURL.lastPathComponent)
                     }
                     UserDefaults.standard.set(self.downloadedArr, forKey: RMDownloadManager.downloadedStr)
                     UserDefaults.standard.synchronize()
                 }
                 lock.unlock()
             }
-            task .resume()
+            task.resume()
         }
     }
     

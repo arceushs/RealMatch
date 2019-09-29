@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RMHomeCardViewController : UIViewController
 
 @property (strong, nonatomic) void(^routeToDetailBlock)(void);
+@property (strong, nonatomic) void(^noCardHintBlock)(void);
 @property (strong, nonatomic) NSString* matchedUserId;
 
 @end

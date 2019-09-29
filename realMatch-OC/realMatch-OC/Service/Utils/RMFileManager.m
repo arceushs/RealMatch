@@ -37,6 +37,13 @@
     return recordPath;
 }
 
++(BOOL)removePreloadMp4:(NSString*)name{
+    NSFileManager* fm = [NSFileManager defaultManager];
+    NSString* recordPath = [NSString stringWithFormat:@"%@/%@",[self pathForSavePreload],name];
+    NSError* error = nil;
+    return [fm removeItemAtPath:recordPath error:&error];
+}
+
 #pragma mark - 第一帧
 +(UIImage*)getVideoPreViewImage:(NSURL*)path{
     AVURLAsset * asset = [[AVURLAsset alloc]initWithURL:path options:nil];

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString*)pathForSaveRecord;
 +(NSString*)pathForSavePreload;
 +(UIImage*)getVideoPreViewImage:(NSURL*)path;
++(BOOL)removePreloadMp4:(NSString*)name;
 
 @end
 

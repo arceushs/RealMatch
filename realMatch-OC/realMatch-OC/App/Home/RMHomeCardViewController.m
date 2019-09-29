@@ -40,13 +40,19 @@
 
     RMFetchHomeVideoAPI* fetchHomeVideoAPI = [[RMFetchHomeVideoAPI alloc] initWithUserId:[RMUserCenter shared].userId];
     __weak typeof(self) weakSelf = self;
+    [SVProgressHUD show];
     [[RMNetworkManager shareManager] request:fetchHomeVideoAPI completion:^(RMNetworkResponse *response) {
         RMFetchHomeVideoAPIData* data = (RMFetchHomeVideoAPIData*)response.responseObject;
         RMFetchHomeVideoAPIModel* currentModel = data.currentModel;
-        
+        if(currentModel == nil){
+            if(self.noCardHintBlock){
+                self.noCardHintBlock();
+                [SVProgressHUD dismiss];
+            }
+            return ;
+        }
         [weakSelf.cardView.bottomImageView sd_setImageWithURL:[NSURL URLWithString:currentModel.videoDefaultImg]];
-        [SVProgressHUD show];
-        
+
         if([currentModel.video length]>0){
             weakSelf.player = [AVPlayer playerWithPlayerItem:nil];
             [weakSelf.cardView setVideoLayerWithPlayer:weakSelf.player];
@@ -104,7 +110,6 @@
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    [SVProgressHUD dismiss];
     if(self.player){
         [self.player pause];
     }
