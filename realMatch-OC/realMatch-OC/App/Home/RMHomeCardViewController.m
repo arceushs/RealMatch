@@ -38,12 +38,28 @@
     // 添加检测app进入后台的观察者
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationEnterBackground) name: UIApplicationDidEnterBackgroundNotification object:nil];
 
+    [self getHomeData];
+    
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void)getHomeData{
     RMFetchHomeVideoAPI* fetchHomeVideoAPI = [[RMFetchHomeVideoAPI alloc] initWithUserId:[RMUserCenter shared].userId];
     __weak typeof(self) weakSelf = self;
     [SVProgressHUD show];
     [[RMNetworkManager shareManager] request:fetchHomeVideoAPI completion:^(RMNetworkResponse *response) {
         RMFetchHomeVideoAPIData* data = (RMFetchHomeVideoAPIData*)response.responseObject;
         RMFetchHomeVideoAPIModel* currentModel = data.currentModel;
+        if([[RMUserCenter shared].matchedUserIdArr containsObject:currentModel.userId]){
+            [weakSelf getHomeData];
+            return;
+        }
+        NSLock* lock = [[NSLock alloc]init];
+        [lock lock];
+        NSMutableArray<NSString*>* matchedUserIdArr =[NSMutableArray arrayWithArray: [RMUserCenter shared].matchedUserIdArr];
+        [matchedUserIdArr addObject:currentModel.userId];
+        [RMUserCenter shared].matchedUserIdArr = [NSArray arrayWithArray:matchedUserIdArr];
+        [lock unlock];
         if(currentModel == nil){
             if(self.noCardHintBlock){
                 self.noCardHintBlock();
@@ -86,7 +102,6 @@
             }
         }
     }];
-    // Do any additional setup after loading the view from its nib.
 }
 
 -(void)setPlayerItem:(AVPlayerItem *)playerItem{

@@ -203,7 +203,6 @@
 
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    _cardVC1.view.frame = CGRectMake(8, 8, self.cardContainerView.width -16, self.cardContainerView.height - 16);
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
