@@ -71,8 +71,24 @@
 }
 
 -(void)completeTransaction:(SKPaymentTransaction*)transaction{
-    NSString* productIdentifier = transaction.payment.productIdentifier;
-    NSString* receipt = [transaction.transactionReceipt base64Encoding];
+//    NSString * str = [[NSString alloc] initWithData:transaction.transactionReceipt encoding:NSUTF8StringEncoding];
+//    NSString *environment = [self environmentForReceipt:str];
+//    NSLog(@"----- 完成交易调用的方法completeTransaction 1--------%@",environment);
+//    // 验证凭据，获取到苹果返回的交易凭据
+//    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];// appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
+//    NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];// 从沙盒中获取到购买凭据
+//    NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];// BASE64 常用的编码方案，通常用于数据传输，以及加密算法的基础算法，传输过程中能够保证数据传输的稳定性，BASE64是可以编码和解码的
+//
+//    if (![UserOrderInfo isHasReceiptDate:encodeStr]) {
+//        // 如果本地数据库没有此条票据记录
+//        NSString *environmentStr;
+//        if ([environment isEqualToString:@"environment=Sandbox"]) {
+//            environmentStr = @"sandbox";
+//        } else {
+//            environmentStr = @"product";
+//        }
+//        // 将票据POST给自己的服务器去校验...
+//    }
 
 }
 
