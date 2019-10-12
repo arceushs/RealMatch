@@ -17,31 +17,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="64" height="63"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umL-TJ-wTc">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UTy-Om-QzQ">
                         <rect key="frame" x="0.0" y="0.0" width="64" height="63"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <state key="normal">
-                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="32"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
-                    </button>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="umL-TJ-wTc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1bg-Y3-TbV"/>
-                <constraint firstAttribute="trailing" secondItem="umL-TJ-wTc" secondAttribute="trailing" id="Fix-LO-iWc"/>
-                <constraint firstAttribute="bottom" secondItem="umL-TJ-wTc" secondAttribute="bottom" id="p5O-od-c48"/>
-                <constraint firstItem="umL-TJ-wTc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vmI-vM-zMW"/>
+                <constraint firstAttribute="trailing" secondItem="UTy-Om-QzQ" secondAttribute="trailing" id="Mmd-kq-Vph"/>
+                <constraint firstAttribute="bottom" secondItem="UTy-Om-QzQ" secondAttribute="bottom" id="WEz-g8-C8W"/>
+                <constraint firstItem="UTy-Om-QzQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="sfd-PP-Hxc"/>
+                <constraint firstItem="UTy-Om-QzQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="t2L-D0-0q0"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="64" height="63"/>
             <connections>
-                <outlet property="likeMeButton" destination="umL-TJ-wTc" id="lHo-w8-FoO"/>
+                <outlet property="avatarImageView" destination="UTy-Om-QzQ" id="ntQ-Cz-Rgu"/>
             </connections>
             <point key="canvasLocation" x="142.02898550724638" y="110.82589285714285"/>
         </collectionViewCell>

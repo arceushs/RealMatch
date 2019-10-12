@@ -9,6 +9,7 @@
 #import "PurchaseManager.h"
 #import <StoreKit/StoreKit.h>
 #import "SVProgressHUD.h"
+#import "realMatch_OC-Swift.h"
 
 @interface PurchaseManager()<SKProductsRequestDelegate,SKPaymentTransactionObserver>
 
@@ -29,7 +30,9 @@
 
 -(instancetype)init{
     if(self = [super init]){
+        _premiumArr = @[@"12_month_premium",@"6_month_premium",@"1_month_premium"];
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
     }
     return self;
 }
@@ -78,6 +81,13 @@
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchased:
                 [self completeTransaction:transactions.firstObject];
+                [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+                break;
+            case SKPaymentTransactionStateFailed:
+                [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+                break;
+            case SKPaymentTransactionStateRestored:
+                [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             case SKPaymentTransactionStatePurchasing:
                 break;
@@ -86,5 +96,15 @@
         }
     }
 }
+
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue{
+    [RMUserCenter shared].userIsVip = NO;
+    for(SKPaymentTransaction * tran in queue.transactions){
+        if([self.premiumArr containsObject:tran.payment.productIdentifier]){
+            [RMUserCenter shared].userIsVip = YES;
+        }
+    }
+}
+
 
 @end

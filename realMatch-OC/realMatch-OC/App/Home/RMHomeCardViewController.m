@@ -54,12 +54,7 @@
             [weakSelf getHomeData];
             return;
         }
-        NSLock* lock = [[NSLock alloc]init];
-        [lock lock];
-        NSMutableArray<NSString*>* matchedUserIdArr =[NSMutableArray arrayWithArray: [RMUserCenter shared].matchedUserIdArr];
-        [matchedUserIdArr addObject:currentModel.userId];
-        [RMUserCenter shared].matchedUserIdArr = [NSArray arrayWithArray:matchedUserIdArr];
-        [lock unlock];
+        
         if(currentModel == nil){
             if(self.noCardHintBlock){
                 self.noCardHintBlock();
@@ -67,6 +62,14 @@
             }
             return ;
         }
+        
+        NSLock* lock = [[NSLock alloc]init];
+        [lock lock];
+        NSMutableArray<NSString*>* matchedUserIdArr =[NSMutableArray arrayWithArray: [RMUserCenter shared].matchedUserIdArr];
+        [matchedUserIdArr addObject:currentModel.userId];
+        [RMUserCenter shared].matchedUserIdArr = [NSArray arrayWithArray:matchedUserIdArr];
+        [lock unlock];
+        
         [weakSelf.cardView.bottomImageView sd_setImageWithURL:[NSURL URLWithString:currentModel.videoDefaultImg]];
 
         if([currentModel.video length]>0){

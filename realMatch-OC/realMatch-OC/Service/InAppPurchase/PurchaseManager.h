@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PurchaseManager : NSObject
 
+@property (nonatomic,strong) NSArray* premiumArr;
+
 +(instancetype) shareManager;
 
 +(void) checkOrderStatus;

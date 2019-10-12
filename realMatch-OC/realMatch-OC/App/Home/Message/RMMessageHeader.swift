@@ -35,8 +35,12 @@ import UIKit
         
         visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
         visualEffectView.frame = self.likesMeCollectionView.frame
-        self.addSubview(visualEffectView)
-        visualEffectView.alpha = 0.9
+        if RMUserCenter.shared.userIsVip{
+            
+        }else{
+            self.addSubview(visualEffectView)
+            visualEffectView.alpha = 0.9
+        }
         
         let gest = UITapGestureRecognizer(target: self, action: #selector(routeToPurchase))
         visualEffectView.addGestureRecognizer(gest)
@@ -61,7 +65,7 @@ import UIKit
         if let likesMeArr = self.likesMeArr{
             let model :RMFetchLikesMeModel = likesMeArr[indexPath.row]
             model.avatar = model.avatar.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-            cell.likeMeButton.imageView?.sd_setImage(with: URL(string: model.avatar), completed: nil)
+            cell.avatarImageView.sd_setImage(with: URL(string:model.avatar), completed: nil)
         }
         
         return cell

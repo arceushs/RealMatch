@@ -10,7 +10,8 @@ import UIKit
 
 class RMMessageHeaderCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var likeMeButton: UIButton!
+   
+    @IBOutlet weak var avatarImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

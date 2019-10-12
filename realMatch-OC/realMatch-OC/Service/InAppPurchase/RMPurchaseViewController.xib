@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +25,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5M-QH-xgI">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdi-xP-O7H">
+                        <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdi-xP-O7H">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="778"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dst-9i-Fch">
@@ -252,13 +250,26 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eay-ee-auz">
+                                    <rect key="frame" x="8" y="16" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="2Qy-Rf-eyJ"/>
+                                        <constraint firstAttribute="height" constant="30" id="OGr-jx-PKv"/>
+                                    </constraints>
+                                    <state key="normal" image="captureBack"/>
+                                    <connections>
+                                        <action selector="backButtonClicked:" destination="-1" eventType="touchUpInside" id="WJQ-kw-9ll"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="Dst-9i-Fch" secondAttribute="trailing" constant="8" id="7hb-cK-Fj1"/>
+                                <constraint firstItem="Eay-ee-auz" firstAttribute="leading" secondItem="Bdi-xP-O7H" secondAttribute="leading" constant="8" id="FWx-6I-oLD"/>
                                 <constraint firstItem="Dst-9i-Fch" firstAttribute="leading" secondItem="Bdi-xP-O7H" secondAttribute="leading" constant="8" id="L45-6H-N4N"/>
                                 <constraint firstAttribute="height" constant="778" id="iQy-rk-Eit"/>
                                 <constraint firstItem="Dst-9i-Fch" firstAttribute="top" secondItem="Bdi-xP-O7H" secondAttribute="top" constant="60" id="ifV-hx-huf"/>
+                                <constraint firstItem="Eay-ee-auz" firstAttribute="top" secondItem="Bdi-xP-O7H" secondAttribute="top" constant="16" id="oxz-Yy-TTb"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -280,6 +291,10 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="k5M-QH-xgI" secondAttribute="trailing" id="yjU-N9-heY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="139" y="102"/>
         </view>
     </objects>
+    <resources>
+        <image name="captureBack" width="24" height="24"/>
+    </resources>
 </document>

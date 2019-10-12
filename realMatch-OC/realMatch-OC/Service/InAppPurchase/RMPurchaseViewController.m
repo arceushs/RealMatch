@@ -145,7 +145,7 @@
 }
 
 - (IBAction)continueButtonClicked:(id)sender {
-    NSArray* premiumArr = @[@"12_month_premium",@"6_month_premium",@"1_month_premium"];
+    NSArray* premiumArr = [PurchaseManager shareManager].premiumArr;
     [[PurchaseManager shareManager] startPurchaseWithID:premiumArr[self.selectedView.tag-1]];
 }
 - (IBAction)backButtonClicked:(id)sender {

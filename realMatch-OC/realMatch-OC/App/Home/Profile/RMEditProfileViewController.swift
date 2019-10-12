@@ -47,11 +47,15 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                 if response?.error == nil{
                     let result =  response?.responseObject as! RMFetchDetailAPIData
                     self.videoArr = result.videoArr
-                    for _ in (self.videoArr?.count ?? 0)...2{
-                        let model = RMFetchVideoDetailModel()
-                        self.videoArr?.append(model)
+                    let startIndex = (self.videoArr?.count ?? 0)
+                    if startIndex <= 2{
+                        for _ in startIndex...2{
+                            let model = RMFetchVideoDetailModel()
+                            self.videoArr?.append(model)
+                        }
+
                     }
-                    
+                                        
                     if let videoArr = self.videoArr{
                         for (i,model) in videoArr.enumerated(){
                             if i == 0{
@@ -132,6 +136,17 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                     default:
                         let model = RMFetchVideoDetailModel()
                         self.videoArr?[indexPath.row] = model;
+                        if indexPath.row == 0{
+                            model.title = "About me";
+                            model.subtitle = "who are you, where are you from, yuor school, your job.";
+                        }else if indexPath.row == 1{
+                            model.title = "Interests";
+                            model.subtitle = "what make you differ";
+                        }else if indexPath.row == 2{
+                            model.title = "My friends";
+                            model.subtitle = "Who do you like to be with";
+                        }
+
                         
                     }
                     self.editProfileDetailTableView.reloadData()
@@ -161,13 +176,15 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
             let cell = tableView.cellForRow(at: indexPath) as! RMEditProfileTableViewCell
             let model = videoArr[indexPath.row]
             if model.videoImg.ossLocation.count > 0{
-                cell.addVideoView.isHidden = true
-                cell.cellType = .typeEdit
-                cell.detailImageView.sd_setImage(with: URL(string: model.videoImg.ossLocation), completed: nil)
+                return
+//                cell.addVideoView.isHidden = true
+//                cell.cellType = .typeEdit
+//                cell.detailImageView.sd_setImage(with: URL(string: model.videoImg.ossLocation), completed: nil)
             }else{
                 cell.addVideoView.isHidden = false
                 cell.cellType = .typeDelete
             }
+            
             let adopter = RouterAdopter()
             adopter.params = ["filename":model.title]
             adopter.vcName = "RMCaptureViewController";
