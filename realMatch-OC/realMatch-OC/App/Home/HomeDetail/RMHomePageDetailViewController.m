@@ -110,10 +110,7 @@
     [[Router shared] routerTo:@"RMVideoPlayViewController" parameter:@{@"url":url}];
 }
 - (IBAction)messageButtonClicked:(id)sender {
-    if([_matchedUserId length]<=0){
-        return;
-    }
-    [[Router shared] routerTo:@"RMMessageViewController" parameter:@{@"userId":[RMUserCenter shared].userId}];
+    [[Router shared] routerTo:@"RMReportViewController" parameter:nil];
 }
 - (IBAction)backButtonClicked:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

@@ -39,22 +39,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CBCA1C8E-8813-485C-A54B-DB6ECF26287B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/App/Home/Message/RMMessageHeader.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "5163EAF5-FA91-4040-9950-477213970664"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -87,17 +71,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8BBC3452-E510-4946-8D0C-162B3FD0FC12"
+            uuid = "6D6F4B66-4965-4663-AA3A-5725CBABFEA8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "-paymentQueue:updatedTransactions:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D6991235-0D8D-467A-812B-7A8A78F30C98"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-completeTransaction:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D6991235-0D8D-467A-812B-7A8A78F30C98 - b1c01a29de4b4cfb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PurchaseManager completeTransaction:]"
+                  moduleName = "realMatch-OC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bytedance/Desktop/RealMatch/realMatch-OC/realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "868">
+               </Location>
+               <Location
+                  uuid = "D6991235-0D8D-467A-812B-7A8A78F30C98 - e410e4408ffe1a8b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__39-[PurchaseManager completeTransaction:]_block_invoke"
+                  moduleName = "realMatch-OC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bytedance/Desktop/RealMatch/realMatch-OC/realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

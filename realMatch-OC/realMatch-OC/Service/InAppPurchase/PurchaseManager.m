@@ -32,7 +32,6 @@
     if(self = [super init]){
         _premiumArr = @[@"12_month_premium",@"6_month_premium",@"1_month_premium"];
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-        [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
     }
     return self;
 }
@@ -71,41 +70,41 @@
 }
 
 -(void)completeTransaction:(SKPaymentTransaction*)transaction{
-//    NSString * str = [[NSString alloc] initWithData:transaction.transactionReceipt encoding:NSUTF8StringEncoding];
-//    NSString *environment = [self environmentForReceipt:str];
-//    NSLog(@"----- 完成交易调用的方法completeTransaction 1--------%@",environment);
-//    // 验证凭据，获取到苹果返回的交易凭据
-//    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];// appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
-//    NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];// 从沙盒中获取到购买凭据
-//    NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];// BASE64 常用的编码方案，通常用于数据传输，以及加密算法的基础算法，传输过程中能够保证数据传输的稳定性，BASE64是可以编码和解码的
-//
-//    if (![UserOrderInfo isHasReceiptDate:encodeStr]) {
-//        // 如果本地数据库没有此条票据记录
-//        NSString *environmentStr;
-//        if ([environment isEqualToString:@"environment=Sandbox"]) {
-//            environmentStr = @"sandbox";
-//        } else {
-//            environmentStr = @"product";
-//        }
-//        // 将票据POST给自己的服务器去校验...
-//    }
-
+    //获取透传字段
+    NSString *produ = transaction.payment.applicationUsername;
+    //transactionIdentifier：相当于Apple的订单号
+    NSString *transationId = transaction.transactionIdentifier;
+    //从沙盒中获取交易凭证
+    NSString *reciptStr = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL] usedEncoding:kCFStringEncodingUTF8 error:nil];
+    NSData *reciptData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]];
+    //转化成Base64字符串（用于校验）
+    NSString *reciptString = [reciptData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    //传给后台做二次验证
+//    [self checkReceipt:reciptString];
+    RMPurchaseCheckAPI * purchaseCheckAPI = [[RMPurchaseCheckAPI alloc] initWithReceiptData:reciptString transactionId:transaction.transactionIdentifier productId:transaction.payment.productIdentifier userId:[RMUserCenter shared].userId];
+    [[RMNetworkManager shareManager] request:purchaseCheckAPI completion:^(RMNetworkResponse *response) {
+        
+    }];
 }
 
 - (void)paymentQueue:(nonnull SKPaymentQueue *)queue updatedTransactions:(nonnull NSArray<SKPaymentTransaction *> *)transactions {
     for(SKPaymentTransaction * tran in transactions){
         switch (tran.transactionState) {
+            case SKPaymentTransactionStatePurchasing:
+                [SVProgressHUD showInfoWithStatus:@"购买中......"];
+                break;
             case SKPaymentTransactionStatePurchased:
+                [SVProgressHUD dismiss];
                 [self completeTransaction:transactions.firstObject];
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             case SKPaymentTransactionStateFailed:
+                [SVProgressHUD dismiss];
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             case SKPaymentTransactionStateRestored:
+                [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
-                break;
-            case SKPaymentTransactionStatePurchasing:
                 break;
             default:
                 break;

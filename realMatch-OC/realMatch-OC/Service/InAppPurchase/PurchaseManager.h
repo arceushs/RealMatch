@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) NSArray* premiumArr;
 
+@property (nonatomic,copy) NSString* enviroment;
+
 +(instancetype) shareManager;
 
 +(void) checkOrderStatus;

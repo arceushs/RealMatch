@@ -43,9 +43,9 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>camera usage</string>
+	<string>Allow access to camera and microphone to shoot a video</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>microphone usage</string>
+	<string>Allow access to camera and microphone to shoot a video</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

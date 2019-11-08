@@ -61,6 +61,7 @@
     [routeTable addObject:@"RMEditProfileViewController"];
     [routeTable addObject:@"RMSettingViewController"];
     [routeTable addObject:@"RMWebViewController"];
+    [routeTable addObject:@"RMReportViewController"];
 }
 
 -(void)routerTo:(RouterAdopter *)routerAdopter{

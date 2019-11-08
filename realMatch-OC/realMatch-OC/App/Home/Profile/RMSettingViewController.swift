@@ -54,6 +54,7 @@ class RMSettingViewController: UIViewController,RouterController,UITableViewDele
         footerView.buttonBlock = {
             UserDefaults.standard.set(nil, forKey: "global-cookie")
             UserDefaults.standard.set(nil, forKey: "global-userId")
+            UserDefaults.standard.set(false, forKey: "global-vip")
             UserDefaults.standard.synchronize()
             Router.shared()?.router(to: "LoginAndRegisterViewController", parameter: nil)
         }
