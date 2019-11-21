@@ -73,22 +73,44 @@
                     <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3h-jc-mqs">
+                    <rect key="frame" x="143" y="790" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="1RV-Px-uCa"/>
+                        <constraint firstAttribute="width" constant="48" id="lwR-9D-C91"/>
+                    </constraints>
+                    <state key="normal" image="dislike"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bn7-PG-Det">
+                    <rect key="frame" x="223" y="790" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="PM2-aG-DfZ"/>
+                        <constraint firstAttribute="width" constant="48" id="aMN-oo-rEb"/>
+                    </constraints>
+                    <state key="normal" image="like"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="c2h-UA-dQ3" firstAttribute="bottom" secondItem="KGe-kM-W1f" secondAttribute="bottom" id="Ovl-mR-pfY"/>
                 <constraint firstItem="KGe-kM-W1f" firstAttribute="leading" secondItem="c2h-UA-dQ3" secondAttribute="leading" id="UCc-K4-YmZ"/>
                 <constraint firstItem="FN6-mD-qmk" firstAttribute="trailing" secondItem="c2h-UA-dQ3" secondAttribute="trailing" id="dwS-PT-wCy"/>
+                <constraint firstItem="T3h-jc-mqs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-40" id="jD2-4F-E5j"/>
+                <constraint firstItem="bn7-PG-Det" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="40" id="lPd-8n-1VL"/>
                 <constraint firstItem="FN6-mD-qmk" firstAttribute="top" secondItem="c2h-UA-dQ3" secondAttribute="top" id="qUi-a2-JNN"/>
                 <constraint firstItem="c2h-UA-dQ3" firstAttribute="trailing" secondItem="KGe-kM-W1f" secondAttribute="trailing" id="rY1-PS-JVZ"/>
                 <constraint firstItem="KGe-kM-W1f" firstAttribute="top" secondItem="FN6-mD-qmk" secondAttribute="bottom" id="rjN-nd-7PY"/>
                 <constraint firstItem="FN6-mD-qmk" firstAttribute="leading" secondItem="c2h-UA-dQ3" secondAttribute="leading" id="tRw-uo-yjf"/>
+                <constraint firstItem="c2h-UA-dQ3" firstAttribute="bottom" secondItem="T3h-jc-mqs" secondAttribute="bottom" constant="24" id="vJw-Zo-Sz0"/>
+                <constraint firstItem="c2h-UA-dQ3" firstAttribute="bottom" secondItem="bn7-PG-Det" secondAttribute="bottom" constant="24" id="xTk-ft-mes"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="c2h-UA-dQ3"/>
             <point key="canvasLocation" x="137.68115942028987" y="90.401785714285708"/>
         </view>
     </objects>
     <resources>
+        <image name="dislike" width="48" height="48"/>
+        <image name="like" width="48" height="48"/>
         <image name="normalBack" width="24" height="24"/>
     </resources>
 </document>

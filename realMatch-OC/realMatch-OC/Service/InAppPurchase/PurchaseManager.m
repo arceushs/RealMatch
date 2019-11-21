@@ -75,15 +75,14 @@
     //transactionIdentifier：相当于Apple的订单号
     NSString *transationId = transaction.transactionIdentifier;
     //从沙盒中获取交易凭证
-    NSString *reciptStr = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL] usedEncoding:kCFStringEncodingUTF8 error:nil];
-    NSData *reciptData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]];
+    NSString *receiptStr = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL] usedEncoding:kCFStringEncodingUTF8 error:nil];
+    NSData *receiptData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]];
     //转化成Base64字符串（用于校验）
-    NSString *reciptString = [reciptData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    //传给后台做二次验证
-//    [self checkReceipt:reciptString];
-    RMPurchaseCheckAPI * purchaseCheckAPI = [[RMPurchaseCheckAPI alloc] initWithReceiptData:reciptString transactionId:transaction.transactionIdentifier productId:transaction.payment.productIdentifier userId:[RMUserCenter shared].userId];
+    NSString *base64ReceiptString = [receiptData base64EncodedStringWithOptions:0];
+ 
+    RMPurchaseCheckAPI * purchaseCheckAPI = [[RMPurchaseCheckAPI alloc] initWithReceiptData:base64ReceiptString transactionId:transaction.transactionIdentifier productId:transaction.payment.productIdentifier userId:[RMUserCenter shared].userId];
     [[RMNetworkManager shareManager] request:purchaseCheckAPI completion:^(RMNetworkResponse *response) {
-        
+
     }];
 }
 
@@ -91,7 +90,7 @@
     for(SKPaymentTransaction * tran in transactions){
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchasing:
-                [SVProgressHUD showInfoWithStatus:@"购买中......"];
+                [SVProgressHUD showInfoWithStatus:@"purchasing......"];
                 break;
             case SKPaymentTransactionStatePurchased:
                 [SVProgressHUD dismiss];

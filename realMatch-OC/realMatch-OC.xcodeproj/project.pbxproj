@@ -35,6 +35,7 @@
 		1CFCE12122BF32A20025BC0B /* RMSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE12022BF32A20025BC0B /* RMSocketManager.m */; };
 		1CFCE12422BF339A0025BC0B /* RMNetworkAPIHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */; };
 		1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */; };
+		2B23EC382385725100BD95FE /* RMComplaintAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23EC372385725100BD95FE /* RMComplaintAPI.swift */; };
 		2BA3B87B23702D6A003473C6 /* RMReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3B87923702D6A003473C6 /* RMReportViewController.swift */; };
 		2BA3B87C23702D6A003473C6 /* RMReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3B87A23702D6A003473C6 /* RMReportViewController.xib */; };
 		2BA3B89623703679003473C6 /* RMReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3B89523703679003473C6 /* RMReportView.swift */; };
@@ -186,6 +187,7 @@
 		1CFCE12022BF32A20025BC0B /* RMSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMSocketManager.m; sourceTree = "<group>"; };
 		1CFCE12222BF339A0025BC0B /* RMNetworkAPIHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMNetworkAPIHost.h; sourceTree = "<group>"; };
 		1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMNetworkAPIHost.m; sourceTree = "<group>"; };
+		2B23EC372385725100BD95FE /* RMComplaintAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMComplaintAPI.swift; sourceTree = "<group>"; };
 		2BA3B87923702D6A003473C6 /* RMReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMReportViewController.swift; sourceTree = "<group>"; };
 		2BA3B87A23702D6A003473C6 /* RMReportViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMReportViewController.xib; sourceTree = "<group>"; };
 		2BA3B89523703679003473C6 /* RMReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMReportView.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				2BA3B89523703679003473C6 /* RMReportView.swift */,
 				2BA3BADB2370379A003473C6 /* RMReportView.xib */,
 				2BA3C670237188F3003473C6 /* RMReportedView.xib */,
+				2B23EC372385725100BD95FE /* RMComplaintAPI.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -999,6 +1002,7 @@
 				1C381DED22E2D3160060DE69 /* RMFetchHomeVideoAPI.m in Sources */,
 				D618DC3B230AAB5100F34819 /* RMSettingViewController.swift in Sources */,
 				1CAF03BE2310F415004FC148 /* RMWebViewController.swift in Sources */,
+				2B23EC382385725100BD95FE /* RMComplaintAPI.swift in Sources */,
 				D659140322B76D6C0098F458 /* RMFetchDetailAPI.m in Sources */,
 				D680C86D22CB796800D9ED96 /* RMEmailViewController.swift in Sources */,
 				D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */,

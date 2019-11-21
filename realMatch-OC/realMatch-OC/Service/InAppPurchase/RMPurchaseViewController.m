@@ -97,7 +97,9 @@
     
     self.configBlocks = @[configBlock1,configBlock2,configBlock3];
 
-
+    UITapGestureRecognizer *startGest = [[UITapGestureRecognizer alloc] init];
+//    startGest.view = self.secondView;
+    [self tapGest:startGest];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -120,9 +122,9 @@
     view.layer.masksToBounds = YES;
     view.layer.borderColor = [UIColor colorWithString:@"FA008E"].CGColor;
     view.layer.borderWidth = 2;
-    
-    
 }
+
+//- (void)setViewStyle:(UIView *)
 /*
 #pragma mark - Navigation
 

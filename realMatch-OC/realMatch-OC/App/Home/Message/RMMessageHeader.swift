@@ -70,6 +70,13 @@ import UIKit
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let likesMeArr = self.likesMeArr{
+            let model = likesMeArr[indexPath.row]
+            Router.shared()?.router(to: "RMHomePageDetailViewController", parameter:["userId":model.userId])
+        }
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
