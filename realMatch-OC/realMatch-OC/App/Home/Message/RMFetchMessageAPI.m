@@ -7,6 +7,7 @@
 //
 
 #import "RMFetchMessageAPI.h"
+#import "RMNetworkAPIHost.h"
 
 @implementation RMFetchMessageModel
 @end
@@ -30,7 +31,7 @@
 }
 
 -(NSString*)requestPath{
-    return [NSString stringWithFormat:@"/api/%@/getMatchedMessages",_userId];//以/开头;
+    return [NSString stringWithFormat:@"%@/%@/getMatchedMessages",RMNetworkAPIHost.apiPath,_userId];//以/开头;
 }
 
 -(NSDictionary*)parameters{

@@ -27,6 +27,8 @@ class RMUserCenter: NSObject {
     
     var userIsVip:Bool = false;
     
+    var anormaly:Bool = false;
+    
     var matchedUserIdArr:[String] = []
     
     @objc static let shared:RMUserCenter = RMUserCenter()

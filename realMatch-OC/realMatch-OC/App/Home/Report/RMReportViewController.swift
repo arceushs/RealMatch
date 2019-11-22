@@ -12,8 +12,8 @@ class RMReportViewController: UIViewController,RouterController {
     var complainUser:String = ""
     var complaintedUser:String = ""
     required init!(routerParams params: [AnyHashable : Any]!) {
-        self.complainUser = params["complainUser"]
-        self.complaintedUser = params["complainedUser"];
+        self.complainUser = params["complainUser"] as! String
+        self.complaintedUser = params["complainedUser"] as! String;
         super.init(nibName:nil, bundle:nil)
     }
     
@@ -38,7 +38,9 @@ class RMReportViewController: UIViewController,RouterController {
     private var _reportedView:UIView?
     var reportedView:UIView?{
         get{
-            _reportedView = Bundle.main.loadNibNamed("RMReportedView", owner: self, options: nil)?.last as! UIView
+            if(_reportedView == nil){
+                _reportedView = Bundle.main.loadNibNamed("RMReportedView", owner: self, options: nil)?.last as! UIView
+            }
             return _reportedView
         }
         set{
@@ -46,10 +48,14 @@ class RMReportViewController: UIViewController,RouterController {
         }
     }
     
+    @objc func tapDismiss(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.reportView = RMReportView()
+        self.reportView = RMReportView(frame: UIScreen.main.bounds)
         self.view.addSubview(self.reportView!)
         self.view.backgroundColor = .black
         
@@ -60,17 +66,20 @@ class RMReportViewController: UIViewController,RouterController {
             
         }
         
+        
+        
         self.reportView?.confirmBlock = {
-            self.reportedView?.center = CGPoint(x: self.view.frame.size.width/2.0, y: self.view.frame.size.height/2.0)
-            self.view.addSubview(self.reportedView!)
-            self.dismiss(animated: true, completion: nil)
-            if self.complainUser.count > 0 && self.complaintedUser.count > 0 && self.reportView?.ReportTextField.text.count ?? 0 > 0 {
-                var complaintAPI = RMComplaintAPI(content: self.reportView?.ReportTextField.text ?? "", complaintUser: self.complainUser, complaintedUser: self.complaintedUser)
+            text in
+            
+            let reportedContainerView = UIView(frame: self.view.bounds)
+            self.view.addSubview(reportedContainerView)
+            reportedContainerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapDismiss)))
+            
+            reportedContainerView.addSubview(self.reportedView!)
+            if self.complainUser.count > 0 && self.complaintedUser.count > 0 && self.reportView?.ReportTextField.text?.count ?? 0 > 0 {
+                var complaintAPI = RMComplaintAPI(content: text ?? "", complaintUser: self.complainUser, complaintedUser: self.complaintedUser)
                 RMNetworkManager.share()?.request(complaintAPI, completion: { (response) in
-                    var data:RMComplaintAPIData = response?.responseObject ?? RMComplaintAPIData();
-                    if data.code == 200 {
-                        
-                    }
+                    
                 })
             }
             
@@ -85,6 +94,9 @@ class RMReportViewController: UIViewController,RouterController {
     }
 
 
+    override func viewWillLayoutSubviews() {
+        self.reportedView?.frame = CGRect(x: (self.view.frame.size.width - (self.reportedView?.frame.width ?? 0))/2.0, y: (self.view.frame.size.height - (self.reportedView?.frame.height ?? 0))/2.0, width: self.reportedView?.frame.width ?? 0, height: self.reportedView?.frame.height ?? 0)
+    }
     /*
     // MARK: - Navigation
 

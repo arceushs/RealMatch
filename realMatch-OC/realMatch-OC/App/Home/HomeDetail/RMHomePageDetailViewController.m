@@ -13,11 +13,16 @@
 #import "RMFileManager.h"
 #import "UIDevice+RealMatch.h"
 #import "realMatch_OC-Swift.h"
+#import "RMLikeFlagAPI.h"
 
 @interface RMHomePageDetailViewController ()<RouterController,UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *videoListTableView;
 @property (strong,nonatomic) NSMutableArray<RMFetchVideoDetailModel*> * videoArr;
+@property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (strong,nonatomic) NSString* matchedUserId;
+@property (strong, nonatomic) RouterAdopter * adopter;
+
 @end
 
 @implementation RMHomePageDetailViewController
@@ -27,9 +32,10 @@
     return DisplayStylePush;
 }
 
-- (instancetype)initWithRouterParams:(NSDictionary *)params {
+- (instancetype)initWithCommand:(RouterAdopter *)adopter{
     if(self = [super init]){
-        _matchedUserId = params[@"userId"];
+        _adopter = adopter;
+        _matchedUserId = adopter.params[@"userId"];
     }
     return self;
 }
@@ -66,6 +72,15 @@
             }
         }
         [self.videoListTableView reloadData];
+    }];
+    
+    RMMatchResultAPI *matchCheckAPI = [[RMMatchResultAPI alloc] initWithUserId:_matchedUserId type:1];
+    [[RMNetworkManager shareManager] request:matchCheckAPI completion:^(RMNetworkResponse *response) {
+        if([response.responseObject isKindOfClass:[RMMatchResultAPIData class]]){
+            RMMatchResultAPIData * data = (RMMatchResultAPIData *)response.responseObject;
+            self.likeButton.hidden = data.matched;
+            self.dislikeButton.hidden = data.matched;
+        }
     }];
     // Do any additional setup after loading the view from its nib.
 }
@@ -110,10 +125,45 @@
     [[Router shared] routerTo:@"RMVideoPlayViewController" parameter:@{@"url":url}];
 }
 - (IBAction)messageButtonClicked:(id)sender {
-    [[Router shared] routerTo:@"RMReportViewController" parameter:nil];
+    if (self.matchedUserId.length > 0){
+        [[Router shared] routerTo:@"RMReportViewController" parameter:@{@"complainUser":[RMUserCenter shared].userId,@"complainedUser":self.matchedUserId}];
+    }
 }
 - (IBAction)backButtonClicked:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)dislikeButtonClicked:(id)sender {
+    if(_matchedUserId.length > 0) {
+        RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:_matchedUserId userId:[RMUserCenter shared].userId isLike:NO];
+        __weak typeof(self) weakSelf = self;
+        [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
+            RMLikeFlagAPIData *data = (RMLikeFlagAPIData *)response.responseObject;
+            if ([data isKindOfClass:[RMLikeFlagAPIData class]]){
+                if(weakSelf.adopter.routerAdopterCallback){
+                    [weakSelf.navigationController popViewControllerAnimated:NO];
+                    weakSelf.adopter.routerAdopterCallback(@{@"like":@(0)});
+                }
+            }
+                
+        }];
+    }
+    
+}
+- (IBAction)likeButtonClicked:(id)sender {
+    if(_matchedUserId.length > 0) {
+        RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:_matchedUserId userId:[RMUserCenter shared].userId isLike:YES];
+        __weak typeof(self) weakSelf = self;
+        [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
+            RMLikeFlagAPIData *data = (RMLikeFlagAPIData *)response.responseObject;
+            if ([data isKindOfClass:[RMLikeFlagAPIData class]]){
+                if(weakSelf.adopter.routerAdopterCallback){
+                    [weakSelf backButtonClicked:nil];
+                    weakSelf.adopter.routerAdopterCallback(@{@"like":@(1)});
+                }
+            }
+                
+        }];
+    }
 }
 /*
  #pragma mark - Navigation

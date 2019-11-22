@@ -7,6 +7,7 @@
 //
 
 #import "RMLoginAPI.h"
+#import "RMNetworkAPIHost.h"
 
 @implementation RMLoginAPIData
 
@@ -35,7 +36,7 @@
 }
 
 -(NSString*)requestPath{
-	return @"/api/login";//以/开头;
+    return [NSString stringWithFormat:@"%@/login",RMNetworkAPIHost.apiPath];
 }
 
 -(NSDictionary*)parameters{

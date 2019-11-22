@@ -7,6 +7,7 @@
 //
 
 #import "RMFetchDetailAPI.h"
+#import "RMNetworkAPIHost.h"
 
 @implementation RMFetchDetailAPIData
 
@@ -45,7 +46,7 @@
 }
 
 -(NSString*)requestPath{
-    return [NSString stringWithFormat:@"/api/%@/detail",_userid];//以/开头;
+    return [NSString stringWithFormat:@"%@/%@/detail",RMNetworkAPIHost.apiPath,_userid];//以/开头;
 }
 
 -(NSDictionary*)parameters{

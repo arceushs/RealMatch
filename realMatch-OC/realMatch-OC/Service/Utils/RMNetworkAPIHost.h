@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RMNetworkAPIHost : NSObject
 
-@property (class,nonatomic) NSString* apiHost;
+@property (class,nonatomic) NSString *apiHost;
+
+@property (class,nonatomic) NSString *apiPath;
 
 @end
 

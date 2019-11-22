@@ -18,20 +18,25 @@ class RMReportView: UIView,UITextFieldDelegate {
     }
     */
     var cancelBlock : (()->Void)?
-    var confirmBlock: (()->Void)?
+    var confirmBlock: ((String)->Void)?
     
     @IBOutlet weak var inAppropriateVideoView: UIView!
     
     @IBOutlet weak var SpamView: UIView!
     
     @IBOutlet weak var ReportTextField: UITextField!
+    @IBOutlet weak var outterView: UIView!
     
     @IBOutlet weak var confirmButton: UIButton!
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         let view = Bundle.main.loadNibNamed("RMReportView", owner: self, options: nil)?.first
+        (view as! UIView).frame = frame
         self.addSubview(view as! UIView)
+        
+        let tapBlank = UITapGestureRecognizer(target: self, action: #selector(blankTapped))
+        self.addGestureRecognizer(tapBlank)
         
         self.confirmButton.isUserInteractionEnabled = false;
         self.ReportTextField.delegate = self
@@ -46,11 +51,22 @@ class RMReportView: UIView,UITextFieldDelegate {
     @objc func videoTapped(){
         self.reset()
         self.inAppropriateVideoView.backgroundColor = UIColor(string:"F4F6FA")
+        if let confirmBlock = self.confirmBlock{
+            confirmBlock("Inappropriate Video")
+        }
+        
+    }
+    
+    @objc func blankTapped(){
+        self.ReportTextField.resignFirstResponder()
     }
     
     @objc func spamTapped(){
         self.reset()
         self.SpamView.backgroundColor = UIColor(string:"F4F6FA")
+        if let confirmBlock = self.confirmBlock{
+            confirmBlock("Feels like Spam")
+        }
     }
     
     func reset(){
@@ -70,7 +86,7 @@ class RMReportView: UIView,UITextFieldDelegate {
     
     @IBAction func confirmButtonClicked(_ sender: Any) {
         if let confirmBlock = self.confirmBlock {
-            confirmBlock()
+            confirmBlock(self.ReportTextField.text ?? "")
         }
     }
     

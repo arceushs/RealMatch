@@ -7,6 +7,7 @@
 //
 
 #import "RMPostFileAPI.h"
+#import "RMNetworkAPIHost.h"
 
 @implementation RMPostFileAPIData
 
@@ -36,7 +37,7 @@
 }
 
 -(NSString*)requestPath{
-	return @"/api/upload";//以/开头;
+	return [NSString stringWithFormat:@"%@/upload",RMNetworkAPIHost.apiPath];//以/开头;
 }
 
 -(NSDictionary*)parameters{

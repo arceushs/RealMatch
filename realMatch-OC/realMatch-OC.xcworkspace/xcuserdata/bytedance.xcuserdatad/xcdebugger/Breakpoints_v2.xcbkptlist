@@ -14,9 +14,9 @@
             filePath = "realMatch-OC/App/Home/RMHomePageViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "-dislikeButtonClicked:"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "-pageGet:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -39,126 +39,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6D6F4B66-4965-4663-AA3A-5725CBABFEA8"
+            uuid = "8504262C-93D9-45C1-8A2A-FDCDF2826F07"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
+            filePath = "realMatch-OC/App/Home/HomeDetail/RMHomePageDetailViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D6991235-0D8D-467A-812B-7A8A78F30C98"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-paymentQueue:updatedTransactions:"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-likeButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "910E3862-E7FB-472B-A951-AE01933BF937"
+            uuid = "BADA22C7-D6EE-49B0-A359-24830CFB90CF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
+            filePath = "realMatch-OC/App/Home/HomeDetail/RMHomePageDetailViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-paymentQueue:updatedTransactions:"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DD85B285-F7EF-4737-B450-C9CF51950D10"
+            uuid = "C9BC27DF-D4D8-4E81-872D-6C555A8607A4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
+            filePath = "realMatch-OC/App/Home/RMHomePageViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-paymentQueue:updatedTransactions:"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "24F79DA8-81C2-471F-B00E-3406AC833100"
+            uuid = "AB844681-1B4B-4804-9255-CE44BF07CE08"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
+            filePath = "realMatch-OC/Service/Router/Router.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "-paymentQueueRestoreCompletedTransactionsFinished:"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-routerTo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A679E393-E0D7-457D-AAD5-054E42216752"
+            uuid = "9DC806ED-17C0-48C4-9DCC-540525BC1B25"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
+            filePath = "realMatch-OC/Service/InAppPurchase/RMPurchaseViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "PurchaseManager"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "08D2000C-EB8C-4D0B-87B5-2D22D74632DE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/Service/InAppPurchase/PurchaseManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-completeTransaction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FEB1244F-19E5-455B-A009-29F9FDF954E1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/App/Home/RMFetchHomeVideoAPI.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-initWithUserId:count:"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-purhcaseSuccess"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

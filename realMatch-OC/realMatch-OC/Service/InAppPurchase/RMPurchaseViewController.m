@@ -21,6 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purhcaseSuccess) name:@"RMPurchaseSuccess" object:nil];
+    
     self.firstView.layer.cornerRadius = 4;
     self.firstView.layer.masksToBounds = YES;
     self.firstView.layer.borderColor = [UIColor colorWithString:@"C9CCD6"].CGColor;
@@ -97,9 +100,7 @@
     
     self.configBlocks = @[configBlock1,configBlock2,configBlock3];
 
-    UITapGestureRecognizer *startGest = [[UITapGestureRecognizer alloc] init];
-//    startGest.view = self.secondView;
-    [self tapGest:startGest];
+    [self tapGest:nil];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -116,8 +117,13 @@
         view.layer.borderWidth = 1;
     }
     
-    self.selectedView = gest.view;
-    UIView * view = gest.view;
+    if (gest == nil){
+        self.selectedView = self.secondView;
+    }else {
+        self.selectedView = gest.view;
+    }
+    
+    UIView * view = self.selectedView;
     view.layer.cornerRadius = 4;
     view.layer.masksToBounds = YES;
     view.layer.borderColor = [UIColor colorWithString:@"FA008E"].CGColor;
@@ -134,6 +140,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)purhcaseSuccess{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RMPurchaseBannerCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RMPurchaseBannerCollectionViewCell" forIndexPath:indexPath];

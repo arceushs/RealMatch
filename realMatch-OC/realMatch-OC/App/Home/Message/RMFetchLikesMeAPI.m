@@ -7,6 +7,7 @@
 //
 
 #import "RMFetchLikesMeAPI.h"
+#import "RMNetworkAPIHost.h"
 
 @implementation RMFetchLikesMeModel
 @end
@@ -30,7 +31,7 @@
 }
 
 -(NSString*)requestPath{
-    return [NSString stringWithFormat:@"/api/%@/likeMeUsers",_userId];//以/开头;
+    return [NSString stringWithFormat:@"%@/%@/likeMeUsers",RMNetworkAPIHost.apiPath,_userId];//以/开头;
 }
 
 -(NSDictionary*)parameters{

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RMHomePageDetailViewController">
             <connections>
+                <outlet property="dislikeButton" destination="T3h-jc-mqs" id="H3g-VG-76g"/>
+                <outlet property="likeButton" destination="bn7-PG-Det" id="rh7-PX-50J"/>
                 <outlet property="videoListTableView" destination="KGe-kM-W1f" id="KKF-Ze-8qY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -35,7 +37,7 @@
                                 <action selector="backButtonClicked:" destination="-1" eventType="touchUpInside" id="PyJ-SZ-HbX"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eg-5A-jS2">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eg-5A-jS2">
                             <rect key="frame" x="374" y="10" width="24" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="6xD-Jw-1q0"/>
@@ -45,8 +47,8 @@
                                 <constraint firstAttribute="width" secondItem="8eg-5A-jS2" secondAttribute="height" multiplier="1:1" id="jdy-qj-2Je"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="ybD-ox-0p3"/>
                             </constraints>
-                            <state key="normal">
-                                <color key="titleColor" systemColor="secondarySystemFillColor" red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" image="IconReport">
+                                <color key="titleColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="messageButtonClicked:" destination="-1" eventType="touchUpInside" id="pxs-ma-yRY"/>
@@ -80,6 +82,9 @@
                         <constraint firstAttribute="width" constant="48" id="lwR-9D-C91"/>
                     </constraints>
                     <state key="normal" image="dislike"/>
+                    <connections>
+                        <action selector="dislikeButtonClicked:" destination="-1" eventType="touchUpInside" id="eq9-lr-6tV"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bn7-PG-Det">
                     <rect key="frame" x="223" y="790" width="48" height="48"/>
@@ -88,6 +93,9 @@
                         <constraint firstAttribute="width" constant="48" id="aMN-oo-rEb"/>
                     </constraints>
                     <state key="normal" image="like"/>
+                    <connections>
+                        <action selector="likeButtonClicked:" destination="-1" eventType="touchUpInside" id="NiE-vz-zMW"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -109,6 +117,7 @@
         </view>
     </objects>
     <resources>
+        <image name="IconReport" width="24" height="24"/>
         <image name="dislike" width="48" height="48"/>
         <image name="like" width="48" height="48"/>
         <image name="normalBack" width="24" height="24"/>

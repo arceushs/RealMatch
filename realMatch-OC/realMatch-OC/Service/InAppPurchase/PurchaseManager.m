@@ -82,7 +82,14 @@
  
     RMPurchaseCheckAPI * purchaseCheckAPI = [[RMPurchaseCheckAPI alloc] initWithReceiptData:base64ReceiptString transactionId:transaction.transactionIdentifier productId:transaction.payment.productIdentifier userId:[RMUserCenter shared].userId];
     [[RMNetworkManager shareManager] request:purchaseCheckAPI completion:^(RMNetworkResponse *response) {
-
+        if (response.error){
+            return;
+        }
+        RMPurchaseCheckAPIData *data = (RMPurchaseCheckAPIData *)response.responseObject;
+        [RMUserCenter shared].userIsVip = data.recharged;
+        if (data.recharged) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"RMPurchaseSuccess" object:nil];
+        }
     }];
 }
 
@@ -90,7 +97,7 @@
     for(SKPaymentTransaction * tran in transactions){
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchasing:
-                [SVProgressHUD showInfoWithStatus:@"purchasing......"];
+                [SVProgressHUD showWithStatus:@"purchasing......"];
                 break;
             case SKPaymentTransactionStatePurchased:
                 [SVProgressHUD dismiss];
@@ -98,7 +105,8 @@
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             case SKPaymentTransactionStateFailed:
-                [SVProgressHUD dismiss];
+                [SVProgressHUD showErrorWithStatus:transactions.firstObject.error.description];
+                [SVProgressHUD dismissWithDelay:2];
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             case SKPaymentTransactionStateRestored:
@@ -107,15 +115,6 @@
                 break;
             default:
                 break;
-        }
-    }
-}
-
-- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue{
-    [RMUserCenter shared].userIsVip = NO;
-    for(SKPaymentTransaction * tran in queue.transactions){
-        if([self.premiumArr containsObject:tran.payment.productIdentifier]){
-            [RMUserCenter shared].userIsVip = YES;
         }
     }
 }

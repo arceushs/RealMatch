@@ -74,7 +74,23 @@ import UIKit
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let likesMeArr = self.likesMeArr{
             let model = likesMeArr[indexPath.row]
-            Router.shared()?.router(to: "RMHomePageDetailViewController", parameter:["userId":model.userId])
+            let adopter = RouterAdopter()
+            adopter.vcName = "RMHomePageDetailViewController"
+            adopter.params = ["userId":model.userId];
+            adopter.routerAdopterCallback = {
+                dict in
+                let likesMeAPI = RMFetchLikesMeAPI(userId: RMUserCenter.shared.userId!)
+                RMNetworkManager.share()?.request(likesMeAPI, completion: { (response) in
+                    let data = response?.responseObject
+                    if data is RMFetchLikesMeAPIData{
+                        if data?.likesMeArr?.count ?? 0 > 0 {
+                            self.likesMeArr = data!.likesMeArr
+                            collectionView .reloadData()
+                        }
+                    }
+                })
+            }
+            Router.shared()?.router(to: adopter)
         }
     }
     /*

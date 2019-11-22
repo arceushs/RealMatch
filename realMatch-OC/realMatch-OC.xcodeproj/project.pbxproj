@@ -35,6 +35,8 @@
 		1CFCE12122BF32A20025BC0B /* RMSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE12022BF32A20025BC0B /* RMSocketManager.m */; };
 		1CFCE12422BF339A0025BC0B /* RMNetworkAPIHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */; };
 		1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */; };
+		2B1C78D023866595006750E6 /* RMBaseInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1C78CF23866594006750E6 /* RMBaseInfoAPI.swift */; };
+		2B1C78D223879B4A006750E6 /* RMMatchResultAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1C78D123879B4A006750E6 /* RMMatchResultAPI.swift */; };
 		2B23EC382385725100BD95FE /* RMComplaintAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23EC372385725100BD95FE /* RMComplaintAPI.swift */; };
 		2BA3B87B23702D6A003473C6 /* RMReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3B87923702D6A003473C6 /* RMReportViewController.swift */; };
 		2BA3B87C23702D6A003473C6 /* RMReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3B87A23702D6A003473C6 /* RMReportViewController.xib */; };
@@ -187,6 +189,8 @@
 		1CFCE12022BF32A20025BC0B /* RMSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMSocketManager.m; sourceTree = "<group>"; };
 		1CFCE12222BF339A0025BC0B /* RMNetworkAPIHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMNetworkAPIHost.h; sourceTree = "<group>"; };
 		1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMNetworkAPIHost.m; sourceTree = "<group>"; };
+		2B1C78CF23866594006750E6 /* RMBaseInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBaseInfoAPI.swift; sourceTree = "<group>"; };
+		2B1C78D123879B4A006750E6 /* RMMatchResultAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMatchResultAPI.swift; sourceTree = "<group>"; };
 		2B23EC372385725100BD95FE /* RMComplaintAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMComplaintAPI.swift; sourceTree = "<group>"; };
 		2BA3B87923702D6A003473C6 /* RMReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMReportViewController.swift; sourceTree = "<group>"; };
 		2BA3B87A23702D6A003473C6 /* RMReportViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMReportViewController.xib; sourceTree = "<group>"; };
@@ -528,6 +532,7 @@
 				D652276022BB8AEE00C273E1 /* RMVideoPlayViewController.h */,
 				D652276122BB8AEE00C273E1 /* RMVideoPlayViewController.m */,
 				D652276222BB8AEE00C273E1 /* RMVideoPlayViewController.xib */,
+				2B1C78D123879B4A006750E6 /* RMMatchResultAPI.swift */,
 			);
 			path = HomeDetail;
 			sourceTree = "<group>";
@@ -581,6 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				D680C87022CB842700D9ED96 /* RMUserCenter.swift */,
+				2B1C78CF23866594006750E6 /* RMBaseInfoAPI.swift */,
 			);
 			path = UserCenter;
 			sourceTree = "<group>";
@@ -955,6 +961,7 @@
 				D6BF5CE122A910220036EA75 /* RMHomePageViewController.m in Sources */,
 				D6EB059B22CF4C700084DE46 /* RMPurchaseViewController.m in Sources */,
 				1CFCE11C22BF1B760025BC0B /* RMMessageTableViewCell.m in Sources */,
+				2B1C78D223879B4A006750E6 /* RMMatchResultAPI.swift in Sources */,
 				1CA11F3C233230FA00061CE9 /* RMDownloadManager.swift in Sources */,
 				D659140622B781620098F458 /* RMNetworkResponse.m in Sources */,
 				D680C87C22CCDA6800D9ED96 /* RMGenderViewController.swift in Sources */,
@@ -1011,6 +1018,7 @@
 				D680C88322CDAD2E00D9ED96 /* dateUtils.swift in Sources */,
 				D67086202306EBEA006D9D7F /* RMProfileViewController.swift in Sources */,
 				2BA3B89623703679003473C6 /* RMReportView.swift in Sources */,
+				2B1C78D023866595006750E6 /* RMBaseInfoAPI.swift in Sources */,
 				D67665D422A50FD8009C9C6A /* RMCaptureViewController.m in Sources */,
 				D652275F22BB806B00C273E1 /* RMPlayer.swift in Sources */,
 				D6B73D3722FB03E700CC12CA /* RMMessageParams.swift in Sources */,
@@ -1212,7 +1220,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.13;
+				MARKETING_VERSION = 1.0.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1250,7 +1258,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.13;
+				MARKETING_VERSION = 1.0.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = MeetYou;

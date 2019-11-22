@@ -7,6 +7,7 @@
 //
 
 #import "RMLikeFlagAPI.h"
+#import "RMNetworkAPIHost.h"
 
 @implementation RMLikeFlagAPIData
 
@@ -32,7 +33,7 @@
 }
 
 -(NSString*)requestPath{
-    return [NSString stringWithFormat:@"/api/%@/match",_userId];//以/开头;
+    return [NSString stringWithFormat:@"%@/%@/match",RMNetworkAPIHost.apiPath,_userId];//以/开头;
 }
 
 -(NSDictionary*)parameters{

@@ -10,6 +10,11 @@ import UIKit
 
 @objcMembers
 
+class RMPurchaseCheckAPIData :NSObject {
+    var recharged:Bool = false
+}
+
+@objcMembers
 class RMPurchaseCheckAPI: NSObject,RMNetworkAPI {
     
     var receiptData:String
@@ -37,7 +42,7 @@ class RMPurchaseCheckAPI: NSObject,RMNetworkAPI {
     }
     
     func requestPath() -> String! {
-        return "/api/rechargeRecord"
+        return "\(RMNetworkAPIHost.apiPath)/rechargeRecord"
     }
     
     func method() -> RMHttpMethod {
@@ -48,5 +53,18 @@ class RMPurchaseCheckAPI: NSObject,RMNetworkAPI {
         return .data
     }
     
+    func adoptResponse(_ response: RMNetworkResponse<AnyObject>!) -> RMNetworkResponse<AnyObject>! {
+        
+        if let responseObject = response?.responseObject as! Dictionary<String,AnyObject>?{
+            let dataDict = responseObject["data"] as? Dictionary<String,Any>
+            if let dict = dataDict{
+                let data = RMPurchaseCheckAPIData()
+                data.recharged = dict["recharged"] as? Bool ?? false
+                return RMNetworkResponse(responseObject: data)
+            }
+            
+        }
+        return RMNetworkResponse(responseObject: response.responseObject)
+    }
     
 }

@@ -7,6 +7,7 @@
 //
 
 #import "RMRegisterAPI.h"
+#import "RMNetworkAPIHost.h"
 
 @implementation RMRegisterAPIData
 
@@ -34,7 +35,7 @@
 }
 
 -(NSString*)requestPath{
-	return [NSString stringWithFormat:@"/api/%@/create",_userId];//以/开头;
+	return [NSString stringWithFormat:@"%@/%@/create",RMNetworkAPIHost.apiPath,_userId];//以/开头;
 }
 
 -(NSDictionary*)parameters{

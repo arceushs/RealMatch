@@ -10,4 +10,12 @@
 
 @implementation RMNetworkAPIHost
 
++(NSString *)apiHost{
+    return @"https://www.4match.top";
+}
+
++(NSString *)apiPath{
+    return @"/api/test";
+}
+
 @end

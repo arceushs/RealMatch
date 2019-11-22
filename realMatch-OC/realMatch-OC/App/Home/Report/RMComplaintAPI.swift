@@ -39,7 +39,7 @@ class RMComplaintAPI: NSObject, RMNetworkAPI{
     }
     
     func requestPath() -> String! {
-        return "/api/complaint"
+        return "\(RMNetworkAPIHost.apiPath)/complaint"
     }
     
     func method() -> RMHttpMethod {

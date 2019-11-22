@@ -7,6 +7,7 @@
 //
 
 #import "RMFetchHomeVideoAPI.h"
+#import "RMNetworkAPIHost.h"
 
 @implementation RMFetchHomeVideoAPIModel
 
@@ -74,7 +75,7 @@
 }
 
 -(NSString*)requestPath{
-    return @"/api/home";//以/开头;
+    return [NSString stringWithFormat:@"%@/home",RMNetworkAPIHost.apiPath];
 }
 
 -(NSDictionary*)parameters{

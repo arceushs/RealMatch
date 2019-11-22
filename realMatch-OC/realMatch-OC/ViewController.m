@@ -36,6 +36,7 @@
     [Router setNavigationVC:self.navigationController];
     NSString* userId = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-userId"];
     NSString* cookie = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-cookie"];
+    
     if(userId != nil&&cookie!=nil){
         [RMUserCenter shared].userId = userId;
         [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];

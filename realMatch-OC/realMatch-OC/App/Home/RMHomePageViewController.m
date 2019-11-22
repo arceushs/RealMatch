@@ -58,12 +58,23 @@
     
     self.noCardHintView.hidden = YES;
     
+    RMBaseInfoAPI *baseAPI = [[RMBaseInfoAPI alloc] initWithUserId:[RMUserCenter shared].userId];
+    [[RMNetworkManager shareManager] request:baseAPI completion:^(RMNetworkResponse *response) {
+        if (response.error) {
+            return ;
+        }
+
+        RMBaseInfoAPIData *data = (RMBaseInfoAPIData *)response.responseObject;
+        [RMUserCenter shared].userIsVip = data.recharged;
+        [RMUserCenter shared].anormaly = data.isAnomaly;
+    }];
+
     RMFetchDetailAPI* detailAPI = [[RMFetchDetailAPI alloc]initWithUserId:[RMUserCenter shared].userId];
     [[RMNetworkManager shareManager] request:detailAPI completion:^(RMNetworkResponse *response) {
         if(response.error){
             return;
         }
-        
+
         RMFetchDetailAPIData* data =(RMFetchDetailAPIData*) response.responseObject;
         [RMUserCenter shared].registerName = data.name;
         [RMUserCenter shared].registerEmail = data.email;
@@ -75,7 +86,17 @@
     _cardVC1.routeToDetailBlock = ^{
         if([weakSelf.currentCardVC.matchedUserId length] <= 0)
             return;
-        [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:@{@"userId":weakSelf.currentCardVC.matchedUserId}];
+        RouterAdopter * adopter = [[RouterAdopter alloc] init];
+        adopter.vcName = @"RMHomePageDetailViewController";
+        adopter.params = @{@"userId":weakSelf.currentCardVC.matchedUserId};
+        adopter.routerAdopterCallback = ^(NSDictionary *dict){
+            if([((NSNumber *)dict[@"like"]) boolValue]){
+                [weakSelf likeButtonClicked:nil];
+            }else{
+                [weakSelf dislikeButtonClicked:nil];
+            }
+        };
+        [[Router shared] routerTo:adopter];
     };
     _cardVC1.noCardHintBlock = ^{
         weakSelf.noCardHintView.hidden = NO;
@@ -120,9 +141,19 @@
     if(self.currentCardVC == _cardVC1){
         _cardVC2 = [[RMHomeCardViewController alloc]init];
         _cardVC2.routeToDetailBlock = ^{
-            if([weakSelf.currentCardVC.matchedUserId length]<0)
+            if([weakSelf.currentCardVC.matchedUserId length]<=0)
                 return;
-            [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:@{@"userId":weakSelf.currentCardVC.matchedUserId}];
+            RouterAdopter * adopter = [[RouterAdopter alloc] init];
+            adopter.vcName = @"RMHomePageDetailViewController";
+            adopter.params = @{@"userId":weakSelf.currentCardVC.matchedUserId};
+            adopter.routerAdopterCallback = ^(NSDictionary *dict){
+                if([((NSNumber *)dict[@"like"]) boolValue]){
+                    [weakSelf likeButtonClicked:nil];
+                }else{
+                    [weakSelf dislikeButtonClicked:nil];
+                }
+            };
+            [[Router shared] routerTo:adopter];
         };
         _cardVC2.noCardHintBlock = ^{
             weakSelf.noCardHintView.hidden = NO;
@@ -147,9 +178,19 @@
     }else{
         _cardVC1 = [[RMHomeCardViewController alloc]init];
         _cardVC1.routeToDetailBlock = ^{
-            if([weakSelf.currentCardVC.matchedUserId length]<0)
+            if([weakSelf.currentCardVC.matchedUserId length]<=0)
                 return;
-            [[Router shared] routerTo:@"RMHomePageDetailViewController" parameter:@{@"userId":weakSelf.currentCardVC.matchedUserId}];
+            RouterAdopter * adopter = [[RouterAdopter alloc] init];
+            adopter.vcName = @"RMHomePageDetailViewController";
+            adopter.params = @{@"userId":weakSelf.currentCardVC.matchedUserId};
+            adopter.routerAdopterCallback = ^(NSDictionary *dict){
+                if([((NSNumber *)dict[@"like"]) boolValue]){
+                    [weakSelf likeButtonClicked:nil];
+                }else{
+                    [weakSelf dislikeButtonClicked:nil];
+                }
+            };
+            [[Router shared] routerTo:adopter];
         };
         _cardVC2.noCardHintBlock = ^{
             weakSelf.noCardHintView.hidden = NO;
@@ -199,6 +240,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
 -(void)viewWillLayoutSubviews{
@@ -207,6 +249,7 @@
 
 -(void)viewDidDisappear:(BOOL)animated{
     [SVProgressHUD dismiss];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (IBAction)messageButtonClicked:(id)sender {
@@ -216,6 +259,7 @@
 - (IBAction)profileButtonClicked:(id)sender {
     [[Router shared] routerTo:@"RMProfileViewController" parameter:nil];
 }
+
 
 //- (void)transitionWithType:(NSString *) type WithSubtype:(NSString *) subtype ForView : (UIView *) view {
 //    CATransition *animation = [CATransition animation];
