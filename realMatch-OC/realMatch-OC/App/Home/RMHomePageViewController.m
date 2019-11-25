@@ -58,16 +58,16 @@
     
     self.noCardHintView.hidden = YES;
     
-    RMBaseInfoAPI *baseAPI = [[RMBaseInfoAPI alloc] initWithUserId:[RMUserCenter shared].userId];
-    [[RMNetworkManager shareManager] request:baseAPI completion:^(RMNetworkResponse *response) {
-        if (response.error) {
-            return ;
-        }
-
-        RMBaseInfoAPIData *data = (RMBaseInfoAPIData *)response.responseObject;
-        [RMUserCenter shared].userIsVip = data.recharged;
-        [RMUserCenter shared].anormaly = data.isAnomaly;
-    }];
+//    RMBaseInfoAPI *baseAPI = [[RMBaseInfoAPI alloc] initWithUserId:[RMUserCenter shared].userId];
+//    [[RMNetworkManager shareManager] request:baseAPI completion:^(RMNetworkResponse *response) {
+//        if (response.error) {
+//            return ;
+//        }
+//
+//        RMBaseInfoAPIData *data = (RMBaseInfoAPIData *)response.responseObject;
+//        [RMUserCenter shared].userIsVip = data.recharged;
+//        [RMUserCenter shared].anormaly = data.isAnomaly;
+//    }];
 
     RMFetchDetailAPI* detailAPI = [[RMFetchDetailAPI alloc]initWithUserId:[RMUserCenter shared].userId];
     [[RMNetworkManager shareManager] request:detailAPI completion:^(RMNetworkResponse *response) {
@@ -79,6 +79,8 @@
         [RMUserCenter shared].registerName = data.name;
         [RMUserCenter shared].registerEmail = data.email;
         [RMUserCenter shared].avatar = data.avatar;
+        [RMUserCenter shared].userIsVip = data.recharged;
+        [RMUserCenter shared].anormaly = data.isAnomaly;
     }];
     
     _cardVC1 = [[RMHomeCardViewController alloc]init];

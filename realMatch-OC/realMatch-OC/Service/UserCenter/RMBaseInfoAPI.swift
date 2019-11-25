@@ -53,24 +53,24 @@ class RMBaseInfoAPI: NSObject ,RMNetworkAPI{
     }
     
     func adoptResponse(_ response: RMNetworkResponse<AnyObject>!) -> RMNetworkResponse<AnyObject>! {
-        if response.error != nil {
-            return RMNetworkResponse(error: response.error)
+        if let dict = response.responseObject as? Dictionary<String,Any> {
+            let data:RMBaseInfoAPIData = RMBaseInfoAPIData()
+            
+            let dataDict = dict["data"]
+            if let dataDict = dataDict as AnyObject?{
+                data.userId = "\(dataDict["id"] as? Int ?? 0)"
+                data.name = dataDict["name"] as? String ?? ""
+                data.email = dataDict["email"] as? String ?? ""
+                data.phone = dataDict["phone"] as? String ?? ""
+                data.sex = dataDict["sex"] as? Int ?? 1
+                data.age = dataDict["age"] as? Int ?? 26
+                data.area = dataDict["area"] as? String ?? ""
+                data.recharged = dataDict["recharged"] as? Bool ?? false
+                data.isAnomaly = dataDict["is_anomaly"] as? Bool ?? false
+            }
+            return RMNetworkResponse(responseObject: data)
         }
+        return response
         
-        var data:RMBaseInfoAPIData = RMBaseInfoAPIData()
-        var dict = response.responseObject as! Dictionary<String,Any>
-        var dataDict = dict["data"]
-        if let dataDict = dataDict as AnyObject?{
-            data.userId = "\(dataDict["id"] as? Int ?? 0)"
-            data.name = dataDict["name"] as? String ?? ""
-            data.email = dataDict["email"] as? String ?? ""
-            data.phone = dataDict["phone"] as? String ?? ""
-            data.sex = dataDict["sex"] as? Int ?? 1
-            data.age = dataDict["age"] as? Int ?? 26
-            data.area = dataDict["area"] as? String ?? ""
-            data.recharged = dataDict["recharged"] as? Bool ?? false
-            data.isAnomaly = dataDict["is_anomaly"] as? Bool ?? false
-        }
-        return RMNetworkResponse(responseObject: data)
     }
 }

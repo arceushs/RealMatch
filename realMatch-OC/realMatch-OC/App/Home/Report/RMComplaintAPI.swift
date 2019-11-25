@@ -51,14 +51,15 @@ class RMComplaintAPI: NSObject, RMNetworkAPI{
     }
     
     func adoptResponse(_ response: RMNetworkResponse<AnyObject>!) -> RMNetworkResponse<AnyObject>! {
-        var data:RMComplaintAPIData = RMComplaintAPIData()
         
-        if response.error != nil {
-            return RMNetworkResponse(error: response.error);
+        
+        if let dict = response.responseObject as? Dictionary<String,Any> {
+            var data:RMComplaintAPIData = RMComplaintAPIData()
+            data.code = dict["code"] as! Int
+            return RMNetworkResponse(responseObject: data)
         }
         
-        var dict = response.responseObject as! Dictionary<String, Any>
-        data.code = dict["code"] as! Int
-        return RMNetworkResponse(responseObject: data)
+        return response;
+        
     }
 }

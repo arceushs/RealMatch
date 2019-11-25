@@ -89,6 +89,8 @@
         data.age = [[dataDict objectForKey:@"age"] intValue];
         data.area = [dataDict objectForKey:@"area"];
         data.avatar = [dataDict objectForKey:@"avatar"];
+        data.recharged = [[dataDict objectForKey:@"recharged"] boolValue];
+        data.isAnomaly = [dataDict[@"is_anomaly"] boolValue];
     }
     
     return [[RMNetworkResponse alloc]initWithResponseObject:data];

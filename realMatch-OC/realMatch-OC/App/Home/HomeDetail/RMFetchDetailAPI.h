@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSString* avatar;
 @property (nonatomic,assign) CGFloat height;
 @property (nonatomic,assign) CGFloat width;
+@property (nonatomic,assign) BOOL recharged;
+@property (nonatomic,assign) BOOL isAnomaly;
 
 @end
 
