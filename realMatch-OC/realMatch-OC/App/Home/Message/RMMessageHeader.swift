@@ -85,6 +85,7 @@ import UIKit
                     if data is RMFetchLikesMeAPIData{
                         if data?.likesMeArr?.count ?? 0 > 0 {
                             self.likesMeArr = data!.likesMeArr
+                            self.labelTitle.text = "Likes me(\(self.likesMeArr!.count))"
                             collectionView .reloadData()
                         }
                     }

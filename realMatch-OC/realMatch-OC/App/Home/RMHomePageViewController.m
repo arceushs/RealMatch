@@ -242,7 +242,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
 -(void)viewWillLayoutSubviews{
@@ -251,7 +250,6 @@
 
 -(void)viewDidDisappear:(BOOL)animated{
     [SVProgressHUD dismiss];
-    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (IBAction)messageButtonClicked:(id)sender {

@@ -58,18 +58,17 @@ class RMProfileViewController: UIViewController,RouterController{
         if let userId = RMUserCenter.shared.userId{
             let detailAPI = RMFetchDetailAPI(userId: userId)
             RMNetworkManager.share()?.request(detailAPI, completion: { (response) in
-                if response?.error != nil{
-                    return
-                }
-                let data = response?.responseObject as? RMFetchDetailAPIData
-                RMUserCenter.shared.registerSex = data?.sex
-                RMUserCenter.shared.registerName = data?.name
-                RMUserCenter.shared.registerEmail = data?.email
-                RMUserCenter.shared.avatar = data?.avatar
-                
-                if let avatar = data?.avatar{
-                    self.avatarImageView?.sd_setImage(with: URL(string: avatar), placeholderImage: UIImage(named: "default.jpeg"), options: .refreshCached, context: nil)
-                    self.nameLabel.text = RMUserCenter.shared.registerName
+                if let responseObject = response?.responseObject{
+                    if let data = responseObject as? RMFetchDetailAPIData{
+                        RMUserCenter.shared.registerSex = data.sex
+                        RMUserCenter.shared.registerName = data.name
+                        RMUserCenter.shared.registerEmail = data.email
+                        RMUserCenter.shared.avatar = data.avatar
+                        
+                        self.avatarImageView?.sd_setImage(with: URL(string: data.avatar), placeholderImage: UIImage(named: "default.jpeg"), options: .refreshCached, context: nil)
+                        self.nameLabel.text = RMUserCenter.shared.registerName
+                        
+                    }
                 }
             })
         }

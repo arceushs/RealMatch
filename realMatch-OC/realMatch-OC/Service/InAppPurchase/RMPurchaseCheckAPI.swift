@@ -54,8 +54,7 @@ class RMPurchaseCheckAPI: NSObject,RMNetworkAPI {
     }
     
     func adoptResponse(_ response: RMNetworkResponse<AnyObject>!) -> RMNetworkResponse<AnyObject>! {
-        
-        if let responseObject = response?.responseObject as! Dictionary<String,AnyObject>?{
+        if let responseObject = response.responseObject as? Dictionary<String,Any> {
             let dataDict = responseObject["data"] as? Dictionary<String,Any>
             if let dict = dataDict{
                 let data = RMPurchaseCheckAPIData()

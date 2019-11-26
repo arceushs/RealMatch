@@ -61,7 +61,7 @@
         NSMutableArray<RMFetchLikesMeModel*>* modelsArr = [NSMutableArray array];
         for(NSDictionary* dict in lists){
             RMFetchLikesMeModel* model = [[RMFetchLikesMeModel alloc]init];
-            model.userId = dict[@"userId"];
+            model.userId = [NSString stringWithFormat:@"%i",[dict[@"userId"] intValue]];
             model.avatar = dict[@"avatar"];
             [modelsArr addObject:model];
         }
