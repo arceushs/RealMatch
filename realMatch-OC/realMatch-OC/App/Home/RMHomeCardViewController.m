@@ -48,13 +48,16 @@
     __weak typeof(self) weakSelf = self;
     [SVProgressHUD show];
     [[RMNetworkManager shareManager] request:fetchHomeVideoAPI completion:^(RMNetworkResponse *response) {
+        if (response.error){
+            return ;
+        }
         RMFetchHomeVideoAPIData* data = (RMFetchHomeVideoAPIData*)response.responseObject;
         RMFetchHomeVideoAPIModel* currentModel = data.currentModel;
         if([[RMUserCenter shared].matchedUserIdArr containsObject:currentModel.userId]){
             [weakSelf getHomeData];
             return;
         }
-        
+
         if(currentModel == nil){
             if(self.noCardHintBlock){
                 self.noCardHintBlock();
