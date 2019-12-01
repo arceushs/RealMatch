@@ -57,6 +57,18 @@
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"global-pushToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+
+    if (@available(iOS 13,*)) {
+        const unsigned *tokenBytes = (const unsigned *)[deviceToken bytes];
+        NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
+                              ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
+                              ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
+                              ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
+        [[NSUserDefaults standardUserDefaults] setObject:hexToken forKey:@"global-pushToken"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     NSLog(@"content---%@", token);
 }
 
