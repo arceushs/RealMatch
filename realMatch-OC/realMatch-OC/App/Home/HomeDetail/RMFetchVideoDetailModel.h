@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSString* name;
 @property (nonatomic,strong) NSString* extension;
 @property (nonatomic,strong) NSString* ossLocation;
+@property (nonatomic,assign) NSInteger uploadId;
 
 @end
 

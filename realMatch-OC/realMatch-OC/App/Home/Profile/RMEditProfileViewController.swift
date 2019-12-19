@@ -33,9 +33,15 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
     
     @IBOutlet weak var editProfileDetailTableView: UITableView!
     var videoArr:[RMFetchVideoDetailModel]?
+    var count = 0;
 
+    @IBOutlet weak var testEnviromentLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGest = UITapGestureRecognizer(target: self, action: #selector(testSwitchButtonClicked))
+        self.testEnviromentLabel.isUserInteractionEnabled = true
+        self.testEnviromentLabel.addGestureRecognizer(tapGest)
         
         self.editProfileDetailTableView.delegate = self
         self.editProfileDetailTableView.dataSource = self
@@ -60,7 +66,7 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                         for (i,model) in videoArr.enumerated(){
                             if i == 0{
                                 model.title = "About me";
-                                model.subtitle = "who are you, where are you from, yuor school, your job.";
+                                model.subtitle = "who are you, where are you from, your school, your job.";
                             }else if i == 1{
                                 model.title = "Interests";
                                 model.subtitle = "what make you differ";
@@ -133,6 +139,11 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
 
                         }
                         Router.shared()?.router(to: adopter)
+                    case .typeDelete:
+                        let deleteAPI = RMDeleteFileAPI(uploadId: "\(uploadId: model.videoImg.uploadId)")
+                        RMNetworkManager.share()?.request(deleteAPI, completion: { (response) in
+                            
+                        })
                     default:
                         let model = RMFetchVideoDetailModel()
                         self.videoArr?[indexPath.row] = model;
@@ -211,6 +222,16 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
 
         }
         
+    }
+    
+    @objc func testSwitchButtonClicked(_ sender: Any) {
+        count = count + 1
+        if count == 3 {
+            count = 0;
+            let currentEnviroment = UserDefaults.standard.bool(forKey: "testEnviroment")
+            UserDefaults.standard.set(!currentEnviroment, forKey: "testEnviroment")
+            SVProgressHUD.showSuccess(withStatus: "change success");
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -17,6 +17,7 @@
         self.name = @"";
         self.extension = @"";
         self.ossLocation = @"";
+        self.uploadId = -1;
     }
     return self;
 }
@@ -27,6 +28,7 @@
     self.name = dict[@"name"];
     self.extension = dict[@"extension"];
     self.ossLocation = dict[@"ossLocation"];
+    self.uploadId = [dict[@"uploadId"] integerValue];
 }
 
 -(void)parseFromArr:(NSArray *)arr{

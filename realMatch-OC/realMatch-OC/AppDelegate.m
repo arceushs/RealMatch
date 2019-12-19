@@ -107,8 +107,15 @@
     NSDictionary* apsDict = userInfo[@"aps"];
     NSString* avatar = apsDict[@"avatar"]?:@"";
     NSString* matchedUserId = apsDict[@"userId"]?:@"";
-    [[Router shared] routerTo:@"RMMatchedViewController" parameter:@{@"avatar":avatar,@"matchedUserId":matchedUserId}];
+    NSString *username = apsDict[@"messageFrom"]?:@"";
+    int pushType = [apsDict[@"pushType"] intValue];
+    if (pushType == 1) {
+        [[Router shared]routerTo:@"RMMessageDetailViewController" parameter:@{@"fromUser":[RMUserCenter shared].userId,@"toUser":matchedUserId,@"fromUserName":username,@"avatar":avatar}];
+    } else if (pushType == 2) {
+        [[Router shared] routerTo:@"RMMatchedViewController" parameter:@{@"matchedAvatar":avatar,@"matchedUserId":matchedUserId,@"matchedUsername":username}];
+    }
     completionHandler(UIBackgroundFetchResultNewData);
+
 }
 
 

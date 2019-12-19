@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RMEditProfileViewController" customModule="realMatch_OC" customModuleProvider="target">
             <connections>
                 <outlet property="editProfileDetailTableView" destination="mzI-ki-Kk1" id="cL3-wp-lXn"/>
+                <outlet property="testEnviromentLabel" destination="8ho-7d-Byy" id="zjO-aH-waM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4s2-sJ-02B">
-                    <rect key="frame" x="0.0" y="20" width="340" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ho-7d-Byy">
                             <rect key="frame" x="129.5" y="12.5" width="81" height="19.5"/>
@@ -41,13 +40,6 @@
                                 <action selector="backButtonClicked:" destination="-1" eventType="touchUpInside" id="Ixr-MN-iAB"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CsG-fE-gkK">
-                            <rect key="frame" x="294" y="7.5" width="30" height="29"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal">
-                                <color key="titleColor" red="0.98039215690000003" green="0.0" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEI-Hs-TR7">
                             <rect key="frame" x="0.0" y="43" width="340" height="1"/>
                             <color key="backgroundColor" red="0.92156862745098034" green="0.92549019607843142" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,9 +51,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="BCM-oK-s65" firstAttribute="leading" secondItem="4s2-sJ-02B" secondAttribute="leading" constant="16" id="0iL-iT-bzw"/>
-                        <constraint firstAttribute="trailing" secondItem="CsG-fE-gkK" secondAttribute="trailing" constant="16" id="Rfu-Wt-TwX"/>
                         <constraint firstItem="8ho-7d-Byy" firstAttribute="centerX" secondItem="4s2-sJ-02B" secondAttribute="centerX" id="TDR-Bi-kN0"/>
-                        <constraint firstItem="CsG-fE-gkK" firstAttribute="centerY" secondItem="4s2-sJ-02B" secondAttribute="centerY" id="VLS-Eq-ggg"/>
                         <constraint firstItem="8ho-7d-Byy" firstAttribute="centerY" secondItem="4s2-sJ-02B" secondAttribute="centerY" id="fB2-Jg-dRW"/>
                         <constraint firstAttribute="trailing" secondItem="ZEI-Hs-TR7" secondAttribute="trailing" id="kSA-C5-a0q"/>
                         <constraint firstItem="ZEI-Hs-TR7" firstAttribute="leading" secondItem="4s2-sJ-02B" secondAttribute="leading" id="l7b-c7-nIs"/>
@@ -71,7 +61,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mzI-ki-Kk1">
-                    <rect key="frame" x="0.0" y="64" width="340" height="708"/>
+                    <rect key="frame" x="0.0" y="44" width="340" height="728"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>

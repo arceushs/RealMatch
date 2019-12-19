@@ -15,7 +15,13 @@
 }
 
 +(NSString *)apiPath{
-    return @"/api/test";
+    BOOL currentEnviroment = [[NSUserDefaults standardUserDefaults] boolForKey:@"testEnviroment"];
+    if(!currentEnviroment) {
+        return @"/api";
+    }else{
+        return @"/api/test";
+    }
+    
 }
 
 @end

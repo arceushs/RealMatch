@@ -50,7 +50,7 @@
     RMFetchLikesMeAPIData* data = [[RMFetchLikesMeAPIData alloc]init];
     
     if(response.error){
-        return [[RMNetworkResponse alloc]initWithResponseObject:data];
+        return [[RMNetworkResponse alloc]initWithError:response.error];
     }
     
     NSDictionary * responseObject = response.responseObject;

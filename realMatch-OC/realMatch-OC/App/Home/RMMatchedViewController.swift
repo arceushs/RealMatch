@@ -18,6 +18,7 @@ import UIKit
     @IBOutlet weak var myAvatarImageView: UIImageView!
     var matchedUserId:String = ""
     var matchedAvatar:String = ""
+    var matchedUsername:String = ""
     
     required init!(command adopter: RouterAdopter!) {
         super.init(nibName: nil, bundle: nil)
@@ -27,6 +28,7 @@ import UIKit
         super.init(nibName: nil, bundle: nil)
         self.matchedUserId = "\(params["matchedUserId"] as? Int ?? 0)";
         self.matchedAvatar = params["matchedAvatar"] as? String ?? "";
+        self.matchedUsername = params["matchedUsername"] as? String ?? "";
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,12 +59,9 @@ import UIKit
         
         let detailAPI = RMFetchDetailAPI(userId: RMUserCenter.shared.userId ?? "")
         RMNetworkManager.share()?.request(detailAPI, completion: { (response) in
-            if ((response?.error) != nil){
-                return
+            if let data = response?.responseObject as? RMFetchDetailAPIData {
+                self.myAvatarImageView.sd_setImage(with: URL(string: data.avatar), placeholderImage: UIImage(named: "default.jpeg"), options: .refreshCached, context: nil)
             }
-            let data:RMFetchDetailAPIData = response?.responseObject as! RMFetchDetailAPIData
-            self.myAvatarImageView.sd_setImage(with: URL(string: data.avatar), placeholderImage: UIImage(named: "default.jpeg"), options: .refreshCached, context: nil)
-        
         })
         // Do any additional setup after loading the view.
     }
@@ -72,6 +71,9 @@ import UIKit
     }
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func sendMessageButtonClicked(_ sender: Any) {
+        Router.shared()?.router(to: "RMMessageDetailViewController", parameter: ["fromUser":RMUserCenter.shared.userId,"toUser":self.matchedUserId,"fromUserName":self.matchedUsername,"avatar":self.matchedAvatar])
     }
     /*
     // MARK: - Navigation

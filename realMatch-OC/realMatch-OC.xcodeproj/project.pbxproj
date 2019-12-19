@@ -10,6 +10,7 @@
 		1C0EAEA422D02F5E00036DD5 /* RMMessageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0EAEA322D02F5E00036DD5 /* RMMessageHeader.swift */; };
 		1C0EAEA722D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0EAEA522D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift */; };
 		1C0EAEA822D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0EAEA622D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.xib */; };
+		1C1DF77C239CB44200697290 /* RMDeleteFileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1DF77B239CB44200697290 /* RMDeleteFileAPI.swift */; };
 		1C381DED22E2D3160060DE69 /* RMFetchHomeVideoAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C381DEC22E2D3160060DE69 /* RMFetchHomeVideoAPI.m */; };
 		1C381DF122E324B60060DE69 /* RMHomeCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C381DEF22E324B60060DE69 /* RMHomeCardViewController.m */; };
 		1C381DF222E324B60060DE69 /* RMHomeCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C381DF022E324B60060DE69 /* RMHomeCardViewController.xib */; };
@@ -156,6 +157,7 @@
 		1C0EAEA322D02F5E00036DD5 /* RMMessageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMessageHeader.swift; sourceTree = "<group>"; };
 		1C0EAEA522D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMessageHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		1C0EAEA622D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMMessageHeaderCollectionViewCell.xib; sourceTree = "<group>"; };
+		1C1DF77B239CB44200697290 /* RMDeleteFileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDeleteFileAPI.swift; sourceTree = "<group>"; };
 		1C381DEB22E2D3160060DE69 /* RMFetchHomeVideoAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMFetchHomeVideoAPI.h; sourceTree = "<group>"; };
 		1C381DEC22E2D3160060DE69 /* RMFetchHomeVideoAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMFetchHomeVideoAPI.m; sourceTree = "<group>"; };
 		1C381DEE22E324B60060DE69 /* RMHomeCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMHomeCardViewController.h; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				D618DC43230AAE2A00F34819 /* RMSettingHeader.xib */,
 				D618DC41230AAE1C00F34819 /* RMSettingFooter.xib */,
 				D618DC3F230AADB300F34819 /* RMSettingFooter.swift */,
+				1C1DF77B239CB44200697290 /* RMDeleteFileAPI.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -990,6 +993,7 @@
 				D665EC5D22A79D36003FB7B8 /* UIDevice+RealMatch.m in Sources */,
 				D6BF467522969DEB00C82D98 /* LoginAndRegisterViewController.m in Sources */,
 				D652276322BB8AEE00C273E1 /* RMVideoPlayViewController.m in Sources */,
+				1C1DF77C239CB44200697290 /* RMDeleteFileAPI.swift in Sources */,
 				1CFCE11722BF1B380025BC0B /* RMMessageViewController.m in Sources */,
 				2BA3C66F237169DA003473C6 /* RMPurchaseCheckAPI.swift in Sources */,
 				D659140922B793E50098F458 /* RMFetchVideoDetailModel.m in Sources */,
@@ -1220,7 +1224,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1258,7 +1262,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.17;
+				MARKETING_VERSION = 1.0.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

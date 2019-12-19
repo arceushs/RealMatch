@@ -97,7 +97,7 @@
     RMFetchHomeVideoAPIData* data = [[RMFetchHomeVideoAPIData alloc]init];
     
     if(response.error){
-        return [[RMNetworkResponse alloc]initWithResponseObject:response.error];
+        return [[RMNetworkResponse alloc]initWithError:response.error];
     }
     
     NSDictionary * responseObject = response.responseObject;

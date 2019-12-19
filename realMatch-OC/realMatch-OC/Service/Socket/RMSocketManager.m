@@ -9,6 +9,7 @@
 #import "RMSocketManager.h"
 #import "SocketRocket.h"
 #import "SVProgressHUD.h"
+#import "RMNetworkAPIHost.h"
 
 @import SocketIO;
 
@@ -39,7 +40,8 @@
 }
 
 -(void)connectWithUserId:(NSString*)userId{
-    NSURL* url = [[NSURL alloc] initWithString:@"https://www.4match.top/socket.io?userId=111"];
+    NSString* urlStr = [NSString stringWithFormat:@"%@/socket.io?userId=111",RMNetworkAPIHost.apiHost];
+    NSURL* url = [[NSURL alloc] initWithString:urlStr];
     
     _manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"forceWebsockets": @YES,@"connectParams":@{@"userId":userId}}];
     

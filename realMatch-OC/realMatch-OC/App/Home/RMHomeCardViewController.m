@@ -49,6 +49,10 @@
     [SVProgressHUD show];
     [[RMNetworkManager shareManager] request:fetchHomeVideoAPI completion:^(RMNetworkResponse *response) {
         if (response.error){
+            if(self.noCardHintBlock){
+                self.noCardHintBlock();
+                [SVProgressHUD dismiss];
+            }
             return ;
         }
         RMFetchHomeVideoAPIData* data = (RMFetchHomeVideoAPIData*)response.responseObject;
