@@ -50,7 +50,18 @@
     self.messageArr = [NSMutableArray array];
     
     [self.messageTableView registerNib:[UINib nibWithNibName:@"RMMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"RMMessageTableViewCell"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purhcaseSuccess) name:@"RMPurchaseSuccess" object:nil];
     
+    [self refreshView];
+    
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)purhcaseSuccess {
+    [self refreshView];
+}
+
+- (void)refreshView {
     RMFetchLikesMeAPI* likesMeAPI = [[RMFetchLikesMeAPI alloc] initWithUserId:_userId];
     [[RMNetworkManager shareManager] request:likesMeAPI completion:^(RMNetworkResponse *response) {
         RMFetchLikesMeAPIData* data = [[RMFetchLikesMeAPIData alloc]init];
@@ -74,10 +85,6 @@
             self.messageTableView.tableFooterView = footer;
         }
     }];
-    
-    
-
-    // Do any additional setup after loading the view from its nib.
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -92,7 +99,7 @@
     if([self.messageArr count]>0){
         UIView* view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 60)];
         UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(16, 40, 300, 26)];
-        label.text = [NSString stringWithFormat:@"Message(%li)",[self.messageArr count]];
+        label.text = [NSString stringWithFormat:@"Message(%lu)",[self.messageArr count]];
         [view addSubview:label];
         return view;
     }else{
@@ -113,7 +120,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RMMessageTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMMessageTableViewCell"];
     RMFetchMessageModel* model = self.messageArr[indexPath.row];
-    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+    [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"default.jpeg"]];
     cell.titleLabel.text = model.name;
     cell.subtitleLabel.text = model.msg;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

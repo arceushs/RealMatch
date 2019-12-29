@@ -49,17 +49,16 @@ class RMDatePickerViewController: UIViewController,RouterController {
     }
     
     @IBAction func continueClick(_ sender: Any) {
-        if self.birthdayTextField.text?.count ?? 0 > 0{
+        let interval = NSDate().timeIntervalSince1970 - self.datePicker.date.timeIntervalSince1970
+        if Double(interval) >= Double(18 * 365 * 24 * 60 * 60) && self.birthdayTextField.text?.count ?? 0 > 0 {
             Router.shared()?.router(to: "RMGenderViewController", parameter: nil)
             self.hintView.isHidden = true
             RMUserCenter.shared.registerBirth = self.birthdayTextField.text
             self.lineView.backgroundColor = UIColor(string: "323640")
-        }else{
+        } else {
             self.hintView.isHidden = false
             self.lineView.backgroundColor = self.hintView.textColor
         }
-        
-        
     }
     /*
     // MARK: - Navigation

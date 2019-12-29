@@ -12,12 +12,16 @@
 #import "PurchaseManager.h"
 @interface RMPurchaseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,RouterController>
 @property (weak, nonatomic) IBOutlet UICollectionView *bannerCollectionView;
-@property (strong,nonatomic) NSMutableArray* configBlocks;
+@property (strong,nonatomic) NSArray* configBlocks;
 @property (strong,nonatomic) UIView* selectedView;
 
+@property (assign, nonatomic) NSInteger index;
 @end
 
 @implementation RMPurchaseViewController
+-(void)dealloc {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -98,10 +102,30 @@
 
     };
     
-    self.configBlocks = @[configBlock1,configBlock2,configBlock3];
-
+    self.configBlocks = @[configBlock1,configBlock2,configBlock3,configBlock1];
+    self.bannerCollectionView.userInteractionEnabled = NO;
     [self tapGest:nil];
+
+    [self scrollBanner];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)scrollBanner{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.index == self.configBlocks.count - 1) {
+            self.index = 0;
+            [self.bannerCollectionView setContentOffset:CGPointMake(self.index * self.bannerCollectionView.frame.size.width, 0) animated:NO];
+            
+        }
+        self.index = self.index + 1;
+        [self.bannerCollectionView setContentOffset:CGPointMake(self.index * self.bannerCollectionView.frame.size.width, 0) animated:YES];
+//        if (self.index == self.configBlocks.count - 1) {
+//            self.index = 0;
+//            [self.bannerCollectionView setContentOffset:CGPointMake(self.index * self.bannerCollectionView.frame.size.width, 0) animated:NO];
+//
+//        }
+        [self scrollBanner];
+    });
 }
 
 
@@ -153,13 +177,14 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+    return self.configBlocks.count;
 }
 
 - (IBAction)continueButtonClicked:(id)sender {
     NSArray* premiumArr = [PurchaseManager shareManager].premiumArr;
     [[PurchaseManager shareManager] startPurchaseWithID:premiumArr[self.selectedView.tag-1]];
 }
+
 - (IBAction)backButtonClicked:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }

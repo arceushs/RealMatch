@@ -56,7 +56,46 @@
     CGImageRef image = [assetGen copyCGImageAtTime:time actualTime:&actualTime error:&error];
     UIImage* videoImage = [[UIImage alloc]initWithCGImage:image];
     CGImageRelease(image);
+    CGFloat width = videoImage.size.width > videoImage.size.height ? videoImage.size.width : videoImage.size.height;
+    videoImage = [self cutCenterImageSize:CGSizeMake(width, width) iMg:videoImage];
     return videoImage;
 }
 
+//传入size记得屏幕的1x的size
+
++ (UIImage *)cutCenterImageSize:(CGSize)size iMg:(UIImage *)img {
+    CGFloat scale = [UIScreen mainScreen].scale;
+    size.width = size.width*scale;
+    size.height = size.height *scale;
+    CGSize imageSize = img.size;
+    CGRect rect;
+    //根据图片的大小计算出图片中间矩形区域的位置与大小
+    if (imageSize.width > imageSize.height) {
+        float leftMargin = (imageSize.width - imageSize.height) *0.5;
+        rect = CGRectMake(leftMargin,0, imageSize.height, imageSize.height);
+    }else{
+        float topMargin = (imageSize.height - imageSize.width) *0.5;
+        rect = CGRectMake(0, topMargin, imageSize.width, imageSize.width);
+    }
+    CGImageRef imageRef = img.CGImage;
+
+    //截取中间区域矩形图片
+    CGImageRef imageRefRect = CGImageCreateWithImageInRect(imageRef, rect);
+    UIImage *tmp = [[UIImage alloc] initWithCGImage:imageRefRect];
+
+    CGImageRelease(imageRefRect);
+    UIGraphicsBeginImageContext(size);
+    CGRect rectDraw =CGRectMake(0,0, size.width, size.height);
+    [tmp drawInRect:rectDraw];
+
+    // 从当前context中创建一个改变大小后的图片
+
+    tmp = UIGraphicsGetImageFromCurrentImageContext();
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+
+    NSLog(@"tmp sizewidth is %f sizeHeight is %f",tmp.size.width,tmp.size.height);
+
+    return tmp;
+}
 @end
