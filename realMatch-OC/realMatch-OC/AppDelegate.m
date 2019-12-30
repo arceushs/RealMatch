@@ -105,17 +105,16 @@
         }
     }
     NSDictionary* apsDict = userInfo[@"aps"];
-    NSString* avatar = apsDict[@"avatar"]?:@"";
-    NSString* matchedUserId = apsDict[@"userId"]?:@"";
-    NSString *username = apsDict[@"messageFrom"]?:@"";
-    NSString *pushType = apsDict[@"pushType"] ?:@"";
+    NSString* avatar = userInfo[@"avatar"]?:@"";
+    NSNumber* matchedUserId = userInfo[@"userId"]?:@(0);
+    NSString *username = userInfo[@"messageFrom"]?:@"";
+    NSString *pushType = userInfo[@"pushType"] ?:@"";
     if ([pushType isEqualToString:@"1"]) {
         [[Router shared]routerTo:@"RMMessageDetailViewController" parameter:@{@"fromUser":[RMUserCenter shared].userId,@"toUser":matchedUserId,@"fromUserName":username,@"avatar":avatar}];
     } else if ([pushType isEqualToString:@"2"]) {
         [[Router shared] routerTo:@"RMMatchedViewController" parameter:@{@"matchedAvatar":avatar,@"matchedUserId":matchedUserId,@"matchedUsername":username}];
     }
     completionHandler(UIBackgroundFetchResultNewData);
-
 }
 
 
@@ -123,9 +122,13 @@
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
     NSDictionary* userInfo = notification.request.content.userInfo;
     NSDictionary* apsDict = userInfo[@"aps"];
-    NSString* avatar = apsDict[@"avatar"]?:@"";
-    NSString* matchedUserId = apsDict[@"userId"]?:@"";
-    [[Router shared] routerTo:@"RMMatchedViewController" parameter:@{@"matchedAvatar":avatar,@"matchedUserId":matchedUserId}];
+    NSString* avatar = userInfo[@"avatar"]?:@"";
+    NSString* matchedUserId = userInfo[@"userId"]?:@"";
+    NSString *username = userInfo[@"messageFrom"]?:@"";
+    NSString *pushType = userInfo[@"pushType"] ?:@"";
+    if ([pushType isEqualToString:@"2"]) {
+        [[Router shared] routerTo:@"RMMatchedViewController" parameter:@{@"matchedAvatar":avatar,@"matchedUserId":matchedUserId,@"matchedUsername":username}];
+    }
 }
 
 -(void)addRootVCToWindow{

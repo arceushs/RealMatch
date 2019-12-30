@@ -97,7 +97,14 @@
                                                };
                         
                         RMMessageDetail* messageDetail = [[RMMessageDetail alloc]init:dict];
-                        [[RMDatabaseManager shareManager] insertData:messageDetail];
+                        if([[RMDatabaseManager shareManager] insertData:messageDetail]){
+                            NSArray<id<RMSocketManagerDelegate>>* copyDelegates = [self.delegates copy];
+                            for (id<RMSocketManagerDelegate> delegate in copyDelegates) {
+                                if([delegate respondsToSelector:@selector(didReceiveMessage)]){
+                                    [delegate didReceiveMessage];
+                                }
+                            }
+                        }
                     }
                 }
             }

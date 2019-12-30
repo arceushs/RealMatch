@@ -36,7 +36,7 @@
 -(instancetype)initWithRouterParams:(NSDictionary *)params{
     if(self = [super init]){
         self.fromUserId = params[@"fromUser"];
-        self.toUserId = params[@"toUser"];
+        self.toUserId = [NSString stringWithFormat:@"%ld",[params[@"toUser"] intValue]];
         self.messageTitle = params[@"fromUserName"];
         self.avatar = params[@"avatar"];
     }

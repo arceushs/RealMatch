@@ -8,6 +8,7 @@
 
 #import "Router.h"
 
+
 @implementation RouterAdopter
 
 @end
@@ -89,6 +90,9 @@
                     if([self.navigationVC.viewControllers containsObject:targetVC]){
                         [self.navigationVC popToViewController:targetVC animated:YES];
                     }else{
+                        if ([[self.navigationVC.viewControllers lastObject] isKindOfClass:[targetVC class]]) {
+                            [self.navigationVC popViewControllerAnimated:NO];
+                        }
                         [self.navigationVC pushViewController:targetVC animated:animation];
                     }
                 }else{
@@ -122,7 +126,15 @@
                 }
                 
                 if(style == DisplayStylePush){
-                    [self.navigationVC pushViewController:targetVC animated:animation];
+                    if([self.navigationVC.viewControllers containsObject:targetVC]){
+                        [self.navigationVC popToViewController:targetVC animated:YES];
+                    }else{
+                        if ([[self.navigationVC.viewControllers lastObject] isKindOfClass:[targetVC class]]) {
+                            [self.navigationVC popViewControllerAnimated:NO];
+                        }
+                        
+                        [self.navigationVC pushViewController:targetVC animated:animation];
+                    }
                 }else{
                     targetVC.modalPresentationStyle = UIModalPresentationFullScreen;
                     [[self topMostController] presentViewController:targetVC animated:animation completion:nil];
@@ -132,6 +144,8 @@
         }
     }
 }
+
+
 
 -(UIViewController *) topMostController {
     UIViewController*topController = [UIApplication sharedApplication].keyWindow.rootViewController;

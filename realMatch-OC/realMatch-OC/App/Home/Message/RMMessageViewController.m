@@ -50,14 +50,11 @@
     self.messageArr = [NSMutableArray array];
     
     [self.messageTableView registerNib:[UINib nibWithNibName:@"RMMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"RMMessageTableViewCell"];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purhcaseSuccess) name:@"RMPurchaseSuccess" object:nil];
-    
-    [self refreshView];
-    
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)purhcaseSuccess {
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self refreshView];
 }
 
@@ -69,6 +66,8 @@
         if([data.likesMeArr count]>0){
             RMMessageHeader* header = [[RMMessageHeader alloc]initWithFrame:CGRectMake(0, 0, self.messageTableView.width, 160) likesMeArr:data.likesMeArr];
             self.messageTableView.tableHeaderView = header;
+        } else {
+            self.messageTableView.tableHeaderView = nil;
         }
         self.likesArr = [data.likesMeArr copy];
     }];
