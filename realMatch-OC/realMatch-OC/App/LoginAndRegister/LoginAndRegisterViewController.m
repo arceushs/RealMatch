@@ -14,6 +14,7 @@
 #import "RMSocketManager.h"
 
 @interface LoginAndRegisterViewController ()<AKFViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *termsAndPrivacyLabel;
 
 @end
 

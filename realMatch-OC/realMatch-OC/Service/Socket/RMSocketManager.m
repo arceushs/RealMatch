@@ -40,11 +40,10 @@
 }
 
 -(void)connectWithUserId:(NSString*)userId{
-    NSString* urlStr = [NSString stringWithFormat:@"%@/socket.io?userId=111",RMNetworkAPIHost.apiHost];
+    NSString* urlStr = [NSString stringWithFormat:@"%@/socket.io",RMNetworkAPIHost.apiHost];
     NSURL* url = [[NSURL alloc] initWithString:urlStr];
     
     _manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"forceWebsockets": @YES,@"connectParams":@{@"userId":userId}}];
-    
     SocketIOClient* socket = _manager.defaultSocket;
     
     [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
@@ -111,6 +110,7 @@
             [socket emit:@"ackOffLineMsg" with:@[@{@"userId":userId}]];
         }
     }];
+    
     
     [socket connect];
 }
