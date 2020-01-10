@@ -61,14 +61,14 @@
         for(int i = 0;i<self.videoArr.count;i++){
             RMFetchVideoDetailModel* model = self.videoArr[i];
             if(i == 0){
-                model.title = @"About me";
-                model.subtitle = @"who are you, where are you from, yuor school, your job.";
+                model.title = @"";
+                model.subtitle = @" ";
             }else if(i == 1){
-                model.title = @"Interests";
-                model.subtitle = @"what make you differ";
+                model.title = @"";
+                model.subtitle = @" ";
             }else if(i == 2){
-                model.title = @"My friends";
-                model.subtitle = @"Who do you like to be with";
+                model.title = @"";
+                model.subtitle = @"  ";
             }
         }
         [self.videoListTableView reloadData];
