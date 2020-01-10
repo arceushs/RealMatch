@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1FE49723AF5AC92908080D38F29AF744"
+               BlueprintIdentifier = "DB7C9B2FB39FF8907CC0CFC1156AEAAF"
                BuildableName = "libAHTimer.a"
                BlueprintName = "AHTimer"
                ReferencedContainer = "container:Pods.xcodeproj">

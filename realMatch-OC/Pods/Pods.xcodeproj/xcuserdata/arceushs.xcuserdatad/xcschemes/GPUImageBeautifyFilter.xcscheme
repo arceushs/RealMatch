@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E74D07B3B0EB14D3F83241DF1EAEA3FD"
+               BlueprintIdentifier = "663E1EA76EB8AFB4D255AB017AC7064F"
                BuildableName = "libGPUImageBeautifyFilter.a"
                BlueprintName = "GPUImageBeautifyFilter"
                ReferencedContainer = "container:Pods.xcodeproj">

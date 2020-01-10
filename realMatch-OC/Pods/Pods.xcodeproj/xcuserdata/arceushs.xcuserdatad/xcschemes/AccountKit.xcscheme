@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "553306D4581236D86AC777C9968764E5"
+               BlueprintIdentifier = "36D2B5E79721B86C011B02E0907924A0"
                BuildableName = "AccountKit"
                BlueprintName = "AccountKit"
                ReferencedContainer = "container:Pods.xcodeproj">
