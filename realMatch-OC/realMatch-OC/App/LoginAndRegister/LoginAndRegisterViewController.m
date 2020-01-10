@@ -12,9 +12,10 @@
 #import "realMatch_OC-Swift.h"
 #import "SVProgressHUD.h"
 #import "RMSocketManager.h"
+#import <TTTAttributedLabel.h>
 
-@interface LoginAndRegisterViewController ()<AKFViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *termsAndPrivacyLabel;
+@interface LoginAndRegisterViewController ()<AKFViewControllerDelegate,TTTAttributedLabelDelegate>
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsAndPrivacyLabel;
 
 @end
 
@@ -74,6 +75,13 @@
     //     _pendingLoginViewController = [_accountKit viewControllerForEmailLoginWithEmail:@"xkjmdy1@outlook.com" state:[NSUUID UUID].UUIDString];
     
     [self _prepareLoginViewController:_pendingLoginViewController];
+    
+    self.termsAndPrivacyLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    self.termsAndPrivacyLabel.delegate = self;
+    NSRange range1 = [self.termsAndPrivacyLabel.text rangeOfString:@"Terms"];
+    [self.termsAndPrivacyLabel addLinkToURL:[NSURL URLWithString:@"https://www.4match.top/terms.html"] withRange:range1];
+    NSRange range2 = [self.termsAndPrivacyLabel.text rangeOfString:@"Privacy Policy"];
+    [self.termsAndPrivacyLabel addLinkToURL:[NSURL URLWithString:@"https://www.4match.top/policy.html"] withRange:range2];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -134,6 +142,11 @@
     [SVProgressHUD dismiss];
 }
 
+
+#pragma mark - TTTAtrributelabel
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url{
+    [[Router shared] routerTo:@"RMWebViewController" parameter:@{@"url":url.absoluteString}];
+}
 /*
  #pragma mark - Navigation
  
