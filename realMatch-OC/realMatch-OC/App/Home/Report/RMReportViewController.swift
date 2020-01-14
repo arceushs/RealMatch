@@ -11,9 +11,9 @@ import UIKit
 class RMReportViewController: UIViewController,RouterController {
     var complainUser:String = ""
     var complaintedUser:String = ""
+    var dislikeBlock : ((_ dict:[AnyHashable : Any]) -> Void)?
+    
     required init!(routerParams params: [AnyHashable : Any]!) {
-        self.complainUser = params["complainUser"] as! String
-        self.complaintedUser = params["complainedUser"] as! String;
         super.init(nibName:nil, bundle:nil)
     }
     
@@ -26,6 +26,10 @@ class RMReportViewController: UIViewController,RouterController {
     }
     
     required init!(command adopter: RouterAdopter!) {
+        let params = adopter.params
+        self.complainUser = params?["complainUser"] as! String
+        self.complaintedUser = params!["complainedUser"] as! String
+        self.dislikeBlock = adopter.routerAdopterCallback
         super.init(nibName:nil, bundle: nil)
     }
     
@@ -49,6 +53,9 @@ class RMReportViewController: UIViewController,RouterController {
     }
     
     @objc func tapDismiss(){
+        if let dislikeBlock = self.dislikeBlock {
+            dislikeBlock(["":""])
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -76,7 +83,7 @@ class RMReportViewController: UIViewController,RouterController {
             reportedContainerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapDismiss)))
             
             reportedContainerView.addSubview(self.reportedView!)
-            if self.complainUser.count > 0 && self.complaintedUser.count > 0 && self.reportView?.ReportTextField.text?.count ?? 0 > 0 {
+            if self.complainUser.count > 0 && self.complaintedUser.count > 0 && text.count ?? 0 > 0 {
                 var complaintAPI = RMComplaintAPI(content: text ?? "", complaintUser: self.complainUser, complaintedUser: self.complaintedUser)
                 RMNetworkManager.share()?.request(complaintAPI, completion: { (response) in
                     

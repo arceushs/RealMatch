@@ -126,7 +126,13 @@
 }
 - (IBAction)messageButtonClicked:(id)sender {
     if (self.matchedUserId.length > 0){
-        [[Router shared] routerTo:@"RMReportViewController" parameter:@{@"complainUser":[RMUserCenter shared].userId,@"complainedUser":self.matchedUserId}];
+        RouterAdopter *adopter = [[RouterAdopter alloc] init];
+        adopter.vcName = @"RMReportViewController";
+        adopter.params = @{@"complainUser":[RMUserCenter shared].userId,@"complainedUser":self.matchedUserId};
+        adopter.routerAdopterCallback = ^(NSDictionary *dict) {
+            [self dislikeButtonClicked:nil];
+        };
+        [[Router shared] routerTo:adopter];
     }
 }
 - (IBAction)backButtonClicked:(id)sender {

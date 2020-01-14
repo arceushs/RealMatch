@@ -96,6 +96,7 @@
                         [self.navigationVC pushViewController:targetVC animated:animation];
                     }
                 }else{
+                    targetVC.modalPresentationStyle = UIModalPresentationFullScreen;
                     [[self topMostController] presentViewController:targetVC animated:animation completion:nil];
                 }
             }
