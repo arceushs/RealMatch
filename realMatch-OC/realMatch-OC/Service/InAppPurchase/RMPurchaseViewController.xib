@@ -261,15 +261,34 @@
                                         <action selector="backButtonClicked:" destination="-1" eventType="touchUpInside" id="WJQ-kw-9ll"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recurring billing, you can cancel anytime." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooZ-fn-9of">
+                                    <rect key="frame" x="0.0" y="679" width="414" height="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLB-2z-Cpo">
+                                    <rect key="frame" x="16" y="702" width="382" height="60"/>
+                                    <string key="text">By tapping continue, your payment will be charged to your iTunes account and your subscription will automatically renew for the same package length at the same price until you cancel in settings in the iTunes store at least 24h prior to the end of the current period. Tapping continue means you agree to our Privacy Policy and Terms.</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstItem="ooZ-fn-9of" firstAttribute="leading" secondItem="Bdi-xP-O7H" secondAttribute="leading" id="1ba-nG-bot"/>
                                 <constraint firstAttribute="trailing" secondItem="Dst-9i-Fch" secondAttribute="trailing" constant="8" id="7hb-cK-Fj1"/>
+                                <constraint firstItem="ooZ-fn-9of" firstAttribute="top" secondItem="Dst-9i-Fch" secondAttribute="bottom" constant="20.5" id="9LW-XV-CBY"/>
                                 <constraint firstItem="Eay-ee-auz" firstAttribute="leading" secondItem="Bdi-xP-O7H" secondAttribute="leading" constant="8" id="FWx-6I-oLD"/>
                                 <constraint firstItem="Dst-9i-Fch" firstAttribute="leading" secondItem="Bdi-xP-O7H" secondAttribute="leading" constant="8" id="L45-6H-N4N"/>
+                                <constraint firstAttribute="trailing" secondItem="ooZ-fn-9of" secondAttribute="trailing" id="Rce-oO-1YJ"/>
+                                <constraint firstItem="uLB-2z-Cpo" firstAttribute="top" secondItem="ooZ-fn-9of" secondAttribute="bottom" constant="8" id="bqI-0K-UOd"/>
                                 <constraint firstAttribute="height" constant="778" id="iQy-rk-Eit"/>
                                 <constraint firstItem="Dst-9i-Fch" firstAttribute="top" secondItem="Bdi-xP-O7H" secondAttribute="top" constant="60" id="ifV-hx-huf"/>
                                 <constraint firstItem="Eay-ee-auz" firstAttribute="top" secondItem="Bdi-xP-O7H" secondAttribute="top" constant="16" id="oxz-Yy-TTb"/>
+                                <constraint firstItem="uLB-2z-Cpo" firstAttribute="leading" secondItem="Bdi-xP-O7H" secondAttribute="leading" constant="16" id="wZv-Ye-WFm"/>
+                                <constraint firstAttribute="trailing" secondItem="uLB-2z-Cpo" secondAttribute="trailing" constant="16" id="ysV-U6-usn"/>
                             </constraints>
                         </view>
                     </subviews>
