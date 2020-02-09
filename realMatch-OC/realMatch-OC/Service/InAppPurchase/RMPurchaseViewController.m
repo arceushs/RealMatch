@@ -10,10 +10,12 @@
 #import "UIColor+RealMatch.h"
 #import "realMatch_OC-Swift.h"
 #import "PurchaseManager.h"
-@interface RMPurchaseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,RouterController>
+#import <TTTAttributedLabel.h>
+@interface RMPurchaseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,RouterController,TTTAttributedLabelDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *bannerCollectionView;
 @property (strong,nonatomic) NSArray* configBlocks;
 @property (strong,nonatomic) UIView* selectedView;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *instructionLabel;
 
 @property (assign, nonatomic) NSInteger index;
 @end
@@ -107,6 +109,13 @@
     [self tapGest:nil];
 
     [self scrollBanner];
+    
+    self.instructionLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    self.instructionLabel.delegate = self;
+    NSRange range1 = [self.instructionLabel.text rangeOfString:@"Terms"];
+    [self.instructionLabel addLinkToURL:[NSURL URLWithString:@"https://www.4match.top/terms.html"] withRange:range1];
+    NSRange range2 = [self.instructionLabel.text rangeOfString:@"Privacy Policy"];
+    [self.instructionLabel addLinkToURL:[NSURL URLWithString:@"https://www.4match.top/policy.html"] withRange:range2];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -189,6 +198,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)restoreButtonClicked:(id)sender {
+    [[PurchaseManager shareManager] restorePurchase];
+}
+
 - (BOOL)animation {
     return YES;
 }
@@ -201,6 +214,11 @@
     if(self = [super init]){
     }
     return self;
+}
+
+#pragma mark - TTTAtrributelabel
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url{
+    [[Router shared] routerTo:@"RMWebViewController" parameter:@{@"url":url.absoluteString}];
 }
 
 @end

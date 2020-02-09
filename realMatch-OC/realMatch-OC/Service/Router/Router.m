@@ -63,6 +63,7 @@
     [routeTable addObject:@"RMSettingViewController"];
     [routeTable addObject:@"RMWebViewController"];
     [routeTable addObject:@"RMReportViewController"];
+    [routeTable addObject:@"RMAgreeViewController"];
 }
 
 -(void)routerTo:(RouterAdopter *)routerAdopter{

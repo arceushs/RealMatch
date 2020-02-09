@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="bannerCollectionView" destination="aih-0h-0SF" id="VdH-Pf-d9e"/>
                 <outlet property="firstView" destination="RrB-3E-vab" id="BXj-h4-AFn"/>
+                <outlet property="instructionLabel" destination="uLB-2z-Cpo" id="iKR-Su-dU9"/>
                 <outlet property="secondView" destination="SZw-ws-gaY" id="XyW-zx-1HU"/>
                 <outlet property="thirdView" destination="ZpF-tz-jeo" id="dx8-mT-3D9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -214,11 +215,11 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMB-P9-E0z">
                                             <rect key="frame" x="154.5" y="498" width="89" height="30"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                            <state key="normal" title="NO THANKS">
+                                            <state key="normal" title="Restore">
                                                 <color key="titleColor" red="0.1960784314" green="0.21176470589999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
-                                                <action selector="backButtonClicked:" destination="-1" eventType="touchUpInside" id="8Ra-un-aOU"/>
+                                                <action selector="restoreButtonClicked:" destination="-1" eventType="touchUpInside" id="2ws-ID-YId"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -267,7 +268,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLB-2z-Cpo">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLB-2z-Cpo" customClass="TTTAttributedLabel">
                                     <rect key="frame" x="16" y="702" width="382" height="60"/>
                                     <string key="text">By tapping continue, your payment will be charged to your iTunes account and your subscription will automatically renew for the same package length at the same price until you cancel in settings in the iTunes store at least 24h prior to the end of the current period. Tapping continue means you agree to our Privacy Policy and Terms.</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>

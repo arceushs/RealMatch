@@ -78,8 +78,19 @@ class RMRealVideoViewController: UIViewController,RouterController{
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var hintLabel: UILabel!
     
+    var agreeTextView: RMAgreeTextView?
+    var flag = false
+    
     @IBAction func continueClicked(_ sender: Any) {
         if self.doneButton.currentTitle == "Done"{
+            if flag == false {
+                agreeTextView = RMAgreeTextView(frame: self.view.bounds)
+                agreeTextView?.agreeButton.addTarget(self, action: #selector(gotIt), for: .touchDown)
+                agreeTextView?.agreeLabel.text = "Congratulations! You have completed the registration! We will review your video to ensure it meets our terms. Your video will not be seen by others befor passing the review, but you can still use all th features of our app normally"
+                self.view.addSubview(agreeTextView!)
+                flag = true
+            }
+            
             let registerAPI = RMRegisterAPI(name: RMUserCenter.shared.registerName ?? "", birth: RMUserCenter.shared.registerBirth ?? "", sex: RMUserCenter.shared.registerSex ?? 1,userId: RMUserCenter.shared.userId ?? "")
             RMNetworkManager.share()?.request(registerAPI, completion: { (response) in
                 let data:RMRegisterAPIData? = response?.responseObject as? RMRegisterAPIData
@@ -119,6 +130,10 @@ class RMRealVideoViewController: UIViewController,RouterController{
     */
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func gotIt() {
+        agreeTextView?.removeFromSuperview()
     }
     
 }

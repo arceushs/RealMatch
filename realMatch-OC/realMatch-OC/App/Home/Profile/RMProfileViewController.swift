@@ -49,7 +49,7 @@ class RMProfileViewController: UIViewController,RouterController{
         self.premiumView.layer .insertSublayer(gradientlayer, at: 0)
         let tapGest = UITapGestureRecognizer(target: self, action: #selector(premiumViewClicked))
         self.premiumView.addGestureRecognizer(tapGest)
-        self.premiumView.isHidden = RMUserCenter.shared.userIsVip
+        
         
         if UIScreen.main.bounds.width <= 325.0{
             self.containerViewHeightConstraint.constant = 50
@@ -74,6 +74,11 @@ class RMProfileViewController: UIViewController,RouterController{
         }
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.premiumView.isHidden = RMUserCenter.shared.userIsVip
     }
     
     @objc func premiumViewClicked(){

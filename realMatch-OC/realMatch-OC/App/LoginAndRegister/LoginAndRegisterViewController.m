@@ -16,6 +16,7 @@
 
 @interface LoginAndRegisterViewController ()<AKFViewControllerDelegate,TTTAttributedLabelDelegate>
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsAndPrivacyLabel;
+@property (strong, nonatomic) UIView* agreeView;
 
 @end
 
@@ -44,6 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+        
     if (_accountKit == nil) {
         _accountKit = [[AKFAccountKit alloc] initWithResponseType:AKFResponseTypeAccessToken];
     }
@@ -83,6 +85,25 @@
     NSRange range2 = [self.termsAndPrivacyLabel.text rangeOfString:@"Privacy Policy"];
     [self.termsAndPrivacyLabel addLinkToURL:[NSURL URLWithString:@"https://www.4match.top/policy.html"] withRange:range2];
     // Do any additional setup after loading the view from its nib.
+    
+    RMAgreeTextView *agreeView = [[RMAgreeTextView alloc] initWithFrame:self.view.bounds];
+    self.agreeView = agreeView;
+    [agreeView.agreeButton addTarget:self action:@selector(gotIt) forControlEvents:UIControlEventTouchDown];
+    agreeView.agreeLabel.text = @"We update our terms of use and privacy policy. If you continue to use our service, then you accept our terms and privacy policy.";
+    agreeView.agreeLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    agreeView.agreeLabel.delegate = self;
+    NSRange range3 = [agreeView.agreeLabel.text rangeOfString:@"terms of use"];
+    [agreeView.agreeLabel addLinkToURL:[NSURL URLWithString:@"https://www.4match.top/terms.html"] withRange:range3];
+    NSRange range4 = [agreeView.agreeLabel.text rangeOfString:@"privacy policy"];
+    [agreeView.agreeLabel addLinkToURL:[NSURL URLWithString:@"https://www.4match.top/policy.html"] withRange:range4];
+
+
+    [self.view addSubview:agreeView];
+
+}
+
+- (void)gotIt{
+    [self.agreeView removeFromSuperview];
 }
 
 - (void)_prepareLoginViewController:(UIViewController<AKFViewController> *)loginViewController
@@ -142,6 +163,11 @@
     [SVProgressHUD dismiss];
 }
 
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    self.agreeView.frame = self.view.bounds;
+    
+}
 
 #pragma mark - TTTAtrributelabel
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url{

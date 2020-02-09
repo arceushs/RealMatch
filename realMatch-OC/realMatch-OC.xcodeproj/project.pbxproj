@@ -39,12 +39,16 @@
 		2B1C78D023866595006750E6 /* RMBaseInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1C78CF23866594006750E6 /* RMBaseInfoAPI.swift */; };
 		2B1C78D223879B4A006750E6 /* RMMatchResultAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1C78D123879B4A006750E6 /* RMMatchResultAPI.swift */; };
 		2B23EC382385725100BD95FE /* RMComplaintAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23EC372385725100BD95FE /* RMComplaintAPI.swift */; };
+		2B48EE8323EFF6B9006311CE /* RMAgreeTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B48EE8123EFF6B9006311CE /* RMAgreeTextView.xib */; };
+		2B48EE8523F00600006311CE /* RMAgreeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B48EE8423F00600006311CE /* RMAgreeTextView.swift */; };
 		2BA3B87B23702D6A003473C6 /* RMReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3B87923702D6A003473C6 /* RMReportViewController.swift */; };
 		2BA3B87C23702D6A003473C6 /* RMReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3B87A23702D6A003473C6 /* RMReportViewController.xib */; };
 		2BA3B89623703679003473C6 /* RMReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3B89523703679003473C6 /* RMReportView.swift */; };
 		2BA3BADC2370379A003473C6 /* RMReportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3BADB2370379A003473C6 /* RMReportView.xib */; };
 		2BA3C66F237169DA003473C6 /* RMPurchaseCheckAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3C66E237169DA003473C6 /* RMPurchaseCheckAPI.swift */; };
 		2BA3C671237188F3003473C6 /* RMReportedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BA3C670237188F3003473C6 /* RMReportedView.xib */; };
+		2BD6A8F723D199980070F7C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BD6A8F923D199980070F7C9 /* Localizable.strings */; };
+		2BD6A8FC23D19A6A0070F7C9 /* RMRealVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BD6A8FE23D19A6A0070F7C9 /* RMRealVideoViewController.xib */; };
 		D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D607117622A6715400412F72 /* UIView+RealMatch.m */; };
 		D610B6B9230BEA4000A7BB47 /* RMSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610B6B7230BEA4000A7BB47 /* RMSettingTableViewCell.swift */; };
 		D610B6BA230BEA4000A7BB47 /* RMSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D610B6B8230BEA4000A7BB47 /* RMSettingTableViewCell.xib */; };
@@ -94,7 +98,6 @@
 		D680C87C22CCDA6800D9ED96 /* RMGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D680C87A22CCDA6800D9ED96 /* RMGenderViewController.swift */; };
 		D680C87D22CCDA6800D9ED96 /* RMGenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D680C87B22CCDA6800D9ED96 /* RMGenderViewController.xib */; };
 		D680C88022CCDECE00D9ED96 /* RMRealVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D680C87E22CCDECE00D9ED96 /* RMRealVideoViewController.swift */; };
-		D680C88122CCDECE00D9ED96 /* RMRealVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D680C87F22CCDECE00D9ED96 /* RMRealVideoViewController.xib */; };
 		D680C88322CDAD2E00D9ED96 /* dateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D680C88222CDAD2E00D9ED96 /* dateUtils.swift */; };
 		D680C88922CE295A00D9ED96 /* RMPostFileAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D680C88822CE295A00D9ED96 /* RMPostFileAPI.m */; };
 		D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D687DA572294EDCE00A11488 /* AppDelegate.m */; };
@@ -194,12 +197,19 @@
 		2B1C78CF23866594006750E6 /* RMBaseInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBaseInfoAPI.swift; sourceTree = "<group>"; };
 		2B1C78D123879B4A006750E6 /* RMMatchResultAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMatchResultAPI.swift; sourceTree = "<group>"; };
 		2B23EC372385725100BD95FE /* RMComplaintAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMComplaintAPI.swift; sourceTree = "<group>"; };
+		2B48EE8123EFF6B9006311CE /* RMAgreeTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMAgreeTextView.xib; sourceTree = "<group>"; };
+		2B48EE8423F00600006311CE /* RMAgreeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAgreeTextView.swift; sourceTree = "<group>"; };
 		2BA3B87923702D6A003473C6 /* RMReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMReportViewController.swift; sourceTree = "<group>"; };
 		2BA3B87A23702D6A003473C6 /* RMReportViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMReportViewController.xib; sourceTree = "<group>"; };
 		2BA3B89523703679003473C6 /* RMReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMReportView.swift; sourceTree = "<group>"; };
 		2BA3BADB2370379A003473C6 /* RMReportView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMReportView.xib; sourceTree = "<group>"; };
 		2BA3C66E237169DA003473C6 /* RMPurchaseCheckAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMPurchaseCheckAPI.swift; sourceTree = "<group>"; };
 		2BA3C670237188F3003473C6 /* RMReportedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMReportedView.xib; sourceTree = "<group>"; };
+		2BD6A8F323D199380070F7C9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		2BD6A8F423D199390070F7C9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		2BD6A8F823D199980070F7C9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		2BD6A8FB23D199D60070F7C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2BD6A8FD23D19A6A0070F7C9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/RMRealVideoViewController.xib"; sourceTree = "<group>"; };
 		91FA9F1266B2D253DA24B413 /* Pods-realMatch-OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.release.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.release.xcconfig"; sourceTree = "<group>"; };
 		D0116FF275BEF202714594EA /* Pods-realMatch-OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.debug.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.debug.xcconfig"; sourceTree = "<group>"; };
 		D607117522A6715400412F72 /* UIView+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+RealMatch.h"; sourceTree = "<group>"; };
@@ -270,7 +280,6 @@
 		D680C87A22CCDA6800D9ED96 /* RMGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMGenderViewController.swift; sourceTree = "<group>"; };
 		D680C87B22CCDA6800D9ED96 /* RMGenderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMGenderViewController.xib; sourceTree = "<group>"; };
 		D680C87E22CCDECE00D9ED96 /* RMRealVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMRealVideoViewController.swift; sourceTree = "<group>"; };
-		D680C87F22CCDECE00D9ED96 /* RMRealVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMRealVideoViewController.xib; sourceTree = "<group>"; };
 		D680C88222CDAD2E00D9ED96 /* dateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateUtils.swift; sourceTree = "<group>"; };
 		D680C88722CE295A00D9ED96 /* RMPostFileAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMPostFileAPI.h; sourceTree = "<group>"; };
 		D680C88822CE295A00D9ED96 /* RMPostFileAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMPostFileAPI.m; sourceTree = "<group>"; };
@@ -633,6 +642,7 @@
 				D6696FE322BA0EC200942DFB /* RMTable */,
 				D652275D22BB803A00C273E1 /* Player */,
 				D687DA5C2294EDCE00A11488 /* Main.storyboard */,
+				2BD6A8F923D199980070F7C9 /* Localizable.strings */,
 				D6E0771722AF932300CC44BA /* test1.png */,
 				1CC11A1C2314CA0B00FCD770 /* default.jpeg */,
 				D687DA5F2294EDD200A11488 /* Assets.xcassets */,
@@ -667,6 +677,8 @@
 				D6BF467222969DEB00C82D98 /* LoginAndRegisterViewController.h */,
 				D6BF467322969DEB00C82D98 /* LoginAndRegisterViewController.m */,
 				D6BF467422969DEB00C82D98 /* LoginAndRegisterViewController.xib */,
+				2B48EE8123EFF6B9006311CE /* RMAgreeTextView.xib */,
+				2B48EE8423F00600006311CE /* RMAgreeTextView.swift */,
 				D680C86B22CB796800D9ED96 /* RMEmailViewController.swift */,
 				D680C86C22CB796800D9ED96 /* RMEmailViewController.xib */,
 				D680C87222CCD6C500D9ED96 /* RMNameViewController.swift */,
@@ -676,7 +688,7 @@
 				D680C87A22CCDA6800D9ED96 /* RMGenderViewController.swift */,
 				D680C87B22CCDA6800D9ED96 /* RMGenderViewController.xib */,
 				D680C87E22CCDECE00D9ED96 /* RMRealVideoViewController.swift */,
-				D680C87F22CCDECE00D9ED96 /* RMRealVideoViewController.xib */,
+				2BD6A8FE23D19A6A0070F7C9 /* RMRealVideoViewController.xib */,
 				D680C88722CE295A00D9ED96 /* RMPostFileAPI.h */,
 				D680C88822CE295A00D9ED96 /* RMPostFileAPI.m */,
 				D628A95222D2F7B1001D89C3 /* RMRegisterAPI.h */,
@@ -822,6 +834,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = D687DA4A2294EDCE00A11488;
 			productRefGroup = D687DA542294EDCE00A11488 /* Products */;
@@ -850,7 +863,7 @@
 				D680C87522CCD6C500D9ED96 /* RMNameViewController.xib in Resources */,
 				D652276422BB8AEE00C273E1 /* RMVideoPlayViewController.xib in Resources */,
 				D618DC42230AAE1C00F34819 /* RMSettingFooter.xib in Resources */,
-				D680C88122CCDECE00D9ED96 /* RMRealVideoViewController.xib in Resources */,
+				2BD6A8FC23D19A6A0070F7C9 /* RMRealVideoViewController.xib in Resources */,
 				1C3BC8F422ED90DB00E9EE6C /* RMMatchedViewController.xib in Resources */,
 				D618DC3C230AAB5100F34819 /* RMSettingViewController.xib in Resources */,
 				D67086212306EBEA006D9D7F /* RMProfileViewController.xib in Resources */,
@@ -875,6 +888,8 @@
 				D680C87D22CCDA6800D9ED96 /* RMGenderViewController.xib in Resources */,
 				D6E0771822AF932400CC44BA /* test1.png in Resources */,
 				2BA3C671237188F3003473C6 /* RMReportedView.xib in Resources */,
+				2BD6A8F723D199980070F7C9 /* Localizable.strings in Resources */,
+				2B48EE8323EFF6B9006311CE /* RMAgreeTextView.xib in Resources */,
 				D6EB059C22CF4C700084DE46 /* RMPurchaseViewController.xib in Resources */,
 				2BA3B87C23702D6A003473C6 /* RMReportViewController.xib in Resources */,
 			);
@@ -1001,6 +1016,7 @@
 				D680C86D22CB796800D9ED96 /* RMEmailViewController.swift in Sources */,
 				D687DA582294EDCE00A11488 /* AppDelegate.m in Sources */,
 				D618DC36230AA6E600F34819 /* ViewController.m in Sources */,
+				2B48EE8523F00600006311CE /* RMAgreeTextView.swift in Sources */,
 				D6CC154322B39BA000D80A02 /* RMNetworkManager.m in Sources */,
 				D680C88322CDAD2E00D9ED96 /* dateUtils.swift in Sources */,
 				D67086202306EBEA006D9D7F /* RMProfileViewController.swift in Sources */,
@@ -1049,10 +1065,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2BD6A8F923D199980070F7C9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BD6A8F823D199980070F7C9 /* zh-Hans */,
+				2BD6A8FB23D199D60070F7C9 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		2BD6A8FE23D19A6A0070F7C9 /* RMRealVideoViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BD6A8FD23D19A6A0070F7C9 /* zh-Hans */,
+			);
+			name = RMRealVideoViewController.xib;
+			sourceTree = "<group>";
+		};
 		D687DA5C2294EDCE00A11488 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D687DA5D2294EDCE00A11488 /* Base */,
+				2BD6A8F323D199380070F7C9 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1061,6 +1095,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D687DA622294EDD200A11488 /* Base */,
+				2BD6A8F423D199390070F7C9 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1072,6 +1107,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1131,6 +1167,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1207,7 +1244,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.23;
+				MARKETING_VERSION = 1.0.26;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1245,7 +1282,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.23;
+				MARKETING_VERSION = 1.0.26;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

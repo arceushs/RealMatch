@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(void) checkOrderStatus;
 
+- (void)restorePurchase;
+
 -(void)startPurchaseWithID:(NSString*)purchaseId;
 
 @end

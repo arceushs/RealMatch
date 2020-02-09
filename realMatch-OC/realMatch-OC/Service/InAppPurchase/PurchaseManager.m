@@ -36,6 +36,10 @@
     return self;
 }
 
+- (void)restorePurchase{
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
 -(void)startPurchaseWithID:(NSString*)purchaseId{
     if(purchaseId){
         if([SKPaymentQueue canMakePayments]){
@@ -69,7 +73,7 @@
     [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
 
--(void)completeTransaction:(SKPaymentTransaction*)transaction{
+-(void)completeTransaction:(SKPaymentTransaction*)transaction isRestore:(BOOL)restore{
     //获取透传字段
     NSString *produ = transaction.payment.applicationUsername;
     //transactionIdentifier：相当于Apple的订单号
@@ -81,7 +85,13 @@
     NSString *base64ReceiptString = [receiptData base64EncodedStringWithOptions:0];
  
     RMPurchaseCheckAPI * purchaseCheckAPI = [[RMPurchaseCheckAPI alloc] initWithReceiptData:base64ReceiptString transactionId:transaction.transactionIdentifier productId:transaction.payment.productIdentifier userId:[RMUserCenter shared].userId];
+    if (restore) {
+        [SVProgressHUD showWithStatus:@"restoring......"];
+    }
     [[RMNetworkManager shareManager] request:purchaseCheckAPI completion:^(RMNetworkResponse *response) {
+        if (restore) {
+            [SVProgressHUD dismiss];
+        }
         if (response.error){
             return;
         }
@@ -101,16 +111,16 @@
                 break;
             case SKPaymentTransactionStatePurchased:
                 [SVProgressHUD dismiss];
-                [self completeTransaction:transactions.firstObject];
+                [self completeTransaction:transactions.firstObject isRestore:NO];
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             case SKPaymentTransactionStateFailed:
-                [SVProgressHUD showErrorWithStatus:transactions.firstObject.error.description];
+//                [SVProgressHUD showErrorWithStatus:transactions.firstObject.error.description];
                 [SVProgressHUD dismissWithDelay:2];
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             case SKPaymentTransactionStateRestored:
-                [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+                [self completeTransaction:transactions.firstObject isRestore:YES];
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             default:
