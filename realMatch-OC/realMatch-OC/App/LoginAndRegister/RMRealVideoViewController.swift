@@ -108,6 +108,7 @@ class RMRealVideoViewController: UIViewController,RouterController{
         SVProgressHUD.show()
         RMNetworkManager.share()?.request(postFileAPI, completion: { (response) in
             SVProgressHUD.dismiss()
+            UserDefaults.standard.set(response?.cookie, forKey: "global-cookie")
             self.doneButton.isEnabled = true
             let data = response?.responseObject as? RMPostFileAPIData
             if(data?.result ?? false){

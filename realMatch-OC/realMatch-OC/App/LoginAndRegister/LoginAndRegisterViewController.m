@@ -130,8 +130,6 @@
                 return ;
             }
             
-            [[NSUserDefaults standardUserDefaults] setObject:response.cookie forKey:@"global-cookie"];
-            
             RMLoginAPIData* data = response.responseObject;
             [RMUserCenter shared].userId = data.userId;
             [[NSUserDefaults standardUserDefaults] setObject:data.userId forKey:@"global-userId"];
