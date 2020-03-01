@@ -17,6 +17,8 @@ class RMDatePickerViewController: UIViewController,RouterController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    @IBAction func datePicker(_ sender: Any) {
+    }
     @IBOutlet weak var birthdayTextField: UITextField!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -41,6 +43,9 @@ class RMDatePickerViewController: UIViewController,RouterController {
         super.viewDidLoad()
         self.hintView.isHidden = true
         self.birthdayTextField.isUserInteractionEnabled = false
+        let currentTimeInterval = NSDate().timeIntervalSince1970
+        let interval = TimeInterval(18 * 365 * 24 * 60 * 60 + 6 * 24 * 60 * 60)
+        self.datePicker.maximumDate = Date(timeIntervalSince1970: currentTimeInterval - interval)
         // Do any additional setup after loading the view.
     }
 

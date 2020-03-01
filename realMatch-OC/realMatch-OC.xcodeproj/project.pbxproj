@@ -197,6 +197,8 @@
 		2B1C78CF23866594006750E6 /* RMBaseInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBaseInfoAPI.swift; sourceTree = "<group>"; };
 		2B1C78D123879B4A006750E6 /* RMMatchResultAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMatchResultAPI.swift; sourceTree = "<group>"; };
 		2B23EC372385725100BD95FE /* RMComplaintAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMComplaintAPI.swift; sourceTree = "<group>"; };
+		2B41D22A23F9138200734C1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RMRealVideoViewController.xib; sourceTree = "<group>"; };
+		2B41D22C23F9146C00734C1F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RMRealVideoViewController.xib; sourceTree = "<group>"; };
 		2B48EE8123EFF6B9006311CE /* RMAgreeTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMAgreeTextView.xib; sourceTree = "<group>"; };
 		2B48EE8423F00600006311CE /* RMAgreeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAgreeTextView.swift; sourceTree = "<group>"; };
 		2BA3B87923702D6A003473C6 /* RMReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMReportViewController.swift; sourceTree = "<group>"; };
@@ -1078,6 +1080,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				2BD6A8FD23D19A6A0070F7C9 /* zh-Hans */,
+				2B41D22A23F9138200734C1F /* Base */,
+				2B41D22C23F9146C00734C1F /* en */,
 			);
 			name = RMRealVideoViewController.xib;
 			sourceTree = "<group>";
@@ -1244,7 +1248,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.26;
+				MARKETING_VERSION = 1.0.28;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1282,7 +1286,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.26;
+				MARKETING_VERSION = 1.0.28;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
