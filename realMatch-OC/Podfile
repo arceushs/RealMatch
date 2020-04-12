@@ -4,7 +4,6 @@ platform :ios, '10.0'
 
 target 'realMatch-OC' do
 
-pod 'AccountKit'
 pod 'SVProgressHUD'
 pod 'SocketRocket'
 pod 'SDWebImage', '~> 5.0'

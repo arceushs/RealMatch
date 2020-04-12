@@ -64,6 +64,7 @@
     [routeTable addObject:@"RMWebViewController"];
     [routeTable addObject:@"RMReportViewController"];
     [routeTable addObject:@"RMAgreeViewController"];
+    [routeTable addObject:@"RMPhoneCheckViewController"];
 }
 
 -(void)routerTo:(RouterAdopter *)routerAdopter{
