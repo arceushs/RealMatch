@@ -31,12 +31,41 @@ class RMPhoneCheckViewController: UIViewController, RouterController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let tapGest = UITapGestureRecognizer(target: self, action: #selector(resign))
+        self.view.addGestureRecognizer(tapGest)
         
         // Do any additional setup after loading the view.
     }
-
-
+    
+    @objc func resign(){
+        self.phoneTextField.resignFirstResponder()
+    }
+    
+    @IBOutlet weak var phoneEmptyHintLabel: UILabel!
+    
+    @IBOutlet weak var phoneTextField: UITextField!
+    
+    @IBOutlet weak var countryCodeLabel: UILabel!
+    @IBAction func countrySelectedButton(_ sender: Any) {
+        let countryCodeVC = XWCountryCodeController()
+        countryCodeVC.returnCountryCodeBlock = {
+            (contryName,code) in
+            self.countryCodeLabel.text = "+\(code ?? "")"
+        }
+        self.navigationController?.pushViewController(countryCodeVC, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.phoneEmptyHintLabel.isHidden = true
+    }
+    
+    @IBAction func continueButtonClicked(_ sender: Any) {
+        if self.countryCodeLabel.text?.count ?? 0 <= 0 || self.phoneTextField.text?.count ?? 0 <= 0 {
+            self.phoneEmptyHintLabel.isHidden = false
+        } else {
+            Router.shared()?.router(to: "RMPhoneCheckCodeViewController", parameter: ["phoneNum":self.phoneTextField.text,"phoneCountryCode": self.countryCodeLabel.text])
+        }
+    }
     /*
     // MARK: - Navigation
 

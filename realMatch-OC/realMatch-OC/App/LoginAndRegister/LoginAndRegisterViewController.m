@@ -7,24 +7,24 @@
 //
 
 #import "LoginAndRegisterViewController.h"
-#import <AccountKit/AccountKit.h>
+//#import <AccountKit/AccountKit.h>
 #import "Router+AccountKit.h"
 #import "realMatch_OC-Swift.h"
 #import "SVProgressHUD.h"
 #import "RMSocketManager.h"
 #import <TTTAttributedLabel.h>
 
-@interface LoginAndRegisterViewController ()<AKFViewControllerDelegate,TTTAttributedLabelDelegate>
+@interface LoginAndRegisterViewController ()<TTTAttributedLabelDelegate>
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *termsAndPrivacyLabel;
 @property (strong, nonatomic) UIView* agreeView;
 
 @end
 
 @implementation LoginAndRegisterViewController
-{
-    AKFAccountKit *_accountKit;
-    UIViewController<AKFViewController> *_pendingLoginViewController;
-}
+//{
+//    AKFAccountKit *_accountKit;
+//    UIViewController<AKFViewController> *_pendingLoginViewController;
+//}
 
 -(instancetype)initWithRouterParams:(NSDictionary *)params{
     if(self = [super init]){
@@ -46,9 +46,9 @@
     [super viewDidLoad];
 
         
-    if (_accountKit == nil) {
-        _accountKit = [[AKFAccountKit alloc] initWithResponseType:AKFResponseTypeAccessToken];
-    }
+//    if (_accountKit == nil) {
+//        _accountKit = [[AKFAccountKit alloc] initWithResponseType:AKFResponseTypeAccessToken];
+//    }
     
 //    RMLoginAPI* loginAPI = [[RMLoginAPI alloc]initWithPhone:@"" phoneCountryCode:@"" email:@"" accountKeyId:@""];
 //    [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *response) {
@@ -72,11 +72,11 @@
 //        }
 //    }];
     
-    _pendingLoginViewController = [_accountKit viewControllerForPhoneLogin];
-    _pendingLoginViewController.uiManager = [[AKFSkinManager alloc]initWithSkinType:AKFSkinTypeClassic primaryColor:[UIColor colorWithString:@"FA008E"]];
+//    _pendingLoginViewController = [_accountKit viewControllerForPhoneLogin];
+//    _pendingLoginViewController.uiManager = [[AKFSkinManager alloc]initWithSkinType:AKFSkinTypeClassic primaryColor:[UIColor colorWithString:@"FA008E"]];
     //     _pendingLoginViewController = [_accountKit viewControllerForEmailLoginWithEmail:@"xkjmdy1@outlook.com" state:[NSUUID UUID].UUIDString];
     
-    [self _prepareLoginViewController:_pendingLoginViewController];
+//    [self _prepareLoginViewController:_pendingLoginViewController];
     
     self.termsAndPrivacyLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
     self.termsAndPrivacyLabel.delegate = self;
@@ -106,56 +106,56 @@
     [self.agreeView removeFromSuperview];
 }
 
-- (void)_prepareLoginViewController:(UIViewController<AKFViewController> *)loginViewController
-{
-    loginViewController.delegate = self;
-}
+//- (void)_prepareLoginViewController:(UIViewController<AKFViewController> *)loginViewController
+//{
+//    loginViewController.delegate = self;
+//}
 
 - (IBAction)routeToAccountKitLoginVC:(id)sender {
-    [[Router shared] routeToAccountKitLoginVC:_pendingLoginViewController];
+    [[Router shared] routerTo:@"RMPhoneCheckViewController" parameter:nil];
 }
 
--(void)viewController:(UIViewController<AKFViewController> *)viewController didCompleteLoginWithAccessToken:(id<AKFAccessToken>)accessToken state:(NSString *)state{
-    [SVProgressHUD show];
-    [_accountKit requestAccount:^(id<AKFAccount>  _Nullable account, NSError * _Nullable error) {
-        [RMUserCenter shared].accountKitID = account.accountID;
-        [RMUserCenter shared].accountKitEmailAddress = account.emailAddress;
-        [RMUserCenter shared].accountKitPhoneNumber = account.phoneNumber.phoneNumber;
-        [RMUserCenter shared].accountKitCountryCode = account.phoneNumber.countryCode;
-        
-        RMLoginAPI* loginAPI = [[RMLoginAPI alloc]initWithPhone:account.phoneNumber.phoneNumber phoneCountryCode:account.phoneNumber.countryCode email:account.emailAddress accountKeyId:account.accountID];
-        [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *response) {
-            [SVProgressHUD dismiss];
-            if(response.error){
-                return ;
-            }
-            
-            RMLoginAPIData* data = response.responseObject;
-            [RMUserCenter shared].userId = data.userId;
-            [[NSUserDefaults standardUserDefaults] setObject:data.userId forKey:@"global-userId"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            
-            if(!data.newUser){
-                [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
-            }else{
-                [[Router shared] routerTo:@"RMNameViewController" parameter:nil];
-            }
-        }];
-    }];
-}
+//-(void)viewController:(UIViewController<AKFViewController> *)viewController didCompleteLoginWithAccessToken:(id<AKFAccessToken>)accessToken state:(NSString *)state{
+//    [SVProgressHUD show];
+//    [_accountKit requestAccount:^(id<AKFAccount>  _Nullable account, NSError * _Nullable error) {
+//        [RMUserCenter shared].accountKitID = account.accountID;
+//        [RMUserCenter shared].accountKitEmailAddress = account.emailAddress;
+//        [RMUserCenter shared].accountKitPhoneNumber = account.phoneNumber.phoneNumber;
+//        [RMUserCenter shared].accountKitCountryCode = account.phoneNumber.countryCode;
+//
+//        RMLoginAPI* loginAPI = [[RMLoginAPI alloc]initWithPhone:account.phoneNumber.phoneNumber phoneCountryCode:account.phoneNumber.countryCode email:account.emailAddress accountKeyId:account.accountID];
+//        [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *response) {
+//            [SVProgressHUD dismiss];
+//            if(response.error){
+//                return ;
+//            }
+//
+//            RMLoginAPIData* data = response.responseObject;
+//            [RMUserCenter shared].userId = data.userId;
+//            [[NSUserDefaults standardUserDefaults] setObject:data.userId forKey:@"global-userId"];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
+//
+//            if(!data.newUser){
+//                [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
+//            }else{
+//                [[Router shared] routerTo:@"RMNameViewController" parameter:nil];
+//            }
+//        }];
+//    }];
+//}
 
--(void)viewController:(UIViewController<AKFViewController> *)viewController didCompleteLoginWithAuthorizationCode:(NSString *)code state:(NSString *)state{
-    
-}
-
-
--(void)viewController:(UIViewController<AKFViewController> *)viewController didFailWithError:(NSError *)error{
-    
-}
-
--(void)viewControllerDidCancel:(UIViewController<AKFViewController> *)viewController{
-    
-}
+//-(void)viewController:(UIViewController<AKFViewController> *)viewController didCompleteLoginWithAuthorizationCode:(NSString *)code state:(NSString *)state{
+//
+//}
+//
+//
+//-(void)viewController:(UIViewController<AKFViewController> *)viewController didFailWithError:(NSError *)error{
+//
+//}
+//
+//-(void)viewControllerDidCancel:(UIViewController<AKFViewController> *)viewController{
+//
+//}
 
 - (void)viewWillDisappear:(BOOL)animated{
     [SVProgressHUD dismiss];

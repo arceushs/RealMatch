@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RMPhoneCheckViewController" customModule="realMatch_OC" customModuleProvider="target">
             <connections>
+                <outlet property="countryCodeLabel" destination="lVU-Kq-HFJ" id="qc2-wY-gGO"/>
+                <outlet property="phoneEmptyHintLabel" destination="fO9-lY-5bY" id="udh-UB-UGv"/>
+                <outlet property="phoneTextField" destination="2mi-Se-5pU" id="rSS-Lq-3G4"/>
                 <outlet property="view" destination="f4Y-h7-LId" id="6Em-gG-uZa"/>
             </connections>
         </placeholder>
@@ -39,7 +42,7 @@
                     <rect key="frame" x="114" y="221" width="239" height="30"/>
                     <color key="textColor" red="0.1960784314" green="0.21176470589999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjd-GH-FXd">
                     <rect key="frame" x="114" y="252" width="239" height="1"/>
@@ -63,8 +66,11 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="continueButtonClicked:" destination="-1" eventType="touchUpInside" id="Tsp-jG-FKh"/>
+                    </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name can't be empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fO9-lY-5bY">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phone can't be empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fO9-lY-5bY">
                     <rect key="frame" x="114" y="261" width="239" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -75,6 +81,9 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="62" id="pTx-qo-jTr"/>
                     </constraints>
+                    <connections>
+                        <action selector="countrySelectedButton:" destination="-1" eventType="touchUpInside" id="fxn-HG-Kcg"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5na-mE-ipw">
                     <rect key="frame" x="40" y="252" width="62" height="1"/>
@@ -90,6 +99,16 @@
                         <constraint firstAttribute="height" constant="16" id="dC1-kL-vWe"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lVU-Kq-HFJ">
+                    <rect key="frame" x="40" y="225" width="38" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="38" id="Jdq-oC-u96"/>
+                        <constraint firstAttribute="height" constant="22" id="fZr-kC-g1w"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.19607843137254902" green="0.21176470588235294" blue="0.25098039215686274" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -100,8 +119,10 @@
                 <constraint firstItem="5na-mE-ipw" firstAttribute="top" secondItem="vNB-vg-8hF" secondAttribute="bottom" constant="10" id="4xQ-NL-LQd"/>
                 <constraint firstItem="fO9-lY-5bY" firstAttribute="leading" secondItem="fjd-GH-FXd" secondAttribute="leading" id="6qu-XX-xZ0"/>
                 <constraint firstItem="fjd-GH-FXd" firstAttribute="trailing" secondItem="2mi-Se-5pU" secondAttribute="trailing" id="9DI-UT-bCL"/>
+                <constraint firstItem="lVU-Kq-HFJ" firstAttribute="leading" secondItem="Ahf-tt-O5D" secondAttribute="leading" id="AJO-V3-hgu"/>
                 <constraint firstItem="2mi-Se-5pU" firstAttribute="top" secondItem="Ahf-tt-O5D" secondAttribute="top" id="AZ7-cT-gMV"/>
                 <constraint firstItem="DXB-b6-yRS" firstAttribute="top" secondItem="2BB-g6-4KJ" secondAttribute="top" constant="94" id="Gdg-8N-1dr"/>
+                <constraint firstItem="5na-mE-ipw" firstAttribute="top" secondItem="lVU-Kq-HFJ" secondAttribute="bottom" constant="5" id="Iep-vl-qvm"/>
                 <constraint firstItem="2mi-Se-5pU" firstAttribute="leading" secondItem="2BB-g6-4KJ" secondAttribute="leading" constant="114" id="KpO-Q6-Kg3"/>
                 <constraint firstItem="5na-mE-ipw" firstAttribute="trailing" secondItem="vNB-vg-8hF" secondAttribute="trailing" id="RFs-Sc-GqA"/>
                 <constraint firstItem="fO9-lY-5bY" firstAttribute="top" secondItem="fjd-GH-FXd" secondAttribute="bottom" constant="8" id="Syg-tJ-KRG"/>

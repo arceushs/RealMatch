@@ -65,6 +65,7 @@
     [routeTable addObject:@"RMReportViewController"];
     [routeTable addObject:@"RMAgreeViewController"];
     [routeTable addObject:@"RMPhoneCheckViewController"];
+    [routeTable addObject:@"RMPhoneCheckCodeViewController"];
 }
 
 -(void)routerTo:(RouterAdopter *)routerAdopter{

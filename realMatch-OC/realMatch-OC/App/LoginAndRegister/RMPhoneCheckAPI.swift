@@ -60,6 +60,7 @@ class RMPhoneCheckAPI: NSObject,RMNetworkAPI {
             phoneCheckAPIData.code = (dict["code"] as? Int) ?? 0
             phoneCheckAPIData.data = dict["data"] as? String ?? ""
             phoneCheckAPIData.message = dict["message"] as? String ?? ""
+            return RMNetworkResponse(responseObject: phoneCheckAPIData)
         }
         return response;
     }
