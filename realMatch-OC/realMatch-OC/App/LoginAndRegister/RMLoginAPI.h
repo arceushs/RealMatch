@@ -13,12 +13,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) NSString* userId;
 @property (nonatomic,assign) BOOL newUser;
+@property (nonatomic,copy) NSString *appToken;
 
 @end
 
 @interface RMLoginAPI : NSObject<RMNetworkAPI>
 
--(instancetype)initWithPhone:(NSString*)phone phoneCountryCode:(NSString*)countryCode email:(NSString*)email accountKeyId:(NSString*)userId;
+-(instancetype)initWithPhone:(NSString*)phone phoneCountryCode:(NSString*)countryCode smsCode:(NSString*)smsCode;
 
 @end
 

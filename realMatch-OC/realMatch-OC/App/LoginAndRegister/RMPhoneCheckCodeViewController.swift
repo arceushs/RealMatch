@@ -48,6 +48,7 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
     }
 
     @IBAction func resend(_ sender: Any) {
+        self.smsCodeSender()
     }
     
     @IBAction func `continue`(_ sender: Any) {
@@ -57,7 +58,30 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
             return
         }
         self.codeCheckHintLabel.isHidden = true
-        
+        SVProgressHUD.show()
+        RMUserCenter.shared.accountKitCountryCode = self.phoneCountryCode
+        RMUserCenter.shared.accountKitPhoneNumber = self.phoneNum
+        let loginAPI = RMLoginAPI(phone: self.phoneNum, phoneCountryCode: self.phoneCountryCode, email: "", accountKeyId: "")
+        RMLoginAPI* loginAPI = [[RMLoginAPI alloc]initWithPhone:account.phoneNumber.phoneNumber phoneCountryCode:account.phoneNumber.countryCode email:account.emailAddress accountKeyId:account.accountID];
+        //        [[RMNetworkManager shareManager] request:loginAPI completion:^(RMNetworkResponse *response) {
+        //            [SVProgressHUD dismiss];
+        //            if(response.error){
+        //                return ;
+        //            }
+        //
+        //            RMLoginAPIData* data = response.responseObject;
+        //            [RMUserCenter shared].userId = data.userId;
+        //            [[NSUserDefaults standardUserDefaults] setObject:data.userId forKey:@"global-userId"];
+        //            [[NSUserDefaults standardUserDefaults] synchronize];
+        //
+        //            if(!data.newUser){
+        //                [[Router shared] routerTo:@"RMHomePageViewController" parameter:nil];
+        //            }else{
+        //                [[Router shared] routerTo:@"RMNameViewController" parameter:nil];
+        //            }
+        //        }];
+        //    }];
+
     }
     
     func smsCodeSender(){
@@ -66,7 +90,7 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
             let data = response?.responseObject as? RMPhoneCheckAPIData
             if let data = data {
                 if data.code == 200 {
-                    
+                
                 } else {
                     SVProgressHUD.setStatus(data.message)
                 }

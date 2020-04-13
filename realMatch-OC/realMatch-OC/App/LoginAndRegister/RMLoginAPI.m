@@ -17,16 +17,14 @@
 {
     NSString* _phone;
     NSString* _countryCode;
-    NSString* _email;
-    NSString* _accountId;
+    NSString* _smsCode;
 }
 
--(instancetype)initWithPhone:(NSString*)phone phoneCountryCode:(NSString*)countryCode email:(NSString*)email accountKeyId:(NSString*)userId{
+-(instancetype)initWithPhone:(NSString*)phone phoneCountryCode:(NSString*)countryCode smsCode:(nonnull NSString *)smsCode{
     if(self = [super init]){
         _phone = (phone ? phone : @"");
         _countryCode = countryCode ? countryCode : @"";
-        _email = email ? email : @"";
-        _accountId = userId ? userId: @"";
+        _smsCode = smsCode ? smsCode : @"";
     }
     return self;
 }
@@ -43,8 +41,7 @@
     return @{
              @"phone":_phone,
              @"phoneCountryCode":_countryCode,
-             @"email":_email,
-             @"accountKeyId":_accountId,
+             @"smsCode":_smsCode,
              };
 }
 
@@ -69,6 +66,7 @@
     if([dataDict isKindOfClass:[NSDictionary class]]){
         data.newUser = [dataDict[@"newUser"] boolValue];
         data.userId = [NSString stringWithFormat:@"%li",[dataDict[@"userId"] longValue]];
+        data.appToken = dataDict[@"app_token"]?:@"";
     }
    	//parse response here
 
