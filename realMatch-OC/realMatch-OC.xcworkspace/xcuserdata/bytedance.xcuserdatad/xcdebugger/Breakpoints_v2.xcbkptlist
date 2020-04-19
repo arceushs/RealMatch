@@ -398,41 +398,41 @@
             filePath = "realMatch-OC/Service/Router/Router.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-routerTo:"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "Router"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F7F7C6E9-0E62-4C08-BE98-DEED9EEF807E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "realMatch-OC/App/LoginAndRegister/RMPhotoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "getImageFromPHAsset(assetModel:size:cell:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "69CF35DC-122F-46C4-89A8-4C98E2E386DF"
+            uuid = "48F20F90-5226-461D-9FF3-7C4FCAC5041D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/App/LoginAndRegister/RMPhoneCheckCodeViewController.swift"
+            filePath = "realMatch-OC/App/LoginAndRegister/RMPhotoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "continue(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "289C36BC-0D66-4587-BE3D-6BCCD84573E6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "realMatch-OC/App/LoginAndRegister/RMPhoneCheckAPI.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "adoptResponse(_:)"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "getAllPHAssetFromSystem()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

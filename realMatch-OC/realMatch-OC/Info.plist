@@ -46,6 +46,8 @@
 	<string>Allow access to camera and microphone to shoot a video</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow access to camera and microphone to shoot a video</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow access to library to setting avatar</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

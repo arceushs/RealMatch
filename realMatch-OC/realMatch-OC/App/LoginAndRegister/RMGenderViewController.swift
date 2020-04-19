@@ -53,7 +53,7 @@ class RMGenderViewController: UIViewController,RouterController {
     
     
     @IBAction func continueClicke(_ sender: Any) {
-        Router.shared()?.router(to: "RMRealVideoViewController", parameter: nil)
+        Router.shared()?.router(to: "RMPickAvatarViewController", parameter: nil)
     }
     
     @IBAction func back(_ sender: Any) {

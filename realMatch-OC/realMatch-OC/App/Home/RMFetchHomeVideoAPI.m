@@ -109,7 +109,6 @@
     //parse response here
     
     RMNetworkResponse* finalResponse = [[RMNetworkResponse alloc]initWithResponseObject:data];
-    finalResponse.cookie = response.cookie;
     return finalResponse;
     
 }

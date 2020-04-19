@@ -14,11 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong,readonly) T responseObject;
 @property (nonatomic,strong,readonly) NSError* error;
-@property (nonatomic,strong,readonly) NSString* cookie;
 
 -(instancetype)initWithResponseObject:(id)object;
 -(instancetype)initWithError:(NSError*)error;
--(void)setCookie:(NSString * _Nonnull)cookie;
 
 
 @end

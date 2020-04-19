@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface RMLoginAPIData : NSObject
 
+@property (nonatomic,strong) NSString *msg;
+@property (nonatomic,assign) NSInteger code;
 @property (nonatomic,strong) NSString* userId;
 @property (nonatomic,assign) BOOL newUser;
 @property (nonatomic,copy) NSString *appToken;

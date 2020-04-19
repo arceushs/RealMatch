@@ -86,7 +86,7 @@ class RMRealVideoViewController: UIViewController,RouterController{
             if flag == false {
                 agreeTextView = RMAgreeTextView(frame: self.view.bounds)
                 agreeTextView?.agreeButton.addTarget(self, action: #selector(gotIt), for: .touchDown)
-                agreeTextView?.agreeLabel.text = "Congratulations! You have completed the registration! We will review your video to ensure it meets our terms. Your video will not be seen by others befor passing the review, but you can still use all th features of our app normally"
+                agreeTextView?.agreeLabel.text = "Congratulations! You have completed the registration! We will review your video to ensure it meets our terms. Your video will not be seen by others before passing the review, but you can still use all th features of our app normally"
                 self.view.addSubview(agreeTextView!)
                 flag = true
             }
@@ -108,7 +108,6 @@ class RMRealVideoViewController: UIViewController,RouterController{
         SVProgressHUD.show()
         RMNetworkManager.share()?.request(postFileAPI, completion: { (response) in
             SVProgressHUD.dismiss()
-            UserDefaults.standard.set(response?.cookie, forKey: "global-cookie")
             self.doneButton.isEnabled = true
             let data = response?.responseObject as? RMPostFileAPIData
             if(data?.result ?? false){

@@ -12,7 +12,6 @@
 
 @property (nonatomic,strong,readwrite) id responseObject;
 @property (nonatomic,strong,readwrite) NSError* error;
-@property (nonatomic,strong,readwrite) NSString* cookie;
 
 @end
 
@@ -29,9 +28,5 @@
         self.error = error;
     }
     return self;
-}
-
--(void)setCookie:(NSString *)cookie{
-    _cookie = cookie;
 }
 @end

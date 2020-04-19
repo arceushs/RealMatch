@@ -63,6 +63,8 @@
     NSDictionary * responseObject = response.responseObject;
    
     NSDictionary* dataDict = responseObject[@"data"];
+    data.code = [responseObject[@"code"] intValue];
+    data.msg = responseObject[@"msg"];
     if([dataDict isKindOfClass:[NSDictionary class]]){
         data.newUser = [dataDict[@"newUser"] boolValue];
         data.userId = [NSString stringWithFormat:@"%li",[dataDict[@"userId"] longValue]];
@@ -71,7 +73,6 @@
    	//parse response here
 
     RMNetworkResponse* finalResponse = [[RMNetworkResponse alloc]initWithResponseObject:data];
-    finalResponse.cookie = response.cookie;
     return finalResponse;
 
 }
