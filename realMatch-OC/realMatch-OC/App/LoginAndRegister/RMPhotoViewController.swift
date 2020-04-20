@@ -25,6 +25,16 @@ class RMPhotoViewController: UIViewController, RouterController, UICollectionVie
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let assetModel:RMAssetModel = self.dataSource[indexPath.row]
+        if let image = assetModel.image {
+            if self.adopter?.routerAdopterCallback != nil {
+                self.adopter?.routerAdopterCallback(["previewImage":image])
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
     required init!(routerParams params: [AnyHashable : Any]!) {
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,7 +48,9 @@ class RMPhotoViewController: UIViewController, RouterController, UICollectionVie
     }
     
     required init!(command adopter: RouterAdopter!) {
+        self.adopter = adopter
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -51,13 +63,19 @@ class RMPhotoViewController: UIViewController, RouterController, UICollectionVie
         self.getAllPHAssetFromSystem()
         self.collectionView.register(UINib(nibName: "RMPhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RMPhotoCollectionViewCell")
         let flowLayout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        flowLayout?.itemSize = CGSize(width: 100,height: 100)
+        let itemW = (UIScreen.main.bounds.width - 36)/3.0
+        let itemH = itemW
+        flowLayout?.itemSize = CGSize(width: itemW,height: itemH)
+        flowLayout?.minimumInteritemSpacing = 6
+        flowLayout?.minimumLineSpacing = 6
+        self.collectionView.contentInset = UIEdgeInsetsMake(12, 12, 12, 12)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
     var dataSource:[RMAssetModel] = []
+    var adopter:RouterAdopter?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -87,12 +105,12 @@ class RMPhotoViewController: UIViewController, RouterController, UICollectionVie
         option.deliveryMode = PHImageRequestOptionsDeliveryMode.opportunistic
         option.resizeMode = PHImageRequestOptionsResizeMode.fast
         if let asset = assetModel.asset{
-            requestID = PHCachingImageManager.default().requestImageData(for: asset, options: option, resultHandler: { (data, str, orientation, _) in
-                if let data = data{
-                    cell.photoImageView.image = UIImage(data: data)
-                    assetModel.image = cell.photoImageView.image
+            PHCachingImageManager.default().requestImage(for: asset, targetSize: CGSize(width: 200, height: 200), contentMode: PHImageContentMode.aspectFill, options: option) { (image, _) in
+                if let image = image{
+                    cell.photoImageView.image =  image
+                    assetModel.image = image
                 }
-            })
+            }
         }
         
     }

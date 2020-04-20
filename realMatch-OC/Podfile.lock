@@ -1,5 +1,4 @@
 PODS:
-  - AccountKit (4.35.0)
   - AFNetworking (3.2.1):
     - AFNetworking/NSURLSession (= 3.2.1)
     - AFNetworking/Reachability (= 3.2.1)
@@ -37,7 +36,6 @@ PODS:
   - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
-  - AccountKit
   - AFNetworking (~> 3.0)
   - AHTimer (~> 0.0.3)
   - FMDB
@@ -55,7 +53,6 @@ SPEC REPOS:
   https://github.com/arceushs/AHPodSpecs:
     - AHTimer
   https://github.com/CocoaPods/Specs.git:
-    - AccountKit
     - AFNetworking
     - FMDB
     - GPUImage
@@ -70,7 +67,6 @@ SPEC REPOS:
     - TTTAttributedLabel
 
 SPEC CHECKSUMS:
-  AccountKit: 870ccaf5d33facda9408783e28fbe68c5211e069
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AHTimer: df455262e80cc80ab266b46b082e5ff88f3c60ad
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
@@ -85,6 +81,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 7b18c694843e5f178847ba0590de632efba9f465
+PODFILE CHECKSUM: e6b8ead8c2699b25b23c6c812f4989e2e27134d6
 
 COCOAPODS: 1.8.4

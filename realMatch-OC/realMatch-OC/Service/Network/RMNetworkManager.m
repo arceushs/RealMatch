@@ -56,13 +56,21 @@
                     NSString* fileString = filePath;
                     NSData *fileData = [NSData dataWithContentsOfFile:fileString];
                     
-                    UIImage* image = [RMFileManager getVideoPreViewImage:[NSURL fileURLWithPath:fileString]];
-                    NSData* imageData = UIImagePNGRepresentation(image);
-                    /* 上传数据拼接 */
-                    if([filename length]>0 && [filePath length]>0 && [mimetype length]>0){
-                        //这种代码最好是归到api的protocol中。
-                        [formData appendPartWithFileData:fileData name:@"video" fileName:filename mimeType:mimetype];
-                        [formData appendPartWithFileData:imageData name:@"videoImg" fileName:filename mimeType:@"image/png"];
+                    if ([mimetype containsString:@"video"]) {
+                        UIImage* image = [RMFileManager getVideoPreViewImage:[NSURL fileURLWithPath:fileString]];
+                        NSData* imageData = UIImagePNGRepresentation(image);
+                        /* 上传数据拼接 */
+                        if([filename length]>0 && [filePath length]>0 && [mimetype length]>0){
+                            //这种代码最好是归到api的protocol中。
+                            [formData appendPartWithFileData:fileData name:@"video" fileName:filename mimeType:mimetype];
+                            [formData appendPartWithFileData:imageData name:@"videoImg" fileName:filename mimeType:@"image/png"];
+                        }
+                    } else if ([mimetype containsString:@"image"]) {
+                        if([filename length]>0 && [filePath length]>0 && [mimetype length]>0){
+                            //这种代码最好是归到api的protocol中。
+                
+                           [formData appendPartWithFileData:fileData name:@"file" fileName:filename mimeType:@"image/png"];
+                        }
                     }
                 } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     RMNetworkResponse* response = [[RMNetworkResponse alloc]initWithResponseObject:responseObject];
