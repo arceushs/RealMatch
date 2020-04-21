@@ -32,6 +32,8 @@ class RMUserCenter: NSObject {
     var matchedUserIdArr:[String] = []
     
     @objc static let shared:RMUserCenter = RMUserCenter()
+    
+    var countTime:Int = 0
 
 }
 

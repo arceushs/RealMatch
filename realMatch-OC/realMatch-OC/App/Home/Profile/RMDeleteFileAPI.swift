@@ -43,7 +43,9 @@ class RMDeleteFileAPI: NSObject, RMNetworkAPI{
     }
     
     func adoptResponse(_ response: RMNetworkResponse<AnyObject>!) -> RMNetworkResponse<AnyObject>! {
-        
+        if response?.responseObject == nil {
+            return RMNetworkResponse(error: response!.error)
+        }
         
         if let dict = response.responseObject as? Dictionary<String,Any> {
             let data:RMDeleteFileAPIData = RMDeleteFileAPIData()

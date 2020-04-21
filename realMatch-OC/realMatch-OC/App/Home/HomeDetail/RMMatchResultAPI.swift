@@ -44,6 +44,9 @@ class RMMatchResultAPI: NSObject,RMNetworkAPI {
     }
     
     func adoptResponse(_ response: RMNetworkResponse<AnyObject>!) -> RMNetworkResponse<AnyObject>! {
+        if response?.responseObject == nil {
+            return RMNetworkResponse(error: response!.error)
+        }
         if (response?.responseObject as! Dictionary<String,AnyObject>?) != nil{
             let dict = (response?.responseObject) as! Dictionary<String,AnyObject>
             let list = dict["list"] as? Array<Dictionary<String,Any>>

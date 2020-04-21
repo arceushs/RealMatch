@@ -46,13 +46,40 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
         self.phoneNumberLabel.text = self.phoneNum
         
         self.smsCodeSender()
+        
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+    }
+    
+    @objc func timeCount(){
+        if RMUserCenter.shared.countTime <= 0{
+            self.resendButton.isEnabled = true
+            self.resendLabel.text = "Resend"
+            return
+        }
+        self.resendButton.isEnabled = false
+        RMUserCenter.shared.countTime = RMUserCenter.shared.countTime - 1
+        self.resendLabel.text = "\(RMUserCenter.shared.countTime)s"
+        self.perform(#selector(timeCount), with: nil, afterDelay: 1)
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func resend(_ sender: Any) {
         self.smsCodeSender()
     }
     
+    deinit {
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+    }
+    
+    @IBOutlet weak var resendButton: UIButton!
+    @IBOutlet weak var resendLabel: UILabel!
     @IBAction func `continue`(_ sender: Any) {
         let verifyCode = "\(self.code1.text ?? "")\(self.code2.text ?? "")\(self.code3.text ?? "")\(self.code4.text ?? "")\(self.code5.text ?? "")\(self.code6.text ?? "")"
         if verifyCode.count < 6 {
@@ -68,10 +95,10 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
         RMNetworkManager.share()?.request(loginAPI, completion: { (response) in
             SVProgressHUD.dismiss()
             if let data = response?.responseObject as? RMLoginAPIData{
-//                if data.code != 200 {
-//                    SVProgressHUD.showError(withStatus: data.msg)
-//                    return
-//                }
+                if data.code != 200 {
+                    SVProgressHUD.showError(withStatus: data.msg)
+                    return
+                }
                 if data.appToken.count > 0 {
                     UserDefaults.standard.set(data.appToken, forKey: "global-token");
                 }
@@ -91,17 +118,25 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
     }
     
     func smsCodeSender(){
-        let phoneCheckAPI = RMPhoneCheckAPI(phone: self.phoneNum ?? "", phoneCountryCode: self.phoneCountryCode ?? "")
-        RMNetworkManager.share()?.request(phoneCheckAPI, completion: { (response) in
-            let data = response?.responseObject as? RMPhoneCheckAPIData
-            if let data = data {
-                if data.code == 200 {
-                
-                } else {
-                    SVProgressHUD.setStatus(data.message)
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+        if RMUserCenter.shared.countTime <= 0{
+            RMUserCenter.shared.countTime = 60
+            self.timeCount()
+            let phoneCheckAPI = RMPhoneCheckAPI(phone: self.phoneNum ?? "", phoneCountryCode: self.phoneCountryCode ?? "")
+            RMNetworkManager.share()?.request(phoneCheckAPI, completion: { (response) in
+                let data = response?.responseObject as? RMPhoneCheckAPIData
+                if let data = data {
+                    if data.code == 200 {
+                    
+                    } else {
+                        SVProgressHUD.setStatus(data.message)
+                    }
                 }
-            }
-        })
+            })
+        } else {
+            self.timeCount()
+            self.resendButton.isEnabled = false
+        }
     }
     
     @IBOutlet weak var phoneNumberLabel: UILabel!
