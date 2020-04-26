@@ -157,6 +157,10 @@
 }
 - (IBAction)likeButtonClicked:(id)sender {
     if(_matchedUserId.length > 0) {
+        if (![RMUserCenter shared].isUploadedVideo) {
+            [[Router shared] routerTo:@"RMGuideVideoViewController" parameter:nil];
+            return ;
+        }
         RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:_matchedUserId userId:[RMUserCenter shared].userId isLike:YES];
         __weak typeof(self) weakSelf = self;
         [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {

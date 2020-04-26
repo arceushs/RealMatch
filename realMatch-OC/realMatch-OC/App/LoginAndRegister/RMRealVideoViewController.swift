@@ -49,7 +49,6 @@ class RMRealVideoViewController: UIViewController,RouterController{
         self.shootImageView.isHidden = true
         self.doneButton.isEnabled = false
 
-        
         // Do any additional setup after loading the view.
     }
     
@@ -91,13 +90,20 @@ class RMRealVideoViewController: UIViewController,RouterController{
                 flag = true
             }
             
-            let registerAPI = RMRegisterAPI(name: RMUserCenter.shared.registerName ?? "", birth: RMUserCenter.shared.registerBirth ?? "", sex: RMUserCenter.shared.registerSex ?? 1,userId: RMUserCenter.shared.userId ?? "")
-            RMNetworkManager.share()?.request(registerAPI, completion: { (response) in
-                let data:RMRegisterAPIData? = response?.responseObject as? RMRegisterAPIData
-                if data?.result ?? false{
-                    Router.shared()?.router(to: "RMHomePageViewController", parameter: nil)
+            if let vcs = self.navigationController?.viewControllers{
+                var finalVC:UIViewController? = nil
+                for vc in vcs{
+                    if vc is RMHomePageDetailViewController || vc is RMHomePageViewController{
+                        finalVC = vc
+                    }
                 }
-            })
+                if finalVC != nil {
+                    self.navigationController?.popToViewController(finalVC!, animated: true)
+                }
+                
+            }
+            
+
             return
         }
         
@@ -113,6 +119,7 @@ class RMRealVideoViewController: UIViewController,RouterController{
             if(data?.result ?? false){
                 self.hintLabel.text = "Upload Success"
                 self.doneButton.setTitle("Done", for: .normal)
+                RMUserCenter.shared.isUploadedVideo = true
             }else{
                 self.hintLabel.text = "Upload failure,try again!"
             }

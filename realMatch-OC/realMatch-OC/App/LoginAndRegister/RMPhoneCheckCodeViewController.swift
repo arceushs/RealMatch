@@ -95,6 +95,7 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
         RMNetworkManager.share()?.request(loginAPI, completion: { (response) in
             SVProgressHUD.dismiss()
             if let data = response?.responseObject as? RMLoginAPIData{
+                Router.shared()?.router(to: "RMNameViewController", parameter: nil)
                 if data.code != 200 {
                     SVProgressHUD.showError(withStatus: data.msg)
                     return
@@ -107,11 +108,11 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
                     UserDefaults.standard.set(data.userId, forKey: "global-userId");
                 }
                 UserDefaults.standard.synchronize()
-//                if(!data.newUser){
-//                    Router.shared()?.router(to: "RMHomePageViewController", parameter: nil)
-//                }else{
+                if(!data.newUser){
+                    Router.shared()?.router(to: "RMHomePageViewController", parameter: nil)
+                }else{
                     Router.shared()?.router(to: "RMNameViewController", parameter: nil)
-//                }
+                }
             }
             
         });

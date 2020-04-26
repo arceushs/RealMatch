@@ -68,6 +68,7 @@
     [routeTable addObject:@"RMPhoneCheckCodeViewController"];
     [routeTable addObject:@"RMPickAvatarViewController"];
     [routeTable addObject:@"RMPhotoViewController"];
+    [routeTable addObject:@"RMGuideVideoViewController"];
 }
 
 -(void)routerTo:(RouterAdopter *)routerAdopter{

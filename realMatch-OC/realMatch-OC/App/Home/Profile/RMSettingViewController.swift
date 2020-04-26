@@ -53,6 +53,7 @@ class RMSettingViewController: UIViewController,RouterController,UITableViewDele
         var footerView = RMSettingFooter(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 130))
         footerView.buttonBlock = {
             UserDefaults.standard.set(nil, forKey: "global-userId")
+            UserDefaults.standard.set(nil, forKey: "global-token")
             UserDefaults.standard.set(false, forKey: "global-vip")
             UserDefaults.standard.synchronize()
             Router.shared()?.router(to: "LoginAndRegisterViewController", parameter: nil)

@@ -17,7 +17,7 @@ class RMPhotoViewController: UIViewController, RouterController, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RMPhotoCollectionViewCell", for: indexPath) as! RMPhotoCollectionViewCell
         guard let image = self.dataSource[indexPath.row].image else {
-            self.getImageFromPHAsset(assetModel: self.dataSource[indexPath.row], size: CGSize(width: 100, height: 100), cell: cell)
+            self.getImageFromPHAsset(assetModel: self.dataSource[indexPath.row], size: CGSize(width: 400, height: 400), cell: cell)
             return cell
         }
         cell.photoImageView.image = image
@@ -57,6 +57,9 @@ class RMPhotoViewController: UIViewController, RouterController, UICollectionVie
         fatalError("cannot init with coder")
     }
 
+    @IBAction func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -105,7 +108,7 @@ class RMPhotoViewController: UIViewController, RouterController, UICollectionVie
         option.deliveryMode = PHImageRequestOptionsDeliveryMode.opportunistic
         option.resizeMode = PHImageRequestOptionsResizeMode.fast
         if let asset = assetModel.asset{
-            PHCachingImageManager.default().requestImage(for: asset, targetSize: CGSize(width: 200, height: 200), contentMode: PHImageContentMode.aspectFill, options: option) { (image, _) in
+            PHCachingImageManager.default().requestImage(for: asset, targetSize: CGSize(width: size.width, height: size.height), contentMode: PHImageContentMode.aspectFill, options: option) { (image, _) in
                 if let image = image{
                     cell.photoImageView.image =  image
                     assetModel.image = image

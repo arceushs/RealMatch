@@ -34,6 +34,8 @@ class RMUserCenter: NSObject {
     @objc static let shared:RMUserCenter = RMUserCenter()
     
     var countTime:Int = 0
+    
+    var isUploadedVideo:Bool = false
 
 }
 

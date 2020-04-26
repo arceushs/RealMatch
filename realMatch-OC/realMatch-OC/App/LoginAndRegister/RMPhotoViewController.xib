@@ -29,6 +29,9 @@
                                 <constraint firstAttribute="width" constant="24" id="r2J-uh-QnC"/>
                             </constraints>
                             <state key="normal" image="normalBack"/>
+                            <connections>
+                                <action selector="back:" destination="-1" eventType="touchUpInside" id="nLK-aW-tSU"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

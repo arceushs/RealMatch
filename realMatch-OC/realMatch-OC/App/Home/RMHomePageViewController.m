@@ -53,35 +53,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    
     [[RMSocketManager shared] connectWithUserId:[RMUserCenter shared].userId];
     [PurchaseManager shareManager];
     
     self.noCardHintView.hidden = YES;
-    
-//    RMBaseInfoAPI *baseAPI = [[RMBaseInfoAPI alloc] initWithUserId:[RMUserCenter shared].userId];
-//    [[RMNetworkManager shareManager] request:baseAPI completion:^(RMNetworkResponse *response) {
-//        if (response.error) {
-//            return ;
-//        }
-//
-//        RMBaseInfoAPIData *data = (RMBaseInfoAPIData *)response.responseObject;
-//        [RMUserCenter shared].userIsVip = data.recharged;
-//        [RMUserCenter shared].anormaly = data.isAnomaly;
-//    }];
-
-    RMFetchDetailAPI* detailAPI = [[RMFetchDetailAPI alloc]initWithUserId:[RMUserCenter shared].userId];
-    [[RMNetworkManager shareManager] request:detailAPI completion:^(RMNetworkResponse *response) {
-        if(response.error){
-            return;
-        }
-
-        RMFetchDetailAPIData* data =(RMFetchDetailAPIData*) response.responseObject;
-        [RMUserCenter shared].registerName = data.name;
-        [RMUserCenter shared].registerEmail = data.email;
-        [RMUserCenter shared].avatar = data.avatar;
-        [RMUserCenter shared].userIsVip = data.recharged;
-        [RMUserCenter shared].anormaly = data.isAnomaly;
-    }];
     
     _cardVC1 = [[RMHomeCardViewController alloc]init];
     __weak typeof(self) weakSelf = self;
@@ -124,6 +101,10 @@
     if(gest.direction == UISwipeGestureRecognizerDirectionRight){
         length = 0 - length;
         if([self.currentCardVC.matchedUserId length] > 0){
+            if (![RMUserCenter shared].isUploadedVideo) {
+                [[Router shared] routerTo:@"RMGuideVideoViewController" parameter:nil];
+                return ;
+            }
             RMLikeFlagAPI* api = [[RMLikeFlagAPI alloc]initWithMatchedUserId:self.currentCardVC.matchedUserId userId:[RMUserCenter shared].userId isLike:YES];
             [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse *response) {
                 

@@ -64,6 +64,8 @@
 		2BE74104243C475100DDDA5D /* RMPhoneCheckAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE74103243C475100DDDA5D /* RMPhoneCheckAPI.swift */; };
 		2BE74F7D243EC6E900DDDA5D /* RMPhoneCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE74F7B243EC6E900DDDA5D /* RMPhoneCheckViewController.swift */; };
 		2BE74F7E243EC6E900DDDA5D /* RMPhoneCheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE74F7C243EC6E900DDDA5D /* RMPhoneCheckViewController.xib */; };
+		2BF03F2A2453231400330810 /* RMGuideVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF03F282453231300330810 /* RMGuideVideoViewController.xib */; };
+		2BF03F2C24553ABC00330810 /* RMGuideVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF03F2B24553ABC00330810 /* RMGuideVideoViewController.swift */; };
 		D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D607117622A6715400412F72 /* UIView+RealMatch.m */; };
 		D610B6B9230BEA4000A7BB47 /* RMSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D610B6B7230BEA4000A7BB47 /* RMSettingTableViewCell.swift */; };
 		D610B6BA230BEA4000A7BB47 /* RMSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D610B6B8230BEA4000A7BB47 /* RMSettingTableViewCell.xib */; };
@@ -243,6 +245,8 @@
 		2BE74103243C475100DDDA5D /* RMPhoneCheckAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMPhoneCheckAPI.swift; sourceTree = "<group>"; };
 		2BE74F7B243EC6E900DDDA5D /* RMPhoneCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMPhoneCheckViewController.swift; sourceTree = "<group>"; };
 		2BE74F7C243EC6E900DDDA5D /* RMPhoneCheckViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMPhoneCheckViewController.xib; sourceTree = "<group>"; };
+		2BF03F282453231300330810 /* RMGuideVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMGuideVideoViewController.xib; sourceTree = "<group>"; };
+		2BF03F2B24553ABC00330810 /* RMGuideVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMGuideVideoViewController.swift; sourceTree = "<group>"; };
 		91FA9F1266B2D253DA24B413 /* Pods-realMatch-OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.release.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.release.xcconfig"; sourceTree = "<group>"; };
 		D0116FF275BEF202714594EA /* Pods-realMatch-OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.debug.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.debug.xcconfig"; sourceTree = "<group>"; };
 		D607117522A6715400412F72 /* UIView+RealMatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+RealMatch.h"; sourceTree = "<group>"; };
@@ -559,6 +563,8 @@
 				1C381DF422E35A420060DE69 /* RMLikeFlagAPI.m */,
 				1C3BC8F122ED90DB00E9EE6C /* RMMatchedViewController.swift */,
 				1C3BC8F222ED90DB00E9EE6C /* RMMatchedViewController.xib */,
+				2BF03F2B24553ABC00330810 /* RMGuideVideoViewController.swift */,
+				2BF03F282453231300330810 /* RMGuideVideoViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -934,6 +940,7 @@
 				D618DC44230AAE2A00F34819 /* RMSettingHeader.xib in Resources */,
 				D6369D9622CF1A1F00A1B473 /* RMMessageDetailViewController.xib in Resources */,
 				D687DA632294EDD200A11488 /* LaunchScreen.storyboard in Resources */,
+				2BF03F2A2453231400330810 /* RMGuideVideoViewController.xib in Resources */,
 				D61458D9230A8E6E00D8C700 /* RMEditProfileViewController.xib in Resources */,
 				D687DA602294EDD200A11488 /* Assets.xcassets in Resources */,
 				2B8D17D62442EFD40069C4A9 /* sortedNameEN.plist in Resources */,
@@ -1033,6 +1040,7 @@
 				D687DA662294EDD200A11488 /* main.m in Sources */,
 				D6369D9F22CF1A4F00A1B473 /* RMMessageToMeTableViewCell.m in Sources */,
 				D618DC40230AADB300F34819 /* RMSettingFooter.swift in Sources */,
+				2BF03F2C24553ABC00330810 /* RMGuideVideoViewController.swift in Sources */,
 				D6CC153E22B387D500D80A02 /* RMHomePageDetailViewController.m in Sources */,
 				1CFCE12422BF339A0025BC0B /* RMNetworkAPIHost.m in Sources */,
 				D665EC6322A8BD7C003FB7B8 /* UIColor+RealMatch.m in Sources */,
@@ -1318,7 +1326,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.29;
+				MARKETING_VERSION = 1.0.30;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1356,7 +1364,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.29;
+				MARKETING_VERSION = 1.0.30;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -15,6 +15,9 @@
 }
 
 +(NSString *)apiPath{
+#ifdef DEBUG
+    return @"/api/test";
+#else
     BOOL currentEnviroment = [[NSUserDefaults standardUserDefaults] boolForKey:@"testEnviroment"];
     BOOL xcodeEnviroment = [[[[NSProcessInfo processInfo] environment] objectForKey:@"testEnviroment"] boolValue];
     if(!currentEnviroment && !xcodeEnviroment) {
@@ -22,7 +25,7 @@
     }else{
         return @"/api/test";
     }
-    
+#endif
 }
 
 @end

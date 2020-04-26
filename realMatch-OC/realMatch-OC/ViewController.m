@@ -44,6 +44,20 @@
         [[Router shared] routerTo:@"LoginAndRegisterViewController" parameter:nil];
     }
    
+    
+    RMFetchDetailAPI* detailAPI = [[RMFetchDetailAPI alloc]initWithUserId:[RMUserCenter shared].userId];
+    [[RMNetworkManager shareManager] request:detailAPI completion:^(RMNetworkResponse *response) {
+        if(response.error){
+            return;
+        }
+
+        RMFetchDetailAPIData* data =(RMFetchDetailAPIData*) response.responseObject;
+        [RMUserCenter shared].registerName = data.name;
+        [RMUserCenter shared].registerEmail = data.email;
+        [RMUserCenter shared].avatar = data.avatar;
+        [RMUserCenter shared].userIsVip = data.recharged;
+        [RMUserCenter shared].anormaly = data.isAnomaly;
+    }];
   
 //    NSData * data = [NSData dataWithContentsOfFile:[[RMFileManager pathForSaveRecord] stringByAppendingString:@"movie.mp4"]];
     

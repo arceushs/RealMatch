@@ -11,6 +11,17 @@
 
 @implementation RMLoginAPIData
 
+-(instancetype)init{
+    if (self = [super init]) {
+        _newUser = NO;
+        _code = -1;
+        _msg = @"";
+        _userId = @"";
+        _appToken = @"";
+    }
+    return self;
+}
+
 @end
 
 @implementation RMLoginAPI
@@ -63,12 +74,15 @@
     NSDictionary * responseObject = response.responseObject;
    
     NSDictionary* dataDict = responseObject[@"data"];
-    data.code = [dataDict[@"code"] intValue];
-    data.msg = dataDict[@"msg"];
+    data.code = [responseObject[@"code"] intValue];
+    data.msg = responseObject[@"message"];
     if([dataDict isKindOfClass:[NSDictionary class]]){
         data.newUser = [dataDict[@"newUser"] boolValue];
         data.userId = [NSString stringWithFormat:@"%li",[dataDict[@"userId"] longValue]];
-        data.appToken = dataDict[@"app_token"]?:@"";
+        data.appToken = dataDict[@"app_token"];
+        if(![data.appToken isKindOfClass:[NSString class]]) {
+            data.appToken = @"";
+        }
     }
    	//parse response here
 
