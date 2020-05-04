@@ -63,6 +63,7 @@
             RMFetchLikesMeModel* model = [[RMFetchLikesMeModel alloc]init];
             model.userId = [NSString stringWithFormat:@"%i",[dict[@"userId"] intValue]];
             model.avatar = dict[@"avatar"];
+            model.isVip = [dict[@"recharge"] boolValue];
             [modelsArr addObject:model];
         }
         data.likesMeArr = [NSArray arrayWithArray:modelsArr];

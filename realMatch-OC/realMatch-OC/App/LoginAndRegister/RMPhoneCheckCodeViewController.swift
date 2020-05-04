@@ -95,7 +95,6 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
         RMNetworkManager.share()?.request(loginAPI, completion: { (response) in
             SVProgressHUD.dismiss()
             if let data = response?.responseObject as? RMLoginAPIData{
-                Router.shared()?.router(to: "RMNameViewController", parameter: nil)
                 if data.code != 200 {
                     SVProgressHUD.showError(withStatus: data.msg)
                     return

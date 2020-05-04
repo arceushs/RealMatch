@@ -48,7 +48,7 @@
         self.name = @"";
         self.extension = @"";
         self.ossLocation = @"";
-        self.rowHeight = (UIScreen.mainScreen.bounds.size.width - 16)*466.0/359.0 + 66;
+        self.rowHeight = (UIScreen.mainScreen.bounds.size.width - 16)*466.0/359.0 + 54;
         self.previewVideoImage = [UIImage new];
     }
     return self;
@@ -62,7 +62,7 @@
     self.ossLocation = dict[@"ossLocation"];
     self.videoImg = [[RMFetchVideoImageDetailModel alloc]init];
     [self.videoImg parseFromDict:dict[@"videoImg"]];
-    self.rowHeight = (UIScreen.mainScreen.bounds.size.width - 16)*466.0/359.0 + 66;
+    self.rowHeight = (UIScreen.mainScreen.bounds.size.width - 16)*466.0/359.0 + 54;
 }
 
 -(void)parseFromArr:(NSArray *)arr{

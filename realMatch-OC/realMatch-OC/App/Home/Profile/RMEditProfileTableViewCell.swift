@@ -18,7 +18,6 @@ enum EditCellType:NSInteger{
 @objc class RMEditProfileTableViewCell: UITableViewCell {
 
     @IBOutlet weak var editVideoButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var subTitleLabel: UILabel!
     

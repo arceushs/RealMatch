@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) CGFloat width;
 @property (nonatomic,assign) BOOL recharged;
 @property (nonatomic,assign) BOOL isAnomaly;
+@property (nonatomic,assign) BOOL uploadedVideo;
 
 @end
 

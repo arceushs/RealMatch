@@ -49,10 +49,7 @@
     [SVProgressHUD show];
     [[RMNetworkManager shareManager] request:fetchHomeVideoAPI completion:^(RMNetworkResponse *response) {
         if (response.error){
-            if(self.noCardHintBlock){
-                self.noCardHintBlock();
-                [SVProgressHUD dismiss];
-            }
+            [SVProgressHUD showWithStatus:@"network error occured, try another"];
             return ;
         }
         RMFetchHomeVideoAPIData* data = (RMFetchHomeVideoAPIData*)response.responseObject;
@@ -84,6 +81,18 @@
             [weakSelf.cardView setVideoLayerWithPlayer:weakSelf.player];
             weakSelf.cardView.nameLabel.text = currentModel.name;
             weakSelf.cardView.regionLabel.text = currentModel.country;
+            
+            CGSize nameSize = [currentModel.name boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:24 weight:UIFontWeightMedium]} context:nil].size;
+            CGFloat vipX = weakSelf.cardView.width/2.0 - nameSize.width/2.0 - 40;
+            CGFloat vipY = weakSelf.cardView.nameLabel.y - (35/2.0 - weakSelf.cardView.nameLabel.height/2.0);
+            CGFloat vipW = 35;
+            CGFloat vipH = 35;
+            UIImageView* vipImageView = [[UIImageView alloc] initWithFrame:CGRectMake(vipX, vipY, vipW, vipH)];
+            vipImageView.image = [UIImage imageNamed:@"Diamond"];
+            if (currentModel.userIsVip) {
+                [weakSelf.cardView.blackView addSubview:vipImageView];
+            }
+            
             NSURL *streamURL = nil;
             if([[RMDownloadManager shared].downloadedArr containsObject:currentModel.video]){
                 streamURL = [NSURL fileURLWithPath: [[RMDownloadManager shared] getFilePathFromUrl:currentModel.video]];

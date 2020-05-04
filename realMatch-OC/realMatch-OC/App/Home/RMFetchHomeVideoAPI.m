@@ -21,6 +21,7 @@
     self.country = dataDict[@"country"];
     self.height = [dataDict[@"height"] doubleValue];
     self.width = [dataDict[@"width"] doubleValue];
+    self.userIsVip = [dataDict[@"recharged"] boolValue];
 }
 
 @end

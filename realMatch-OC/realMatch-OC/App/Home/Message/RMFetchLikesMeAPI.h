@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong) NSString* userId;
 @property (nonatomic,strong) NSString* avatar;
+@property (nonatomic,assign) BOOL isVip;
 
 @end
 

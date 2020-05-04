@@ -64,16 +64,16 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                                         
                     if let videoArr = self.videoArr{
                         for (i,model) in videoArr.enumerated(){
-                            if i == 0{
-                                model.title = "About me";
-                                model.subtitle = "who are you, where are you from, your school, your job.";
-                            }else if i == 1{
-                                model.title = "Interests";
-                                model.subtitle = "what make you differ";
-                            }else if i == 2{
-                                model.title = "My friends";
-                                model.subtitle = "Who do you like to be with";
-                            }
+//                            if i == 0{
+//                                model.title = "About me";
+//                                model.subtitle = "who are you, where are you from, your school, your job.";
+//                            }else if i == 1{
+//                                model.title = "Interests";
+//                                model.subtitle = "what make you differ";
+//                            }else if i == 2{
+//                                model.title = "My friends";
+//                                model.subtitle = "Who do you like to be with";
+//                            }
                         }
 
                     }
@@ -93,7 +93,6 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
         if let videoArr = self.videoArr{
             if videoArr.count > 0{
                 let model = videoArr[indexPath.row]
-                cell.titleLabel.text = model.title
                 cell.subTitleLabel.text = model.subtitle;
                 if model.videoImg.ossLocation.count > 0 || model.previewVideoImage.size.height>0.0{
                     cell.addVideoView.isHidden = true

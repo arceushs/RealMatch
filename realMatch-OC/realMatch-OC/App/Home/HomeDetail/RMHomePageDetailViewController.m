@@ -22,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (strong,nonatomic) NSString* matchedUserId;
 @property (strong, nonatomic) RouterAdopter * adopter;
+@property (weak, nonatomic) IBOutlet UIImageView *matchedAvatar;
+@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *vipLabel;
 
 @end
 
@@ -57,19 +61,12 @@
     [[RMNetworkManager shareManager] request:api completion:^(RMNetworkResponse <RMFetchDetailAPIData* > *response) {
         RMFetchDetailAPIData* result = response.responseObject;
         self.videoArr = [NSMutableArray arrayWithArray:result.videoArr];
-        
+        [self.matchedAvatar sd_setImageWithURL:[NSURL URLWithString:result.avatar] placeholderImage:[UIImage imageNamed:@"default.jpeg"]];
+        self.vipLabel.hidden = !result.recharged;
+        self.nameLabel.text = result.name;
+        self.countryLabel.text = result.area;
         for(int i = 0;i<self.videoArr.count;i++){
             RMFetchVideoDetailModel* model = self.videoArr[i];
-            if(i == 0){
-                model.title = @"";
-                model.subtitle = @" ";
-            }else if(i == 1){
-                model.title = @"";
-                model.subtitle = @" ";
-            }else if(i == 2){
-                model.title = @"";
-                model.subtitle = @"  ";
-            }
         }
         [self.videoListTableView reloadData];
     }];
@@ -99,7 +96,6 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RMEditProfileTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"RMEditProfileTableViewCell" forIndexPath:indexPath];
     RMFetchVideoDetailModel* model = self.videoArr[indexPath.row];
-    cell.titleLabel.text = model.title;
     cell.subTitleLabel.text = model.subtitle;
     cell.addVideoView.hidden = YES;
     cell.editVideoButton.hidden = YES;

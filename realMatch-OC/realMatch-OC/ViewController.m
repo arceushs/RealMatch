@@ -57,6 +57,7 @@
         [RMUserCenter shared].avatar = data.avatar;
         [RMUserCenter shared].userIsVip = data.recharged;
         [RMUserCenter shared].anormaly = data.isAnomaly;
+        [RMUserCenter shared].isUploadedVideo = data.uploadedVideo;
     }];
   
 //    NSData * data = [NSData dataWithContentsOfFile:[[RMFileManager pathForSaveRecord] stringByAppendingString:@"movie.mp4"]];

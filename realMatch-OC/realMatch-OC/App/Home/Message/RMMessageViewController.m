@@ -13,8 +13,9 @@
 #import "UIView+RealMatch.h"
 #import "RMFetchMessageAPI.h"
 #import "SDWebImage.h"
+#import "RMSocketManager.h"
 
-@interface RMMessageViewController ()<UITableViewDelegate,UITableViewDataSource,RouterController>
+@interface RMMessageViewController ()<UITableViewDelegate,UITableViewDataSource,RouterController,RMSocketManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *messageTableView;
 @property (strong,nonatomic) NSString* userId;
 @property (strong,nonatomic) NSArray<RMFetchMessageModel*>* messageArr;
@@ -53,11 +54,20 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self refreshView];
+    [[RMSocketManager shared] addDelegate:self];
 }
 
+-(void)viewDidDisapper:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [[RMSocketManager shared] removeDelegate:self];
+}
+
+-(void)didReceiveMessage{
+    [self refreshView];
+}
 - (void)refreshView {
     RMFetchLikesMeAPI* likesMeAPI = [[RMFetchLikesMeAPI alloc] initWithUserId:_userId];
     [[RMNetworkManager shareManager] request:likesMeAPI completion:^(RMNetworkResponse *response) {

@@ -87,10 +87,12 @@
         data.phone = [dataDict objectForKey:@"phone"];
         data.sex = [[dataDict objectForKey:@"sex"] intValue];
         data.age = [[dataDict objectForKey:@"age"] intValue];
-        data.area = [dataDict objectForKey:@"area"];
+        data.area = [dataDict objectForKey:@"country"];
         data.avatar = [dataDict objectForKey:@"avatar"];
         data.recharged = [[dataDict objectForKey:@"recharged"] boolValue];
         data.isAnomaly = [dataDict[@"is_anomaly"] boolValue];
+        data.uploadedVideo = [dataDict[@"has_intro_video"] boolValue];
+        data.avatar = [dataDict objectForKey:@"avatar"];
     }
     
     return [[RMNetworkResponse alloc]initWithResponseObject:data];

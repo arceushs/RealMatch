@@ -12,6 +12,7 @@ class RMProfileViewController: UIViewController,RouterController{
     
     @IBOutlet weak var premiumView: UIView!
     
+    @IBOutlet weak var diamondVip: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
@@ -66,6 +67,7 @@ class RMProfileViewController: UIViewController,RouterController{
                         RMUserCenter.shared.avatar = data.avatar
                         
                         self.avatarImageView?.sd_setImage(with: URL(string: data.avatar), placeholderImage: UIImage(named: "default.jpeg"), options: .refreshCached, context: nil)
+                        self.avatarImageView.contentMode = .scaleAspectFill
                         self.nameLabel.text = RMUserCenter.shared.registerName
                         
                     }
@@ -79,6 +81,7 @@ class RMProfileViewController: UIViewController,RouterController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.premiumView.isHidden = RMUserCenter.shared.userIsVip
+        self.diamondVip.isHidden = !RMUserCenter.shared.userIsVip
     }
     
     @objc func premiumViewClicked(){
