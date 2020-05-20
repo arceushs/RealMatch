@@ -60,7 +60,7 @@
 }
 
 -(instancetype)initWithUserId:(NSString*)userId{
-    return [self initWithUserId:userId count:6];
+    return [self initWithUserId:userId count:1];
 }
 
 -(instancetype)initWithUserId:(NSString*)userId count:(NSInteger)count{

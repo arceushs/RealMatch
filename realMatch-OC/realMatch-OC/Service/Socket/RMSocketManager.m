@@ -39,11 +39,25 @@
     return self;
 }
 
+-(NSString *)testStr{
+#ifdef DEBUG
+    return @"test";
+#else
+    BOOL currentEnviroment = [[NSUserDefaults standardUserDefaults] boolForKey:@"testEnviroment"];
+    BOOL xcodeEnviroment = [[[[NSProcessInfo processInfo] environment] objectForKey:@"testEnviroment"] boolValue];
+    if(!currentEnviroment && !xcodeEnviroment) {
+        return @"production";
+    }else{
+        return @"test";
+    }
+#endif
+}
+
 -(void)connectWithUserId:(NSString*)userId{
     NSString* urlStr = [NSString stringWithFormat:@"%@/socket.io",RMNetworkAPIHost.apiHost];
     NSURL* url = [[NSURL alloc] initWithString:urlStr];
     
-    _manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"forceWebsockets": @YES,@"connectParams":@{@"userId":userId}}];
+    _manager = [[SocketManager alloc] initWithSocketURL:url config:@{@"log": @YES, @"forceWebsockets": @YES,@"connectParams":@{@"userId":userId,@"env":[self testStr]}}];
     SocketIOClient* socket = _manager.defaultSocket;
     
     [socket on:@"connect" callback:^(NSArray* data, SocketAckEmitter* ack) {
@@ -53,10 +67,10 @@
             if([pushToken length] <=0){
                 pushToken = @"";
             }
-            [socket emit:@"login" with:@[@{@"userId":userId,@"pushToken":pushToken}]];
+            [socket emit:@"login" with:@[@{@"userId":userId,@"pushToken":pushToken,@"env":[self testStr]}]];
         }
         
-        [socket emit:@"offLineMsg" with:@[@{@"userId":userId}]];
+        [socket emit:@"offLineMsg" with:@[@{@"userId":userId,@"env":[self testStr]}]];
         
     }];
     
@@ -107,7 +121,7 @@
                     }
                 }
             }
-            [socket emit:@"ackOffLineMsg" with:@[@{@"userId":userId}]];
+            [socket emit:@"ackOffLineMsg" with:@[@{@"userId":userId,@"env":[self testStr]}]];
         }
     }];
     
@@ -140,7 +154,7 @@
 }
 
 -(void)disconnect:(NSString*)userId{
-    [self.manager.defaultSocket emit:@"disconnect" with:@[@{@"userId":userId}]];
+    [self.manager.defaultSocket emit:@"disconnect" with:@[@{@"userId":userId,@"env":[self testStr]}]];
 //    [self.manager.defaultSocket disconnect];
 }
 
