@@ -8,10 +8,16 @@
 
 #import "RMNetworkManager.h"
 #import "RMFileManager.h"
+#import <CoreLocation/CoreLocation.h>
+
+@interface RMNetworkManager()<CLLocationManagerDelegate>
+
+@end
 
 @implementation RMNetworkManager
 {
     AFHTTPSessionManager * _afmanager;
+    CLLocationManager * _locationManager;
 }
 +(instancetype)shareManager{
     static dispatch_once_t onceToken;
@@ -19,13 +25,73 @@
     dispatch_once(&onceToken, ^{
         if(manager == nil){
             manager = [[RMNetworkManager alloc]init];
+            [manager locationManager];
+            
         }
     });
     return manager;
 }
 
+- (void)locationManager{
+    CLLocationManager *_locationManager = [[CLLocationManager alloc] init];
+    // 设置代理
+    _locationManager.delegate = self;
+    // 设置定位精确度到米
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    // 设置过滤器为无
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    // 取得定位权限，有两个方法，取决于你的定位使用情况
+    // 一个是requestAlwaysAuthorization，一个是requestWhenInUseAuthorization
+    // 这句话ios8以上版本使用。
+    [_locationManager requestAlwaysAuthorization];
+    // 开始定位
+    [_locationManager startUpdatingLocation];
+    self->_locationManager = _locationManager;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    // 获取当前所在的城市名
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    //根据经纬度反向地理编译出地址信息
+    [geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *array, NSError *error){
+        if (array.count > 0){
+            CLPlacemark *placemark = [array objectAtIndex:0];
+            //获取当前城市
+            NSString *city = placemark.locality;
+            if (!city) {
+                //注意：四大直辖市的城市信息无法通过locality获得，只能通过获取省份的方法来获得（如果city为空，则可知为直辖市）
+                city = placemark.administrativeArea;
+            }
+            NSArray *array = [city componentsSeparatedByString:@"市"];
+            NSString *cityStr = array[0];
+            NSString * cityEncode = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes( kCFAllocatorDefault, (CFStringRef)cityStr, NULL, NULL,  kCFStringEncodingUTF8 ));
+            //这里我把获取到的地址信息利用NSUserDefaults保存起来，后面会用到
+            NSMutableDictionary *dic = [NSMutableDictionary new];
+            [dic setValue:cityEncode forKey:@"city"];
+            [dic setValue:@(newLocation.coordinate.longitude) forKey:@"longtitude"];
+            [dic setValue:@(newLocation.coordinate.latitude) forKey:@"latitude"];
+            [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"cityName"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        else if (error == nil && [array count] == 0) {
+            NSLog(@"没有结果返回.");
+        }
+        else if (error != nil)  {
+            //NSLog(@"An error occurred = %@", error);
+        }
+    }];
+}
+
+
 -(void)request:(id<RMNetworkAPI>)api completion:(ReponseBlock)completion{
+    NSDictionary *locationDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"cityName"];
     NSDictionary* parameters = [api parameters];
+    if([locationDict isKindOfClass: [NSDictionary class]]) {
+        [parameters setValue:locationDict[@"latitude"] forKey:@"latitude"];
+        [parameters setValue:locationDict[@"longtitude"] forKey:@"longtitude"];
+        [parameters setValue:locationDict[@"city"] forKey:@"city"];
+    }
+    
     NSString* host = [api requestHost];
     NSString* path = [api requestPath];
     NSString* url = [NSString stringWithFormat:@"%@%@",host,path];

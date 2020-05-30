@@ -138,6 +138,7 @@
                            @"toUser":message.toUser,
                            @"msg":message.msg,
                            @"msg_type":message.msgType,
+                           @"env":[self testStr],
                            };
     [weakSelf.manager.defaultSocket emit:@"message" with:@[dict]];
    

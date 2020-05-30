@@ -47,6 +47,8 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
         self.editProfileDetailTableView.dataSource = self
         self.editProfileDetailTableView.register(UINib(nibName: "RMEditProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "editprofileCell")
         self.editProfileDetailTableView.separatorStyle = .none;
+        let headerView = RMEditProfileHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 189))
+        self.editProfileDetailTableView.tableHeaderView = headerView
         if let userId = RMUserCenter.shared.userId{
             let fetchDetailAPI:RMFetchDetailAPI = RMFetchDetailAPI(userId: userId)
             RMNetworkManager.share()?.request(fetchDetailAPI, completion: { (response) in
@@ -77,6 +79,12 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                         }
 
                     }
+                    
+
+                    headerView.avatarView!.sd_setImage(with: result.avatar, placeholderImage: UIImage(named: "default.jpeg"), options: SDWebImageOptions.fromLoaderOnly, completed: nil)
+                    headerView.nameLabel.text = "\(result.name) \(result.age)"
+                    headerView.isVip.isHidden = !result.recharged
+                    headerView.descriptionLabel = 
                     
                     self.editProfileDetailTableView.reloadData()
                 }
