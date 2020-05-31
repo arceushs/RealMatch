@@ -47,12 +47,22 @@
                                 <constraint firstAttribute="height" constant="1" id="i2u-Ow-UNu"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaA-v5-rHy">
+                            <rect key="frame" x="300" y="10" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="0Un-uF-FsI"/>
+                                <constraint firstAttribute="height" constant="24" id="RGh-i2-E4f"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="search"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="BCM-oK-s65" firstAttribute="leading" secondItem="4s2-sJ-02B" secondAttribute="leading" constant="16" id="0iL-iT-bzw"/>
+                        <constraint firstAttribute="trailing" secondItem="GaA-v5-rHy" secondAttribute="trailing" constant="16" id="HV4-z9-TiA"/>
                         <constraint firstItem="8ho-7d-Byy" firstAttribute="centerX" secondItem="4s2-sJ-02B" secondAttribute="centerX" id="TDR-Bi-kN0"/>
                         <constraint firstItem="8ho-7d-Byy" firstAttribute="centerY" secondItem="4s2-sJ-02B" secondAttribute="centerY" id="fB2-Jg-dRW"/>
+                        <constraint firstItem="GaA-v5-rHy" firstAttribute="centerY" secondItem="4s2-sJ-02B" secondAttribute="centerY" id="kON-zO-ozZ"/>
                         <constraint firstAttribute="trailing" secondItem="ZEI-Hs-TR7" secondAttribute="trailing" id="kSA-C5-a0q"/>
                         <constraint firstItem="ZEI-Hs-TR7" firstAttribute="leading" secondItem="4s2-sJ-02B" secondAttribute="leading" id="l7b-c7-nIs"/>
                         <constraint firstItem="BCM-oK-s65" firstAttribute="centerY" secondItem="4s2-sJ-02B" secondAttribute="centerY" id="liV-Km-Arq"/>
@@ -82,5 +92,6 @@
     </objects>
     <resources>
         <image name="normalBack" width="24" height="24"/>
+        <image name="search" width="24" height="24"/>
     </resources>
 </document>

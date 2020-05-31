@@ -81,10 +81,10 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                     }
                     
 
-                    headerView.avatarView!.sd_setImage(with: result.avatar, placeholderImage: UIImage(named: "default.jpeg"), options: SDWebImageOptions.fromLoaderOnly, completed: nil)
+                    headerView.avatarView!.sd_setImage(with: URL(string:result.avatar), placeholderImage: UIImage(named: "default.jpeg"), options: SDWebImageOptions.queryMemoryData, completed: nil)
                     headerView.nameLabel.text = "\(result.name) \(result.age)"
                     headerView.isVip.isHidden = !result.recharged
-                    headerView.descriptionLabel = 
+//                    headerView.descriptionLabel =
                     
                     self.editProfileDetailTableView.reloadData()
                 }
