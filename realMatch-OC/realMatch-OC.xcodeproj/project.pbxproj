@@ -23,6 +23,7 @@
 		1C49CAF322DABCE2007333A6 /* RMDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */; };
 		1C7F43432317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7F43412317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.swift */; };
 		1C7F43442317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C7F43422317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.xib */; };
+		1C85448D248BD77A005E1D4D /* RMChangeUserOtherInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C85448C248BD77A005E1D4D /* RMChangeUserOtherInfoAPI.swift */; };
 		1CA11F3C233230FA00061CE9 /* RMDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA11F3B233230FA00061CE9 /* RMDownloadManager.swift */; };
 		1CAF03BE2310F415004FC148 /* RMWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAF03BC2310F415004FC148 /* RMWebViewController.swift */; };
 		1CC11A1D2314CA0B00FCD770 /* default.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 1CC11A1C2314CA0B00FCD770 /* default.jpeg */; };
@@ -200,6 +201,7 @@
 		1C49CAF222DABCE2007333A6 /* RMDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDatabaseManager.swift; sourceTree = "<group>"; };
 		1C7F43412317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMPurchaseBannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		1C7F43422317EFEA0028DCB9 /* RMPurchaseBannerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMPurchaseBannerCollectionViewCell.xib; sourceTree = "<group>"; };
+		1C85448C248BD77A005E1D4D /* RMChangeUserOtherInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMChangeUserOtherInfoAPI.swift; sourceTree = "<group>"; };
 		1CA11F3B233230FA00061CE9 /* RMDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMDownloadManager.swift; sourceTree = "<group>"; };
 		1CAF03BC2310F415004FC148 /* RMWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMWebViewController.swift; sourceTree = "<group>"; };
 		1CC11A1C2314CA0B00FCD770 /* default.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpeg; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 				D61458DB230A915D00D8C700 /* RMEditProfileTableViewCell.xib */,
 				2B96D142247BF687002E86FC /* RMChangeEditProfileViewController.swift */,
 				2B96D143247BF688002E86FC /* RMChangeEditProfileViewController.xib */,
+				1C85448C248BD77A005E1D4D /* RMChangeUserOtherInfoAPI.swift */,
 				D618DC39230AAB5100F34819 /* RMSettingViewController.swift */,
 				D618DC3A230AAB5100F34819 /* RMSettingViewController.xib */,
 				D610B6B7230BEA4000A7BB47 /* RMSettingTableViewCell.swift */,
@@ -1076,6 +1079,7 @@
 				2B2AE31524474C45007E2463 /* RMPhotoViewController.swift in Sources */,
 				1CD90AEC22F592BF00119E27 /* RMMessageDetail.swift in Sources */,
 				2BE74104243C475100DDDA5D /* RMPhoneCheckAPI.swift in Sources */,
+				1C85448D248BD77A005E1D4D /* RMChangeUserOtherInfoAPI.swift in Sources */,
 				1C0EAEA722D0300A00036DD5 /* RMMessageHeaderCollectionViewCell.swift in Sources */,
 				1C3BC8F322ED90DB00E9EE6C /* RMMatchedViewController.swift in Sources */,
 				D6BF5CDD22A8F5B80036EA75 /* RMFileManager.m in Sources */,

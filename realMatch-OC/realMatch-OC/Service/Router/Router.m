@@ -69,6 +69,7 @@
     [routeTable addObject:@"RMPickAvatarViewController"];
     [routeTable addObject:@"RMPhotoViewController"];
     [routeTable addObject:@"RMGuideVideoViewController"];
+    [routeTable addObject:@"RMChangeEditProfileViewController"];
 }
 
 -(void)routerTo:(RouterAdopter *)routerAdopter{

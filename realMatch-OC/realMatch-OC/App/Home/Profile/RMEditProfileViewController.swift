@@ -174,6 +174,9 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
         return cell
     }
     
+    @IBAction func changeUserOtherInfoClicked(_ sender: Any) {
+        Router.shared()?.router(to: "RMChnageEditProfileViewController", parameter: nil)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.videoArr?.count ?? 0
     }
