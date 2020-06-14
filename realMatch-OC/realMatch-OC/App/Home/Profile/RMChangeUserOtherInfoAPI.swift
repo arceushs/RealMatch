@@ -15,9 +15,9 @@ class RMChangeUserOtherInfoAPIData: NSObject {
 
 class RMChangeUserOtherInfoAPI: NSObject,RMNetworkAPI {
     func parameters() -> [AnyHashable : Any]! {
-        var userOtherInfo = ["school":self.school,
-                "job":self.job,
-                "about_me":self.aboutMe,
+        var userOtherInfo = ["school":self.school ?? "my school",
+            "job":self.job ?? "my job",
+            "about_me":self.aboutMe ?? "about me",
                 ];
         if let avatar = self.avatar{
             userOtherInfo["avatar"] = avatar;
@@ -25,12 +25,21 @@ class RMChangeUserOtherInfoAPI: NSObject,RMNetworkAPI {
         return userOtherInfo
     }
     
+    convenience init(school:String?, job:String?, aboutMe:String?, avatar:String?) {
+        
+        self.init()
+        self.school = school
+        self.job = job
+        self.aboutMe = aboutMe
+        self.avatar = avatar
+    }
+    
     func requestHost() -> String! {
         return RMNetworkAPIHost.apiHost
     }
     
     func requestPath() -> String! {
-        return "/user/profile"
+        return "\(RMNetworkAPIHost.apiPath)/user/profile"
     }
     
     func method() -> RMHttpMethod {
@@ -41,9 +50,9 @@ class RMChangeUserOtherInfoAPI: NSObject,RMNetworkAPI {
         return .data
     }
     
-    var school : String = "my school"
-    var job : String = "my job"
-    var aboutMe : String = "about me"
+    var school : String? = "my school"
+    var job : String? = "my job"
+    var aboutMe : String? = "about me"
     var avatar:String?
     
     func adoptResponse(_ response: RMNetworkResponse<AnyObject>!) -> RMNetworkResponse<AnyObject>! {

@@ -84,6 +84,9 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                     headerView.avatarView!.sd_setImage(with: URL(string:result.avatar), placeholderImage: UIImage(named: "default.jpeg"), options: SDWebImageOptions.queryMemoryData, completed: nil)
                     headerView.nameLabel.text = "\(result.name) \(result.age)"
                     headerView.isVip.isHidden = !result.recharged
+                    headerView.universityLabel.text = result.school
+                    headerView.jobLabel.text = result.job
+                    headerView.descriptionLabel.text = result.aboutMe;
 //                    headerView.descriptionLabel =
                     
                     self.editProfileDetailTableView.reloadData()
@@ -175,7 +178,7 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
     }
     
     @IBAction func changeUserOtherInfoClicked(_ sender: Any) {
-        Router.shared()?.router(to: "RMChnageEditProfileViewController", parameter: nil)
+        Router.shared()?.router(to: "RMChangeEditProfileViewController", parameter: nil)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.videoArr?.count ?? 0

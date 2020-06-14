@@ -26,6 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) BOOL recharged;
 @property (nonatomic,assign) BOOL isAnomaly;
 @property (nonatomic,assign) BOOL uploadedVideo;
+@property (nonatomic,copy) NSString *school;
+@property (nonatomic,copy) NSString *job;
+@property (nonatomic,copy) NSString *aboutMe;
 
 @end
 

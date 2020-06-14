@@ -93,6 +93,18 @@
         data.isAnomaly = [dataDict[@"is_anomaly"] boolValue];
         data.uploadedVideo = [dataDict[@"has_intro_video"] boolValue];
         data.avatar = [dataDict objectForKey:@"avatar"];
+        data.school = [dataDict objectForKey:@"school"];
+        if (data.school.length <= 0) {
+            data.school = @"my school";
+        }
+        data.job = [dataDict objectForKey:@"job"];
+        if (data.job.length <= 0) {
+            data.job = @"my job";
+        }
+        data.aboutMe = [dataDict objectForKey:@"about_me"];
+        if (data.aboutMe.length <= 0) {
+            data.aboutMe = @"about me";
+        }
     }
     
     return [[RMNetworkResponse alloc]initWithResponseObject:data];

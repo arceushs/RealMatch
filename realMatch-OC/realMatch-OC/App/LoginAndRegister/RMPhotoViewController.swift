@@ -17,7 +17,7 @@ class RMPhotoViewController: UIViewController, RouterController, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RMPhotoCollectionViewCell", for: indexPath) as! RMPhotoCollectionViewCell
         guard let image = self.dataSource[indexPath.row].image else {
-            self.getImageFromPHAsset(assetModel: self.dataSource[indexPath.row], size: CGSize(width: 400, height: 400), cell: cell)
+            self.getImageFromPHAsset(assetModel: self.dataSource[indexPath.row], size: CGSize(width: 1000, height: 1000), cell: cell)
             return cell
         }
         cell.photoImageView.image = image
@@ -97,12 +97,12 @@ class RMPhotoViewController: UIViewController, RouterController, UICollectionVie
     }
     
     func getImageFromPHAsset(assetModel:RMAssetModel, size:CGSize,cell:RMPhotoCollectionViewCell) -> Void {
-        var requestID:PHImageRequestID = -2
-        let scale:CGFloat = CGFloat(UIScreen.main.scale)
-        let width:CGFloat = CGFloat(min(size.width,500))
-        if requestID >= -1 && size.width/width == scale {
-            PHCachingImageManager.default().cancelImageRequest(requestID)
-        }
+//        var requestID:PHImageRequestID = -2
+//        let scale:CGFloat = CGFloat(UIScreen.main.scale)
+//        let width:CGFloat = CGFloat(min(size.width,500))
+//        if requestID >= -1 && size.width/width == scale {
+//            PHCachingImageManager.default().cancelImageRequest(requestID)
+//        }
         
         let option:PHImageRequestOptions = PHImageRequestOptions()
         option.deliveryMode = PHImageRequestOptionsDeliveryMode.opportunistic
