@@ -16,5 +16,5 @@ pod 'Socket.IO-Client-Swift', '~> 15.1.0'
 pod 'FMDB'
 pod 'SnapKit', '~> 5.0.0'
 pod 'TTTAttributedLabel'
-
+pod 'AppsFlyerFramework'
 end

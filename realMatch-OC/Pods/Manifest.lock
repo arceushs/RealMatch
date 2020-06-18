@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
   - AHTimer (0.0.3)
+  - AppsFlyerFramework (5.1.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -38,6 +39,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - AHTimer (~> 0.0.3)
+  - AppsFlyerFramework
   - FMDB
   - GPUImage
   - GPUImageBeautifyFilter
@@ -54,6 +56,7 @@ SPEC REPOS:
     - AHTimer
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - AppsFlyerFramework
     - FMDB
     - GPUImage
     - GPUImageBeautifyFilter
@@ -69,6 +72,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AHTimer: df455262e80cc80ab266b46b082e5ff88f3c60ad
+  AppsFlyerFramework: b5e6d0d1718c445eeb151769e97246c00ae4628d
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GPUImageBeautifyFilter: 6eb451b50c395109172ae1f9e69c4241d0126c09
@@ -81,6 +85,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: e6b8ead8c2699b25b23c6c812f4989e2e27134d6
+PODFILE CHECKSUM: c0021c4b4d66c332e51722c14b75446ec6df89ec
 
 COCOAPODS: 1.8.4

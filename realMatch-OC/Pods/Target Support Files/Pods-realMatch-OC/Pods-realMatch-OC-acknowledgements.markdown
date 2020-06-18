@@ -73,6 +73,10 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN ANY WAY CONNECTION WITH THE
 LICENSED WORK OR THE USE OR OTHER DEALINGS IN THE LICENSED WORK.
 
+## AppsFlyerFramework
+
+Copyright 2019 AppsFlyer Ltd. All rights reserved.
+
 ## FMDB
 
 If you are using FMDB in your project, I'd love to hear about it.  Let Gus know
