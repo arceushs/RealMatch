@@ -44,6 +44,12 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow access to camera and microphone to shoot a video</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow access to camera and microphone to shoot a video</string>
 	<key>NSPhotoLibraryUsageDescription</key>

@@ -47,8 +47,15 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
         self.editProfileDetailTableView.dataSource = self
         self.editProfileDetailTableView.register(UINib(nibName: "RMEditProfileTableViewCell", bundle: nil), forCellReuseIdentifier: "editprofileCell")
         self.editProfileDetailTableView.separatorStyle = .none;
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let headerView = RMEditProfileHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 189))
         self.editProfileDetailTableView.tableHeaderView = headerView
+        
         if let userId = RMUserCenter.shared.userId{
             let fetchDetailAPI:RMFetchDetailAPI = RMFetchDetailAPI(userId: userId)
             RMNetworkManager.share()?.request(fetchDetailAPI, completion: { (response) in
@@ -93,8 +100,6 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                 }
             })
         }
-        
-        // Do any additional setup after loading the view.
     }
 
     

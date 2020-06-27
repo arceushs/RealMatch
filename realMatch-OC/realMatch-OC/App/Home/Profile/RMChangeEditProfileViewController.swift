@@ -129,9 +129,12 @@ class RMChangeEditProfileViewController: UIViewController,RouterController,UITex
             str = nil
         }
         
+        SVProgressHUD.showInfo(withStatus: "be changing....")
+        
         RMNetworkManager.share()?.request(RMChangeUserOtherInfoAPI(school: self.mySchoolLabel.text, job: self.myJobLabel.text, aboutMe: self.aboutmeLabel.text, avatar: str), completion: { (response) in
             if response?.error != nil {
                 SVProgressHUD.showInfo(withStatus: "encounter error try it again")
+                self.navigationController?.popViewController(animated: true)
                 return
             }
             let data :RMChangeUserOtherInfoAPIData = response?.responseObject as! RMChangeUserOtherInfoAPIData

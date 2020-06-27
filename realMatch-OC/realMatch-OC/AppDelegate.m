@@ -12,6 +12,7 @@
 #import "RMSocketManager.h"
 #import "realMatch_OC-Swift.h"
 #import <UserNotifications/UserNotifications.h>
+#import <AppsFlyerLib/AppsFlyerTracker.h>
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -29,7 +30,16 @@
     [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    
+    [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"SG9QrxfmQrbLn8Np53tFgB";
+    [AppsFlyerTracker sharedTracker].appleAppID = @"com.arceushs.MeetYou";
+    [AppsFlyerTracker sharedTracker].isDebug = YES;
+    
     return YES;
+}
+
+-(void)applicationDidBecomeActive:(UIApplication *)application{
+    [[AppsFlyerTracker sharedTracker] trackAppLaunch];
 }
 
 

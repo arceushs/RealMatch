@@ -79,7 +79,7 @@
         if([currentModel.video length]>0){
             weakSelf.player = [AVPlayer playerWithPlayerItem:nil];
             [weakSelf.cardView setVideoLayerWithPlayer:weakSelf.player];
-            weakSelf.cardView.nameLabel.text = currentModel.name;
+            weakSelf.cardView.nameLabel.text = [NSString stringWithFormat:@"%@  %i",currentModel.name,(int)currentModel.age];
             weakSelf.cardView.regionLabel.text = currentModel.country;
             
             CGSize nameSize = [currentModel.name boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:24 weight:UIFontWeightMedium]} context:nil].size;
