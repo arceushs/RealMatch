@@ -110,6 +110,9 @@
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-token"];
     if (token != nil) {
         [requestSerialization setValue:token forHTTPHeaderField:@"token"];
+        [requestSerialization setValue:locationDict[@"latitude"] forHTTPHeaderField:@"latitude"];
+        [requestSerialization setValue:locationDict[@"longtitude"] forHTTPHeaderField:@"longtitude"];
+        [requestSerialization setValue:locationDict[@"city"] forHTTPHeaderField:@"city"];
     }
     _afmanager.requestSerializer = requestSerialization;
     _afmanager.responseSerializer = [AFJSONResponseSerializer serializer];

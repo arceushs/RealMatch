@@ -16,6 +16,22 @@ PODS:
     - AFNetworking/NSURLSession
   - AHTimer (0.0.3)
   - AppsFlyerFramework (5.1.0)
+  - FBAudienceNetwork (5.6.0):
+    - FBSDKCoreKit/Basics (>= 5.6.0)
+  - FBSDKCoreKit (5.13.1):
+    - FBSDKCoreKit/Basics (= 5.13.1)
+    - FBSDKCoreKit/Core (= 5.13.1)
+  - FBSDKCoreKit/Basics (5.13.1)
+  - FBSDKCoreKit/Core (5.13.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.13.1):
+    - FBSDKLoginKit/Login (= 5.13.1)
+  - FBSDKLoginKit/Login (5.13.1):
+    - FBSDKCoreKit (~> 5.0)
+  - FBSDKShareKit (5.13.1):
+    - FBSDKShareKit/Share (= 5.13.1)
+  - FBSDKShareKit/Share (5.13.1):
+    - FBSDKCoreKit (~> 5.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -40,6 +56,10 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - AHTimer (~> 0.0.3)
   - AppsFlyerFramework
+  - FBAudienceNetwork
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - FMDB
   - GPUImage
   - GPUImageBeautifyFilter
@@ -57,6 +77,10 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - AppsFlyerFramework
+    - FBAudienceNetwork
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
     - FMDB
     - GPUImage
     - GPUImageBeautifyFilter
@@ -73,6 +97,10 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AHTimer: df455262e80cc80ab266b46b082e5ff88f3c60ad
   AppsFlyerFramework: b5e6d0d1718c445eeb151769e97246c00ae4628d
+  FBAudienceNetwork: 1ea63543665445a3a5b4a059e8210a343b6ab3c1
+  FBSDKCoreKit: 8fb98209109fb684937f05d534305edb18c20207
+  FBSDKLoginKit: c7c6ffd9ca9ea45aee32361840af040ad8f6706a
+  FBSDKShareKit: 8a0e4d7172c7b706991c834cff2bf74e7b4726e3
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GPUImageBeautifyFilter: 6eb451b50c395109172ae1f9e69c4241d0126c09
@@ -85,6 +113,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: c0021c4b4d66c332e51722c14b75446ec6df89ec
+PODFILE CHECKSUM: 5384c9c55f7e5e56707dbaba647f0ddde3ca590e
 
 COCOAPODS: 1.8.4
