@@ -109,10 +109,12 @@
     requestSerialization.HTTPShouldHandleCookies = YES;
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"global-token"];
     if (token != nil) {
-        [requestSerialization setValue:token forHTTPHeaderField:@"token"];
-        [requestSerialization setValue:[NSString stringWithFormat:@"%@",locationDict[@"latitude"]] forHTTPHeaderField:@"latitude"];
-        [requestSerialization setValue:[NSString stringWithFormat:@"%@",locationDict[@"longtitude"]] forHTTPHeaderField:@"longtitude"];
-        [requestSerialization setValue:[NSString stringWithFormat:@"%@",locationDict[@"city"]] forHTTPHeaderField:@"city"];
+        if ([locationDict isKindOfClass:[NSDictionary class]]) {
+            [requestSerialization setValue:token forHTTPHeaderField:@"token"];
+            [requestSerialization setValue:[NSString stringWithFormat:@"%@",locationDict[@"latitude"]] forHTTPHeaderField:@"latitude"];
+            [requestSerialization setValue:[NSString stringWithFormat:@"%@",locationDict[@"longtitude"]] forHTTPHeaderField:@"longtitude"];
+            [requestSerialization setValue:[locationDict[@"city"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forHTTPHeaderField:@"city"];
+        }
     }
     _afmanager.requestSerializer = requestSerialization;
     _afmanager.responseSerializer = [AFJSONResponseSerializer serializer];
