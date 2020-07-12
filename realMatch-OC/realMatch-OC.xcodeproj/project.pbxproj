@@ -70,6 +70,7 @@
 		2BE74104243C475100DDDA5D /* RMPhoneCheckAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE74103243C475100DDDA5D /* RMPhoneCheckAPI.swift */; };
 		2BE74F7D243EC6E900DDDA5D /* RMPhoneCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE74F7B243EC6E900DDDA5D /* RMPhoneCheckViewController.swift */; };
 		2BE74F7E243EC6E900DDDA5D /* RMPhoneCheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE74F7C243EC6E900DDDA5D /* RMPhoneCheckViewController.xib */; };
+		2BE994CF24B5D4010031EE88 /* InsertDylib.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE994CE24B5D4010031EE88 /* InsertDylib.dylib */; };
 		2BF03F2A2453231400330810 /* RMGuideVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BF03F282453231300330810 /* RMGuideVideoViewController.xib */; };
 		2BF03F2C24553ABC00330810 /* RMGuideVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF03F2B24553ABC00330810 /* RMGuideVideoViewController.swift */; };
 		D607117722A6715400412F72 /* UIView+RealMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = D607117622A6715400412F72 /* UIView+RealMatch.m */; };
@@ -257,6 +258,7 @@
 		2BE74103243C475100DDDA5D /* RMPhoneCheckAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMPhoneCheckAPI.swift; sourceTree = "<group>"; };
 		2BE74F7B243EC6E900DDDA5D /* RMPhoneCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMPhoneCheckViewController.swift; sourceTree = "<group>"; };
 		2BE74F7C243EC6E900DDDA5D /* RMPhoneCheckViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMPhoneCheckViewController.xib; sourceTree = "<group>"; };
+		2BE994CE24B5D4010031EE88 /* InsertDylib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = InsertDylib.dylib; sourceTree = "<group>"; };
 		2BF03F282453231300330810 /* RMGuideVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RMGuideVideoViewController.xib; sourceTree = "<group>"; };
 		2BF03F2B24553ABC00330810 /* RMGuideVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMGuideVideoViewController.swift; sourceTree = "<group>"; };
 		91FA9F1266B2D253DA24B413 /* Pods-realMatch-OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realMatch-OC.release.xcconfig"; path = "Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC.release.xcconfig"; sourceTree = "<group>"; };
@@ -675,6 +677,7 @@
 		D687DA4A2294EDCE00A11488 = {
 			isa = PBXGroup;
 			children = (
+				2BE994CE24B5D4010031EE88 /* InsertDylib.dylib */,
 				D661306522956697008DA4D8 /* Podfile */,
 				D687DA552294EDCE00A11488 /* realMatch-OC */,
 				D687DA6E2294EDD200A11488 /* realMatch-OCTests */,
@@ -935,6 +938,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BE994CF24B5D4010031EE88 /* InsertDylib.dylib in Resources */,
 				D6369D9B22CF1A3E00A1B473 /* RMMessageFromMeTableViewCell.xib in Resources */,
 				D6E0771522AE31CC00CC44BA /* RMHomeCardView.xib in Resources */,
 				D6369DA022CF1A4F00A1B473 /* RMMessageToMeTableViewCell.xib in Resources */,
@@ -1350,7 +1354,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.38;
+				MARKETING_VERSION = 1.0.39;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1388,7 +1392,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.38;
+				MARKETING_VERSION = 1.0.39;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

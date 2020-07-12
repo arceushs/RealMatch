@@ -44,6 +44,7 @@
         [[Router shared] routerTo:@"LoginAndRegisterViewController" parameter:nil];
     }
    
+    NSLog(@"InsertDylib.dylib");
     
     RMFetchDetailAPI* detailAPI = [[RMFetchDetailAPI alloc]initWithUserId:[RMUserCenter shared].userId];
     [[RMNetworkManager shareManager] request:detailAPI completion:^(RMNetworkResponse *response) {
