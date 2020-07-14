@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RMEditProfileHeaderView" customModule="realMatch_OC" customModuleProvider="target">
             <connections>
                 <outlet property="avatarView" destination="KzV-yM-qH8" id="Ivf-1V-P5W"/>
+                <outlet property="cameraIcon" destination="T5C-0a-SPN" id="fHx-MK-rPU"/>
                 <outlet property="descriptionLabel" destination="7WM-wA-AyI" id="OCN-v1-wxb"/>
+                <outlet property="editIcon" destination="5au-jo-Tlg" id="dju-d3-6S4"/>
                 <outlet property="isVip" destination="TRa-Id-1eo" id="lqC-Tk-5hI"/>
                 <outlet property="jobBottomLabel" destination="Hmk-jd-E59" id="04x-Nf-DvT"/>
                 <outlet property="jobImageView" destination="Lsi-dh-nhp" id="FQW-Gt-Cnd"/>
@@ -145,6 +147,28 @@
                     <color key="textColor" red="0.57647058823529407" green="0.59607843137254901" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5C-0a-SPN">
+                    <rect key="frame" x="429" y="28" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="RFz-m8-xbH"/>
+                        <constraint firstAttribute="width" constant="48" id="gXn-dc-BAE"/>
+                    </constraints>
+                    <state key="normal" image="Icon_Camera"/>
+                    <connections>
+                        <action selector="cameraClicked:" destination="-1" eventType="touchUpInside" id="WjY-FK-AsT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5au-jo-Tlg">
+                    <rect key="frame" x="357" y="28" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="I2k-Jy-csJ"/>
+                        <constraint firstAttribute="height" constant="48" id="xdg-aB-ZuV"/>
+                    </constraints>
+                    <state key="normal" image="Icon_Edit"/>
+                    <connections>
+                        <action selector="editClicked:" destination="-1" eventType="touchUpInside" id="8tu-ha-wQe"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -162,11 +186,15 @@
                 <constraint firstItem="TRa-Id-1eo" firstAttribute="leading" secondItem="KzV-yM-qH8" secondAttribute="trailing" constant="9" id="Nyd-yI-31L"/>
                 <constraint firstItem="TxM-Ac-ZEV" firstAttribute="top" secondItem="Hmk-jd-E59" secondAttribute="bottom" constant="6" id="Pla-AN-vfH"/>
                 <constraint firstItem="YRK-sU-I9B" firstAttribute="trailing" secondItem="8Oz-zQ-0l5" secondAttribute="trailing" constant="-6" id="U1K-hD-Jfp"/>
+                <constraint firstItem="T5C-0a-SPN" firstAttribute="leading" secondItem="5au-jo-Tlg" secondAttribute="trailing" constant="24" id="VTO-1O-JyZ"/>
                 <constraint firstItem="KzV-yM-qH8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="VqY-38-hOu"/>
+                <constraint firstItem="T5C-0a-SPN" firstAttribute="centerY" secondItem="5au-jo-Tlg" secondAttribute="centerY" id="WGm-Zk-AnX"/>
                 <constraint firstItem="Hmk-jd-E59" firstAttribute="leading" secondItem="8Oz-zQ-0l5" secondAttribute="leading" id="XUP-mg-XYr"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="T5C-0a-SPN" secondAttribute="trailing" constant="-56" id="Ynm-I1-u91"/>
                 <constraint firstItem="ckF-Dg-ahT" firstAttribute="trailing" secondItem="TxM-Ac-ZEV" secondAttribute="trailing" constant="-6" id="eGi-E8-Iz8"/>
                 <constraint firstItem="aNP-Mp-9Mt" firstAttribute="centerY" secondItem="TxM-Ac-ZEV" secondAttribute="centerY" id="hXq-7J-iW5"/>
                 <constraint firstItem="YRK-sU-I9B" firstAttribute="centerY" secondItem="Yd0-aL-OAe" secondAttribute="centerY" id="hd7-np-Bup"/>
+                <constraint firstItem="T5C-0a-SPN" firstAttribute="centerY" secondItem="KzV-yM-qH8" secondAttribute="centerY" id="idV-Bd-seL"/>
                 <constraint firstItem="FTv-1Y-Nqv" firstAttribute="leading" secondItem="KzV-yM-qH8" secondAttribute="trailing" constant="16" id="kgB-iP-9hO"/>
                 <constraint firstItem="Yd0-aL-OAe" firstAttribute="centerY" secondItem="8Oz-zQ-0l5" secondAttribute="centerY" id="lmM-8d-WlF"/>
                 <constraint firstItem="KzV-yM-qH8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="nrl-QF-y0n"/>
@@ -185,6 +213,8 @@
         </view>
     </objects>
     <resources>
+        <image name="Icon_Camera" width="20" height="20"/>
+        <image name="Icon_Edit" width="20" height="20"/>
         <image name="detailDiamondVip" width="56" height="24"/>
         <image name="job" width="12" height="12"/>
         <image name="location" width="12" height="12"/>

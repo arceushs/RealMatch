@@ -238,7 +238,7 @@
 }
 
 - (IBAction)profileButtonClicked:(id)sender {
-    [[Router shared] routerTo:@"RMProfileViewController" parameter:nil];
+    [[Router shared] routerTo:@"RMEditProfileViewController" parameter:nil];
 }
 
 

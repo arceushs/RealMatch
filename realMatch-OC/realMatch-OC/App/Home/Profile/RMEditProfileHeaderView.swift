@@ -23,6 +23,11 @@ class RMEditProfileHeaderView: UIView {
     @IBOutlet weak var universityLabel: UILabel!
     @IBOutlet weak var universityBottomLabel: UILabel!
     @IBOutlet weak var universityImageView: UIImageView!
+    @IBOutlet weak var cameraIcon: UIButton!
+    @IBOutlet weak var editIcon: UIButton!
+    
+    var  setBlock: (()->Void)?
+    var  captureBlock :(()->Void)?
     
     @IBOutlet weak var isVip: UIImageView!
     override init(frame: CGRect) {
@@ -30,6 +35,18 @@ class RMEditProfileHeaderView: UIView {
         let headerView = Bundle.main.loadNibNamed("RMEditProfileHeaderView", owner: self, options: nil)?.last as? UIView
         headerView?.frame = frame;
         self.addSubview(headerView!)
+    }
+    
+    @IBAction func cameraClicked(_ sender: Any) {
+        if let captureBlock = self.captureBlock {
+            captureBlock()
+        }
+    }
+    
+    @IBAction func editClicked(_ sender: Any) {
+        if let setBlock = self.setBlock {
+            setBlock()
+        }
     }
     
     required init?(coder: NSCoder) {

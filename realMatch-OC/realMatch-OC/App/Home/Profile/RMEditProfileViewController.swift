@@ -51,10 +51,44 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
         // Do any additional setup after loading the view.
     }
     
+    var headerView : RMEditProfileHeaderView?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let headerView = RMEditProfileHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 189))
-        self.editProfileDetailTableView.tableHeaderView = headerView
+        if (self.headerView == nil) {
+            let headerView = RMEditProfileHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 189))
+            self.headerView = headerView;
+            headerView.captureBlock = {
+//                let adopter = RouterAdopter()
+//                adopter.params = ["filename":model.title]
+//                adopter.vcName = "RMCaptureViewController";
+//                adopter.routerAdopterCallback = {
+//                    dict in
+//                    let fileName = model.title
+//                    let filePath = "\(RMFileManager.pathForSaveRecord())/\(fileName).mp4"
+//                    let postFileAPI = RMPostFileAPI(filePath: filePath, filename: fileName, userId: RMUserCenter.shared.userId ?? "", mimeType:"video/mp4", fileType: Int32(indexPath.row)+1)
+//                    SVProgressHUD.show(withStatus: "uploading...")
+//                    RMNetworkManager.share()?.request(postFileAPI, completion: { (response) in
+//                        if response?.error != nil{
+//                            SVProgressHUD.showError(withStatus: "upload error,please try again")
+//                        }else{
+//                            SVProgressHUD.showSuccess(withStatus: "upload success")
+//                            let image = dict?["previewImage"] as? UIImage
+//                            if let image = image{
+//                                model.previewVideoImage = image
+//                            }
+//                            self.editProfileDetailTableView.reloadData()
+//                        }
+//                    })
+//                }
+//                Router.shared()?.router(to: adopter)
+            }
+            
+            headerView.setBlock = {
+                Router.shared()?.router(to: "RMChangeEditProfileViewController", parameter: nil)
+            }
+            self.editProfileDetailTableView.tableHeaderView = headerView
+        }
         
         if let userId = RMUserCenter.shared.userId{
             let fetchDetailAPI:RMFetchDetailAPI = RMFetchDetailAPI(userId: userId)
@@ -88,14 +122,14 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
                     }
                     
 
-                    headerView.avatarView!.sd_setImage(with: URL(string:result.avatar), placeholderImage: UIImage(named: "default.jpeg"), options: SDWebImageOptions.queryMemoryData, completed: nil)
-                    headerView.nameLabel.text = "\(result.name) \(result.age)"
-                    headerView.isVip.isHidden = !result.recharged
-                    headerView.universityLabel.text = result.school
-                    headerView.jobLabel.text = result.job
-                    headerView.descriptionLabel.text = result.aboutMe;
+                    self.headerView?.avatarView!.sd_setImage(with: URL(string:result.avatar), placeholderImage: UIImage(named: "default.jpeg"), options: SDWebImageOptions.queryMemoryData, completed: nil)
+                    self.headerView?.nameLabel.text = "\(result.name) \(result.age)"
+                    self.headerView?.isVip.isHidden = !result.recharged
+                    self.headerView?.universityLabel.text = result.school
+                    self.headerView?.jobLabel.text = result.job
+                    self.headerView?.descriptionLabel.text = result.aboutMe;
 //                    headerView.descriptionLabel =
-                    
+                    self.headerView?.locationLabel.text = result.area
                     self.editProfileDetailTableView.reloadData()
                 }
             })
@@ -182,6 +216,9 @@ class RMEditProfileViewController: UIViewController,RouterController,UITableView
         return cell
     }
     
+    @IBAction func settingClicked(_ sender: Any) {
+        Router.shared()?.router(to: "RMSettingViewController", parameter: nil)
+    }
     @IBAction func changeUserOtherInfoClicked(_ sender: Any) {
         Router.shared()?.router(to: "RMChangeEditProfileViewController", parameter: nil)
     }
