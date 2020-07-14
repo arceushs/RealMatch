@@ -65,9 +65,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allow access to camera and microphone to shoot a video</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Get a nice experience to match with other according your location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>Get a nice experience to match with other according your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSMicrophoneUsageDescription</key>

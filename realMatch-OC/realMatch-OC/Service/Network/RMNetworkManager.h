@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RMNetworkResponse.h"
-#import "AFNetworking.h"
+#import <AFNetworking/AFHTTPSessionManager.h>
 
 typedef NS_ENUM(NSInteger,RMTaskType){
     RMTaskTypeData,
