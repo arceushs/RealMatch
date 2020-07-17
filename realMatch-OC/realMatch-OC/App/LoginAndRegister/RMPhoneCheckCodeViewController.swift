@@ -154,7 +154,10 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
         if (sender as! UITextField).text?.count ?? 0 > 1 {
             (sender as! UITextField).text = String(((sender as! UITextField).text?.last)!)
         }
-        code2.becomeFirstResponder()
+        if (sender as! UITextField).text?.count != 0 {
+            code2.becomeFirstResponder()
+        }
+        
     }
     
     
@@ -162,40 +165,54 @@ class RMPhoneCheckCodeViewController: UIViewController, RouterController {
         if (sender as! UITextField).text?.count ?? 0 > 1 {
             (sender as! UITextField).text = String(((sender as! UITextField).text?.last)!)
         }
-        code3.becomeFirstResponder()
+        if (sender as! UITextField).text?.count != 0 {
+            code3.becomeFirstResponder()
+        }
+        
     }
     
     @IBAction func code3Edit(_ sender: Any) {
         if (sender as! UITextField).text?.count ?? 0 > 1 {
             (sender as! UITextField).text = String(((sender as! UITextField).text?.last)!)
         }
-        code4.becomeFirstResponder()
+        if (sender as! UITextField).text?.count != 0 {
+            code4.becomeFirstResponder()
+        }
+        
     }
     
     @IBAction func code4Edit(_ sender: Any) {
         if (sender as! UITextField).text?.count ?? 0 > 1 {
             (sender as! UITextField).text = String(((sender as! UITextField).text?.last)!)
         }
-        code5.becomeFirstResponder()
+        if (sender as! UITextField).text?.count != 0 {
+            code5.becomeFirstResponder()
+        }
     }
     
     @IBAction func code5Edit(_ sender: Any) {
         if (sender as! UITextField).text?.count ?? 0 > 1 {
             (sender as! UITextField).text = String(((sender as! UITextField).text?.last)!)
         }
-        code6.becomeFirstResponder()
+        if (sender as! UITextField).text?.count != 0 {
+            code6.becomeFirstResponder()
+        }
     }
     
     @IBAction func code6Edit(_ sender: Any) {
         if (sender as! UITextField).text?.count ?? 0 > 1 {
             (sender as! UITextField).text = String(((sender as! UITextField).text?.last)!)
         }
-        code1.resignFirstResponder()
-        code2.resignFirstResponder()
-        code3.resignFirstResponder()
-        code4.resignFirstResponder()
-        code5.resignFirstResponder()
-        code6.resignFirstResponder()
+        
+        if (sender as! UITextField).text?.count != 0 {
+            code1.resignFirstResponder()
+            code2.resignFirstResponder()
+            code3.resignFirstResponder()
+            code4.resignFirstResponder()
+            code5.resignFirstResponder()
+            code6.resignFirstResponder()
+        }
+        
     }
     var currentCodeLabel:UITextField!
     

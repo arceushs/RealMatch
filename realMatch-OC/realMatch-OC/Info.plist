@@ -69,7 +69,7 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Get a nice experience to match with other according your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Get a nice experience to match with other according your location</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow access to camera and microphone to shoot a video</string>
 	<key>NSPhotoLibraryUsageDescription</key>

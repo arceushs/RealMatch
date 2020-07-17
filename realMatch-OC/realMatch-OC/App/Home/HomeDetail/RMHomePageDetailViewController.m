@@ -73,7 +73,7 @@
         RMFetchDetailAPIData *data = (RMFetchDetailAPIData *)response.responseObject;
         [self.headerView.avatarView sd_setImageWithURL:[NSURL URLWithString:data.avatar] placeholderImage:[UIImage imageNamed:@"default.jpeg"] options:nil];
         self.headerView.nameLabel.text = [NSString stringWithFormat:@"%@ %d",data.name,data.age];
-        self.headerView.isVip.hidden = data.recharged;
+        self.headerView.isVip.hidden = !data.recharged;
         self.headerView.universityLabel.text = data.school;
         self.headerView.jobLabel.text = data.job;
         self.headerView.descriptionLabel.text = data.aboutMe;

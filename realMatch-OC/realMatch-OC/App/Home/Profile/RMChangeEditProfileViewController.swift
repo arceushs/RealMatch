@@ -49,7 +49,7 @@ class RMChangeEditProfileViewController: UIViewController,RouterController,UITex
         self.aboutmeLabel.delegate = self
         
         let tapGest = UIGestureRecognizer(target: self, action: #selector(tapGest(_ :)))
-        self.view.addGestureRecognizer(tapGest)
+        self.scrollView.addGestureRecognizer(tapGest)
         
         self.scrollView.delegate = self
         
