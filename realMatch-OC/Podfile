@@ -7,7 +7,7 @@ target 'realMatch-OC' do
 pod 'SVProgressHUD'
 pod 'SocketRocket'
 pod 'SDWebImage', '~> 5.0'
-pod 'AFNetworking', '~> 3.0', :subspecs => ['Reachability', 'Serialization', 'Security', 'NSURLSession']
+pod 'AFNetworking', '~> 3.0'
 pod 'GPUImage'
 pod 'GPUImageBeautifyFilter'
 pod 'AHTimer','~>0.0.3'
@@ -19,7 +19,7 @@ pod 'TTTAttributedLabel'
 pod 'AppsFlyerFramework'
 #pod 'FBAudienceNetwork'
 pod 'FBSDKCoreKit'
-pod 'FBSDKLoginKit'
-pod 'FBSDKShareKit'
+#pod 'FBSDKLoginKit'
+#pod 'FBSDKShareKit'
 
 end

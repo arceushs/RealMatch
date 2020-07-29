@@ -11,21 +11,26 @@
 @implementation RMNetworkAPIHost
 
 +(NSString *)apiHost{
+#ifdef DEBUG
+    return @"https://www.4match.wang";
+#else
     return @"https://www.4match.top";
+#endif
 }
 
 +(NSString *)apiPath{
-#ifdef DEBUG
-    return @"/api/test";
-#else
-    BOOL currentEnviroment = [[NSUserDefaults standardUserDefaults] boolForKey:@"testEnviroment"];
-    BOOL xcodeEnviroment = [[[[NSProcessInfo processInfo] environment] objectForKey:@"testEnviroment"] boolValue];
-    if(!currentEnviroment && !xcodeEnviroment) {
-        return @"/api";
-    }else{
-        return @"/api/test";
-    }
-#endif
+    return @"/api"
+//#ifdef DEBUG
+//    return @"/api/test";
+//#else
+//    BOOL currentEnviroment = [[NSUserDefaults standardUserDefaults] boolForKey:@"testEnviroment"];
+//    BOOL xcodeEnviroment = [[[[NSProcessInfo processInfo] environment] objectForKey:@"testEnviroment"] boolValue];
+//    if(!currentEnviroment && !xcodeEnviroment) {
+//        return @"/api";
+//    }else{
+//        return @"/api/test";
+//    }
+//#endif
 }
 
 @end
