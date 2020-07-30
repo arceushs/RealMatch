@@ -27,7 +27,7 @@ class RMDeleteFileAPI: NSObject, RMNetworkAPI{
     }
     
     func requestHost() -> String! {
-        return "https://www.4match.top"
+        return RMNetworkAPIHost.apiHost
     }
     
     func requestPath() -> String! {

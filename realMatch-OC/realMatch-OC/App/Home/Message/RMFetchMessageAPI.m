@@ -27,7 +27,7 @@
 }
 
 -(NSString*)requestHost{
-    return @"https://www.4match.top";
+    return RMNetworkAPIHost.apiHost;
 }
 
 -(NSString*)requestPath{

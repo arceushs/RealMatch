@@ -19,7 +19,7 @@
 }
 
 +(NSString *)apiPath{
-    return @"/api"
+    return @"/api";
 //#ifdef DEBUG
 //    return @"/api/test";
 //#else
