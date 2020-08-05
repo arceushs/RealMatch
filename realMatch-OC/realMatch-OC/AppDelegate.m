@@ -14,6 +14,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import <AppsFlyerLib/AppsFlyerTracker.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <Realm/Realm.h>
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -38,6 +39,13 @@
     
     [FBSDKApplicationDelegate.sharedInstance application:application didFinishLaunchingWithOptions:launchOptions];
     
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    //开始写入事务
+    [realm beginWriteTransaction];
+;
+    //提交写入事务
+    [realm commitWriteTransaction];
+
     return YES;
 }
 
@@ -152,6 +160,12 @@
 }
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    RLMRealm *realm = [RLMRealm defaultRealm];
+        //开始写入事务
+        [realm beginWriteTransaction];
+    ;
+        //提交写入事务
+        [realm commitWriteTransaction];
     [FBSDKApplicationDelegate.sharedInstance application:app openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
     return YES;
 }
