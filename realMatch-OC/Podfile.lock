@@ -28,6 +28,7 @@ PODS:
   - GPUImage (0.1.7)
   - GPUImageBeautifyFilter (1.0.0):
     - GPUImage
+  - Masonry (1.1.0)
   - Realm (3.16.2):
     - Realm/Headers (= 3.16.2)
   - Realm/Headers (3.16.2)
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - FMDB
   - GPUImage
   - GPUImageBeautifyFilter
+  - Masonry
   - Realm
   - SDWebImage (~> 5.0)
   - SnapKit (~> 5.0.0)
@@ -68,6 +70,7 @@ SPEC REPOS:
     - FMDB
     - GPUImage
     - GPUImageBeautifyFilter
+    - Masonry
     - Realm
     - SDWebImage
     - SnapKit
@@ -85,6 +88,7 @@ SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GPUImageBeautifyFilter: 6eb451b50c395109172ae1f9e69c4241d0126c09
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
@@ -94,6 +98,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 8d6bb0331b827e0436835d5857096fe097ff7b0b
+PODFILE CHECKSUM: 5315f7a176ecf36731c4abf1c261eed72d1262fd
 
 COCOAPODS: 1.9.3

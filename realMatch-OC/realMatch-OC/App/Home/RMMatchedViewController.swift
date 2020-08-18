@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 @objc class RMMatchedViewController: UIViewController,RouterController {
 
@@ -54,6 +55,13 @@ import UIKit
         self.swipeButton.layer.borderWidth = 3
         self.swipeButton.layer.borderColor = UIColor(string: "FA008E").cgColor
         self.swipeButton.layer.cornerRadius = 24
+        
+        let testView = UIView()
+        testView.backgroundColor = UIColor.clear
+        self.swipeButton .addSubview(testView)
+        testView.snp.makeConstraints { (make) in
+            make.left.right.top.bottom.equalTo(self.swipeButton)
+        }
         
         self.matchedAvatarImageView.sd_setImage(with: URL(string: matchedAvatar), placeholderImage: UIImage(named: "default.jpeg"), options: .refreshCached, context: nil)
         

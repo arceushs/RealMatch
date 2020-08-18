@@ -93,7 +93,7 @@
          <EnvironmentVariable
             key = "DYLD_INSERT_LIBRARIES"
             value = "@executable_path/InsertDylib.dylib"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>

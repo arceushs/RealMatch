@@ -14,6 +14,7 @@
 #import "AVFoundation/AVFoundation.h"
 #import "realMatch_OC-Swift.h"
 #import "RMSocketManager.h"
+#import <Masonry/Masonry.h>
 @interface ViewController ()
 
 @end
@@ -43,8 +44,6 @@
     }else{
         [[Router shared] routerTo:@"LoginAndRegisterViewController" parameter:nil];
     }
-   
-    NSLog(@"InsertDylib.dylib");
     
     RMFetchDetailAPI* detailAPI = [[RMFetchDetailAPI alloc]initWithUserId:[RMUserCenter shared].userId];
     [[RMNetworkManager shareManager] request:detailAPI completion:^(RMNetworkResponse *response) {
@@ -59,6 +58,13 @@
         [RMUserCenter shared].userIsVip = data.recharged;
         [RMUserCenter shared].anormaly = data.isAnomaly;
         [RMUserCenter shared].isUploadedVideo = data.uploadedVideo;
+    }];
+    
+    UIView *testView = [UIView new];
+    testView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:testView];
+    [testView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.left.bottom.equalTo(self.view);
     }];
   
 //    NSData * data = [NSData dataWithContentsOfFile:[[RMFileManager pathForSaveRecord] stringByAppendingString:@"movie.mp4"]];
