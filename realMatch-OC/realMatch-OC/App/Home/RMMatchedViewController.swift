@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SwiftyTask
 
 @objc class RMMatchedViewController: UIViewController,RouterController {
 
@@ -71,6 +72,15 @@ import SnapKit
                 self.myAvatarImageView.sd_setImage(with: URL(string: data.avatar), placeholderImage: UIImage(named: "default.jpeg"), options: .refreshCached, context: nil)
             }
         })
+        
+        SwiftyTask.main{
+            return "1"
+        }.onDefault { result in
+            print(result)
+            return "2"
+        }.run(.main) { result in
+            print(result)
+        }
         // Do any additional setup after loading the view.
     }
 

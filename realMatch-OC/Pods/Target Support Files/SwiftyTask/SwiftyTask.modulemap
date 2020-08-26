@@ -1,0 +1,6 @@
+module SwiftyTask {
+  umbrella header "SwiftyTask-umbrella.h"
+
+  export *
+  module * { export * }
+}

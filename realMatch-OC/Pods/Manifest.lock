@@ -1,10 +1,4 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
   - AFNetworking/NSURLSession (3.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -12,16 +6,8 @@ PODS:
   - AFNetworking/Reachability (3.2.1)
   - AFNetworking/Security (3.2.1)
   - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
-    - AFNetworking/NSURLSession
   - AHTimer (0.0.3)
   - AppsFlyerFramework (5.1.0)
-  - FBSDKCoreKit (7.0.1):
-    - FBSDKCoreKit/Basics (= 7.0.1)
-    - FBSDKCoreKit/Core (= 7.0.1)
-  - FBSDKCoreKit/Basics (7.0.1)
-  - FBSDKCoreKit/Core (7.0.1):
-    - FBSDKCoreKit/Basics
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -41,13 +27,16 @@ PODS:
   - SocketRocket (0.5.1)
   - Starscream (3.1.0)
   - SVProgressHUD (2.2.5)
+  - SwiftyTask (1.0.1)
   - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.0)
+  - AFNetworking/NSURLSession (~> 3.0)
+  - AFNetworking/Reachability (~> 3.0)
+  - AFNetworking/Security (~> 3.0)
+  - AFNetworking/Serialization (~> 3.0)
   - AHTimer (~> 0.0.3)
   - AppsFlyerFramework
-  - FBSDKCoreKit
   - FMDB
   - GPUImage
   - GPUImageBeautifyFilter
@@ -58,6 +47,7 @@ DEPENDENCIES:
   - Socket.IO-Client-Swift (~> 15.1.0)
   - SocketRocket
   - SVProgressHUD
+  - SwiftyTask
   - TTTAttributedLabel
 
 SPEC REPOS:
@@ -66,7 +56,6 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - AppsFlyerFramework
-    - FBSDKCoreKit
     - FMDB
     - GPUImage
     - GPUImageBeautifyFilter
@@ -78,13 +67,13 @@ SPEC REPOS:
     - SocketRocket
     - Starscream
     - SVProgressHUD
+    - SwiftyTask
     - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AHTimer: df455262e80cc80ab266b46b082e5ff88f3c60ad
   AppsFlyerFramework: b5e6d0d1718c445eeb151769e97246c00ae4628d
-  FBSDKCoreKit: 9cc05bec0568a5955c82eb59ae95da0fe125b88d
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   GPUImageBeautifyFilter: 6eb451b50c395109172ae1f9e69c4241d0126c09
@@ -96,8 +85,9 @@ SPEC CHECKSUMS:
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyTask: 918389fddbb96aa34518193653bd0bf590c1f654
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 5315f7a176ecf36731c4abf1c261eed72d1262fd
+PODFILE CHECKSUM: 34cba4d5e6d23bedfac3aaadefb211c266820ab5
 
 COCOAPODS: 1.9.3

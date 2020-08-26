@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface testObject : RLMObject
+@property (nonatomic,strong) NSString *myName;
 
 @end
 

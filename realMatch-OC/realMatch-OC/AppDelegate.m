@@ -15,6 +15,7 @@
 #import <AppsFlyerLib/AppsFlyerTracker.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Realm/Realm.h>
+#import "testObject.h"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -40,11 +41,19 @@
     [FBSDKApplicationDelegate.sharedInstance application:application didFinishLaunchingWithOptions:launchOptions];
     
     RLMRealm *realm = [RLMRealm defaultRealm];
+    testObject *testObj = [testObject new];
+    testObj.myName = @"testObj";
     //开始写入事务
     [realm beginWriteTransaction];
-;
+    [realm addObject:testObj];
     //提交写入事务
     [realm commitWriteTransaction];
+    
+    testObject *testObj2 = [testObject new];
+    testObj2.myName = @"testObj2";
+    [realm transactionWithBlock:^{
+        [realm addObject:testObj2];
+    }];
 
     return YES;
 }
