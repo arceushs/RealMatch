@@ -37,9 +37,7 @@
 		1CFCE12122BF32A20025BC0B /* RMSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE12022BF32A20025BC0B /* RMSocketManager.m */; };
 		1CFCE12422BF339A0025BC0B /* RMNetworkAPIHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */; };
 		1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA35FB420100F154F36C52B /* libPods-realMatch-OC.a */; };
-		2B0621D124F69B1B007D7510 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0621D024F69B1B007D7510 /* FBSDKCoreKit.framework */; };
-		2B0621D324F69B9B007D7510 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0621D224F69B9B007D7510 /* FBSDKCoreKit.framework */; };
-		2B0621D424F69BAD007D7510 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0621D224F69B9B007D7510 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2B06220824F77438007D7510 /* FBSDKCoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2B06220324F769E1007D7510 /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B1C78D023866595006750E6 /* RMBaseInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1C78CF23866594006750E6 /* RMBaseInfoAPI.swift */; };
 		2B1C78D223879B4A006750E6 /* RMMatchResultAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1C78D123879B4A006750E6 /* RMMatchResultAPI.swift */; };
 		2B23EC382385725100BD95FE /* RMComplaintAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23EC372385725100BD95FE /* RMComplaintAPI.swift */; };
@@ -170,16 +168,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D669717F229BEA78008E3968 /* Embed Frameworks */ = {
+		2B06220924F77438007D7510 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2B0621D424F69BAD007D7510 /* FBSDKCoreKit.framework in Embed Frameworks */,
+				2B06220824F77438007D7510 /* FBSDKCoreKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -224,7 +222,9 @@
 		1CFCE12222BF339A0025BC0B /* RMNetworkAPIHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMNetworkAPIHost.h; sourceTree = "<group>"; };
 		1CFCE12322BF339A0025BC0B /* RMNetworkAPIHost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMNetworkAPIHost.m; sourceTree = "<group>"; };
 		2B0621D024F69B1B007D7510 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Library/Developer/Xcode/DerivedData/FBSDKCoreKit-djkadpcozknnfqcorwtcqepgwtef/Build/Products/Debug-iphoneos/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
-		2B0621D224F69B9B007D7510 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		2B0621FF24F764C3007D7510 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../Desktop/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		2B06220324F769E1007D7510 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Desktop/FBSDKCoreKit-Dynamic 2020-08-27 12-10-20/Products/@rpath/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		2B06220A24F7745D007D7510 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		2B1C78CF23866594006750E6 /* RMBaseInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBaseInfoAPI.swift; sourceTree = "<group>"; };
 		2B1C78D123879B4A006750E6 /* RMMatchResultAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMatchResultAPI.swift; sourceTree = "<group>"; };
 		2B23EC372385725100BD95FE /* RMComplaintAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMComplaintAPI.swift; sourceTree = "<group>"; };
@@ -388,8 +388,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B0621D124F69B1B007D7510 /* FBSDKCoreKit.framework in Frameworks */,
-				2B0621D324F69B9B007D7510 /* FBSDKCoreKit.framework in Frameworks */,
 				2B96D141247A98F8002E86FC /* CoreLocation.framework in Frameworks */,
 				1C49CAF022DABC48007333A6 /* libsqlite3.0.tbd in Frameworks */,
 				1E08858FE667C855C03E11AF /* libPods-realMatch-OC.a in Frameworks */,
@@ -492,6 +490,8 @@
 			isa = PBXGroup;
 			children = (
 				2B0621D024F69B1B007D7510 /* FBSDKCoreKit.framework */,
+				2B0621FF24F764C3007D7510 /* FBSDKCoreKit.framework */,
+				2B06220324F769E1007D7510 /* FBSDKCoreKit.framework */,
 				2B96D140247A98F7002E86FC /* CoreLocation.framework */,
 				1C49CAEF22DABC48007333A6 /* libsqlite3.0.tbd */,
 				D6697146229BB0D3008E3968 /* StoreKit.framework */,
@@ -687,7 +687,7 @@
 		D687DA4A2294EDCE00A11488 = {
 			isa = PBXGroup;
 			children = (
-				2B0621D224F69B9B007D7510 /* FBSDKCoreKit.framework */,
+				2B06220A24F7745D007D7510 /* FBSDKCoreKit.framework */,
 				D661306522956697008DA4D8 /* Podfile */,
 				D687DA552294EDCE00A11488 /* realMatch-OC */,
 				D687DA6E2294EDD200A11488 /* realMatch-OCTests */,
@@ -840,7 +840,7 @@
 				D687DA502294EDCE00A11488 /* Frameworks */,
 				D687DA512294EDCE00A11488 /* Resources */,
 				1CA7DF259AEED1356BEFD520 /* [CP] Copy Pods Resources */,
-				D669717F229BEA78008E3968 /* Embed Frameworks */,
+				2B06220924F77438007D7510 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1343,7 +1343,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0116FF275BEF202714594EA /* Pods-realMatch-OC.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "realMatch-OC/realMatch-OC.entitlements";
@@ -1370,7 +1369,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.57;
+				MARKETING_VERSION = 1.0.58;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1387,7 +1386,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 91FA9F1266B2D253DA24B413 /* Pods-realMatch-OC.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "realMatch-OC/realMatch-OC.entitlements";
@@ -1414,7 +1412,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.57;
+				MARKETING_VERSION = 1.0.58;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arceushs.MeetYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
