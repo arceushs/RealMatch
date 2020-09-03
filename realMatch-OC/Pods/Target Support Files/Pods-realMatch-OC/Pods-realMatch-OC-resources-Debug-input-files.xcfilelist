@@ -1,5 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-realMatch-OC/Pods-realMatch-OC-resources.sh
-${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle
 ${PODS_ROOT}/GPUImage/framework/Resources/lookup.png
 ${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png
 ${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png

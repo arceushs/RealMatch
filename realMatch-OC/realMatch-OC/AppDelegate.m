@@ -13,7 +13,6 @@
 #import "realMatch_OC-Swift.h"
 #import <UserNotifications/UserNotifications.h>
 #import <AppsFlyerLib/AppsFlyerTracker.h>
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -35,8 +34,6 @@
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = @"SG9QrxfmQrbLn8Np53tFgB";
     [AppsFlyerTracker sharedTracker].appleAppID = @"com.arceushs.MeetYou";
     [AppsFlyerTracker sharedTracker].isDebug = YES;
-    
-    [FBSDKApplicationDelegate.sharedInstance application:application didFinishLaunchingWithOptions:launchOptions];
     
     return YES;
 }
@@ -152,7 +149,6 @@
 }
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
-    [FBSDKApplicationDelegate.sharedInstance application:app openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
     return YES;
 }
 

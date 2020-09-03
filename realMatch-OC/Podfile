@@ -17,9 +17,5 @@ pod 'FMDB'
 pod 'SnapKit', '~> 5.0.0'
 pod 'TTTAttributedLabel'
 pod 'AppsFlyerFramework'
-#pod 'FBAudienceNetwork'
-pod 'FBSDKCoreKit'
-pod 'FBSDKLoginKit'
-pod 'FBSDKShareKit'
 
 end
